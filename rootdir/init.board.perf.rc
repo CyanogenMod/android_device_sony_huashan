@@ -38,6 +38,9 @@ on enable-low-power
     write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 30000
     write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor ondemand
 
+    # Set storage parameters
+    write /sys/devices/platform/msm_sdcc.3/idle_timeout 10
+
     # Set CPU boost parameters
     write /sys/module/cpu_boost/parameters/boost_ms 20
     write /sys/module/cpu_boost/parameters/sync_threshold 1458000
