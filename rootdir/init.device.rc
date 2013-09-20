@@ -1,0 +1,3 @@
+on boot
+    # Vibrator
+    chown system system /sys/class/timed_output/vibrator/level
