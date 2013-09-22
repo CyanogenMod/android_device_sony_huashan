@@ -12,8 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# inherit from the common viskan definitions
--include device/sony/viskan-common/BoardConfigCommon.mk
+# inherit from Sony common
+-include device/sony/common/BoardConfigCommon.mk
+
+# inherit from qcom-common
+-include device/sony/qcom-common/BoardConfigCommon.mk
 
 # inherit from the proprietary version
 -include vendor/sony/huashan/BoardConfigVendor.mk
@@ -23,9 +26,96 @@ TARGET_OTA_ASSERT_DEVICE := C5303,huashan
 
 TARGET_SPECIFIC_HEADER_PATH += device/sony/huashan/include
 
+# Kernel properties
+TARGET_KERNEL_SOURCE := kernel/sony/msm8960t
+TARGET_KERNEL_CONFIG := viskan_huashan_defconfig
+
+# Platform
+TARGET_BOOTLOADER_BOARD_NAME := MSM8960
+TARGET_BOARD_PLATFORM := msm8960
+BOARD_VENDOR_PLATFORM := viskan
+
+# Architecture
+TARGET_ARCH_VARIANT_CPU := cortex-a9
+TARGET_CPU_VARIANT := krait
+
+# Flags
+TARGET_GLOBAL_CFLAGS += -mfpu=neon-vfpv4 -mfloat-abi=softfp
+TARGET_GLOBAL_CPPFLAGS += -mfpu=neon-vfpv4 -mfloat-abi=softfp
+COMMON_GLOBAL_CFLAGS += -D__ARM_USE_PLD -D__ARM_CACHE_LINE_SIZE=64
+
+# Krait optimizations
+TARGET_USE_KRAIT_BIONIC_OPTIMIZATION := true
+TARGET_USE_KRAIT_PLD_SET      := true
+TARGET_KRAIT_BIONIC_PLDOFFS   := 10
+TARGET_KRAIT_BIONIC_PLDTHRESH := 10
+TARGET_KRAIT_BIONIC_BBTHRESH  := 64
+TARGET_KRAIT_BIONIC_PLDSIZE   := 64
+
+# Kernel information
+BOARD_KERNEL_BASE     := 0x80200000
+BOARD_KERNEL_PAGESIZE := 2048
+BOARD_KERNEL_CMDLINE  := androidboot.hardware=qcom user_debug=31 androidboot.baseband=msm msm_rtb.filter=0x3F ehci-hcd.park=3 vmalloc=400M
+BOARD_MKBOOTIMG_ARGS  := --ramdisk_offset 0x02000000
+
+# Wifi
+BOARD_HAS_QCOM_WLAN              := true
+BOARD_WLAN_DEVICE                := qcwcn
+WPA_SUPPLICANT_VERSION           := VER_0_8_X
+BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
+BOARD_HOSTAPD_DRIVER             := NL80211
+BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
+WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/wlan.ko"
+WIFI_DRIVER_MODULE_NAME          := "wlan"
+WIFI_DRIVER_FW_PATH_STA          := "sta"
+WIFI_DRIVER_FW_PATH_AP           := "ap"
+
+BOARD_USE_SONY_MACUPDATE := true
+
+TARGET_PROVIDES_LIBLIGHT := true
+
+# Camera
+COMMON_GLOBAL_CFLAGS += -DQCOM_BSP_CAMERA_ABI_HACK
+
+# ION
+COMMON_GLOBAL_CFLAGS += -DNEW_ION_API
+
+# GPS
+BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
+TARGET_NO_RPC := true
+
+# Bluetooth
+BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH_QCOM := true
+BLUETOOTH_HCI_USE_MCT := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/sony/huashan/bluetooth
 
-TARGET_KERNEL_CONFIG := cm_viskan_huashan_defconfig
+# Vold
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
+
+# Custom boot
+TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+BOARD_CUSTOM_BOOTIMG_MK := device/sony/huashan/custombootimg.mk
+BOARD_CUSTOM_GRAPHICS := ../../../device/sony/huashan/recovery/recovery.c
+BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
+
+BOARD_FLASH_BLOCK_SIZE := 131072
+BOARD_HAS_NO_SELECT_BUTTON := true
+TARGET_USERIMAGES_USE_EXT4 := true
+
+# Audio
+BOARD_USES_ALSA_AUDIO := true
+TARGET_USES_QCOM_MM_AUDIO := true
+
+# Media
+TARGET_QCOM_MEDIA_VARIANT := caf
+
+# FM radio
+BOARD_USES_STE_FMRADIO := true
+COMMON_GLOBAL_CFLAGS += -DSTE_FM
+
+# Sensors
 
 # Partition information
 BOARD_VOLD_MAX_PARTITIONS := 26
