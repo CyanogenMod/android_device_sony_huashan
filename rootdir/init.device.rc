@@ -1,3 +1,32 @@
 on boot
+    # Owner for the proximity sensor
+    chown system system /sys/devices/i2c-12/12-0054/threshold
+    chown system system /sys/devices/i2c-12/12-0054/nburst
+
+    # AS3676/Ambient Light Sensor
+    chown system system /sys/devices/i2c-10/10-0040/als_on
+    chmod 660 /sys/devices/i2c-10/10-0040/als_on
+
+    # Panel backlight
+    chown system system /sys/class/leds/lcd-backlight1/brightness
+    chmod 660 /sys/class/leds/lcd-backlight1/brightness
+    chown system system /sys/class/leds/lcd-backlight2/brightness
+    chmod 660 /sys/class/leds/lcd-backlight2/brightness
+
     # Vibrator
     chown system system /sys/class/timed_output/vibrator/level
+
+    # LM356x/cameralight
+    chown system camera /sys/devices/i2c-10/10-0053/torch_enable
+    chmod 660 /sys/devices/i2c-10/10-0053/torch_enable
+    chown system camera /sys/devices/i2c-10/10-0053/torch_current
+    chmod 660 /sys/devices/i2c-10/10-0053/torch_current
+    chown system system /sys/devices/i2c-10/10-0053/privacy_enable
+    chown system system /sys/devices/i2c-10/10-0053/privacy_current
+    chown system camera /sys/devices/i2c-10/10-0053/flash_enable
+    chown system camera /sys/devices/i2c-10/10-0053/flash_duration
+    chown system camera /sys/devices/i2c-10/10-0053/flash_synchronization
+    chmod 660 /sys/devices/i2c-10/10-0053/flash_synchronization
+    chown system camera /sys/devices/i2c-10/10-0053/flash_current
+    chmod 660 /sys/devices/i2c-10/10-0053/flash_current
+    chown system camera /sys/devices/i2c-10/10-0053/status
