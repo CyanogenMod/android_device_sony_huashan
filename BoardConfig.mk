@@ -22,13 +22,14 @@
 -include vendor/sony/huashan/BoardConfigVendor.mk
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := C5303,huashan
+TARGET_OTA_ASSERT_DEVICE := C5302,C5303,C5306,huashan
+
 
 TARGET_SPECIFIC_HEADER_PATH += device/sony/huashan/include
 
 # Kernel properties
 TARGET_KERNEL_SOURCE := kernel/sony/msm8960t
-TARGET_KERNEL_CONFIG := viskan_huashan_defconfig
+TARGET_KERNEL_CONFIG := cm_viskan_huashan_defconfig
 
 # Platform
 TARGET_BOOTLOADER_BOARD_NAME := MSM8960
@@ -58,7 +59,7 @@ BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_CMDLINE  := androidboot.hardware=qcom user_debug=31 androidboot.baseband=msm msm_rtb.filter=0x3F ehci-hcd.park=3 vmalloc=400M
 BOARD_MKBOOTIMG_ARGS  := --ramdisk_offset 0x02000000
 
-# Wifi
+# Wifi config
 BOARD_HAS_QCOM_WLAN              := true
 BOARD_WLAN_DEVICE                := qcwcn
 WPA_SUPPLICANT_VERSION           := VER_0_8_X
@@ -80,7 +81,9 @@ COMMON_GLOBAL_CFLAGS += -DQCOM_BSP_CAMERA_ABI_HACK
 
 # ION
 COMMON_GLOBAL_CFLAGS += -DNEW_ION_API
-
+# Try Use retire fence from MDP driver - leave uncommented until we are sure - Enable use of retire fence from MDP driver
+#TARGET_DISPLAY_USE_RETIRE_FENCE := true
+#
 # GPS
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
 TARGET_NO_RPC := true
