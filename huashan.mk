@@ -14,7 +14,7 @@
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
-# qcom common
+# qcom common files. you need github.com/cyanogenMod/android_device_sony_qcom-common
 $(call inherit-product, device/sony/qcom-common/qcom-common.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/sony/huashan/overlay
@@ -130,7 +130,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/fstab.qcom:recovery/root/fstab.qcom \
     $(LOCAL_PATH)/rootdir/system/etc/vold.fstab:system/etc/vold.fstab
 
-# wifi config
+# Wifi config
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
     $(LOCAL_PATH)/rootdir/system/etc/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
@@ -183,7 +183,7 @@ PRODUCT_PACKAGES += \
 # WIFI MAC update
 PRODUCT_PACKAGES += \
     mac-update
-
+#fm for sony device
 PRODUCT_PACKAGES += \
     FmRadio
 
