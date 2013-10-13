@@ -22,19 +22,21 @@ on early-init
     symlink /data/tombstones /tombstones
 
 on init
-    mkdir /storage 0775 system system
-    mkdir /storage/sdcard0 0775 system system
+   mkdir /mnt/shell/emulated 0700 shell shell
+    mkdir /storage/emulated 0555 root root
     mkdir /storage/sdcard1 0775 system system
     mkdir /storage/usbdisk 0775 system system
 
-    export EXTERNAL_STORAGE /storage/sdcard0
+    export EXTERNAL_STORAGE /storage/emulated/legacy
     export SECONDARY_STORAGE /storage/sdcard1
+    export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
+    export EMULATED_STORAGE_TARGET /storage/emulated
 
     # for backwards compatibility
-    symlink /storage/sdcard0 /sdcard
-    symlink /storage/sdcard0 /mnt/sdcard
-    symlink /storage/sdcard1 /ext_card
-    symlink /storage/sdcard1 /mnt/ext_card
+    symlink /storage/emulated/legacy /sdcard
+    symlink /storage/emulated/legacy /mnt/sdcard
+    symlink /storage/emulated/legacy /storage/sdcard0
+    symlink /mnt/shell/emulated/0 /storage/emulated/legacy
     symlink /storage/usbdisk /usbdisk
     symlink /storage/usbdisk /mnt/usbdisk
 
