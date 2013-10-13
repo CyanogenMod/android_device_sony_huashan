@@ -3,9 +3,9 @@ on boot
     chown system system /sys/devices/i2c-12/12-0054/threshold
     chown system system /sys/devices/i2c-12/12-0054/nburst
 
-    # AS3676/Ambient Light Sensor
+    # AS3676/Ambient Light Sensor/Owner for the light sensor
     chown system system /sys/devices/i2c-10/10-0040/als_on
-    chmod 660 /sys/devices/i2c-10/10-0040/als_on
+    chown system system /sys/devices/i2c-10/10-0040/als_on
 
     # Panel backlight
     chown system system /sys/class/leds/lcd-backlight1/brightness
