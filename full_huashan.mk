@@ -22,6 +22,7 @@
 #
 #
 
+# Screen resoultion in Pixels.
 TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720
 
@@ -35,7 +36,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Common Sony Resources
 $(call inherit-product, device/sony/common/resources-xhdpi.mk)
 
-# Inherit from (this) huashan device
+# Inherit from (this) huashan device makefile
 $(call inherit-product, device/sony/huashan/huashan.mk)
 
 # Set those variables here to overwrite the inherited values.

@@ -130,7 +130,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/fstab.qcom:recovery/root/fstab.qcom \
     $(LOCAL_PATH)/rootdir/system/etc/vold.fstab:system/etc/vold.fstab
 
-# Wifi config
+# Wifi Config
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
     $(LOCAL_PATH)/rootdir/system/etc/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
@@ -183,7 +183,7 @@ PRODUCT_PACKAGES += \
 # WIFI MAC update
 PRODUCT_PACKAGES += \
     mac-update
-#fm for sony device
+#FM Radio for sony device
 PRODUCT_PACKAGES += \
     FmRadio
 
@@ -237,7 +237,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     telephony.lteOnGsmDevice=1 \
     ro.ril.transmitpower=true \
     persist.radio.add_power_save=1
-
+# lib ril
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     rild.libpath=/system/lib/libril-qc-qmi-1.so
 
@@ -255,5 +255,5 @@ $(call inherit-product-if-exists, frameworks/native/build/phone-xhdpi-1024-dalvi
 # call hwui memory config
 $(call inherit-product-if-exists, frameworks/native/build/phone-xhdpi-1024-hwui-memory.mk)
 
-# Include non-opensource parts
+# Include non-opensource parts/ proprietary files
 $(call inherit-product, vendor/sony/huashan/huashan-vendor.mk)

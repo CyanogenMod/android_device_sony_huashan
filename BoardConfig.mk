@@ -81,9 +81,9 @@ COMMON_GLOBAL_CFLAGS += -DQCOM_BSP_CAMERA_ABI_HACK
 
 # ION
 COMMON_GLOBAL_CFLAGS += -DNEW_ION_API
-# Try Use retire fence from MDP driver - leave commented until we are sure - Enable use of retire fence from MDP driver
+# Use retire fence from MDP driver  - Enable use of retire fence from MDP driver
 TARGET_DISPLAY_USE_RETIRE_FENCE := true
-#
+
 # GPS
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
 TARGET_NO_RPC := true
