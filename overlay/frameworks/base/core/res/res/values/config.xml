@@ -194,8 +194,6 @@
          movement threshold where scrolling should begin. -->
     <dimen name="config_viewConfigurationTouchSlop">13dp</dimen>
 
-    <!-- The default value if the SyncStorageEngine should sync automatically or not -->
-    <bool name="config_syncstorageengine_masterSyncAutomatically">false</bool>
 
     <!-- National language single shift tables to enable for SMS encoding.
          Decoding is always enabled. 3GPP TS 23.038 states that this feature
