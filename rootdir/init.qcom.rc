@@ -548,3 +548,8 @@ service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
     group system qcom_oncrpc
     disabled
     oneshot
+
+service illumination /system/bin/illumination_service
+    socket illumination stream 0660 root system
+    class main
+    user root

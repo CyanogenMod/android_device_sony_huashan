@@ -174,7 +174,7 @@ PRODUCT_PACKAGES += \
 
 # Light
 PRODUCT_PACKAGES += \
-    lights.msm8960
+    lights.qcom
 
 # Sensors
 PRODUCT_PACKAGES += \
