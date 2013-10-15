@@ -424,7 +424,6 @@ service qmuxd /system/bin/qmuxd
     class main
     user radio
     group radio audio bluetooth gps qcom_diag net_bt_stack
-    disabled
 
 # SONY: TrimArea Daemon
 # Last 2 args: start block(blk size 128k), number of blocks(partitionsize(kb)/128(kb))
@@ -447,7 +446,6 @@ service updatemiscta /system/bin/updatemiscta
 
 service netmgrd /system/bin/netmgrd
     class main
-    disabled
 
 service qrngd /system/bin/qrngd -f
     class main
