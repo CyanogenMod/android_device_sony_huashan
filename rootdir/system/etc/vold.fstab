@@ -29,5 +29,6 @@
 # NOTE: This file has been modified by Sony Mobile Communications AB.
 # Modifications are licensed under the licence above.
 
+dev_mount  int_card  /storage/sdcard0  auto    /devices/platform/msm_sdcc.1/mmc_host/mmc0  nonremovable
 dev_mount ext_card /storage/sdcard1 auto /devices/platform/msm_sdcc.3/mmc_host
 dev_mount usbdisk /storage/usbdisk auto /devices/platform/msm_hsusb_host
