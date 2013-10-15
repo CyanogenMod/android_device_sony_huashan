@@ -2,8 +2,8 @@
 
 export BOOTREC_EVENT_NODE="/dev/input/event8 c 13 73"
 export BOOTREC_EVENT="/dev/input/event8"
-export BOOTREC_LED_RED="/sys/devices/i2c-10/10-0047/leds/LED1_R/brightness"
-export BOOTREC_LED_GREEN="/sys/devices/i2c-10/10-0047/leds/LED1_G/brightness"
-export BOOTREC_LED_BLUE="/sys/devices/i2c-10/10-0047/leds/LED1_B/brightness"
+export BOOTREC_LED_RED="/sys/class/leds/pwr-red/brightness"
+export BOOTREC_LED_GREEN="/sys/class/leds/pwr-green/brightness"
+export BOOTREC_LED_BLUE="/sys/class/leds/pwr-blue/brightness"
 export BOOTREC_FOTA_NODE="/dev/block/mmcblk0p11 b 179 11"
 export BOOTREC_FOTA="/dev/block/mmcblk0p11"
