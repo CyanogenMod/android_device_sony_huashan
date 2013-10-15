@@ -14,7 +14,7 @@
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
-# qcom common files. you need github.com/cyanogenMod/android_device_sony_qcom-common
+# qcom common files. you need github.com/cyanogenmod/android_device_sony_qcom-common
 $(call inherit-product, device/sony/qcom-common/qcom-common.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/sony/huashan/overlay
@@ -57,7 +57,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/init.recovery.qcom.rc:root/init.recovery.qcom.rc \
     $(LOCAL_PATH)/rootdir/system/etc/init.qcom.bt.sh:system/etc/init.qcom.bt.sh
 
-# Sony system_monitot
+# Sony system_monitor
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/etc/sysmon.cfg:system/etc/sysmon.cfg
 
