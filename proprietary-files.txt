@@ -21,14 +21,11 @@ etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
 etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
 bin/btnvtool
 bin/ds_fmc_appd
-bin/efsks
 bin/fm_qsoc_patches
 bin/fmconfig
 bin/hci_qcomm_init
-bin/ks
 bin/mpdecision
 bin/netmgrd
-bin/qcks
 bin/qmuxd
 bin/qseecomd
 bin/rmt_storage
@@ -96,7 +93,6 @@ etc/firmware/tzsuntory.b02
 etc/firmware/tzsuntory.b03
 etc/firmware/tzsuntory.mdt
 etc/flashled_calc_parameters.cfg
-lib/hw/camera.msm8960.so
 lib/hw/camera.qcom.so
 lib/hw/gps.default.so
 lib/hw/nfc.msm8960.so
