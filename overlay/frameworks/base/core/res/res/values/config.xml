@@ -194,8 +194,6 @@
          movement threshold where scrolling should begin. -->
     <dimen name="config_viewConfigurationTouchSlop">13dp</dimen>
 
-    <!-- The default value if the SyncStorageEngine should sync automatically or not -->
-    <bool name="config_syncstorageengine_masterSyncAutomatically">false</bool>
 
     <!-- National language single shift tables to enable for SMS encoding.
          Decoding is always enabled. 3GPP TS 23.038 states that this feature
@@ -248,7 +246,7 @@
     <!-- Set to true to add links to Cell Broadcast app from Settings and MMS app. -->
     <bool name="config_cellBroadcastAppLinks">true</bool>
 
-    <!-- The default iface on which to monitor data use -->
-    <string name="config_datause_iface" translatable="false">rmnet_usb0</string>
+    <string name="config_datause_iface" translatable="false">rmnet0</string>
+
 
 </resources>
