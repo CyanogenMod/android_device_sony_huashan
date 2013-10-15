@@ -22,7 +22,7 @@ on early-init
     symlink /data/tombstones /tombstones
 
 on init
-   mkdir /mnt/shell/emulated 0700 shell shell
+    mkdir /mnt/shell/emulated 0700 shell shell
     mkdir /storage/emulated 0555 root root
     mkdir /storage/sdcard1 0775 system system
     mkdir /storage/usbdisk 0775 system system
@@ -39,9 +39,9 @@ on init
     symlink /mnt/shell/emulated/0 /storage/emulated/legacy
     symlink /storage/sdcard1 /ext_card
     symlink /storage/sdcard1 /mnt/ext_card
-    #usbdisk is not enabled yet but will fix soon
     symlink /storage/usbdisk /usbdisk
     symlink /storage/usbdisk /mnt/usbdisk
+
     symlink /dev/socket /tmp
 
     mkdir /dev/bus 0755 root root
@@ -65,6 +65,7 @@ on fs
     start tad
     exec /sbin/wait4tad_static
     exec /system/bin/taimport
+    start ta_qmi_service
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
@@ -163,7 +164,7 @@ on boot
     chown root system /proc/net/ip_conntrack
 
     # WTF
-    chmod 666 /proc/cmdline
+    chmod 444 /proc/cmdline
 
     # Enable DEBUG_SUSPEND, DEBUG_EXIT_SUSPEND, and DEBUG_WAKEUP
     write /sys/module/wakelock/parameters/debug_mask 7
@@ -434,14 +435,10 @@ service tad /sbin/tad_static /dev/block/mmcblk0 1,16
     socket tad stream 0660 system system
     disabled
 
-# SONY: Trim Area QMI client
-# Should have the same class as qmuxd, to be sure that it will be restarted in same way
-# as qmuxd if phone is encrypted. This is a workaround, because sometimes
-# QMI_SYS_EVENT_MODEM_OUT_OF_SERVICE_IND is not sending if qmuxd is terminated during decryption,
-# so, ta_qmi_client was not notified that connection to the TA Service on MDM is lost.
-service ta_qmi_client /system/bin/ta_qmi_client
-    class main
+# Trim Area QMI service
+service ta_qmi_service /system/bin/ta_qmi_service
     user root
+    disabled
 
 service updatemiscta /system/bin/updatemiscta
     class main
