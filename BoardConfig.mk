@@ -101,6 +101,7 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 BOARD_CUSTOM_BOOTIMG_MK := device/sony/huashan/custombootimg.mk
 BOARD_CUSTOM_GRAPHICS := ../../../device/sony/huashan/recovery/recovery.c
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/sony/huashan/recovery/recovery_keys.c
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 
 BOARD_FLASH_BLOCK_SIZE := 131072
