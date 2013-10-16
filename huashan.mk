@@ -139,6 +139,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/recovery/bootrec-device:recovery/bootrec-device
 
+# Additional sbin stuff
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/sbin/wait4tad_static:root/sbin/wait4tad_static \
+    $(LOCAL_PATH)/rootdir/sbin/tad_static:root/sbin/tad_static
+
 # Display
 PRODUCT_PACKAGES += \
     hwcomposer.msm8960 \
@@ -233,10 +238,9 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 
 # Radio and Telephony
 PRODUCT_PROPERTY_OVERRIDES += \
-    telephony.lteOnCdmaDevice=0 \
-    telephony.lteOnGsmDevice=1 \
     ro.ril.transmitpower=true \
     persist.radio.add_power_save=1
+
 # lib ril
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     rild.libpath=/system/lib/libril-qc-qmi-1.so

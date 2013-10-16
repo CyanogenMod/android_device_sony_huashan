@@ -123,6 +123,7 @@ lib/libcsd-client.so
 lib/libdiag.so
 lib/libdrmdiag.so
 lib/libdrmfs.so
+lib/libdrmtime.so
 lib/libdsi_netctrl.so
 lib/libdsutils.so
 lib/libface.so
