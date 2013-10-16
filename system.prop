@@ -3,3 +3,5 @@ ro.cwm.enable_key_repeat=true
 
 # Graphics
 ro.sf.lcd_density=320
+
+ro.use_data_netmgrd=true
