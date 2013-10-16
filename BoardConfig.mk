@@ -59,7 +59,7 @@ BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_CMDLINE  := androidboot.hardware=qcom user_debug=31 androidboot.baseband=msm msm_rtb.filter=0x3F ehci-hcd.park=3 vmalloc=400M
 BOARD_MKBOOTIMG_ARGS  := --ramdisk_offset 0x02000000
 
-# Wifi config
+# Wifi Config
 BOARD_HAS_QCOM_WLAN              := true
 BOARD_WLAN_DEVICE                := qcwcn
 WPA_SUPPLICANT_VERSION           := VER_0_8_X
@@ -81,9 +81,13 @@ COMMON_GLOBAL_CFLAGS += -DQCOM_BSP_CAMERA_ABI_HACK
 
 # ION
 COMMON_GLOBAL_CFLAGS += -DNEW_ION_API
-# Use retire fence from MDP driver  - Enable use of retire fence from MDP driver
-TARGET_DISPLAY_USE_RETIRE_FENCE := true
 
+# Use retire fence from MDP driver  - Enable use of retire fence from MDP driver
+# Need patches to complete CM10.2 build if use TARGET_DISPLAY_USE_RETIRE_FENCE := true (https://github.com/CyanogenMod/android_kernel_sony_apq8064/commit/b2c2089fd276d97fe73c08d2720bf1ba52c35c6b)
+#https://github.com/CyanogenMod/android_kernel_sony_apq8064/commit/d96c72cdec90c6bb3e9f919b2e8409c3e27d953a
+#https://github.com/CyanogenMod/android_kernel_sony_apq8064/commit/0efb816391289a7b27a8530c05202cdd9636bbb0
+#TARGET_DISPLAY_USE_RETIRE_FENCE := true
+#
 # GPS
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
 TARGET_NO_RPC := true
@@ -101,7 +105,6 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 BOARD_CUSTOM_BOOTIMG_MK := device/sony/huashan/custombootimg.mk
 BOARD_CUSTOM_GRAPHICS := ../../../device/sony/huashan/recovery/recovery.c
-BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/sony/huashan/recovery/recovery_keys.c
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 
 BOARD_FLASH_BLOCK_SIZE := 131072
@@ -118,8 +121,6 @@ TARGET_QCOM_MEDIA_VARIANT := caf
 # FM radio
 BOARD_USES_STE_FMRADIO := true
 COMMON_GLOBAL_CFLAGS += -DSTE_FM
-
-# Sensors
 
 # Partition information
 BOARD_VOLD_MAX_PARTITIONS := 26
