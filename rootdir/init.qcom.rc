@@ -444,6 +444,11 @@ service updatemiscta /system/bin/updatemiscta
     user root
     oneshot
 
+service secchand /system/bin/secchand
+    class core
+    group root
+    user root
+
 service netmgrd /system/bin/netmgrd
     class main
 

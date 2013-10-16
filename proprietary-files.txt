@@ -9,6 +9,7 @@ bin/netmgrd
 bin/qmuxd
 bin/qseecomd
 bin/rmt_storage
+bin/secchand
 bin/ta_param_loader
 bin/ta_qmi_service
 bin/taimport
@@ -72,6 +73,11 @@ etc/firmware/tzlibasb.b01
 etc/firmware/tzlibasb.b02
 etc/firmware/tzlibasb.b03
 etc/firmware/tzlibasb.mdt
+etc/firmware/tzs1sl.b00
+etc/firmware/tzs1sl.b01
+etc/firmware/tzs1sl.b02
+etc/firmware/tzs1sl.b03
+etc/firmware/tzs1sl.mdt
 etc/firmware/tzsuntory.b00
 etc/firmware/tzsuntory.b01
 etc/firmware/tzsuntory.b02
@@ -99,6 +105,7 @@ lib/hw/gps.default.so
 lib/hw/lights.default.so:lib/hw/vendor-lights.default.so
 lib/hw/nfc.msm8960.so
 lib/libQSEEComAPI.so
+lib/lib_asb_tee.so
 lib/lib_get_secure_mode.so
 lib/libacdbloader.so
 lib/libals.so
@@ -162,6 +169,7 @@ lib/libqmi_csi.so
 lib/libqmi_encdec.so
 lib/libqmiservices.so
 lib/libril-qc-qmi-1.so
+lib/libs1sl.so
 lib/libsys-utils.so
 lib/libta.so
 vendor/camera/APT00YP1.dat
