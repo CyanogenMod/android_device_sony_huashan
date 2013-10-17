@@ -104,6 +104,7 @@ lib/hw/camera.qcom.so:lib/hw/vendor-camera.qcom.so
 lib/hw/gps.default.so
 lib/hw/lights.default.so:lib/hw/vendor-lights.default.so
 lib/hw/nfc.msm8960.so
+lib/hw/sensors.default.so
 lib/libQSEEComAPI.so
 lib/lib_asb_tee.so
 lib/lib_get_secure_mode.so
