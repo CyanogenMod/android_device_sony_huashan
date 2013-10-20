@@ -24,7 +24,6 @@
 # Assert
 TARGET_OTA_ASSERT_DEVICE := C5302,C5303,C5306,huashan
 
-
 TARGET_SPECIFIC_HEADER_PATH += device/sony/huashan/include
 
 # Kernel properties
@@ -59,6 +58,9 @@ BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_CMDLINE  := androidboot.hardware=qcom user_debug=31 androidboot.baseband=msm msm_rtb.filter=0x3F ehci-hcd.park=3 vmalloc=400M
 BOARD_MKBOOTIMG_ARGS  := --ramdisk_offset 0x02000000
 
+# Dumpstate
+BOARD_LIB_DUMPSTATE := libdumpstate.sony
+
 # Wifi Config
 BOARD_HAS_QCOM_WLAN              := true
 BOARD_WLAN_DEVICE                := qcwcn
@@ -74,13 +76,10 @@ WIFI_DRIVER_FW_PATH_AP           := "ap"
 
 BOARD_USE_SONY_MACUPDATE := true
 
-TARGET_PROVIDES_LIBLIGHT := true
+BOARD_HARDWARE_CLASS := device/sony/huashan/cmhw
 
 # Camera
 COMMON_GLOBAL_CFLAGS += -DQCOM_BSP_CAMERA_ABI_HACK -DMR0_CAMERA_BLOB
-
-# ION
-COMMON_GLOBAL_CFLAGS += -DNEW_ION_API
 
 # Use retire fence from MDP driver  - Enable use of retire fence from MDP driver
 # Need patches to complete CM10.2 build if use TARGET_DISPLAY_USE_RETIRE_FENCE := true (https://github.com/CyanogenMod/android_kernel_sony_apq8064/commit/b2c2089fd276d97fe73c08d2720bf1ba52c35c6b)
@@ -117,6 +116,7 @@ TARGET_USERIMAGES_USE_EXT4 := true
 # Audio
 BOARD_USES_ALSA_AUDIO := true
 TARGET_USES_QCOM_MM_AUDIO := true
+TARGET_LS_USE_ALS_NODE := true
 
 # Media
 TARGET_QCOM_MEDIA_VARIANT := caf

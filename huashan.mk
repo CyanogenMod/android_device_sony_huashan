@@ -35,7 +35,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
-    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
+    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml \
+    frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml
 
 # This device is xhdpi.  However the platform doesn't
 # currently contain all of the bitmaps at xhdpi density so
@@ -127,13 +128,13 @@ PRODUCT_COPY_FILES += \
 # Vold
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/fstab.qcom:root/fstab.qcom \
-    $(LOCAL_PATH)/rootdir/fstab.qcom:recovery/root/fstab.qcom \
-    $(LOCAL_PATH)/rootdir/system/etc/vold.fstab:system/etc/vold.fstab
+    $(LOCAL_PATH)/rootdir/fstab.qcom:recovery/root/fstab.qcom
 
 # Wifi Config
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
-    $(LOCAL_PATH)/rootdir/system/etc/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
+    $(LOCAL_PATH)/rootdir/system/etc/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
+    $(LOCAL_PATH)/rootdir/system/etc/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
 
 # Device specific part for two-stage boot
 PRODUCT_COPY_FILES += \
@@ -177,10 +178,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     hci_qcomm_init
 
-# Light
-PRODUCT_PACKAGES += \
-    lights.qcom
-
 # Sensors
 PRODUCT_PACKAGES += \
     sensors.default
@@ -188,12 +185,10 @@ PRODUCT_PACKAGES += \
 # WIFI MAC update
 PRODUCT_PACKAGES += \
     mac-update
+
 #FM Radio for sony device
 PRODUCT_PACKAGES += \
     FmRadio
-
-PRODUCT_PACKAGES += \
-    XperiaSettings
 
 # Misc
 PRODUCT_PACKAGES += \
@@ -220,9 +215,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.lowlatency.rec=false \
     af.resampler.quality=255 \
     ro.qc.sdk.audio.fluencetype=none \
-    lpa.decode=false \
-    tunnel.decode=true \
-    tunnel.audiovideo.decode=true
+    lpa.decode=true
 
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
