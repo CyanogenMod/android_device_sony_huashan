@@ -14,7 +14,7 @@
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
-# qcom common files. you need github.com/cyanogenmod/android_device_sony_qcom-common
+# Inherit qcom-common files.
 $(call inherit-product, device/sony/qcom-common/qcom-common.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/sony/huashan/overlay
@@ -190,7 +190,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     FmRadio
 
-# Misc
+# Miscellaneous
 PRODUCT_PACKAGES += \
     librs_jni \
     com.android.future.usb.accessory

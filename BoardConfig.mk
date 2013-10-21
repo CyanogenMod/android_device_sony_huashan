@@ -81,12 +81,9 @@ BOARD_HARDWARE_CLASS := device/sony/huashan/cmhw
 # Camera
 COMMON_GLOBAL_CFLAGS += -DQCOM_BSP_CAMERA_ABI_HACK -DMR0_CAMERA_BLOB
 
-# Use retire fence from MDP driver  - Enable use of retire fence from MDP driver
-# Need patches to complete CM10.2 build if use TARGET_DISPLAY_USE_RETIRE_FENCE := true (https://github.com/CyanogenMod/android_kernel_sony_apq8064/commit/b2c2089fd276d97fe73c08d2720bf1ba52c35c6b)
-#https://github.com/CyanogenMod/android_kernel_sony_apq8064/commit/d96c72cdec90c6bb3e9f919b2e8409c3e27d953a
-#https://github.com/CyanogenMod/android_kernel_sony_apq8064/commit/0efb816391289a7b27a8530c05202cdd9636bbb0
+# Use retire fence from MDP driver 
 TARGET_DISPLAY_USE_RETIRE_FENCE := true
-#
+
 # GPS
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
 TARGET_NO_RPC := true
