@@ -4,4 +4,7 @@ ro.cwm.enable_key_repeat=true
 # Graphics
 ro.sf.lcd_density=320
 
+# RIL
 ro.use_data_netmgrd=true
+telephony.lteOnGsmDevice=1
+ro.telephony.default_network=9
