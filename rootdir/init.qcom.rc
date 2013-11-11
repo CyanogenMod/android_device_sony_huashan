@@ -24,11 +24,18 @@ on early-init
 on init
     mkdir /mnt/shell/emulated 0700 shell shell
     mkdir /storage/emulated 0555 root root
-    mkdir /storage/sdcard1 0775 system system
-    mkdir /storage/usbdisk 0775 system system
+
+    mkdir /mnt/media_rw/sdcard0 0700 media_rw media_rw
+    mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
+    mkdir /storage/usbdisk 0000 system system
+    mkdir /mnt/media_rw/usbdisk 0700 media_rw media_rw
+
+    mkdir /storage/sdcard0 0700 root root
+    mkdir /storage/sdcard1 0700 root root
+    mkdir /storage/usbdisk 0700 root root
 
     export EXTERNAL_STORAGE /storage/emulated/legacy
-    export SECONDARY_STORAGE /storage/sdcard1
+    export SECONDARY_STORAGE /storage/sdcard1:/storage/usbdisk
     export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
     export EMULATED_STORAGE_TARGET /storage/emulated
 
@@ -389,7 +396,7 @@ on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd
 
 service rmt_storage /system/bin/rmt_storage
-    class main
+    class core
     user root
 
 # Fast Dormancy
@@ -469,7 +476,8 @@ service hw_config /system/bin/sh /system/etc/hw_config.sh
 
 service wpa_supplicant /system/bin/logwrapper /system/bin/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
-    -e/data/misc/wifi/entropy.bin
+    -O/data/misc/wifi/sockets \
+    -e/data/misc/wifi/entropy.bin -g@android:wpa_wlan0
     #   we will start as root and wpa_supplicant will switch to user wifi
     #   after setting up the capabilities required for WEXT
     #   user wifi
@@ -482,7 +490,8 @@ service wpa_supplicant /system/bin/logwrapper /system/bin/wpa_supplicant \
 service p2p_supplicant /system/bin/logwrapper /system/bin/wpa_supplicant \
     -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf -N \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
-    -e/data/misc/wifi/entropy.bin -puse_p2p_group_interface=1
+    -O/data/misc/wifi/sockets -puse_p2p_group_interface=1 \
+    -e/data/misc/wifi/entropy.bin -g@android:wpa_wlan0
 #   we will start as root and wpa_supplicant will switch to user wifi
 #   after setting up the capabilities required for WEXT
 #   user wifi
@@ -521,8 +530,20 @@ on property:ro.data.large_tcp_window_size=true
     write /proc/sys/net/ipv4/tcp_adv_win_scale  2
 
 # virtual sdcard daemon running as media_rw (1023)
-service sdcard /system/bin/sdcard /data/media /mnt/shell/emulated 1023 1023
+service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emulated
     class late_start
+
+service fuse_sdcard0 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard0 /storage/sdcard0
+    class late_start
+    disabled
+
+service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard1 /storage/sdcard1
+    class late_start
+    disabled
+
+service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/usbdisk /storage/usbdisk
+    class late_start
+    disabled
 
 service thermald /system/bin/thermald -c /system/etc/thermald.conf
     class main

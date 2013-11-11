@@ -29,6 +29,11 @@ TARGET_SPECIFIC_HEADER_PATH += device/sony/huashan/include
 # Kernel properties
 TARGET_KERNEL_SOURCE := kernel/sony/msm8960t
 TARGET_KERNEL_CONFIG := cm_viskan_huashan_defconfig
+# kernel building needs this gerrit cherrypick http://review.cyanogenmod.org/#/c/52539/ otherwise kernel wont boot when you set toolchain to 4.7 (kernel toolchain must be 4.6)
+# TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.6
+
+# needs this gerrit cherrypick http://review.cyanogenmod.org/#/c/53559/
+SKIP_SET_METADATA := true
 
 # Platform
 TARGET_BOOTLOADER_BOARD_NAME := MSM8960
@@ -55,7 +60,7 @@ TARGET_KRAIT_BIONIC_PLDSIZE   := 64
 # Kernel information
 BOARD_KERNEL_BASE     := 0x80200000
 BOARD_KERNEL_PAGESIZE := 2048
-BOARD_KERNEL_CMDLINE  := androidboot.hardware=qcom user_debug=31 androidboot.baseband=msm msm_rtb.filter=0x3F ehci-hcd.park=3 vmalloc=400M
+BOARD_KERNEL_CMDLINE  := androidboot.hardware=qcom user_debug=31 androidboot.baseband=msm msm_rtb.filter=0x3F ehci-hcd.park=3 maxcpus=2 androidboot.selinux=permissive
 BOARD_MKBOOTIMG_ARGS  := --ramdisk_offset 0x02000000
 
 # Dumpstate

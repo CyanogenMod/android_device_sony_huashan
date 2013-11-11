@@ -18,4 +18,7 @@ Camera  | 8MPx, LED Flash
 
 ![Sony Xperia SP](http://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/To_add_to_Xperia_SP_article.jpg/480px-To_add_to_Xperia_SP_article.jpg "Sony Xperia SP in black, white and red")
 
-This branch is for building 4.3 AOSP based ROMS.
+---
+
+
+This branch is for building (KitKat) 4.4  AOSP based ROMS.
