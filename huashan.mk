@@ -64,8 +64,7 @@ PRODUCT_COPY_FILES += \
 
 # FM Radio
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/system/etc/init.qcom.fm.sh:system/etc/init.qcom.fm.sh \
-    frameworks/native/data/etc/com.stericsson.hardware.fm.receiver.xml:system/etc/permissions/com.stericsson.hardware.fm.receiver.xml
+    $(LOCAL_PATH)/rootdir/system/etc/init.qcom.fm.sh:system/etc/init.qcom.fm.sh
 
 # GPS
 PRODUCT_COPY_FILES += \

@@ -117,10 +117,6 @@ TARGET_LS_USE_ALS_NODE := true
 # Media
 TARGET_QCOM_MEDIA_VARIANT := caf
 
-# FM radio
-# BOARD_USES_STE_FMRADIO := true
-# COMMON_GLOBAL_CFLAGS += -DSTE_FM
-
 # Partition information
 BOARD_VOLD_MAX_PARTITIONS := 26
 
