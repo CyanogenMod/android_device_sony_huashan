@@ -80,6 +80,7 @@ BOARD_HARDWARE_CLASS := device/sony/huashan/cmhw
 
 # Camera
 COMMON_GLOBAL_CFLAGS += -DQCOM_BSP_CAMERA_ABI_HACK -DMR0_CAMERA_BLOB
+USE_DEVICE_SPECIFIC_CAMERA := true
 
 # Use retire fence from MDP driver 
 TARGET_DISPLAY_USE_RETIRE_FENCE := true
