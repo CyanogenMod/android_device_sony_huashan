@@ -31,4 +31,7 @@
     <!-- Determine whether we should show the "listen for instructions" screen after
          successfully placing the OTA call -->
     <integer name="OtaShowListeningScreen">1</integer>
+
+    <!-- Show enabled lte option for lte device -->
+    <bool name="config_enabled_lte" translatable="false">true</bool>
 </resources>
