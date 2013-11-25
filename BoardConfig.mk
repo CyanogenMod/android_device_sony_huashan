@@ -94,6 +94,9 @@ BOARD_HAVE_BLUETOOTH_QCOM := true
 BLUETOOTH_HCI_USE_MCT := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/sony/huashan/bluetooth
 
+# Needed for blobs
+COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
+
 # Vold
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
 
@@ -116,10 +119,6 @@ TARGET_LS_USE_ALS_NODE := true
 
 # Media
 TARGET_QCOM_MEDIA_VARIANT := caf
-
-# FM radio
-# BOARD_USES_STE_FMRADIO := true
-# COMMON_GLOBAL_CFLAGS += -DSTE_FM
 
 # Partition information
 BOARD_VOLD_MAX_PARTITIONS := 26
