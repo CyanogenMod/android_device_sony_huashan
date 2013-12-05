@@ -56,19 +56,14 @@
         Must be overridden in platform specific overlays
     -->
     <integer-array name="config_autoBrightnessLevels">
-        <item>3</item>
-        <item>6</item>
-        <item>12</item>
-        <item>19</item>
-        <item>25</item>
-        <item>50</item>
-        <item>100</item>
-        <item>150</item>
-        <item>320</item>
-        <item>480</item>
-        <item>960</item>
-        <item>1240</item>
-        <item>1520</item>
+        <item>24</item>
+        <item>72</item>
+        <item>156</item>
+        <item>192</item>
+        <item>240</item>
+        <item>420</item>
+        <item>756</item>
+        <item>1024</item>
     </integer-array>
 
     <!-- Array of output values for LCD backlight corresponding to the LUX values
@@ -76,20 +71,15 @@
         than the size of the config_autoBrightnessLevels array.
     -->
     <integer-array name="config_autoBrightnessLcdBacklightValues">
-        <item>1</item>    <!--   0 -   3 -->
-        <item>11</item>   <!--   3 -   6 -->
-        <item>22</item>   <!--   6 -  12 -->
-        <item>38</item>   <!--  12 -  19 -->
-        <item>47</item>   <!--  19 -  25 -->
-        <item>63</item>   <!--  25 -  50 -->
-        <item>85</item>   <!--  50 - 100 -->
-        <item>94</item>   <!-- 100 - 150 -->
-        <item>110</item>  <!-- 150 - 320 -->
-        <item>126</item>  <!-- 320 - 480 -->
-        <item>162</item>  <!-- 480 - 960 -->
-        <item>196</item>  <!-- 960 - 1240 -->
-        <item>250</item>  <!-- 1240 - 1520 -->
-        <item>255</item>  <!-- 1520+ -->
+        <item>59</item>  <!--    0 -   24 -->
+        <item>110</item> <!--   24 -   72 -->
+        <item>142</item> <!--   72 -  156 -->
+        <item>159</item> <!--  156 -  192 -->
+        <item>174</item> <!--  192 -  240 -->
+        <item>200</item> <!--  240 -  420 -->
+        <item>228</item> <!--  420 -  756 -->
+        <item>250</item> <!--  756 - 1024 -->
+        <item>255</item> <!-- 1024+ -->
     </integer-array>
 
     <!-- Array of output values for button backlight corresponding to the LUX values
@@ -134,9 +124,6 @@
         <item>0</item>
         <item>0</item>
     </integer-array>
-
-    <!-- Minimum screen brightness allowed by the power manager. -->
-    <integer name="config_screenBrightnessDim">70</integer>
 
     <string-array translatable="false" name="config_tether_usb_regexs">
        <item>"usb\\d"</item>
