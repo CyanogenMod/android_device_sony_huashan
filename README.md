@@ -19,3 +19,5 @@ Camera  | 8MPx, LED Flash
 ![Sony Xperia SP](http://wiki.cyanogenmod.org/images/e/e5/Huashan2.png "Sony Xperia SP in white")
 
 This branch is for building CyanogenMod 11 (or Android KitKat 4.4 AOSP based roms) ROMS.
+
+This is a gerrit test for first cyanogenmod support.
