@@ -13,10 +13,10 @@
 # limitations under the License.
 
 # inherit from Sony common
--include device/sony/common/BoardConfigCommon.mk
+include device/sony/common/BoardConfigCommon.mk
 
 # inherit from qcom-common
--include device/sony/qcom-common/BoardConfigCommon.mk
+include device/sony/qcom-common/BoardConfigCommon.mk
 
 # inherit from the proprietary version
 -include vendor/sony/huashan/BoardConfigVendor.mk
