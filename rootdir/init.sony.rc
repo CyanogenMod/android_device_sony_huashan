@@ -1,0 +1,15 @@
+import init.sony-platform.rc
+
+# Fast Dormancy
+service fast-dormancy /system/bin/fast-dormancy
+    user root
+    group root inet net_raw net_admin
+    class main
+
+on property:ro.semc.enable.fast_dormancy=false
+    stop fast-dormancy
+
+service secchan /system/bin/secchand
+    user root
+    group root
+    class core

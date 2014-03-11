@@ -1,5 +1,5 @@
 #!/system/bin/sh
-# Copyright (c) 2009-2011, The Linux Foundation. All rights reserved.
+# Copyright (c) 2012, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -26,81 +26,40 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-setprop hw.fm.init 0
+target="$1"
+serial="$2"
 
-mode=`getprop hw.fm.mode`
-version=`getprop hw.fm.version`
-isAnalog=`getprop hw.fm.isAnalog`
+# No path is set up at this point so we have to do it here.
+PATH=/sbin:/system/sbin:/system/bin:/system/xbin
+export PATH
 
-#find the transport type
-TRANSPORT=`getprop ro.qualcomm.bt.hci_transport`
+mount_needed=false;
 
-LOG_TAG="qcom-fm"
-LOG_NAME="${0}:"
+if [ ! -f /system/etc/boot_fixup ];then
+# This should be the first command
+# remount system as read-write.
+  mount -o rw,remount,barrier=1 /system
+  mount_needed=true;
+fi
 
-loge ()
-{
-  /system/bin/log -t $LOG_TAG -p e "$LOG_NAME $@"
-}
+# **** WARNING *****
+# This runs in a single-threaded, critical path portion
+# of the Android bootup sequence.  This is to guarantee
+# all necessary system partition fixups are done before
+# the rest of the system starts up.  Run any non-
+# timing critical tasks in a separate process to
+# prevent slowdown at boot.
 
-logi ()
-{
-  /system/bin/log -t $LOG_TAG -p i "$LOG_NAME $@"
-}
+# Run thermal script
+if [ -f /system/etc/init.qcom.thermal_conf.sh ]; then
+  /system/bin/sh /system/etc/init.qcom.thermal_conf.sh
+fi
 
-failed ()
-{
-  loge "$1: exit code $2"
-  exit $2
-}
+touch /system/etc/boot_fixup
 
-logi "In FM shell Script"
-logi "mode: $mode"
-logi "isAnalog: $isAnalog"
-logi "Transport : $TRANSPORT"
-logi "Version : $version"
+if $mount_needed ;then
+# This should be the last command
+# remount system as read-only.
+  mount -o ro,remount,barrier=1 /system
+fi
 
-#$fm_qsoc_patches <fm_chipVersion> <enable/disable WCM>
-#
-case $mode in
-  "normal")
-    case $TRANSPORT in
-    "smd")
-        logi "inserting the radio transport module"
-        insmod /system/lib/modules/radio-iris-transport.ko
-     ;;
-     *)
-        logi "default transport case "
-     ;;
-    esac
-      /system/bin/fm_qsoc_patches $version 0
-     ;;
-  "wa_enable")
-   /system/bin/fm_qsoc_patches $version 1
-     ;;
-  "wa_disable")
-   /system/bin/fm_qsoc_patches $version 2
-     ;;
-  "config_dac")
-   /system/bin/fm_qsoc_patches $version 3 $isAnalog
-     ;;
-   *)
-    logi "Shell: Default case"
-    /system/bin/fm_qsoc_patches $version 0
-    ;;
-esac
-
-exit_code_fm_qsoc_patches=$?
-
-case $exit_code_fm_qsoc_patches in
-   0)
-	logi "FM QSoC calibration and firmware download succeeded"
-   ;;
-  *)
-	failed "FM QSoC firmware download and/or calibration failed" $exit_code_fm_qsoc_patches
-   ;;
-esac
-
-setprop hw.fm.init 1
-
-exit 0
