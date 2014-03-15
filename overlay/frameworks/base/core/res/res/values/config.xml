@@ -248,9 +248,6 @@
 
     <string name="config_datause_iface" translatable="false">rmnet0</string>
 
-    <!-- LED Flashlight -->
-    <bool name="config_enableTorch">true</bool>
-
     <!-- Disable lockscreen translucent decor by default -->
     <bool name="config_enableLockScreenTranslucentDecor">true</bool>
 </resources>
