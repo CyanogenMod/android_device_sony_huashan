@@ -53,9 +53,8 @@
 /dev/smd4                 0660   system     system
 /dev/smd_cxm_qmi          0640   radio      radio
 /dev/smd7                 0660   bluetooth  bluetooth
-/dev/radio0               0640   fm_radio   fm_radio
+/dev/radio0               0640   system     system
 /dev/rfcomm0              0660   bluetooth  bluetooth
-/dev/rfkill               0660   wifi       root
 /dev/gss                  0660   gps        gps
 /dev/smdcntl0             0640   radio      radio
 /dev/smdcntl1             0640   radio      radio
@@ -75,7 +74,6 @@
 /dev/smdcnt_rev7          0640   radio      radio
 /dev/smdcnt_rev8          0640   radio      radio
 /dev/smuxctl32            0640   radio      radio
-/dev/smuxctl33            0640   radio      radio
 /dev/sdioctl0             0640   radio      radio
 /dev/sdioctl1             0640   radio      radio
 /dev/sdioctl2             0640   radio      radio
@@ -123,7 +121,7 @@
 /dev/msm_vidc_dec         0660   system     audio
 /dev/msm_vidc_dec_sec     0660   system     audio
 /dev/msm_vidc_enc         0660   system     audio
-/dev/msm_rotator          0664   system     system
+/dev/msm_rotator          0660   system     system
 /dev/hw_random            0660   system     system
 
 #permissions for audio

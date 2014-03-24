@@ -28,7 +28,7 @@
 # Modifications are licensed under the License.
 #
 
-import init.sony.usb.rc
+# import init.qcom.usb.rc
 import init.target.rc
 
 on init
@@ -36,10 +36,6 @@ on init
 
     mkdir /dev/bus 0755 root root
     mkdir /dev/bus/usb 0755 root root
-
-    write /sys/module/subsystem_restart/parameters/restart_level 3
-    write /sys/module/subsystem_restart/parameters/max_restarts 8
-    write /sys/module/subsystem_restart/parameters/max_history_time 3600
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
@@ -80,21 +76,11 @@ on boot
     mkdir /dev/socket/qmux_gps 0770 gps gps
     chmod 2770 /dev/socket/qmux_gps
 
-    # Allow QMUX daemon to assign port open wait time
-    chown radio radio /sys/devices/virtual/hsicctl/hsicctl0/modem_wait
-
     setprop ro.telephony.call_ring.multiple false
 
     #Remove SUID bit for iproute2 ip tool
     chmod 0755 /system/bin/ip
 
-    # port-bridge
-    chmod 0660 /dev/smd0
-    chown system system /dev/smd0
-
-    # BT DUN port-bridge
-    chmod 0660 /dev/smd7
-    chown bluetooth bluetooth /dev/smd7
 
     chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
 
@@ -129,13 +115,8 @@ on boot
     chmod 660 /dev/rtc0
     chown system system /dev/rtc0
 
-    chown root system /proc/net/ip_conntrack
-
     # WTF
     chmod 444 /proc/cmdline
-
-    # Enable DEBUG_SUSPEND, DEBUG_EXIT_SUSPEND, and DEBUG_WAKEUP
-    write /sys/module/wakelock/parameters/debug_mask 7
 
     #To allow interfaces to get v6 address when tethering is enabled
     write /proc/sys/net/ipv6/conf/rmnet0/accept_ra 2
@@ -166,11 +147,6 @@ on boot
     # connections on high-throughput links get dropped when
     # an ack packet comes out of order
     write /proc/sys/net/netfilter/nf_conntrack_tcp_be_liberal 1
-
-# Assign TCP buffer thresholds to be ceiling value of technology maximums
-# Increased technology maximums should be reflected here.
-    write /proc/sys/net/core/rmem_max 2097152
-    write /proc/sys/net/core/wmem_max 2097152
 
 # msm specific files that need to be created on /data
 on post-fs-data
@@ -208,20 +184,12 @@ on post-fs-data
     chown system system /sys/devices/platform/msm_sdcc.3/polling
     chown system system /sys/devices/platform/msm_sdcc.4/polling
 
-    chown system system /sys/devices/platform/kgsl-3d0.0/kgsl/kgsl-3d0/pwrscale/policy
-
     #Create the symlink to qcn wpa_supplicant folder for ar6000 wpa_supplicant
     mkdir /data/system 0775 system system
     #symlink /data/misc/wifi/wpa_supplicant /data/system/wpa_supplicant
 
     #Create directories for gpsone_daemon services
     mkdir /data/misc/gpsone_d 0770 system gps
-
-    # Provide the access to hostapd.conf only to root and group
-    chmod 0660 /data/hostapd/hostapd.conf
-
-    # Enable Power save functionality for modem
-    setprop persist.radio.add_power_save 1
 
     # Create /data/time folder for time-services
     mkdir /data/time/ 0700 system system
