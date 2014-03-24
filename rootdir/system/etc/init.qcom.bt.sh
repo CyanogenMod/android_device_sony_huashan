@@ -23,10 +23,12 @@ failed ()
 # Note that "hci_qcomm_init -e" prints expressions to set the shell variables
 # BTS_DEVICE, BTS_TYPE, BTS_BAUD, and BTS_ADDRESS.
 
+# BR/EDR & LE power class configurations
 POWER_CLASS=`getprop qcom.bt.dev_power_class`
-TRANSPORT=`getprop ro.qualcomm.bt.hci_transport`
+LE_POWER_CLASS=`getprop qcom.bt.le_dev_pwr_class`
 
 #find the transport type
+TRANSPORT=`getprop ro.qualcomm.bt.hci_transport`
 logi "Transport : $TRANSPORT"
 
 #load bd addr
@@ -48,11 +50,23 @@ case $POWER_CLASS in
      logi "Power Class: To override, Before turning BT ON; setprop qcom.bt.dev_power_class <1 or 2 or 3>";;
 esac
 
-if [$BDADDR == ""]
+case $LE_POWER_CLASS in
+  1) LE_PWR_CLASS="-P 0" ;
+     logi "LE Power Class: 1";;
+  2) LE_PWR_CLASS="-P 1" ;
+     logi "LE Power Class: 2";;
+  3) LE_PWR_CLASS="-P 2" ;
+     logi "LE Power Class: CUSTOM";;
+  *) LE_PWR_CLASS="-P 1";
+     logi "LE Power Class: Ignored. Default(2) used (1-CLASS1/2-CLASS2/3-CUSTOM)";
+     logi "LE Power Class: To override, Before turning BT ON; setprop qcom.bt.le_dev_pwr_class <1 or 2 or 3>";;
+esac
+
+if [ -z "$BDADDR" ]
 then
-logwrapper /system/bin/hci_qcomm_init -e $PWR_CLASS -vv
+  logwrapper /system/bin/hci_qcomm_init -e $PWR_CLASS $LE_PWR_CLASS -vv
 else
-logwrapper /system/bin/hci_qcomm_init --enable-clock-sharing -b $BDADDR -e $PWR_CLASS -vv
+  logwrapper /system/bin/hci_qcomm_init -b $BDADDR -e $PWR_CLASS $LE_PWR_CLASS -vv
 fi
 
 case $? in
