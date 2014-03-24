@@ -1,7 +1,36 @@
-# Make keys in CWM repeatable
-ro.cwm.enable_key_repeat=true
+#
+# from device/somc/viskan/system.prop
+#
+#
+# system.prop for surf
+#
 
-# Graphics
-ro.sf.lcd_density=320
+rild.libpath=/system/lib/libril-qc-qmi-1.so
 
+lpa.decode=true
+
+#
+# system props for the data modules
+#
 ro.use_data_netmgrd=true
+
+#system props for time-services
+persist.timed.enable=true
+
+# System props for audio
+persist.audio.fluence.mode=endfire
+persist.audio.handset.mic=analog
+persist.audio.lowlatency.rec=false
+
+# System prop to select audio resampler quality
+af.resampler.quality=255
+
+#system prop for switching gps driver to qmi
+persist.gps.qmienabled=true
+
+#
+# System prop for sending transmit power request to RIL during WiFi hotspot on/off
+#
+ro.ril.transmitpower=true
+##fluencetype can be "fluence" or "fluencepro" or "none"
+ro.qc.sdk.audio.fluencetype=none

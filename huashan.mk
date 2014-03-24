@@ -232,22 +232,13 @@ PRODUCT_PACKAGES += \
 # We have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
-# Audio
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.audio.fluence.mode=endfire \
-    persist.audio.handset.mic=analog \
-    persist.audio.lowlatency.rec=false \
-    af.resampler.quality=255 \
-    ro.qc.sdk.audio.fluencetype=none \
-    lpa.decode=true
-
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qualcomm.bt.hci_transport=smd
 
-# GPS
+# Display
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.gps.qmienabled=true
+    ro.sf.lcd_density=320
 
 # QCOM Location
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -264,12 +255,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 
 # Radio and Telephony
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.ril.transmitpower=true \
     persist.radio.add_power_save=1
-
-# lib ril
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    rild.libpath=/system/lib/libril-qc-qmi-1.so
 
 # Do not power down SIM card when modem is sent to Low Power Mode.
 PRODUCT_PROPERTY_OVERRIDES += \
