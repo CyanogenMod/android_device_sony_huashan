@@ -196,6 +196,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     sensors.default
 
+# Wifi service
+PRODUCT_PACKAGES += \
+    wcnss_service
+
 # WIFI MAC update
 PRODUCT_PACKAGES += \
     mac-update
