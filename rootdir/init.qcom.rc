@@ -40,6 +40,7 @@ on init
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
+    exec /system/bin/sh /init.qcom.early_boot.sh ${ro.board.platform}
     exec /system/bin/sh /init.qcom.syspart_fixup.sh ${ro.board.platform} ${ro.serialno}
 
     write /sys/devices/platform/msm_hsic_host/override_wakelock 0
@@ -83,19 +84,6 @@ on boot
 
 
     chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
-
-    # Remove write permissions to video related nodes
-    chown system graphics /sys/class/graphics/fb1/hpd
-    chown system graphics /sys/class/graphics/fb1/vendor_name
-    chown system graphics /sys/class/graphics/fb1/product_description
-    chmod 0664 /sys/class/graphics/fb1/hpd
-    chmod 0664 /sys/class/graphics/fb1/vendor_name
-    chmod 0664 /sys/class/graphics/fb1/product_description
-    chmod 0664 /sys/class/graphics/fb1/video_mode
-    chmod 0664 /sys/class/graphics/fb1/format_3d
-
-    # create symlink for fb1 as HDMI
-    symlink /dev/graphics/fb1 /dev/graphics/hdmi
 
     # Change owner and group to get adopter/device ids from MHL driver
     chown system system /sys/class/mhl/sii8334/adopter_id
