@@ -118,6 +118,14 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh
 
+# QCOM Xtras
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/system/etc/izat.conf:system/etc/izat.conf \
+    $(LOCAL_PATH)/rootdir/system/etc/lowi.conf:system/etc/lowi.conf \
+    $(LOCAL_PATH)/rootdir/system/etc/quipc.conf:system/etc/quipc.conf \
+    $(LOCAL_PATH)/rootdir/system/etc/sap.conf:system/etc/sap.conf \
+    $(LOCAL_PATH)/rootdir/system/etc/xtwifi.conf:system/etc/xtwifi.conf
+
 # SEC Config
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/etc/sec_config:system/etc/sec_config
@@ -233,6 +241,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=320
+
+# QCOM Location
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.qc.sdk.izat.premium_enabled=0 \
+    ro.qc.sdk.izat.service_mask=0x4 \
+    persist.gps.qc_nlp_in_use=0 \
+    ro.gps.agps_provider=1 \
+    ro.service.swiqi2.supported=true \
+    persist.service.swiqi2.enable=1
 
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
