@@ -217,6 +217,9 @@ on post-fs-data
     #Create directories for gpsone_daemon services
     mkdir /data/misc/gpsone_d 0770 system gps
 
+    # Create /data/time folder for time-services
+    mkdir /data/time/ 0700 system system
+
     mkdir /data/audio/ 0770 media audio
 
     setprop vold.post_fs_data_done 1
