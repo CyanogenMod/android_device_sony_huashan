@@ -1,22 +1,103 @@
+# Copyright (C) 2011-2013 The CyanogenMod Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+#
+# ADSP
+#
+lib/libadsprpc.so
+
+#
+# Audio
+#
+lib/libacdbloader.so
+lib/libaudcal.so
+
+#
+# Bluetooth
+#
 bin/btnvtool
-bin/ds_fmc_appd
-bin/fm_qsoc_patches
-bin/fmconfig
 bin/hci_qcomm_init
-bin/illumination_service
+
+#
+# Camera
+#
+lib/hw/camera.qcom.so:lib/hw/vendor-camera.qcom.so
+lib/libcamera_clientsemc.so
+lib/libcameralight.so
+lib/libmmcamera_3a_legacy.so
+lib/libmmcamera_faceproc.so
+lib/libmmcamera_frameproc.so
+lib/libmmcamera_hdr_lib.so
+lib/libmmcamera_image_stab.so
+lib/libmmcamera_imx091.so
+lib/libmmcamera_interface.so
+lib/libmmcamera_interface2.so
+lib/libmmcamera_plugin.so
+lib/libmmcamera_statsproc31.so
+lib/libmmcamera_tintless_algo.so
+lib/libmmcamera_tintless_wrapper.so
+lib/libmmcamera_wavelet_lib.so
+lib/libmmjpeg.so
+lib/liboemcamera.so
+
+#
+# Camera Extras
+#
+lib/libface.so
+lib/libgemini.so
+lib/libimage-jpeg-dec-omx-comp.so
+lib/libimage-jpeg-enc-omx-comp.so
+lib/libimage-omx-common.so
+lib/libmercury.so
+lib/libmmstillomx.so
+
+#
+# Camera Firmwire
+#
+vendor/camera/APT00YP1.dat
+vendor/camera/SMC08BS2.dat
+vendor/camera/SMC08BS2_IMX134.dat
+vendor/camera/SOI08BS2.dat
+vendor/camera/SOI08BS2.dat
+vendor/camera/SOI08BS2_BU64291.dat
+vendor/camera/SOI08BS2_IMX134.dat
+vendor/camera/SOI08BS3.dat
+vendor/camera/SOI08BS3_IMX134.dat
+vendor/camera/STW00YP1.dat
+vendor/camera/flash.dat
+vendor/camera/product.dat
+
+#
+# CALD
+#
+lib/libcald_client.so
+lib/libcald_hal.so
+lib/libcald_imageutil.so
+lib/libcald_pal.so
+lib/libcald_server.so
+lib/libcald_util.so
+
+#
+# CPU
+#
 bin/mpdecision
-bin/netmgrd
-bin/qmuxd
-bin/qseecomd
-bin/rmt_storage
-bin/secchand
-bin/ta_param_loader
-bin/ta_qmi_service
-bin/taimport
-bin/thermald
-bin/updatemiscta
-bin/usbhub
-bin/usbhub_init
+lib/libqc-opt.so
+lib/libthermalclient.so
+
+#
+# DSP Firmwire
+#
 etc/firmware/dsps.b00
 etc/firmware/dsps.b01
 etc/firmware/dsps.b02
@@ -24,11 +105,89 @@ etc/firmware/dsps.b03
 etc/firmware/dsps.b04
 etc/firmware/dsps.b05
 etc/firmware/dsps.mdt
+
+#
+# FM Radio
+#
+bin/fmconfig
+bin/fm_qsoc_patches
+lib/libfmradio.so
+lib/libfmradio.sony-iris.so
+
+#
+# HDCP
+#
 etc/firmware/dxhdcp2.b00
 etc/firmware/dxhdcp2.b01
 etc/firmware/dxhdcp2.b02
 etc/firmware/dxhdcp2.b03
 etc/firmware/dxhdcp2.mdt
+
+#
+# IRSC
+#
+bin/irsc_util
+
+#
+# Lights
+#
+bin/illumination_service
+lib/hw/lights.default.so:lib/hw/vendor-lights.default.so
+lib/liblights-core.so
+lib/libsys-utils.so
+
+#
+# Location Services
+#
+bin/gpsone_daemon
+bin/gsiff_daemon
+bin/location-mq
+bin/lowi-server
+bin/quipc_igsn
+bin/quipc_main
+bin/xtwifi-client
+bin/xtwifi-inet-agent
+lib/hw/gps.default.so
+lib/libgps.utils.so
+lib/libloc_api_v02.so
+lib/libloc_core.so
+lib/libloc_ds_api.so
+lib/libloc_eng.so
+lib/libloc_xtra.so
+vendor/lib/libgeofence.so
+vendor/lib/libizat_core.so
+vendor/lib/liblbs_core.so
+vendor/lib/libloc_ext.so
+vendor/lib/liblocationservice.so
+vendor/lib/liblowi_client.so
+vendor/lib/libquipc_os_api.so
+vendor/lib/libquipc_ulp_adapter.so
+vendor/lib/libulp2.so
+vendor/lib/libxt_native.so
+
+#
+# Modem
+#
+bin/ds_fmc_appd
+bin/netmgrd
+bin/qmuxd
+bin/rmt_storage
+lib/libcsd-client.so
+lib/libdsi_netctrl.so
+lib/libdsutils.so
+lib/libidl.so
+lib/libnetmgr.so
+lib/libpin-cache.so
+lib/libqcci_adc.so
+lib/libqcci_legacy.so
+lib/libqdi.so
+lib/libqdp.so
+lib/libril-qc-qmi-1.so
+vendor/lib/libdiag.so
+
+#
+# Modem Firmware
+#
 etc/firmware/modem.b00
 etc/firmware/modem.b01
 etc/firmware/modem.b02
@@ -47,7 +206,7 @@ etc/firmware/modem_fw.b02
 etc/firmware/modem_fw.b03
 etc/firmware/modem_fw.b04
 etc/firmware/modem_fw.b05
-etc/firmware/modem_fw.b09
+etc/firmware/modem_fw.b09 
 etc/firmware/modem_fw.b10
 etc/firmware/modem_fw.b11
 etc/firmware/modem_fw.b12
@@ -61,6 +220,25 @@ etc/firmware/modem_fw.b27
 etc/firmware/modem_fw.b28
 etc/firmware/modem_fw.b31
 etc/firmware/modem_fw.mdt
+
+#
+# NFC
+#
+lib/hw/nfc.msm8960.so
+
+#
+# Post Processing
+#
+bin/mm-pp-daemon
+
+#
+# Protocol Buffers
+#
+lib/libprotobuf-c.so
+
+#
+# Q6 Firmware
+#
 etc/firmware/q6.b00
 etc/firmware/q6.b01
 etc/firmware/q6.b03
@@ -68,6 +246,42 @@ etc/firmware/q6.b04
 etc/firmware/q6.b05
 etc/firmware/q6.b06
 etc/firmware/q6.mdt
+
+#
+# QMI
+#
+lib/libqmi.so
+lib/libqmi_client_qmux.so
+lib/libqmi_csvt_srvc.so
+lib/libqmiservices.so
+vendor/lib/libqmi_cci.so
+vendor/lib/libqmi_common_so.so
+vendor/lib/libqmi_csi.so
+vendor/lib/libqmi_encdec.so
+
+#
+# QSEECOM
+#
+bin/qseecomd
+lib/libdrmdiag.so
+lib/libdrmfs.so
+lib/libdrmtime.so
+lib/libQSEEComAPI.so
+
+#
+# Security
+#
+bin/secchand
+lib/lib_asb_tee.so
+lib/lib_get_secure_mode.so
+lib/libcredential-manager-service.so
+lib/libidd.so
+lib/libkeyctrl.so
+lib/libs1sl.so
+
+#
+# Security Firmware
+#
 etc/firmware/tzlibasb.b00
 etc/firmware/tzlibasb.b01
 etc/firmware/tzlibasb.b02
@@ -83,6 +297,93 @@ etc/firmware/tzsuntory.b01
 etc/firmware/tzsuntory.b02
 etc/firmware/tzsuntory.b03
 etc/firmware/tzsuntory.mdt
+
+#
+# Sensors
+#
+lib/hw/sensors.default.so
+lib/libals.so
+
+#
+# System Checks
+#
+bin/e2fsck
+bin/efsks
+bin/ks
+bin/qcks
+
+#
+# System Monitor
+#
+bin/system_monitor
+etc/permissions/com.sonyericsson.sysmon.xml
+framework/com.sonyericsson.sysmon.jar
+lib/libsysmon.so
+lib/libsysmon_idd.so
+lib/libsysmon_jni.so
+lib/sysmon/sysmon_batt_therm.so
+lib/sysmon/sysmon_charge_current_limit_level0.so
+lib/sysmon/sysmon_charge_current_limit_level1.so
+lib/sysmon/sysmon_charge_current_limit_level2.so
+lib/sysmon/sysmon_charge_current_limit_level3.so
+lib/sysmon/sysmon_corelimit.so
+lib/sysmon/sysmon_disable_charging1.so
+lib/sysmon/sysmon_disable_charging2.so
+lib/sysmon/sysmon_enable_charging.so
+lib/sysmon/sysmon_gpu_perflevel.so
+lib/sysmon/sysmon_lcd_brightness_level.so
+lib/sysmon/sysmon_msm_thermal_disable.so
+lib/sysmon/sysmon_pa_therm0.so
+lib/sysmon/sysmon_pa_therm1.so
+lib/sysmon/sysmon_perflevel.so
+lib/sysmon/sysmon_pm8921_tz.so
+lib/sysmon/sysmon_test_sensor.so
+lib/sysmon/sysmon_tsens_tz_sensor0.so
+lib/sysmon/sysmon_tsens_tz_sensor1.so
+lib/sysmon/sysmon_tsens_tz_sensor2.so
+lib/sysmon/sysmon_tsens_tz_sensor3.so
+lib/sysmon/sysmon_tsens_tz_sensor4.so
+lib/sysmon/sysmon_usb_current_limit_level0.so
+lib/sysmon/sysmon_usb_current_limit_level1.so
+lib/sysmon/sysmon_usb_current_limit_level2.so
+lib/sysmon/sysmon_usb_current_limit_level3.so
+lib/sysmon/sysmon_usb_current_limit_level4.so
+lib/sysmon/sysmon_wlan_limit.so
+lib/sysmon/sysmon_xo_therm.so
+
+#
+# TA
+#
+bin/ta_param_loader
+bin/ta_qmi_service
+bin/taimport
+bin/updatemiscta
+lib/libMiscTaAccessor.so
+lib/libmiscta.so
+lib/libta.so
+
+#
+# Time
+#
+bin/time_daemon
+lib/libtime_genoff.so
+
+#
+# Touchscreen
+#
+etc/firmware/cyttsp4_fw.bin
+etc/firmware/cyttsp_8064_mtp.hex
+etc/firmware/cyttsp_8960_cdp.hex
+
+#
+# USB
+#
+bin/usbhub
+bin/usbhub_init
+
+#
+# Video Firmware
+#
 etc/firmware/vidc.b00
 etc/firmware/vidc.b01
 etc/firmware/vidc.b02
@@ -90,6 +391,10 @@ etc/firmware/vidc.b03
 etc/firmware/vidc.mdt
 etc/firmware/vidc_1080p.fw
 etc/firmware/vidcfw.elf
+
+#
+# WiFi Firmware
+#
 etc/firmware/wcnss.b00
 etc/firmware/wcnss.b01
 etc/firmware/wcnss.b02
@@ -99,89 +404,4 @@ etc/firmware/wcnss.mdt
 etc/firmware/wlan/prima/WCNSS_cfg.dat
 etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
 etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
-etc/flashled_calc_parameters.cfg
-lib/hw/camera.qcom.so:lib/hw/vendor-camera.qcom.so
-lib/hw/gps.default.so
-lib/hw/lights.default.so:lib/hw/vendor-lights.default.so
-lib/hw/nfc.msm8960.so
-lib/hw/sensors.default.so
-lib/libQSEEComAPI.so
-lib/lib_asb_tee.so
-lib/lib_get_secure_mode.so
-lib/libacdbloader.so
-lib/libals.so
-lib/libaudcal.so
-lib/libcald_client.so
-lib/libcald_hal.so
-lib/libcald_imageutil.so
-lib/libcald_pal.so
-lib/libcald_server.so
-lib/libcald_util.so
-lib/libcamera_clientsemc.so
-lib/libcameralight.so
-lib/libcredential-manager-service.so
-lib/libcsd-client.so
-lib/libdiag.so
-lib/libdrmdiag.so
-lib/libdrmfs.so
-lib/libdrmtime.so
-lib/libdsi_netctrl.so
-lib/libdsutils.so
-lib/libface.so
-lib/libfmradio.so
-lib/libfmradio.sony-iris.so
-lib/libgemini.so
-lib/libgps.utils.so
-lib/libidd.so
-lib/libidl.so
-lib/libimage-jpeg-dec-omx-comp.so
-lib/libimage-jpeg-enc-omx-comp.so
-lib/libimage-omx-common.so
-lib/libkeyctrl.so
-lib/liblights-core.so
-lib/liblights-core.so
-lib/libloc_adapter.so
-lib/libloc_api_v02.so
-lib/libloc_eng.so
-lib/libmercury.so
-lib/libmiscta.so
-lib/libmmcamera_frameproc.so
-lib/libmmcamera_hdr_lib.so
-lib/libmmcamera_image_stab.so
-lib/libmmcamera_imx091.so
-lib/libmmcamera_interface2.so
-lib/libmmcamera_plugin.so
-lib/libmmcamera_statsproc31.so
-lib/libmmcamera_wavelet_lib.so
-lib/libmmjpeg.so
-lib/libmmstillomx.so
-lib/libnetmgr.so
-lib/liboemcamera.so
-lib/libpin-cache.so
-lib/libprotobuf-c.so
-lib/libqc-opt.so
-lib/libqcci_legacy.so
-lib/libqdi.so
-lib/libqdp.so
-lib/libqmi.so
-lib/libqmi_cci.so
-lib/libqmi_client_qmux.so
-lib/libqmi_common_so.so
-lib/libqmi_csi.so
-lib/libqmi_encdec.so
-lib/libqmiservices.so
-lib/libril-qc-qmi-1.so
-lib/libs1sl.so
-lib/libsys-utils.so
-lib/libta.so
-vendor/camera/APT00YP1.dat
-vendor/camera/SMC08BS2.dat
-vendor/camera/SMC08BS2_IMX134.dat
-vendor/camera/SOI08BS2.dat
-vendor/camera/SOI08BS2.dat
-vendor/camera/SOI08BS2_BU64291.dat
-vendor/camera/SOI08BS2_IMX134.dat
-vendor/camera/SOI08BS3_IMX134.dat
-vendor/camera/STW00YP1.dat
-vendor/camera/flash.dat
-vendor/camera/product.dat
+
