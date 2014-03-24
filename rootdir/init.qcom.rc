@@ -191,6 +191,14 @@ on post-fs-data
     #Create directories for gpsone_daemon services
     mkdir /data/misc/gpsone_d 0770 system gps
 
+    #Create directories for QuIPS
+    mkdir /data/misc/quipc 0770 gps system
+
+    #Create directories for Location services
+    mkdir /data/misc/location 0770 gps gps
+    mkdir /data/misc/location/mq 0770 gps gps
+    mkdir /data/misc/location/xtwifi 0770 gps gps
+
     # Create /data/time folder for time-services
     mkdir /data/time/ 0700 system system
 
@@ -284,6 +292,48 @@ service iprenew_p2p /system/bin/dhcpcd -n
 service dhcpcd_bnep0 /system/bin/dhcpcd -BKLG
     disabled
     oneshot
+
+service gpsone_daemon /system/bin/gpsone_daemon
+    class late_start
+    user gps
+    group gps qcom_oncrpc inet net_raw
+    disabled
+
+service quipc_igsn /system/bin/quipc_igsn
+    class late_start
+    user gps
+    group inet gps
+    disabled
+
+service quipc_main /system/bin/quipc_main
+    class late_start
+    user gps
+    group gps net_admin wifi inet
+    disabled
+
+service location_mq /system/bin/location-mq
+    class late_start
+    user gps
+    group gps
+    disabled
+
+service xtwifi_inet /system/bin/xtwifi-inet-agent
+    class late_start
+    user gps
+    group inet gps
+    disabled
+
+service xtwifi_client /system/bin/xtwifi-client
+    class late_start
+    user gps
+    group net_admin wifi inet gps
+    disabled
+
+service lowi-server /system/bin/lowi-server
+    class late_start
+    user gps
+    group gps net_admin wifi inet
+    disabled
 
 service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
     class late_start
