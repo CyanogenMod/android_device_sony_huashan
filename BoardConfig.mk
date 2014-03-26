@@ -130,6 +130,9 @@ TARGET_LS_USE_ALS_NODE := true
 # QCOM enhanced A/V
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 
+# RIL
+BOARD_RIL_NO_CELLINFOLIST := true
+
 # Partition information
 BOARD_VOLD_MAX_PARTITIONS := 26
 
