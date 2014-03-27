@@ -14,6 +14,9 @@ lpa.decode=true
 #
 ro.use_data_netmgrd=true
 
+#system props for time-services
+persist.timed.enable=true
+
 # System props for audio
 persist.audio.fluence.mode=endfire
 persist.audio.handset.mic=analog
