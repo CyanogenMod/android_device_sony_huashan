@@ -56,13 +56,20 @@
         Must be overridden in platform specific overlays
     -->
     <integer-array name="config_autoBrightnessLevels">
-        <item>24</item>
-        <item>72</item>
-        <item>156</item>
-        <item>192</item>
-        <item>240</item>
-        <item>420</item>
-        <item>756</item>
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>30</item>
+        <item>50</item>
+        <item>75</item>
+        <item>100</item>
+        <item>150</item>
+        <item>200</item>
+        <item>300</item>
+        <item>500</item>
+        <item>750</item>
+        <item>1000</item>
         <item>1022</item>
     </integer-array>
 
@@ -71,15 +78,22 @@
         than the size of the config_autoBrightnessLevels array.
     -->
     <integer-array name="config_autoBrightnessLcdBacklightValues">
-        <item>59</item>  <!--    0 -   24 -->
-        <item>110</item> <!--   24 -   72 -->
-        <item>142</item> <!--   72 -  156 -->
-        <item>159</item> <!--  156 -  192 -->
-        <item>174</item> <!--  192 -  240 -->
-        <item>200</item> <!--  240 -  420 -->
-        <item>228</item> <!--  420 -  756 -->
-        <item>250</item> <!--  756 - 1024 -->
-        <item>255</item> <!-- 1024+ -->
+        <item>10</item>  <!--    0 -    5 -->
+        <item>30</item>  <!--    5 -   10 -->
+        <item>50</item>  <!--   10 -   15 -->
+        <item>65</item>  <!--   15 -   20 -->
+        <item>80</item>  <!--   20 -   30 -->
+        <item>105</item> <!--   30 -   50 -->
+        <item>120</item> <!--   50 -   75 -->
+        <item>135</item> <!--   75 -  100 -->
+        <item>155</item> <!--  100 -  150 -->
+        <item>165</item> <!--  150 -  200 -->
+        <item>185</item> <!--  200 -  300 -->
+        <item>210</item> <!--  300 -  500 -->
+        <item>230</item> <!--  500 -  750 -->
+        <item>240</item> <!--  750 - 1000 -->
+        <item>250</item> <!-- 1000 - 1022 -->
+        <item>255</item> <!-- 1022+ -->
     </integer-array>
 
     <!-- Array of output values for button backlight corresponding to the LUX values
@@ -87,6 +101,8 @@
         than the size of the config_autoBrightnessLevels array.
     -->
     <integer-array name="config_autoBrightnessButtonBacklightValues">
+        <item>0</item>
+        <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
@@ -109,6 +125,8 @@
         i9300 has no keyboard so all values are zero.
     -->
     <integer-array name="config_autoBrightnessKeyboardBacklightValues">
+        <item>0</item>
+        <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
