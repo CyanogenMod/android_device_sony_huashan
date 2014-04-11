@@ -34,7 +34,7 @@ PRODUCT_PACKAGES := \
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Common Sony Resources
-$(call inherit-product, device/sony/common/resources.mk)
+$(call inherit-product, vendor/sony/common/resources.mk)
 
 # Inherit from huashan device makefile
 $(call inherit-product, device/sony/huashan/huashan.mk)
