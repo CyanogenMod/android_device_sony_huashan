@@ -15,9 +15,8 @@
     "target_path": "kernel/sony/msm8960t"
   },
   {
-    "remote": "github",
-    "repository": "CyanogenMod/android_hardware_sony_DASH",
-    "revision": "cm-11.0",
+    "remote": "CRX",
+    "repository": "android_hardware_sony_DASH",
     "target_path": "hardware/sony/DASH"
   },
   {
