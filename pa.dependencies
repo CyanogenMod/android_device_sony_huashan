@@ -23,7 +23,6 @@
   },
   {
     "remote": "CRX",
-    "branch": "cm-11.0",
     "repository": "android_vendor_sony",
     "target_path": "vendor/sony"
   }  
