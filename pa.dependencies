@@ -10,9 +10,8 @@
     "target_path": "device/sony/qcom-common"
   },
   {
-    "remote": "github",
-    "revision": "cm-11.0",
-    "repository": "CyanogenMod/android_kernel_sony_msm8960t",
+    "remote": "CRX",
+    "repository": "android_kernel_sony_msm8960t",
     "target_path": "kernel/sony/msm8960t"
   },
   {
