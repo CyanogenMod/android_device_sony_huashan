@@ -1,43 +1,23 @@
 [
-
   {
-
-    "remote": "github"
-
+    "remote": "github",
     "repository": "CyanogenMod/android_device_sony_common",
-
     "target_path": "device/sony/common"
-
   },
-
   {
-
-    "remote": "github"
-
+    "remote": "github",
     "repository": "CyanogenMod/android_device_sony_qcom-common",
-
     "target_path": "device/sony/qcom-common"
-
   },
 
   {
-
-    "remote": "github"
-
+    "remote": "github",
     "repository": "CyanogenMod/android_kernel_sony_msm8960t",
-
     "target_path": "kernel/sony/msm8960t"
-
   },
-
   {
-
-    "remote": "github"
-
+    "remote": "github",
     "repository": "CyanogenMod/android_hardware_sony_DASH",
-
     "target_path": "hardware/sony/DASH"
-
   }
-
  ]
