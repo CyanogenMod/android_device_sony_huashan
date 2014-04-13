@@ -11,14 +11,14 @@
   },
   {
     "remote": "github",
-    "branch": "cm-11.0",
+    "revision": "cm-11.0",
     "repository": "CyanogenMod/android_kernel_sony_msm8960t",
     "target_path": "kernel/sony/msm8960t"
   },
   {
     "remote": "github",
     "repository": "CyanogenMod/android_hardware_sony_DASH",
-    "branch": "cm-11.0",
+    "revision": "cm-11.0",
     "target_path": "hardware/sony/DASH"
   },
   {
