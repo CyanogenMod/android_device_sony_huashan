@@ -13,9 +13,9 @@ allow kickstart kickstart_exec:file { open execute_no_trans getattr };
 
 # Run dd on m9kefs[123] block devices; write to /data/qcks/
 # Run cat on firmware and m9kefs[123] data; write to /data/qcks/
-allow kickstart efs_block_device:blk_file rw_file_perms;
-allow kickstart kickstart_data_file:file create_file_perms;
-allow kickstart kickstart_data_file:dir rw_dir_perms;
+#allow kickstart efs_block_device:blk_file rw_file_perms;
+#allow kickstart kickstart_data_file:file create_file_perms;
+#allow kickstart kickstart_data_file:dir rw_dir_perms;
 allow kickstart radio_efs_file:file r_file_perms;
 allow kickstart radio_efs_file:dir search;
 
