@@ -17,6 +17,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # Inherit qcom-common files.
 $(call inherit-product, vendor/sony/qcom-common/qcom-common-vendor.mk)
 
+$(call inherit-product, build/target/product/full.mk)
+
 DEVICE_PACKAGE_OVERLAYS += device/sony/huashan/overlay
 
 # Permissions
