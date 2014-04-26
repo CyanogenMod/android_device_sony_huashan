@@ -117,6 +117,10 @@ endif
 PRODUCT_COPY_FILES += \
     $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
 
+# Offline charging daemon
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/system/bin/chargemon:system/bin/chargemon
+
 # Post recovery script
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh
