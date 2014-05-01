@@ -227,6 +227,11 @@ etc/firmware/modem_fw.mdt
 lib/hw/nfc.msm8960.so
 
 #
+# Offline charging
+#
+bin/chargemon
+
+#
 # Post Processing
 #
 bin/mm-pp-daemon
