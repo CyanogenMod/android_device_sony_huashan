@@ -53,21 +53,10 @@ PRODUCT_COPY_FILES += \
 # Device specific init
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/init.qcom.rc:root/init.qcom.rc \
-    $(LOCAL_PATH)/rootdir/init.sony.rc:root/init.sony.rc \
-    $(LOCAL_PATH)/rootdir/init.sony-platform.rc:root/init.sony-platform.rc \
-    $(LOCAL_PATH)/rootdir/init.sony-device.rc:root/init.sony-device.rc \
     $(LOCAL_PATH)/rootdir/init.target.rc:root/init.target.rc \
     $(LOCAL_PATH)/rootdir/ueventd.qcom.rc:root/ueventd.qcom.rc \
     $(LOCAL_PATH)/rootdir/init.recovery.qcom.rc:root/init.recovery.qcom.rc \
     $(LOCAL_PATH)/rootdir/system/etc/init.qcom.bt.sh:system/etc/init.qcom.bt.sh
-
-# Device specific scripts
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/init.qcom.sh:root/init.qcom.sh \
-    $(LOCAL_PATH)/rootdir/init.qcom.early_boot.sh:root/init.qcom.early_boot.sh \
-    $(LOCAL_PATH)/rootdir/init.qcom.syspart_fixup.sh:root/init.qcom.syspart_fixup.sh \
-    $(LOCAL_PATH)/rootdir/system/etc/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh \
-    $(LOCAL_PATH)/rootdir/system/etc/init.qcom.thermal_conf.sh:system/etc/init.qcom.thermal_conf.sh \
 
 # Sony system_monitor
 PRODUCT_COPY_FILES += \
@@ -136,10 +125,6 @@ PRODUCT_COPY_FILES += \
 # Sensors
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/etc/sensors.conf:system/etc/sensors.conf
-
-# Thermal monitor configuration
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/system/etc/thermald-8960ab.conf:system/etc/thermald-8960ab.conf
 
 # Touchpad
 PRODUCT_COPY_FILES += \
@@ -239,11 +224,13 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qualcomm.bt.hci_transport=smd
+    ro.qualcomm.bt.hci_transport=smd \
+    qcom.bt.le_dev_pwr_class=1
 
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.sf.lcd_density=320
+    ro.sf.lcd_density=320 \
+    debug.composition.type=c2d
 
 # QCOM Location
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -251,8 +238,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.qc.sdk.izat.service_mask=0x4 \
     persist.gps.qc_nlp_in_use=0 \
     ro.gps.agps_provider=1 \
-    ro.service.swiqi2.supported=true \
-    persist.service.swiqi2.enable=1
 
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
