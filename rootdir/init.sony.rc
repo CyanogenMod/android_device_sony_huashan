@@ -1,7 +1,0 @@
-import init.sony-platform.rc
-import init.sony.usb.rc
-
-service secchan /system/bin/secchand
-    user root
-    group root
-    class core
