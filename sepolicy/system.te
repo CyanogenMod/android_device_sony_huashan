@@ -1,0 +1,15 @@
+allow system diagnostic_device:chr_file rw_file_perms;
+
+allow system init:unix_dgram_socket sendto;
+allow system wpa_socket:unix_dgram_socket sendto;
+
+qmux_socket(system)
+
+# mpdecision access
+unix_socket_connect(system, mpdecision, mpdecision)
+unix_socket_send(system, mpdecision, mpdecision)
+allow system mpdecision:unix_stream_socket sendto;
+allow system mpdecision_socket:dir search;
+
+allow system sysfs:file { read open write };
+allow system self:capability { sys_module };
