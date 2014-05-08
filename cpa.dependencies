@@ -1,0 +1,28 @@
+[
+  {
+    "remote": "CRX",
+    "repository": "android_device_sony_common",
+    "target_path": "device/sony/common"
+  },
+  {
+    "remote": "CRX",
+    "repository": "android_device_sony_qcom-common",
+    "target_path": "device/sony/qcom-common"
+  },
+  {
+    "remote": "cm",
+    "repository": "CyanogenMod/android_kernel_sony_msm8960t",
+    "revision": "cm-11.0",
+    "target_path": "kernel/sony/msm8960t"
+  },
+  {
+    "remote": "CRX",
+    "repository": "android_hardware_sony_DASH",
+    "target_path": "hardware/sony/DASH"
+  },
+  {
+    "remote": "CRX",
+    "repository": "android_vendor_sony",
+    "target_path": "vendor/sony"
+  }  
+ ]
