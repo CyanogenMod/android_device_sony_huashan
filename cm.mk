@@ -1,8 +1,5 @@
 $(call inherit-product, device/sony/huashan/full_huashan.mk)
 
-# Inherit CM common GSM stuff.
-$(call inherit-product, vendor/cm/config/gsm.mk)
-
 # Enhanced NFC
 $(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
 
