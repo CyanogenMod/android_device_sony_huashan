@@ -17,3 +17,4 @@ allow qmux diagnostic_device:chr_file rw_file_perms;
 
 # XXX Should we label with own type
 allow qmux sysfs:file { open write append read getattr };
+allow qmux sysfs_wake_lock:file { append open };
