@@ -15,7 +15,7 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # Inherit qcom-common files.
-$(call inherit-product, device/sony/qcom-common/qcom-common-adreno.mk)
+$(call inherit-product, device/sony/qcom-common/qcom-common.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/sony/huashan/overlay
 
@@ -260,7 +260,3 @@ $(call inherit-product-if-exists, frameworks/native/build/phone-xhdpi-1024-dalvi
 
 # Include non-opensource parts/ proprietary files
 $(call inherit-product, vendor/sony/huashan/huashan-vendor.mk)
-
-# Include own Adreno blobs
-$(call inherit-product, vendor/sony/huashan/huashan-adreno-blobs.mk)
-
