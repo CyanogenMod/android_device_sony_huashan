@@ -28,3 +28,4 @@ unix_socket_connect(netmgrd, property, init)
 allow netmgrd radio_prop:property_service set;
 
 allow netmgrd kernel:system { module_request };
+allow netmgrd proc:file write;

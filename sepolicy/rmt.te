@@ -30,3 +30,5 @@ allow rmt shared_log_device:chr_file rw_file_perms;
 # XXX Should we label with own type?
 allow rmt sysfs:file { open append read getattr write };
 allow rmt sysfs:dir rw_dir_perms;
+
+allow rmt sysfs_wake_lock:file { append open };

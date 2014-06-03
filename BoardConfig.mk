@@ -79,7 +79,6 @@ BOARD_USE_SONY_MACUPDATE := true
 BOARD_HARDWARE_CLASS := device/sony/huashan/cmhw
 
 # Camera
-COMMON_GLOBAL_CFLAGS += -DQCOM_BSP_CAMERA_ABI_HACK
 USE_DEVICE_SPECIFIC_CAMERA := true
 
 # GPS
@@ -167,5 +166,6 @@ BOARD_SEPOLICY_UNION += \
     tee.te \
     thermald.te \
     ueventd.te \
+    vold.te \
     wpa_supplicant.te
 
