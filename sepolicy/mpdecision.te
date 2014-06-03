@@ -8,7 +8,7 @@ init_daemon_domain(mpdecision)
 # write sysfs device
 allow mpdecision sysfs_devices_system_cpu:file write;
 
-allow mpdecision self:capability chown;
+allow mpdecision self:capability { chown sys_nice };
 
 # dac_override to unlink /dev/socket/mpdecision/touchboost
 allow mpdecision self:capability { dac_override fsetid net_admin };
@@ -23,3 +23,9 @@ allow mpdecision sysfs:file { read open write getattr };
 
 allow mpdecision socket_device:dir { add_name write };
 allow mpdecision socket_device:sock_file { create setattr };
+
+allow mpdecision system_data_file:file { open append create };
+allow mpdecision system_data_file:dir { write add_name };
+
+# Set scheduling policy of kernel processes
+allow mpdecision kernel:process setsched;
