@@ -36,7 +36,6 @@ TARGET_BOARD_PLATFORM := msm8960
 BOARD_VENDOR_PLATFORM := viskan
 
 # Architecture
-TARGET_ARCH_VARIANT_CPU := cortex-a9
 TARGET_CPU_VARIANT := krait
 
 # Flags
