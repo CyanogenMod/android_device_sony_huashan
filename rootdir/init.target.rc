@@ -117,6 +117,6 @@ on post-fs-data
     rm /data/local/tmp/adreno_config.txt
 
 service qseecomd /system/bin/qseecomd
-    class late_start
-    user system
-    group system
+    class core
+    user root
+    group root
