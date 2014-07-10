@@ -370,7 +370,6 @@ lib/libta.so
 #
 # Time
 #
-bin/time_daemon
 lib/libtime_genoff.so
 
 #

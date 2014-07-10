@@ -255,9 +255,6 @@ on post-fs-data
     # Camera
     mkdir /data/camera 0771 root camera
 
-    # Create /data/time folder for time-services
-    mkdir /data/time 0700 system system
-
     setprop vold.post_fs_data_done 1
 
     # Enable Power modes and set the CPU Freq Sampling rates
@@ -569,11 +566,6 @@ service wcnss-service /system/bin/wcnss_service
     user system
     group system wifi
     oneshot
-
-service time_daemon /system/bin/time_daemon
-    class late_start
-    user root
-    group root
 
 service secchan /system/bin/secchand
     user root
