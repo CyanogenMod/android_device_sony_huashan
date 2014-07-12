@@ -126,40 +126,6 @@ SectionVerb
 EndSection
 
 SectionVerb
-	Name "HiFiBT Carkit Rx"
-
-	EnableSequence
-		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia1':1:1
-	EndSequence
-
-	DisableSequence
-		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia1':1:0
-	EndSequence
-
-	# ALSA PCMs
-	CapturePCM 0
-	PlaybackPCM 0
-
-EndSection
-
-SectionVerb
-	Name "HiFiBT Legacy SCO Rx"
-
-	EnableSequence
-		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia1':1:1
-	EndSequence
-
-	DisableSequence
-		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia1':1:0
-	EndSequence
-
-	# ALSA PCMs
-	CapturePCM 0
-	PlaybackPCM 0
-
-EndSection
-
-SectionVerb
         Name "HiFiPROXY Rx"
 
         EnableSequence
@@ -1357,38 +1323,6 @@ SectionVerb
 EndSection
 
 SectionVerb
-	Name "HiFi Low PowerBT Carkit Rx"
-
-	EnableSequence
-		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia3':1:1
-	EndSequence
-
-	DisableSequence
-		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia3':1:0
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 4
-
-EndSection
-
-SectionVerb
-	Name "HiFi Low PowerBT Legacy SCO Rx"
-
-	EnableSequence
-		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia3':1:1
-	EndSequence
-
-	DisableSequence
-		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia3':1:0
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 4
-
-EndSection
-
-SectionVerb
 	Name "HiFi Low PowerBT SCO WB Rx"
 
 	EnableSequence
@@ -1588,108 +1522,6 @@ EndSection
 
 SectionVerb
 	Name "HiFi RecBT SCO WB Tx"
-
-	EnableSequence
-		'MultiMedia1 Mixer INTERNAL_BT_SCO_TX':1:1
-	EndSequence
-
-	DisableSequence
-		'MultiMedia1 Mixer INTERNAL_BT_SCO_TX':1:0
-	EndSequence
-
-	# ALSA PCMs
-	CapturePCM 0
-	PlaybackPCM 0
-
-EndSection
-
-SectionVerb
-	Name "HiFi RecBT DSP SCO Tx"
-
-	EnableSequence
-		'MultiMedia1 Mixer INTERNAL_BT_SCO_TX':1:1
-	EndSequence
-
-	DisableSequence
-		'MultiMedia1 Mixer INTERNAL_BT_SCO_TX':1:0
-	EndSequence
-
-	# ALSA PCMs
-	CapturePCM 0
-	PlaybackPCM 0
-
-EndSection
-
-SectionVerb
-	Name "HiFi RecBT Legacy Tx"
-
-	EnableSequence
-		'MultiMedia1 Mixer INTERNAL_BT_SCO_TX':1:1
-	EndSequence
-
-	DisableSequence
-		'MultiMedia1 Mixer INTERNAL_BT_SCO_TX':1:0
-	EndSequence
-
-	# ALSA PCMs
-	CapturePCM 0
-	PlaybackPCM 0
-
-EndSection
-
-SectionVerb
-	Name "HiFi RecBT Legacy Nrec Tx"
-
-	EnableSequence
-		'MultiMedia1 Mixer INTERNAL_BT_SCO_TX':1:1
-	EndSequence
-
-	DisableSequence
-		'MultiMedia1 Mixer INTERNAL_BT_SCO_TX':1:0
-	EndSequence
-
-	# ALSA PCMs
-	CapturePCM 0
-	PlaybackPCM 0
-
-EndSection
-
-SectionVerb
-	Name "HiFi RecBT Carkit Tx"
-
-	EnableSequence
-		'MultiMedia1 Mixer INTERNAL_BT_SCO_TX':1:1
-	EndSequence
-
-	DisableSequence
-		'MultiMedia1 Mixer INTERNAL_BT_SCO_TX':1:0
-	EndSequence
-
-	# ALSA PCMs
-	CapturePCM 0
-	PlaybackPCM 0
-
-EndSection
-
-SectionVerb
-	Name "HiFi RecBT Carkit Nrec Tx"
-
-	EnableSequence
-		'MultiMedia1 Mixer INTERNAL_BT_SCO_TX':1:1
-	EndSequence
-
-	DisableSequence
-		'MultiMedia1 Mixer INTERNAL_BT_SCO_TX':1:0
-	EndSequence
-
-	# ALSA PCMs
-	CapturePCM 0
-	PlaybackPCM 0
-
-EndSection
-
-SectionVerb
-	Name "HiFi RecBT Carkit Tx"
 
 	EnableSequence
 		'MultiMedia1 Mixer INTERNAL_BT_SCO_TX':1:1
@@ -2230,132 +2062,6 @@ SectionVerb
 EndSection
 
 SectionVerb
-	Name "Voice CallBT DSP SCO Tx"
-
-	EnableSequence
-		'Internal BTSCO SampleRate':0:8000
-		'INTERNAL_BT_SCO_RX_Voice Mixer CSVoice':1:1
-		'Voice_Tx Mixer INTERNAL_BT_SCO_TX_Voice':1:1
-	EndSequence
-
-	DisableSequence
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 2
-	capturePCM 2
-
-EndSection
-
-SectionVerb
-	Name "Voice CallBT Legacy Tx"
-
-	EnableSequence
-		'Internal BTSCO SampleRate':0:8000
-		'INTERNAL_BT_SCO_RX_Voice Mixer CSVoice':1:1
-		'Voice_Tx Mixer INTERNAL_BT_SCO_TX_Voice':1:1
-	EndSequence
-
-	DisableSequence
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 2
-	capturePCM 2
-
-EndSection
-
-SectionVerb
-	Name "Voice CallBT Legacy Nrec Tx"
-
-	EnableSequence
-		'Internal BTSCO SampleRate':0:8000
-		'INTERNAL_BT_SCO_RX_Voice Mixer CSVoice':1:1
-		'Voice_Tx Mixer INTERNAL_BT_SCO_TX_Voice':1:1
-	EndSequence
-
-	DisableSequence
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 2
-	capturePCM 2
-
-EndSection
-
-SectionVerb
-	Name "Voice CallBT Legacy SCO Rx"
-
-	EnableSequence
-	EndSequence
-
-	DisableSequence
-		'Internal BTSCO SampleRate':0:8000
-		'INTERNAL_BT_SCO_RX_Voice Mixer CSVoice':1:0
-		'Voice_Tx Mixer INTERNAL_BT_SCO_TX_Voice':1:0
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 2
-	capturePCM 2
-
-EndSection
-
-SectionVerb
-	Name "Voice CallBT Carkit Nrec Tx"
-
-	EnableSequence
-	EndSequence
-
-	DisableSequence
-		'Internal BTSCO SampleRate':0:8000
-		'INTERNAL_BT_SCO_RX_Voice Mixer CSVoice':1:0
-		'Voice_Tx Mixer INTERNAL_BT_SCO_TX_Voice':1:0
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 2
-	capturePCM 2
-
-EndSection
-
-SectionVerb
-	Name "Voice CallBT Carkit Rx"
-
-	EnableSequence
-	EndSequence
-
-	DisableSequence
-		'Internal BTSCO SampleRate':0:8000
-		'INTERNAL_BT_SCO_RX_Voice Mixer CSVoice':1:0
-		'Voice_Tx Mixer INTERNAL_BT_SCO_TX_Voice':1:0
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 2
-	capturePCM 2
-
-EndSection
-
-SectionVerb
-	Name "Voice CallBT Carkit Tx"
-
-	EnableSequence
-		'Internal BTSCO SampleRate':0:8000
-		'INTERNAL_BT_SCO_RX_Voice Mixer CSVoice':1:1
-		'Voice_Tx Mixer INTERNAL_BT_SCO_TX_Voice':1:1
-	EndSequence
-
-	DisableSequence
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 2
-	capturePCM 2
-
-EndSection
-
-SectionVerb
 	Name "Voice CallPROXY Rx"
 
 	EnableSequence
@@ -2498,24 +2204,6 @@ SectionVerb
 EndSection
 
 SectionVerb
-	Name "Voice Call IPBT DSP SCO Tx"
-
-	EnableSequence
-		'Internal BTSCO SampleRate':0:8000
-		'INTERNAL_BT_SCO_RX_Voice Mixer Voip':1:1
-		'Voip_Tx Mixer INTERNAL_BT_SCO_TX_Voip':1:1
-	EndSequence
-
-	DisableSequence
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 3
-	CapturePCM 3
-
-EndSection
-
-SectionVerb
         Name "Voice Call IPBT SCO WB Rx"
 
         EnableSequence
@@ -2548,114 +2236,6 @@ SectionVerb
         # ALSA PCMs
         PlaybackPCM 3
         CapturePCM 3
-
-EndSection
-
-SectionVerb
-	Name "Voice Call IPBT Legacy Tx"
-
-	EnableSequence
-		'Internal BTSCO SampleRate':0:8000
-		'INTERNAL_BT_SCO_RX_Voice Mixer Voip':1:1
-		'Voip_Tx Mixer INTERNAL_BT_SCO_TX_Voip':1:1
-	EndSequence
-
-	DisableSequence
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 3
-	CapturePCM 3
-
-EndSection
-
-SectionVerb
-	Name "Voice Call IPBT Legacy Nrec Tx"
-
-	EnableSequence
-		'Internal BTSCO SampleRate':0:8000
-		'INTERNAL_BT_SCO_RX_Voice Mixer Voip':1:1
-		'Voip_Tx Mixer INTERNAL_BT_SCO_TX_Voip':1:1
-	EndSequence
-
-	DisableSequence
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 3
-	CapturePCM 3
-
-EndSection
-
-SectionVerb
-	Name "Voice Call IPBT Carkit Rx"
-
-	EnableSequence
-	EndSequence
-
-	DisableSequence
-		'Internal BTSCO SampleRate':0:8000
-		'INTERNAL_BT_SCO_RX_Voice Mixer Voip':1:0
-		'Voip_Tx Mixer INTERNAL_BT_SCO_TX_Voip':1:0
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 3
-	CapturePCM 3
-
-EndSection
-
-SectionVerb
-	Name "Voice Call IPBT Carkit Tx"
-
-	EnableSequence
-		'Internal BTSCO SampleRate':0:8000
-		'INTERNAL_BT_SCO_RX_Voice Mixer Voip':1:1
-		'Voip_Tx Mixer INTERNAL_BT_SCO_TX_Voip':1:1
-	EndSequence
-
-	DisableSequence
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 3
-	CapturePCM 3
-
-EndSection
-
-SectionVerb
-	Name "Voice Call IPBT Carkit Nrec Tx"
-
-	EnableSequence
-		'Internal BTSCO SampleRate':0:8000
-		'INTERNAL_BT_SCO_RX_Voice Mixer Voip':1:1
-		'Voip_Tx Mixer INTERNAL_BT_SCO_TX_Voip':1:1
-	EndSequence
-
-	DisableSequence
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 3
-	CapturePCM 3
-
-EndSection
-
-SectionVerb
-	Name "Voice Call IPBT Legacy SCO Rx"
-
-	EnableSequence
-	EndSequence
-
-	DisableSequence
-		'Internal BTSCO SampleRate':0:8000
-		'INTERNAL_BT_SCO_RX_Voice Mixer Voip':1:0
-		'Voip_Tx Mixer INTERNAL_BT_SCO_TX_Voip':1:0
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 3
-	CapturePCM 3
 
 EndSection
 
@@ -2815,21 +2395,6 @@ SectionVerb
 	DisableSequence
 		'AFE_PCM_RX Port Mixer INTERNAL_FM_TX':1:0
 		'PCM_RX_DL_HL Switch':1:0
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 5
-	CapturePCM 6
-
-EndSection
-
-SectionVerb
-	Name "FM Digital RadioPROXY Tx"
-
-	EnableSequence
-	EndSequence
-
-	DisableSequence
 	EndSequence
 
 	# ALSA PCMs
@@ -3019,38 +2584,6 @@ EndSection
 
 SectionVerb
 	Name "HiFi TunnelBT SCO Rx"
-
-	EnableSequence
-		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia4':1:1
-	EndSequence
-
-	DisableSequence
-		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia4':1:0
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 9
-
-EndSection
-
-SectionVerb
-	Name "HiFi TunnelBT Carkit Rx"
-
-	EnableSequence
-		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia4':1:1
-	EndSequence
-
-	DisableSequence
-		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia4':1:0
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 9
-
-EndSection
-
-SectionVerb
-	Name "HiFi TunnelBT Legacy SCO Rx"
 
 	EnableSequence
 		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia4':1:1
@@ -3938,91 +3471,6 @@ SectionVerb
 EndSection
 
 SectionVerb
-	Name "HiFi Lowlatency RecBT DSP SCO Tx"
-
-	EnableSequence
-		'MultiMedia5 Mixer INTERNAL_BT_SCO_TX':1:1
-	EndSequence
-
-	DisableSequence
-		'MultiMedia5 Mixer INTERNAL_BT_SCO_TX':1:0
-	EndSequence
-
-	# ALSA PCMs
-	CapturePCM 14
-	PlaybackPCM 14
-
-EndSection
-
-SectionVerb
-	Name "HiFi Lowlatency RecBT Legacy Tx"
-
-	EnableSequence
-		'MultiMedia5 Mixer INTERNAL_BT_SCO_TX':1:1
-	EndSequence
-
-	DisableSequence
-		'MultiMedia5 Mixer INTERNAL_BT_SCO_TX':1:0
-	EndSequence
-
-	# ALSA PCMs
-	CapturePCM 14
-	PlaybackPCM 14
-
-EndSection
-
-SectionVerb
-	Name "HiFi Lowlatency RecBT Legacy Nrec Tx"
-
-	EnableSequence
-		'MultiMedia5 Mixer INTERNAL_BT_SCO_TX':1:1
-	EndSequence
-
-	DisableSequence
-		'MultiMedia5 Mixer INTERNAL_BT_SCO_TX':1:0
-	EndSequence
-
-	# ALSA PCMs
-	CapturePCM 14
-	PlaybackPCM 14
-
-EndSection
-
-SectionVerb
-	Name "HiFi Lowlatency RecBT Carkit Tx"
-
-	EnableSequence
-		'MultiMedia5 Mixer INTERNAL_BT_SCO_TX':1:1
-	EndSequence
-
-	DisableSequence
-		'MultiMedia5 Mixer INTERNAL_BT_SCO_TX':1:0
-	EndSequence
-
-	# ALSA PCMs
-	CapturePCM 14
-	PlaybackPCM 14
-
-EndSection
-
-SectionVerb
-	Name "HiFi Lowlatency RecBT Carkit Nrec Tx"
-
-	EnableSequence
-		'MultiMedia5 Mixer INTERNAL_BT_SCO_TX':1:1
-	EndSequence
-
-	DisableSequence
-		'MultiMedia5 Mixer INTERNAL_BT_SCO_TX':1:0
-	EndSequence
-
-	# ALSA PCMs
-	CapturePCM 14
-	PlaybackPCM 14
-
-EndSection
-
-SectionVerb
 	Name "HiFi Lowlatency RecBT SCO WB Tx"
 
 	EnableSequence
@@ -4210,38 +3658,6 @@ EndSection
 
 SectionVerb
 	Name "HiFi LowlatencyBT SCO Rx"
-
-	EnableSequence
-		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia5':1:1
-	EndSequence
-
-	DisableSequence
-		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia5':1:0
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 14
-
-EndSection
-
-SectionVerb
-	Name "HiFi LowlatencyBT Carkit Rx"
-
-	EnableSequence
-		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia5':1:1
-	EndSequence
-
-	DisableSequence
-		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia5':1:0
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 14
-
-EndSection
-
-SectionVerb
-	Name "HiFi LowlatencyBT Legacy SCO Rx"
 
 	EnableSequence
 		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia5':1:1
@@ -4586,27 +4002,6 @@ SectionDevice
 EndSection
 
 SectionDevice
-	Name "Earpiece hac Rx"
-	Comment "Handset Rx device"
-
-	EnableSequence
-		'SLIM_0_RX Channels':0:One
-		'RX1 MIX1 INP1':0:RX1
-		'EAR PA Gain':0:POS_6_DB
-		'DAC1 Switch':1:1
-	EndSequence
-
-	DisableSequence
-		'RX1 MIX1 INP1':0:ZERO
-		'DAC1 Switch':1:0
-	EndSequence
-
-	ACDBID	257:1
-	EffectsMixerCTL "SRS TruMedia"
-
-EndSection
-
-SectionDevice
 	Name "Voice Earpiece"
 	Comment "Handset Rx device for voice call"
 
@@ -4624,46 +4019,6 @@ SectionDevice
 
 	ACDBID	7:1
 	EffectsMixerCTL "SRS TruMedia"
-
-EndSection
-
-SectionDevice
-	Name "Voice Earpiece EQ1"
-	Comment "Handset Rx device"
-
-	EnableSequence
-		'SLIM_0_RX Channels':0:One
-		'RX1 MIX1 INP1':0:RX1
-		'EAR PA Gain':0:POS_2_DB
-		'DAC1 Switch':1:1
-	EndSequence
-
-	DisableSequence
-		'RX1 MIX1 INP1':0:ZERO
-		'DAC1 Switch':1:0
-	EndSequence
-
-	ACDBID	258:1
-
-EndSection
-
-SectionDevice
-	Name "Voice Earpiece EQ2"
-	Comment "Handset Rx device"
-
-	EnableSequence
-		'SLIM_0_RX Channels':0:One
-		'RX1 MIX1 INP1':0:RX1
-		'EAR PA Gain':0:POS_2_DB
-		'DAC1 Switch':1:1
-	EndSequence
-
-	DisableSequence
-		'RX1 MIX1 INP1':0:ZERO
-		'DAC1 Switch':1:0
-	EndSequence
-
-	ACDBID	259:1
 
 EndSection
 
@@ -4890,60 +4245,6 @@ SectionDevice
 
 	ACDBID	10:1
 	EffectsMixerCTL "SRS TruMedia"
-
-EndSection
-
-SectionDevice
-	Name "Voice Headphones EQ1"
-	Comment "Headset Rx device for voice call"
-
-	EnableSequence
-		'SLIM_0_RX Channels':0:Two
-		'RX1 MIX1 INP1':0:RX1
-		'RX2 MIX1 INP1':0:RX2
-		'HPHL DAC Switch':1:1
-		'HPHR DAC Switch':1:1
-		'HPHL Volume':1:80
-		'HPHR Volume':1:80
-	EndSequence
-
-	DisableSequence
-		'RX1 MIX1 INP1':0:ZERO
-		'RX2 MIX1 INP1':0:ZERO
-		'HPHL DAC Switch':1:0
-		'HPHR DAC Switch':1:0
-		'HPHL Volume':1:0
-		'HPHR Volume':1:0
-	EndSequence
-
-	ACDBID	261:1
-
-EndSection
-
-SectionDevice
-	Name "Voice Headphones EQ2"
-	Comment "Headset Rx device for voice call"
-
-	EnableSequence
-		'SLIM_0_RX Channels':0:Two
-		'RX1 MIX1 INP1':0:RX1
-		'RX2 MIX1 INP1':0:RX2
-		'HPHL DAC Switch':1:1
-		'HPHR DAC Switch':1:1
-		'HPHL Volume':1:80
-		'HPHR Volume':1:80
-	EndSequence
-
-	DisableSequence
-		'RX1 MIX1 INP1':0:ZERO
-		'RX2 MIX1 INP1':0:ZERO
-		'HPHL DAC Switch':1:0
-		'HPHR DAC Switch':1:0
-		'HPHL Volume':1:0
-		'HPHR Volume':1:0
-	EndSequence
-
-	ACDBID	262:1
 
 EndSection
 
@@ -5802,110 +5103,6 @@ SectionDevice
 EndSection
 
 SectionDevice
-	Name "BT DSP SCO Tx"
-	Comment "BT Tx device"
-
-	EnableSequence
-	EndSequence
-
-	DisableSequence
-	EndSequence
-
-	ACDBID	120:2
-
-EndSection
-
-
-SectionDevice
-	Name "BT Legacy Tx"
-	Comment "BT Tx device"
-
-	EnableSequence
-	EndSequence
-
-	DisableSequence
-	EndSequence
-
-	ACDBID	121:2
-
-EndSection
-
-
-SectionDevice
-	Name "BT Legacy SCO Rx"
-	Comment "BT Rx device"
-
-	EnableSequence
-	EndSequence
-
-	DisableSequence
-	EndSequence
-
-	ACDBID	122:1
-
-EndSection
-
-
-SectionDevice
-	Name "BT Legacy Nrec Tx"
-	Comment "BT Tx device"
-
-	EnableSequence
-	EndSequence
-
-	DisableSequence
-	EndSequence
-
-	ACDBID	123:2
-
-EndSection
-
-
-SectionDevice
-	Name "BT Carkit Tx"
-	Comment "BT Tx device"
-
-	EnableSequence
-	EndSequence
-
-	DisableSequence
-	EndSequence
-
-	ACDBID	124:2
-
-EndSection
-
-
-SectionDevice
-	Name "BT Carkit Rx"
-	Comment "BT Rx device"
-
-	EnableSequence
-	EndSequence
-
-	DisableSequence
-	EndSequence
-
-	ACDBID	125:1
-
-EndSection
-
-
-SectionDevice
-	Name "BT Carkit Nrec Tx"
-	Comment "BT Tx device"
-
-	EnableSequence
-	EndSequence
-
-	DisableSequence
-	EndSequence
-
-	ACDBID	126:2
-
-EndSection
-
-SectionDevice
 	Name "HDMI"
 	Comment "HDMI Rx device"
 
@@ -6673,42 +5870,6 @@ SectionModifier
 EndSection
 
 SectionModifier
-	Name "Play MusicBT Carkit Rx"
-	Comment "Modifier for music playback"
-
-	EnableSequence
-		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia1':1:1
-	EndSequence
-
-	DisableSequence
-		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia1':1:0
-	EndSequence
-
-	# ALSA PCMs
-	CapturePCM 0
-	PlaybackPCM 0
-
-EndSection
-
-SectionModifier
-	Name "Play MusicBT Legacy SCO Rx"
-	Comment "Modifier for music playback"
-
-	EnableSequence
-		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia1':1:1
-	EndSequence
-
-	DisableSequence
-		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia1':1:0
-	EndSequence
-
-	# ALSA PCMs
-	CapturePCM 0
-	PlaybackPCM 0
-
-EndSection
-
-SectionModifier
 	Name "Play MusicPROXY Rx"
 
 	EnableSequence
@@ -7048,38 +6209,6 @@ SectionModifier
 EndSection
 
 SectionModifier
-	Name "Play LPABT Carkit Rx"
-
-	EnableSequence
-		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia3':1:1
-	EndSequence
-
-	DisableSequence
-		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia3':1:0
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 4
-
-EndSection
-
-SectionModifier
-	Name "Play LPABT Legacy SCO Rx"
-
-	EnableSequence
-		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia3':1:1
-	EndSequence
-
-	DisableSequence
-		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia3':1:0
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 4
-
-EndSection
-
-SectionModifier
 	Name "Play LPABT SCO WB Rx"
 
 	EnableSequence
@@ -7305,132 +6434,6 @@ SectionModifier
 EndSection
 
 SectionModifier
-	Name "Play VoiceBT DSP SCO Tx"
-
-	EnableSequence
-		'Internal BTSCO SampleRate':0:8000
-		'INTERNAL_BT_SCO_RX_Voice Mixer CSVoice':1:1
-		'Voice_Tx Mixer INTERNAL_BT_SCO_TX_Voice':1:1
-	EndSequence
-
-	DisableSequence
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 2
-	capturePCM 2
-
-EndSection
-
-SectionModifier
-	Name "Play VoiceBT Legacy Tx"
-
-	EnableSequence
-		'Internal BTSCO SampleRate':0:8000
-		'INTERNAL_BT_SCO_RX_Voice Mixer CSVoice':1:1
-		'Voice_Tx Mixer INTERNAL_BT_SCO_TX_Voice':1:1
-	EndSequence
-
-	DisableSequence
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 2
-	capturePCM 2
-
-EndSection
-
-SectionModifier
-	Name "Play VoiceBT Legacy Nrec Tx"
-
-	EnableSequence
-		'Internal BTSCO SampleRate':0:8000
-		'INTERNAL_BT_SCO_RX_Voice Mixer CSVoice':1:1
-		'Voice_Tx Mixer INTERNAL_BT_SCO_TX_Voice':1:1
-	EndSequence
-
-	DisableSequence
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 2
-	capturePCM 2
-
-EndSection
-
-SectionModifier
-	Name "Play VoiceBT Carkit Nrec Tx"
-
-	EnableSequence
-		'Internal BTSCO SampleRate':0:8000
-		'INTERNAL_BT_SCO_RX_Voice Mixer CSVoice':1:1
-		'Voice_Tx Mixer INTERNAL_BT_SCO_TX_Voice':1:1
-	EndSequence
-
-	DisableSequence
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 2
-	capturePCM 2
-
-EndSection
-
-SectionModifier
-	Name "Play VoiceBT Carkit Tx"
-
-	EnableSequence
-		'Internal BTSCO SampleRate':0:8000
-		'INTERNAL_BT_SCO_RX_Voice Mixer CSVoice':1:1
-		'Voice_Tx Mixer INTERNAL_BT_SCO_TX_Voice':1:1
-	EndSequence
-
-	DisableSequence
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 2
-	capturePCM 2
-
-EndSection
-
-SectionModifier
-	Name "Play VoiceBT Carkit Rx"
-
-	EnableSequence
-	EndSequence
-
-	DisableSequence
-		'Internal BTSCO SampleRate':0:8000
-		'INTERNAL_BT_SCO_RX_Voice Mixer CSVoice':1:0
-		'Voice_Tx Mixer INTERNAL_BT_SCO_TX_Voice':1:0
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 2
-	capturePCM 2
-
-EndSection
-
-SectionModifier
-	Name "Play VoiceBT Legacy SCO Rx"
-
-	EnableSequence
-	EndSequence
-
-	DisableSequence
-		'Internal BTSCO SampleRate':0:8000
-		'INTERNAL_BT_SCO_RX_Voice Mixer CSVoice':1:0
-		'Voice_Tx Mixer INTERNAL_BT_SCO_TX_Voice':1:0
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 2
-	capturePCM 2
-
-EndSection
-
-SectionModifier
 	Name "Capture Voice"
 
 	EnableSequence
@@ -7550,132 +6553,6 @@ SectionModifier
         # ALSA PCMs
         PlaybackPCM 3
         CapturePCM 3
-
-EndSection
-
-SectionModifier
-	Name "Play VOIPBT DSP SCO Tx"
-
-	EnableSequence
-	        'Internal BTSCO SampleRate':0:8000
-		'INTERNAL_BT_SCO_RX_Voice Mixer Voip':1:1
-		'Voip_Tx Mixer INTERNAL_BT_SCO_TX_Voip':1:1
-	EndSequence
-
-	DisableSequence
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 3
-	capturePCM 3
-
-EndSection
-
-SectionModifier
-	Name "Play VOIPBT Legacy Tx"
-
-	EnableSequence
-	        'Internal BTSCO SampleRate':0:8000
-		'INTERNAL_BT_SCO_RX_Voice Mixer Voip':1:1
-		'Voip_Tx Mixer INTERNAL_BT_SCO_TX_Voip':1:1
-	EndSequence
-
-	DisableSequence
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 3
-	capturePCM 3
-
-EndSection
-
-SectionModifier
-	Name "Play VOIPBT Legacy Nrec Tx"
-
-	EnableSequence
-	        'Internal BTSCO SampleRate':0:8000
-                'INTERNAL_BT_SCO_RX_Voice Mixer Voip':1:1
-                'Voip_Tx Mixer INTERNAL_BT_SCO_TX_Voip':1:1
-	EndSequence
-
-	DisableSequence
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 3
-	capturePCM 3
-
-EndSection
-
-SectionModifier
-	Name "Play VOIPBT Carkit Rx"
-
-	EnableSequence
-	EndSequence
-
-	DisableSequence
-		'Internal BTSCO SampleRate':0:8000
-		'INTERNAL_BT_SCO_RX_Voice Mixer Voip':1:0
-		'Voip_Tx Mixer INTERNAL_BT_SCO_TX_Voip':1:0
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 3
-	capturePCM 3
-
-EndSection
-
-SectionModifier
-	Name "Play VOIPBT Legacy SCO Rx"
-
-	EnableSequence
-	EndSequence
-
-	DisableSequence
-		'Internal BTSCO SampleRate':0:8000
-                'INTERNAL_BT_SCO_RX_Voice Mixer Voip':1:0
-                'Voip_Tx Mixer INTERNAL_BT_SCO_TX_Voip':1:0
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 3
-	capturePCM 3
-
-EndSection
-
-SectionModifier
-	Name "Play VOIPBT Carkit Tx"
-
-	EnableSequence
-		'Internal BTSCO SampleRate':0:8000
-		'INTERNAL_BT_SCO_RX_Voice Mixer Voip':1:1
-		'Voip_Tx Mixer INTERNAL_BT_SCO_TX_Voip':1:1
-	EndSequence
-
-	DisableSequence
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 3
-	capturePCM 3
-
-EndSection
-
-SectionModifier
-	Name "Play VOIPBT Carkit Nrec Tx"
-
-	EnableSequence
-		'Internal BTSCO SampleRate':0:8000
-		'INTERNAL_BT_SCO_RX_Voice Mixer Voip':1:1
-		'Voip_Tx Mixer INTERNAL_BT_SCO_TX_Voip':1:1
-	EndSequence
-
-	DisableSequence
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 3
-	capturePCM 3
 
 EndSection
 
@@ -7835,38 +6712,6 @@ EndSection
 
 SectionModifier
 	Name "Play TunnelBT SCO Rx"
-
-	EnableSequence
-		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia4':1:1
-	EndSequence
-
-	DisableSequence
-		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia4':1:0
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 9
-
-EndSection
-
-SectionModifier
-	Name "Play TunnelBT Carkit Rx"
-
-	EnableSequence
-		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia4':1:1
-	EndSequence
-
-	DisableSequence
-		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia4':1:0
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 9
-
-EndSection
-
-SectionModifier
-	Name "Play TunnelBT Legacy SCO Rx"
 
 	EnableSequence
 		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia4':1:1
@@ -8316,91 +7161,6 @@ SectionModifier
 EndSection
 
 SectionModifier
-	Name "Capture MusicBT DSP SCO Tx"
-
-	EnableSequence
-		'MultiMedia1 Mixer INTERNAL_BT_SCO_TX':1:1
-	EndSequence
-
-	DisableSequence
-		'MultiMedia1 Mixer INTERNAL_BT_SCO_TX':1:0
-	EndSequence
-
-	# ALSA PCMs
-	CapturePCM 0
-	PlaybackPCM 0
-
-EndSection
-
-SectionModifier
-	Name "Capture MusicBT Legacy Tx"
-
-	EnableSequence
-		'MultiMedia1 Mixer INTERNAL_BT_SCO_TX':1:1
-	EndSequence
-
-	DisableSequence
-		'MultiMedia1 Mixer INTERNAL_BT_SCO_TX':1:0
-	EndSequence
-
-	# ALSA PCMs
-	CapturePCM 0
-	PlaybackPCM 0
-
-EndSection
-
-SectionModifier
-	Name "Capture MusicBT Legacy Nrec Tx"
-
-	EnableSequence
-		'MultiMedia1 Mixer INTERNAL_BT_SCO_TX':1:1
-	EndSequence
-
-	DisableSequence
-		'MultiMedia1 Mixer INTERNAL_BT_SCO_TX':1:0
-	EndSequence
-
-	# ALSA PCMs
-	CapturePCM 0
-	PlaybackPCM 0
-
-EndSection
-
-SectionModifier
-	Name "Capture MusicBT Carkit Tx"
-
-	EnableSequence
-		'MultiMedia1 Mixer INTERNAL_BT_SCO_TX':1:1
-	EndSequence
-
-	DisableSequence
-		'MultiMedia1 Mixer INTERNAL_BT_SCO_TX':1:0
-	EndSequence
-
-	# ALSA PCMs
-	CapturePCM 0
-	PlaybackPCM 0
-
-EndSection
-
-SectionModifier
-	Name "Capture MusicBT Carkit Nrec Tx"
-
-	EnableSequence
-		'MultiMedia1 Mixer INTERNAL_BT_SCO_TX':1:1
-	EndSequence
-
-	DisableSequence
-		'MultiMedia1 Mixer INTERNAL_BT_SCO_TX':1:0
-	EndSequence
-
-	# ALSA PCMs
-	CapturePCM 0
-	PlaybackPCM 0
-
-EndSection
-
-SectionModifier
         Name "Capture MusicPROXY Tx"
 
         EnableSequence
@@ -8761,21 +7521,6 @@ EndSection
 
 SectionModifier
 	Name "Play LPAPROXY Tx"
-
-	EnableSequence
-	EndSequence
-
-	DisableSequence
-	EndSequence
-
-	# ALSA PCMs
-	CapturePCM 0
-	PlaybackPCM 0
-
-EndSection
-
-SectionModifier
-	Name "Play FMPROXY Tx"
 
 	EnableSequence
 	EndSequence
@@ -10351,42 +9096,6 @@ SectionModifier
 EndSection
 
 SectionModifier
-	Name "Play Lowlatency MusicBT Carkit Rx"
-	Comment "Modifier for music playback"
-
-	EnableSequence
-		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia5':1:1
-	EndSequence
-
-	DisableSequence
-		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia5':1:0
-	EndSequence
-
-	# ALSA PCMs
-	CapturePCM 14
-	PlaybackPCM 14
-
-EndSection
-
-SectionModifier
-	Name "Play Lowlatency MusicBT Legacy SCO Rx"
-	Comment "Modifier for music playback"
-
-	EnableSequence
-		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia5':1:1
-	EndSequence
-
-	DisableSequence
-		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia5':1:0
-	EndSequence
-
-	# ALSA PCMs
-	CapturePCM 14
-	PlaybackPCM 14
-
-EndSection
-
-SectionModifier
 	Name "Play Lowlatency MusicBT SCO WB Rx"
 	Comment "Modifier for music playback"
 
@@ -10457,91 +9166,6 @@ EndSection
 
 SectionModifier
 	Name "Capture Lowlatency MusicBT SCO Tx"
-
-	EnableSequence
-		'MultiMedia5 Mixer INTERNAL_BT_SCO_TX':1:1
-	EndSequence
-
-	DisableSequence
-		'MultiMedia5 Mixer INTERNAL_BT_SCO_TX':1:0
-	EndSequence
-
-	# ALSA PCMs
-	CapturePCM 14
-	PlaybackPCM 14
-
-EndSection
-
-SectionModifier
-	Name "Capture Lowlatency MusicBT DSP SCO Tx"
-
-	EnableSequence
-		'MultiMedia5 Mixer INTERNAL_BT_SCO_TX':1:1
-	EndSequence
-
-	DisableSequence
-		'MultiMedia5 Mixer INTERNAL_BT_SCO_TX':1:0
-	EndSequence
-
-	# ALSA PCMs
-	CapturePCM 14
-	PlaybackPCM 14
-
-EndSection
-
-SectionModifier
-	Name "Capture Lowlatency MusicBT Legacy Tx"
-
-	EnableSequence
-		'MultiMedia5 Mixer INTERNAL_BT_SCO_TX':1:1
-	EndSequence
-
-	DisableSequence
-		'MultiMedia5 Mixer INTERNAL_BT_SCO_TX':1:0
-	EndSequence
-
-	# ALSA PCMs
-	CapturePCM 14
-	PlaybackPCM 14
-
-EndSection
-
-SectionModifier
-	Name "Capture Lowlatency MusicBT Legacy Nrec Tx"
-
-	EnableSequence
-		'MultiMedia5 Mixer INTERNAL_BT_SCO_TX':1:1
-	EndSequence
-
-	DisableSequence
-		'MultiMedia5 Mixer INTERNAL_BT_SCO_TX':1:0
-	EndSequence
-
-	# ALSA PCMs
-	CapturePCM 14
-	PlaybackPCM 14
-
-EndSection
-
-SectionModifier
-	Name "Capture Lowlatency MusicBT Carkit Tx"
-
-	EnableSequence
-		'MultiMedia5 Mixer INTERNAL_BT_SCO_TX':1:1
-	EndSequence
-
-	DisableSequence
-		'MultiMedia5 Mixer INTERNAL_BT_SCO_TX':1:0
-	EndSequence
-
-	# ALSA PCMs
-	CapturePCM 14
-	PlaybackPCM 14
-
-EndSection
-
-SectionModifier
-	Name "Capture Lowlatency MusicBT Carkit Nrec Tx"
 
 	EnableSequence
 		'MultiMedia5 Mixer INTERNAL_BT_SCO_TX':1:1
