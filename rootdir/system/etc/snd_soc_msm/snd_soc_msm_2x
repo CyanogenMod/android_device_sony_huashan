@@ -4094,7 +4094,6 @@ SectionDevice
 EndSection
 
 SectionDevice
-	SectionDevice
 	Name "Speaker"
 	Comment "Speaker Rx device"
 
@@ -4500,21 +4499,29 @@ SectionDevice
 	Comment "Handset Tx device"
 
 	EnableSequence
-		'SLIM_0_TX Channels':0:One
-		'SLIM TX7 MUX':0:DEC7
-		'DEC7 MUX':0:ADC1
+		'SLIM TX7 MUX':0:DEC4
+		'DEC4 MUX':0:ADC3
+		'ADC3 Volume':1:100
+		'MICBIAS4 CAPLESS Switch':1:1
+		'SLIM TX8 MUX':0:DEC6
+		'DEC6 MUX':0:ADC1
 		'ADC1 Volume':1:100
 		'MICBIAS1 CAPLESS Switch':1:1
+		'SLIM_0_TX Channels':0:Two
 	EndSequence
 
 	DisableSequence
 		'SLIM TX7 MUX':0:ZERO
-		'DEC7 MUX':0:ZERO
-		'ADC1 Volume':1:0
+		'DEC4 MUX':0:ZERO
+		'MICBIAS4 CAPLESS Switch':1:0
+		'SLIM TX8 MUX':0:ZERO
+		'DEC6 MUX':0:ZERO
 		'MICBIAS1 CAPLESS Switch':1:0
+		'ADC3 Volume':1:0
+		'ADC1 Volume':1:0
 	EndSequence
 
-	ACDBID	4:2
+	ACDBID	35:2
 	EffectsMixerCTL "SRS TruMedia"
 
 EndSection
