@@ -4,6 +4,10 @@
     "target_path": "device/sony/common"
   },
   {
+    "repository": "android_device_sony_blue-common",
+    "target_path": "device/sony/blue-common"
+   },
+  {
     "repository": "android_device_sony_qcom-common",
     "target_path": "device/sony/qcom-common"
   },
