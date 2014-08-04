@@ -32,7 +32,7 @@ bin/hci_qcomm_init
 #
 # Camera
 #
-lib/hw/camera.qcom.so:lib/hw/vendor-camera.qcom.so
+lib/hw/camera.qcom.so:lib/hw/camera.vendor.qcom.so
 lib/libcamera_clientsemc.so
 lib/libcameralight.so
 lib/libmmcamera_3a_legacy.so
@@ -132,7 +132,7 @@ bin/irsc_util
 # Lights
 #
 bin/illumination_service
-lib/hw/lights.default.so:lib/hw/vendor-lights.default.so
+lib/hw/lights.default.so:lib/hw/lights.vendor.default.so
 lib/liblights-core.so
 lib/libsys-utils.so
 
