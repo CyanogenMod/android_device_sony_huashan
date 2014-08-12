@@ -10,10 +10,15 @@
     "target_path": "device/sony/qcom-common"
   },
   {
+<<<<<<< HEAD:cpa.dependencies
     "remote": "cm",
+    "repository": "CyanogenMod/android_kernel_sony_msm8960t",
     "revision": "cm-11.0",
+    "target_path": "kernel/sony/msm8960t"
+=======
     "repository": "android_kernel_sony_msm8x60",
     "target_path": "kernel/sony/msm8x60"
+>>>>>>> 562f33d09aad502aab1c007073ed32876a1f2e0c:cm.dependencies
   },
   {
     "remote": "CRX",
