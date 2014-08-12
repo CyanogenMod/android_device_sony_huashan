@@ -27,7 +27,7 @@ TARGET_OTA_ASSERT_DEVICE := C5302,C5303,C5306,huashan
 TARGET_SPECIFIC_HEADER_PATH += device/sony/huashan/include
 
 # Kernel properties
-TARGET_KERNEL_SOURCE := kernel/sony/msm8960t
+TARGET_KERNEL_SOURCE := kernel/sony/msm8x60
 TARGET_KERNEL_CONFIG := cm_viskan_huashan_defconfig
 
 # Platform
@@ -36,7 +36,6 @@ TARGET_BOARD_PLATFORM := msm8960
 BOARD_VENDOR_PLATFORM := viskan
 
 # Architecture
-TARGET_ARCH_VARIANT_CPU := cortex-a9
 TARGET_CPU_VARIANT := krait
 
 # Flags
