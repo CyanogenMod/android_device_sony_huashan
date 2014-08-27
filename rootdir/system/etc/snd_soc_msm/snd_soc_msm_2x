@@ -4094,7 +4094,6 @@ SectionDevice
 EndSection
 
 SectionDevice
-	SectionDevice
 	Name "Speaker"
 	Comment "Speaker Rx device"
 
@@ -4656,6 +4655,30 @@ SectionDevice
 EndSection
 
 SectionDevice
+	Name "Voice Recognition"
+	Comment "Voice Recognition Tx device"
+
+	EnableSequence
+		'SLIM_0_TX Channels':0:One
+		'SLIM TX7 MUX':0:DEC7
+		'DEC7 MUX':0:ADC1
+		'MICBIAS1 CAPLESS Switch':1:1
+		'ADC1 Volume':1:100
+	EndSequence
+
+	DisableSequence
+		'SLIM TX7 MUX':0:ZERO
+		'DEC7 MUX':0:ZERO
+		'ADC1 Volume':1:0
+		'MICBIAS1 CAPLESS Switch':1:0
+	EndSequence
+
+	ACDBID	528:2
+	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
 	Name "TTY Handset Analog Tx"
 	Comment "TTY Handset Analog Tx device"
 
@@ -4686,13 +4709,15 @@ SectionDevice
 	EnableSequence
 		'SLIM_0_TX Channels':0:One
 		'SLIM TX7 MUX':0:DEC7
-		'DEC7 MUX':0:DMIC1
+		'DEC7 MUX':0:ADC1
+		'ADC1 Volume':1:100
 		'MICBIAS1 CAPLESS Switch':1:1
 	EndSequence
 
 	DisableSequence
 		'SLIM TX7 MUX':0:ZERO
 		'DEC7 MUX':0:ZERO
+		'ADC1 Volume':1:0
 		'MICBIAS1 CAPLESS Switch':1:0
 	EndSequence
 
@@ -4708,13 +4733,15 @@ SectionDevice
 	EnableSequence
 		'SLIM_0_TX Channels':0:One
 		'SLIM TX7 MUX':0:DEC7
-		'DEC7 MUX':0:DMIC1
+		'DEC7 MUX':0:ADC1
+		'ADC1 Volume':1:100
 		'MICBIAS1 CAPLESS Switch':1:1
 	EndSequence
 
 	DisableSequence
 		'SLIM TX7 MUX':0:ZERO
 		'DEC7 MUX':0:ZERO
+		'ADC1 Volume':1:0
 		'MICBIAS1 CAPLESS Switch':1:0
 	EndSequence
 
@@ -4730,13 +4757,15 @@ SectionDevice
 	EnableSequence
 		'SLIM_0_TX Channels':0:One
 		'SLIM TX7 MUX':0:DEC7
-		'DEC7 MUX':0:DMIC1
+		'DEC7 MUX':0:ADC1
+		'ADC1 Volume':1:100
 		'MICBIAS1 CAPLESS Switch':1:1
 	EndSequence
 
 	DisableSequence
 		'SLIM TX7 MUX':0:ZERO
 		'DEC7 MUX':0:ZERO
+		'ADC1 Volume':1:0
 		'MICBIAS1 CAPLESS Switch':1:0
 	EndSequence
 
@@ -4869,22 +4898,26 @@ SectionDevice
 	Comment "Dual MIC Endfire Tx device"
 
 	EnableSequence
-		'SLIM TX7 MUX':0:DEC7
-		'DEC7 MUX':0:DMIC1
-		'SLIM TX8 MUX':0:DEC9
-		'DEC9 MUX':0:DMIC4
+		'SLIM TX7 MUX':0:DEC4
+		'DEC4 MUX':0:ADC3
+		'ADC3 Volume':1:100
+		'MICBIAS4 CAPLESS Switch':1:1
+		'SLIM TX8 MUX':0:DEC6
+		'DEC6 MUX':0:ADC1
+		'ADC1 Volume':1:100
 		'MICBIAS1 CAPLESS Switch':1:1
-		'MICBIAS3 CAPLESS Switch':1:1
 		'SLIM_0_TX Channels':0:Two
 	EndSequence
 
 	DisableSequence
 		'SLIM TX7 MUX':0:ZERO
-		'DEC7 MUX':0:ZERO
+		'DEC4 MUX':0:ZERO
+		'MICBIAS4 CAPLESS Switch':1:0
 		'SLIM TX8 MUX':0:ZERO
-		'DEC9 MUX':0:ZERO
+		'DEC6 MUX':0:ZERO
 		'MICBIAS1 CAPLESS Switch':1:0
-		'MICBIAS3 CAPLESS Switch':1:0
+		'ADC3 Volume':1:0
+		'ADC1 Volume':1:0
 	EndSequence
 
 	ACDBID	13:2
@@ -4897,22 +4930,26 @@ SectionDevice
 	Comment "Handset Dual MIC Stereo Tx device"
 
 	EnableSequence
-		'SLIM TX7 MUX':0:DEC7
-		'DEC7 MUX':0:DMIC1
-		'SLIM TX8 MUX':0:DEC9
-		'DEC9 MUX':0:DMIC4
+		'SLIM TX7 MUX':0:DEC4
+		'DEC4 MUX':0:ADC3
+		'ADC3 Volume':1:100
+		'MICBIAS4 CAPLESS Switch':1:1
+		'SLIM TX8 MUX':0:DEC6
+		'DEC6 MUX':0:ADC1
+		'ADC1 Volume':1:100
 		'MICBIAS1 CAPLESS Switch':1:1
-		'MICBIAS3 CAPLESS Switch':1:1
 		'SLIM_0_TX Channels':0:Two
 	EndSequence
 
 	DisableSequence
 		'SLIM TX7 MUX':0:ZERO
-		'DEC7 MUX':0:ZERO
+		'DEC4 MUX':0:ZERO
+		'MICBIAS4 CAPLESS Switch':1:0
 		'SLIM TX8 MUX':0:ZERO
-		'DEC9 MUX':0:ZERO
+		'DEC6 MUX':0:ZERO
 		'MICBIAS1 CAPLESS Switch':1:0
-		'MICBIAS3 CAPLESS Switch':1:0
+		'ADC3 Volume':1:0
+		'ADC1 Volume':1:0
 	EndSequence
 
 	ACDBID	34:2
@@ -4925,22 +4962,26 @@ SectionDevice
 	Comment "Speaker Dual MIC Stereo Tx device"
 
 	EnableSequence
-		'SLIM TX7 MUX':0:DEC7
-		'DEC7 MUX':0:DMIC1
-		'SLIM TX8 MUX':0:DEC9
-		'DEC9 MUX':0:DMIC4
+		'SLIM TX7 MUX':0:DEC4
+		'DEC4 MUX':0:ADC3
+		'ADC3 Volume':1:100
+		'MICBIAS4 CAPLESS Switch':1:1
+		'SLIM TX8 MUX':0:DEC6
+		'DEC6 MUX':0:ADC1
+		'ADC1 Volume':1:100
 		'MICBIAS1 CAPLESS Switch':1:1
-		'MICBIAS3 CAPLESS Switch':1:1
 		'SLIM_0_TX Channels':0:Two
 	EndSequence
 
 	DisableSequence
 		'SLIM TX7 MUX':0:ZERO
-		'DEC7 MUX':0:ZERO
+		'DEC4 MUX':0:ZERO
+		'MICBIAS4 CAPLESS Switch':1:0
 		'SLIM TX8 MUX':0:ZERO
-		'DEC9 MUX':0:ZERO
+		'DEC6 MUX':0:ZERO
 		'MICBIAS1 CAPLESS Switch':1:0
-		'MICBIAS3 CAPLESS Switch':1:0
+		'ADC3 Volume':1:0
+		'ADC1 Volume':1:0
 	EndSequence
 
 	ACDBID	35:2
