@@ -19,7 +19,7 @@ persist.timed.enable=true
 
 # System props for audio
 persist.audio.fluence.mode=endfire
-persist.audio.handset.mic=analog
+persist.audio.handset.mic=digital
 persist.audio.lowlatency.rec=false
 
 # System prop to select audio resampler quality
@@ -33,4 +33,4 @@ persist.gps.qmienabled=true
 #
 ro.ril.transmitpower=true
 ##fluencetype can be "fluence" or "fluencepro" or "none"
-ro.qc.sdk.audio.fluencetype=none
+ro.qc.sdk.audio.fluencetype=fluence
