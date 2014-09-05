@@ -45,15 +45,5 @@
     "revision": "cm-11.0",
     "repository": "android_frameworks_webview",
     "target_path": "frameworks/webview"
-  },
-  { "remote": "github",
-    "revision": "cm-11.0",
-    "repository": "CyanogenMod/android_frameworks_av",
-    "target_path": "frameworks/av"
-  },
-  { "remote": "github",
-    "revision": "cm-11.0",
-    "repository": "CyanogenMod/android_hardware_qcom_media-caf",
-    "target_path": "hardware/qcom/media-caf"
   }
  ]
