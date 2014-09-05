@@ -24,5 +24,36 @@
     "remote": "CRX",
     "repository": "android_vendor_sony",
     "target_path": "vendor/sony"
-  }  
+  },
+  {
+    "remote": "androidarmv6",
+    "revision": "cm-11.0",
+    "repository": "android_external_chromium",
+    "target_path": "external/chromium"
+  },
+  { "remote": "androidarmv6",
+    "revision": "cm-11.0",
+    "repository": "android_external_webkit",
+    "target_path": "external/webkit"
+  },
+  { "remote": "androidarmv6",
+    "revision": "cm-11.0",
+    "repository": "android_packages_apps_Browser",
+    "target_path": "packages/apps/Browser"
+  },
+  { "remote": "androidarmv6",
+    "revision": "cm-11.0",
+    "repository": "android_frameworks_webview",
+    "target_path": "frameworks/webview"
+  },
+  { "remote": "github",
+    "revision": "cm-11.0",
+    "repository": "CyanogenMod/android_frameworks_av",
+    "target_path": "frameworks/av"
+  },
+  { "remote": "github",
+    "revision": "cm-11.0",
+    "repository": "CyanogenMod/android_hardware_qcom_media-caf",
+    "target_path": "hardware/qcom/media-caf"
+  }
  ]
