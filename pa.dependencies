@@ -11,9 +11,9 @@
   },
   {
     "remote": "cm",
-    "repository": "CyanogenMod/android_kernel_sony_msm8960t",
+    "repository": "CyanogenMod/android_kernel_sony_msm8x60",
     "revision": "cm-11.0",
-    "target_path": "kernel/sony/msm8960t"
+    "target_path": "kernel/sony/msm8x60"
   },
   {
     "remote": "CRX",
@@ -24,5 +24,26 @@
     "remote": "CRX",
     "repository": "android_vendor_sony",
     "target_path": "vendor/sony"
-  }  
- ]
+  },
+  {
+    "remote": "androidarmv6",
+    "revision": "cm-11.0",
+    "repository": "android_external_chromium",
+    "target_path": "external/chromium"
+  },
+  { "remote": "androidarmv6",
+    "revision": "cm-11.0",
+    "repository": "android_external_webkit",
+    "target_path": "external/webkit"
+  },
+  { "remote": "androidarmv6",
+    "revision": "cm-11.0",
+    "repository": "android_packages_apps_Browser",
+    "target_path": "packages/apps/Browser"
+  },
+  { "remote": "androidarmv6",
+    "revision": "cm-11.0",
+    "repository": "android_frameworks_webview",
+    "target_path": "frameworks/webview"
+  }
+]
