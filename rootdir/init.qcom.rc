@@ -580,6 +580,13 @@ service secchan /system/bin/secchand
     group root
     class core
 
+# create filesystem if necessary
+service setup_fs /system/bin/setup_fs /dev/block/platform/msm_sdcc.1/by-name/Userdata
+    class core
+    user root
+    group root
+    oneshot
+
 on property:sys.perf.profile=0
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "conservative"
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor "conservative"
