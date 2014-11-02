@@ -15,8 +15,8 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 TARGET_PROVIDES_ADRENO_DRIVER := true
-# Inherit qcom-common files.
-$(call inherit-product, device/sony/qcom-common/qcom-common.mk)
+# Inherit msm8960-common files.
+$(call inherit-product, device/sony/msm8960-common/msm8960.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/sony/huashan/overlay
 
