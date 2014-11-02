@@ -3,7 +3,7 @@
 # Use tradition sort
 export LC_ALL=C
 
-FP=$(dirname $(readlink -f $0))
+FP=$(cd ${0%/*} && pwd -P)
 export VENDOR=$(basename $(dirname $FP))
 export DEVICE=$(basename $FP)
 export BOARDCONFIGVENDOR=true
