@@ -15,8 +15,8 @@
 # inherit from Sony common
 include device/sony/common/BoardConfigCommon.mk
 
-# inherit from qcom-common
-include device/sony/qcom-common/BoardConfigCommon.mk
+# inherit from msm8960-common
+include device/sony/msm8960-common/BoardConfigCommon.mk
 
 # inherit from the proprietary version
 -include vendor/sony/huashan/BoardConfigVendor.mk
@@ -131,6 +131,9 @@ BOARD_USES_SEPERATED_VOICE_SPEAKER_MIC := true
 
 # QCOM enhanced A/V
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
+
+# Legacy RIL
+BOARD_HAS_RIL_LEGACY_PAP := true
 
 # Partition information
 BOARD_VOLD_MAX_PARTITIONS := 26
