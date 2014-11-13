@@ -34,3 +34,4 @@ persist.gps.qmienabled=true
 ro.ril.transmitpower=true
 ##fluencetype can be "fluence" or "fluencepro" or "none"
 ro.qc.sdk.audio.fluencetype=fluence
+ro.sf.lcd_density=280
