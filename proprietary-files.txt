@@ -92,7 +92,7 @@ lib/libcald_util.so
 # CPU
 #
 bin/mpdecision
-lib/libqc-opt.so
+lib/libqc-opt.so:vendor/lib/libqc-opt.so
 lib/libthermalclient.so
 
 #
