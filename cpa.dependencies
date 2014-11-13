@@ -13,6 +13,12 @@
   },
   {
     "remote": "cm",
+    "repository": "CyanogenMod/android_device_sony_qcom-common",
+    "target_path": "device/sony/qcom-common",
+    "revision": "cm-11.0"
+  },
+  {
+    "remote": "cm",
     "repository": "CyanogenMod/android_kernel_sony_msm8x60",
     "target_path": "kernel/sony/msm8x60",
     "revision": "cm-11.0"
