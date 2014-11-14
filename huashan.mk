@@ -47,34 +47,21 @@ PRODUCT_COPY_FILES += \
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
-# Audio
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/system/etc/audio_policy.conf:system/etc/audio_policy.conf \
-    $(LOCAL_PATH)/rootdir/system/etc/snd_soc_msm/snd_soc_msm_2x:system/etc/snd_soc_msm/snd_soc_msm_2x
 
 # Device specific init scripts
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/init.qcom.rc:root/init.qcom.rc \
     $(LOCAL_PATH)/rootdir/init.target.rc:root/init.target.rc \
-    $(LOCAL_PATH)/rootdir/ueventd.qcom.rc:root/ueventd.qcom.rc \
+    $(LOCAL_PATH)/rootdir/fstab.qcom:root/fstab.qcom \
+    $(LOCAL_PATH)/rootdir/fstab.qcom:recovery/root/fstab.qcom \
     $(LOCAL_PATH)/rootdir/init.recovery.qcom.rc:root/init.recovery.qcom.rc \
-    $(LOCAL_PATH)/rootdir/system/etc/init.qcom.bt.sh:system/etc/init.qcom.bt.sh
+    $(LOCAL_PATH)/rootdir/system/etc/init.qcom.bt.sh:system/etc/init.qcom.bt.sh \
+    $(LOCAL_PATH)/rootdir/ueventd.qcom.rc:root/ueventd.qcom.rc
 
-# Sony system_monitor
+# Additional sbin stuff
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/system/etc/sysmon.cfg:system/etc/sysmon.cfg
-
-# FM Radio
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/system/etc/init.qcom.fm.sh:system/etc/init.qcom.fm.sh
-
-# GPS
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/system/etc/gps.conf:system/etc/gps.conf
-
-# HW Settings
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/system/etc/hw_config.sh:system/etc/hw_config.sh
+    $(LOCAL_PATH)/rootdir/sbin/wait4tad_static:root/sbin/wait4tad_static \
+    $(LOCAL_PATH)/rootdir/sbin/tad_static:root/sbin/tad_static
 
 # Key layouts
 PRODUCT_COPY_FILES += \
@@ -83,35 +70,52 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/usr/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
     $(LOCAL_PATH)/rootdir/system/usr/keylayout/keypad_8960.kl:system/usr/keylayout/keypad_8960.kl \
     $(LOCAL_PATH)/rootdir/system/usr/keylayout/keypad_8960_liquid.kl:system/usr/keylayout/keypad_8960_liquid.kl \
-    $(LOCAL_PATH)/rootdir/system/usr/keylayout/mhl-rcp.kl:system/usr/keylayout/mhl-rcp.kl \
     $(LOCAL_PATH)/rootdir/system/usr/keylayout/msm8960-snd-card_Button_Jack.kl:system/usr/keylayout/msm8960-snd-card_Button_Jack.kl \
     $(LOCAL_PATH)/rootdir/system/usr/keylayout/philips_remote_ir.kl:system/usr/keylayout/philips_remote_ir.kl \
     $(LOCAL_PATH)/rootdir/system/usr/keylayout/samsung_remote_ir.kl:system/usr/keylayout/samsung_remote_ir.kl \
     $(LOCAL_PATH)/rootdir/system/usr/keylayout/synaptics_rmi4_i2c.kl:system/usr/keylayout/synaptics_rmi4_i2c.kl \
     $(LOCAL_PATH)/rootdir/system/usr/keylayout/ue_rf4ce_remote.kl:system/usr/keylayout/ue_rf4ce_remote.kl
 
+# FM Radio
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/system/etc/init.qcom.fm.sh:system/etc/init.qcom.fm.sh
+
+# Audio
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/system/etc/audio_policy.conf:system/etc/audio_policy.conf \
+    $(LOCAL_PATH)/rootdir/system/etc/snd_soc_msm/snd_soc_msm_2x:system/etc/snd_soc_msm/snd_soc_msm_2x
+
+# HW Settings
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/system/etc/hw_config.sh:system/etc/hw_config.sh
+
+
 # Media
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/etc/media_profiles.xml:system/etc/media_profiles.xml
 
-# NFCEE access control
-ifeq ($(TARGET_BUILD_VARIANT),user)
-    NFCEE_ACCESS_PATH := $(LOCAL_PATH)/rootdir/system/etc/nfcee_access.xml
-else
-    NFCEE_ACCESS_PATH := $(LOCAL_PATH)/rootdir/system/etc/nfcee_access_debug.xml
-endif
-
+# GPS
 PRODUCT_COPY_FILES += \
-    $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
+   $(LOCAL_PATH)/rootdir/system/etc/gps.conf:system/etc/gps.conf
 
-# SEC Config
+# WPA supplicant config
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/system/etc/sec_config:system/etc/sec_config
+   $(LOCAL_PATH)/rootdir/system/etc/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
+   $(LOCAL_PATH)/rootdir/system/etc/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
+
+
+# Sony system_monitor
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/system/etc/sysmon.cfg:system/etc/sysmon.cfg
 
 # Sensors
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/etc/sap.conf:system/etc/sap.conf \
     $(LOCAL_PATH)/rootdir/system/etc/sensors.conf:system/etc/sensors.conf
+
+# SEC Config
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/system/etc/sec_config:system/etc/sec_config
 
 # Touchpad
 PRODUCT_COPY_FILES += \
@@ -121,31 +125,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/init.sony.usb.rc:root/init.sony.usb.rc
 
-# Vold
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/fstab.qcom:root/fstab.qcom \
-    $(LOCAL_PATH)/rootdir/fstab.qcom:recovery/root/fstab.qcom
-
-# Wifi Config
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/system/etc/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
-    $(LOCAL_PATH)/rootdir/system/etc/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
-
 # Device specific part for two-stage boot
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/recovery/bootrec-device:recovery/bootrec-device
 
-# Additional sbin stuff
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/sbin/wait4tad_static:root/sbin/wait4tad_static \
-    $(LOCAL_PATH)/rootdir/sbin/tad_static:root/sbin/tad_static
 
-# Display
-PRODUCT_PACKAGES += \
-    hwcomposer.msm8960 \
-    gralloc.msm8960 \
-    copybit.msm8960 \
-    memtrack.msm8960
 
 # NFC Support
 PRODUCT_PACKAGES += \
@@ -159,10 +143,25 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     extract_elf_ramdisk
 
+# NFCEE access control
+ifeq ($(TARGET_BUILD_VARIANT),user)
+    NFCEE_ACCESS_PATH := $(LOCAL_PATH)/rootdir/system/etc/nfcee_access.xml
+else
+    NFCEE_ACCESS_PATH := $(LOCAL_PATH)/rootdir/system/etc/nfcee_access_debug.xml
+endif
+PRODUCT_COPY_FILES += \
+    $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
+
+# Display
+PRODUCT_PACKAGES += \
+    hwcomposer.msm8960 \
+    gralloc.msm8960 \
+    copybit.msm8960 \
+    memtrack.msm8960
+
 # Audio
 PRODUCT_PACKAGES += \
     alsa.msm8960 \
-    audio_policy.msm8960 \
     audio.primary.msm8960 \
     audio.a2dp.default \
     audio.usb.default \
@@ -170,9 +169,20 @@ PRODUCT_PACKAGES += \
     libaudio-resampler \
     tinymix
 
-# BT
+# Bluetooth
 PRODUCT_PACKAGES += \
     hci_qcomm_init
+
+# Camera
+PRODUCT_PACKAGES += \
+    camera.sony \
+    camera.msm8960 \
+    libmmcamera_interface \
+    libmmcamera_interface2
+
+# Force use old camera api
+PRODUCT_PROPERTY_OVERRIDES += \
+    camera2.portability.force_api=1
 
 # Sensors
 PRODUCT_PACKAGES += \
@@ -180,11 +190,9 @@ PRODUCT_PACKAGES += \
 
 # Wifi service
 PRODUCT_PACKAGES += \
+    mac-update \
     wcnss_service
 
-# WIFI MAC update
-PRODUCT_PACKAGES += \
-    mac-update
 # Miscellaneous
 PRODUCT_PACKAGES += \
     librs_jni \
@@ -197,10 +205,13 @@ PRODUCT_PACKAGES += \
 # We have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
-# Bluetooth
+# Set default USB interface
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    persist.sys.usb.config=mtp
+
+# Radio and Telephony
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qualcomm.bt.hci_transport=smd \
-    qcom.bt.le_dev_pwr_class=1
+    persist.radio.add_power_save=1
 
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -214,13 +225,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.gps.qc_nlp_in_use=0 \
     ro.gps.agps_provider=1 \
 
-# Set default USB interface
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=mtp
-
-# Radio and Telephony
+# Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.radio.add_power_save=1
+    ro.qualcomm.bt.hci_transport=smd \
+    qcom.bt.le_dev_pwr_class=1
 
 # Do not power down SIM card when modem is sent to Low Power Mode.
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -237,7 +245,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # call dalvik heap config
 $(call inherit-product-if-exists, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
-# Include non-opensource parts/ proprietary files
+# Include non-opensource parts
 $(call inherit-product, vendor/sony/huashan/huashan-vendor.mk)
 
 # Include own Adreno blobs
