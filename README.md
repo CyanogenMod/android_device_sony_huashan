@@ -3,7 +3,7 @@ Sony Xperia SP
 
 The Sony Xperia SP (codenamed _"HuaShan"_) is a mid-range smartphone from Sony Mobile.
 
-It was announced on 18 March 2013. It is supported in CyanogenMod 10.2 and CyanogenMod 11.
+It was announced on 18 March 2013. It was supported in CyanogenMod 10.2 & 11 and now supported by CyanogenMod 12.
 
 Basic   | Spec Sheet
 -------:|:-------------------------
@@ -18,4 +18,4 @@ Camera  | 8MPx, LED Flash
 
 ![Sony Xperia SP](http://wiki.cyanogenmod.org/images/e/e5/Huashan2.png "Sony Xperia SP in white")
 
-This branch is for building CyanogenMod 11 (or Android KitKat 4.4 AOSP based roms) ROMS.
+This branch is for building CyanogenMod 12 (or Android KitKat 4.4 AOSP based roms) ROMS.
