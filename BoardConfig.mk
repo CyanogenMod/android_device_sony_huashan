@@ -84,6 +84,13 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
 TARGET_NO_RPC := true
 
+# Enable Minikin text layout engine (will be the default soon)
+USE_MINIKIN := true
+# Include an expanded selection of fonts
+EXTENDED_FONT_FOOTPRINT := true
+
+TARGET_USES_LOGD := false
+
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
@@ -92,6 +99,9 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/sony/huashan/bluetooth
 
 # Needed for blobs
 COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
+
+# MMap compatibility
+BOARD_USES_LEGACY_MMAP := true
 
 # Time
 BOARD_USES_QC_TIME_SERVICES := true
