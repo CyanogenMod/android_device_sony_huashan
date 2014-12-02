@@ -111,17 +111,18 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_HAS_NO_SELECT_BUTTON := true
 TARGET_USERIMAGES_USE_EXT4 := true
 
-# QCOM/CAF hardware
+# QCOM Hardware
 BOARD_USES_QCOM_HARDWARE := true
-TARGET_QCOM_AUDIO_VARIANT := caf
-TARGET_QCOM_DISPLAY_VARIANT := caf
-TARGET_QCOM_MEDIA_VARIANT := caf
+
+# QCOM Display and Graphics
 TARGET_USES_QCOM_BSP := true
+TARGET_DISPLAY_USE_RETIRE_FENCE := true
 
 # Audio
 BOARD_USES_ALSA_AUDIO := true
 BOARD_USES_LEGACY_ALSA_AUDIO := true
-TARGET_USES_QCOM_MM_AUDIO := true
+QCOM_FLUENCE_ENABLED := false
+QCOM_ANC_HEADSET_ENABLED := false
 
 BOARD_HAVE_NEW_QCOM_CSDCLIENT := true
 BOARD_HAVE_CSD_FAST_CALL_SWITCH :=true
@@ -147,31 +148,13 @@ BOARD_SEPOLICY_DIRS += \
     device/sony/huashan/sepolicy
 
 BOARD_SEPOLICY_UNION += \
-    file_contexts \
-    property_contexts \
-    te_macros \
-    bluetooth_loader.te \
-    bridge.te \
-    camera.te \
-    device.te \
-    dhcp.te \
-    domain.te \
-    drmserver.te \
-    file.te \
-    kickstart.te \
-    init.te \
-    mac_update.te \
-    mediaserver.te \
-    mpdecision.te \
-    netmgrd.te \
-    qmux.te \
-    rild.te \
-    rmt.te \
-    surfaceflinger.te \
-    system.te \
-    tee.te \
-    thermald.te \
-    ueventd.te \
-    vold.te \
-    wpa_supplicant.te
-
+       file_contexts \
+       vold.te \
+       netmgrd.te \
+       thermal-engine.te \
+       rmt_storage.te \
+       mpdecision.te \
+       mm-qcamerad.te \
+       location.te \
+       sdcardd.te \
+       system_app.te
