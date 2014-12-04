@@ -25,44 +25,44 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
-key 512    0             WAKE
-key 513    1             WAKE
-key 514    2             WAKE
-key 515    3             WAKE
-key 516    4             WAKE
-key 517    5             WAKE
-key 518    6      	 WAKE
-key 519    7        	 WAKE
-key 520    8             WAKE
-key 521    9		 WAKE
-key 141   SETTINGS      WAKE	#Sound
-key 116   POWER         WAKE	#Picture
-key 352   EQUALS              WAKE
-key 105   DPAD_LEFT      WAKE
-key 106   DPAD_RIGHT     WAKE
-key 103   DPAD_UP        WAKE
-key 108   DPAD_DOWN      WAKE
-key 172   GUIDE      WAKE
-key 174   ESCAPE        WAKE
-key 377   TV             WAKE
-key 393   WINDOW      WAKE
-key 127   TV_INPUT             WAKE
-key 390   AVR_INPUT             WAKE
-key 128   MEDIA_STOP             WAKE
-key 395   EXPLORER             WAKE
-key 167   MEDIA_RECORD             WAKE
-key 168   MEDIA_REWIND             WAKE
-key 207   MEDIA_PLAY             WAKE
-key 208   MEDIA_FAST_FORWARD             WAKE
-key 158   BACK             WAKE
-key 119   MEDIA_PAUSE             WAKE
-key 407   MEDIA_NEXT             WAKE
-key 115   VOLUME_UP      WAKE
-key 114   VOLUME_DOWN    WAKE
-key 403   INFO             WAKE
-key 113   VOLUME_MUTE    WAKEU
-key 402   CHANNEL_UP     WAKE
-key 403   CHANNEL_DOWN   WAKE
-key 110   STB_INPUT             WAKE
-key 28   ENTER          WAKE	#OK
-key 139   MENU           WAKE
+key 512    0
+key 513    1
+key 514    2
+key 515    3
+key 516    4
+key 517    5
+key 518    6
+key 519    7
+key 520    8
+key 521    9
+key 141   SETTINGS	#Sound
+key 116   POWER	#Picture
+key 352   EQUALS
+key 105   DPAD_LEFT
+key 106   DPAD_RIGHT
+key 103   DPAD_UP
+key 108   DPAD_DOWN
+key 172   GUIDE
+key 174   ESCAPE
+key 377   TV
+key 393   WINDOW
+key 127   TV_INPUT
+key 390   AVR_INPUT
+key 128   MEDIA_STOP
+key 395   EXPLORER
+key 167   MEDIA_RECORD
+key 168   MEDIA_REWIND
+key 207   MEDIA_PLAY
+key 208   MEDIA_FAST_FORWARD
+key 158   BACK
+key 119   MEDIA_PAUSE
+key 407   MEDIA_NEXT
+key 115   VOLUME_UP
+key 114   VOLUME_DOWN
+key 403   INFO
+key 113   VOLUME_MUTE
+key 402   CHANNEL_UP
+key 403   CHANNEL_DOWN
+key 110   STB_INPUT
+key 28   ENTER	#OK
+key 139   MENU

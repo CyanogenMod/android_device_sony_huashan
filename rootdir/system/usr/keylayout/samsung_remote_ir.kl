@@ -25,38 +25,38 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
-key 11   0             WAKE
-key 2    1             WAKE
-key 3    2             WAKE
-key 4    3             WAKE
-key 5    4             WAKE
-key 6    5             WAKE
-key 7    6             WAKE
-key 8    7             WAKE
-key 9    8             WAKE
-key 10   9             WAKE
-key 115   VOLUME_UP    WAKE
-key 114   VOLUME_DOWN  WAKE
-key 113   VOLUME_MUTE  WAKE
-key 402   CHANNEL_UP   WAKE
-key 403   CHANNEL_DOWN WAKE
-key 158   BACK         WAKE
-key 102   INFO         WAKE
-key 28   ENTER         WAKE
-key 103   DPAD_UP      WAKE
-key 108   DPAD_DOWN    WAKE
-key 105   DPAD_LEFT    WAKE
-key 106   DPAD_RIGHT   WAKE
-key 119   MEDIA_PAUSE  WAKE
-key 30   PROG_RED      WAKE
-key 48   PROG_GREEN    WAKE
-key 46   PROG_YELLOW   WAKE
-key 32   PROG_BLUE     WAKE
-key 139   MENU         WAKE
-key 116   POWER        WAKE
-key 168	  MEDIA_REWIND WAKE
-key 119   MEDIA_PAUSE  WAKE
-key 208   MEDIA_FAST_FORWARD   WAKE
-key 167   MEDIA_RECORD WAKE
-key 207   MEDIA_PLAY   WAKE
-key 128   MEDIA_STOP   WAKE
+key 11   0
+key 2    1
+key 3    2
+key 4    3
+key 5    4
+key 6    5
+key 7    6
+key 8    7
+key 9    8
+key 10   9
+key 115   VOLUME_UP
+key 114   VOLUME_DOWN
+key 113   VOLUME_MUTE
+key 402   CHANNEL_UP
+key 403   CHANNEL_DOWN
+key 158   BACK
+key 102   INFO
+key 28   ENTER
+key 103   DPAD_UP
+key 108   DPAD_DOWN
+key 105   DPAD_LEFT
+key 106   DPAD_RIGHT
+key 119   MEDIA_PAUSE
+key 30   PROG_RED
+key 48   PROG_GREEN
+key 46   PROG_YELLOW
+key 32   PROG_BLUE
+key 139   MENU
+key 116   POWER
+key 168	  MEDIA_REWIND
+key 119   MEDIA_PAUSE
+key 208   MEDIA_FAST_FORWARD
+key 167   MEDIA_RECORD
+key 207   MEDIA_PLAY
+key 128   MEDIA_STOP
