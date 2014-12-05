@@ -1,4 +1,4 @@
-# Copyright (c) 2011, The Linux Foundation. All rights reserved.
+# Copyright (c) 2011, Code Aurora Forum.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -23,7 +23,6 @@ key 64    MEDIA_NEXT
 key 65    MEDIA_PLAY_PAUSE
 key 66    MEDIA_PREVIOUS
 key 67    MEDIA_STOP
-key 68    CAMERA
 key 87    POWER
 key 217   SEARCH
 
@@ -82,7 +81,6 @@ key 51    COMMA
 key 52    PERIOD
 key 103   DPAD_UP
 key 107   ENDCALL
-key 152   ENDCALL
 
 # Row 6
 key 42    SHIFT_LEFT
@@ -101,6 +99,11 @@ key 106   DPAD_RIGHT
 key 115   VOLUME_UP
 key 114   VOLUME_DOWN
 
+key 82    MEDIA_NEXT
+key 79    MEDIA_PREVIOUS
+key 164   MEDIA_PLAY_PAUSE
+#key 80    VENDOR_1
+
 # Numeric keypad
 key 522   STAR
 key 523   POUND
@@ -111,6 +114,7 @@ key 139   MENU
 key 231   CALL
 # R+ Mapping
 key 142   HOME
-# Camera Keys
-key 766   FOCUS
-key 528   CAMERA
+
+# CAMERA
+key 0x2fe CAMERA
+key 0x210 FOCUS
