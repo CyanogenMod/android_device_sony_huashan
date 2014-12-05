@@ -1,0 +1,6 @@
+allow thermal-engine self:socket create_socket_perms;
+allow thermal-engine self:netlink_kobject_uevent_socket { create setopt bind read };
+allow thermal-engine self:capability { dac_override net_admin chown };
+type_transition thermal-engine socket_device:sock_file thermal_socket;
+allow thermal-engine socket_device:dir w_dir_perms;
+allow thermal-engine thermal_socket:sock_file create_file_perms;

@@ -1,1 +1,2 @@
-allow vold kernel:system module_request;
+allow vold persist_file:dir search;
+allow vold persist_file:file { read write open getattr };
