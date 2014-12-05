@@ -1,0 +1,7 @@
+type_transition mm-qcamerad system_data_file:sock_file camera_socket "cam_socket0";
+allow mm-qcamerad system_data_file:dir w_dir_perms;
+allow mm-qcamerad system_data_file:sock_file unlink;
+
+allow mm-qcamerad audio_device:dir search;
+allow mm-qcamerad audio_device:chr_file rw_file_perms;
+
