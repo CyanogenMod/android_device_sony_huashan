@@ -1,17 +1,3 @@
-###################################
-# Dev nodes
-#
-/dev/msm_rotator                                u:object_r:video_device:s0
 /dev/video([0-9])+                              u:object_r:camera_device:s0
 /dev/gemini.*                                   u:object_r:camera_device:s0
 
-###################################
-# System files
-#
-/system/bin/thermald                      u:object_r:thermal-engine_exec:s0
-
-###################################
-# sysfs files
-#
-/sys/module/subsystem_restart(/.*)?                                 u:object_r:sysfs_ssr:s0
-/sys/module/subsystem_restart/parameters/restart_level              u:object_r:sysfs_ssr_toggle:s0
