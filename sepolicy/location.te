@@ -1,0 +1,2 @@
+allow location system_data_file:fifo_file { setattr read write open create };
+allow location system_data_file:dir { write remove_name add_name create };
