@@ -130,8 +130,6 @@ BOARD_USES_FLUENCE_INCALL := true
 BOARD_USES_SEPERATED_AUDIO_INPUT := true
 BOARD_USES_SEPERATED_VOICE_SPEAKER_MIC := true
 
-# QCOM enhanced A/V
-TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 
 # Legacy RIL
 BOARD_HAS_RIL_LEGACY_PAP := true
@@ -148,13 +146,32 @@ BOARD_SEPOLICY_DIRS += \
     device/sony/huashan/sepolicy
 
 BOARD_SEPOLICY_UNION += \
-       file_contexts \
-       vold.te \
-       netmgrd.te \
-       thermal-engine.te \
-       rmt_storage.te \
-       mpdecision.te \
-       mm-qcamerad.te \
-       location.te \
-       sdcardd.te \
-       system_app.te
+    file_contexts \
+    property_contexts \
+    te_macros \
+    bluetooth_loader.te \
+    bridge.te \
+    camera.te \
+    device.te \
+    dhcp.te \
+    domain.te \
+    drmserver.te \
+    file.te \
+    kickstart.te \
+    init.te \
+    mac_update.te \
+    mediaserver.te \
+    mpdecision.te \
+    netmgrd.te \
+    property.te \
+    property_contexts \
+    qmux.te \
+    rild.te \
+    rmt.te \
+    surfaceflinger.te \
+    system_server.te \
+    tee.te \
+    thermald.te \
+    ueventd.te \
+    vold.te \
+    wpa_supplicant.te
