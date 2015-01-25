@@ -41,7 +41,7 @@
              android:primary="true"
              android:mtpReserve="100" />
 
-    <!-- external sd card -->
+    <!-- external sdcard -->
     <storage android:mountPoint="/storage/sdcard1"
              android:storageDescription="@string/storage_sd_card"
              android:primary="false"
