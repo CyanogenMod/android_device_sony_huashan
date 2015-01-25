@@ -193,12 +193,25 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 
 # Radio and Telephony
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.ril.transmitpower=true \
     persist.radio.add_power_save=1
 
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=320 \
     debug.composition.type=c2d
+
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    rild.libpath=/system/lib/libril-qc-qmi-1.so
+
+# Audio
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.audio.fluence.mode=endfire \
+    persist.audio.handset.mic=digital \
+    persist.audio.lowlatency.rec=false \
+    af.resampler.quality=255 \
+    ro.qc.sdk.audio.fluencetype=fluence \
+    lpa.decode=true
 
 # QCOM Location
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -211,7 +224,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qualcomm.bt.hci_transport=smd \
     qcom.bt.le_dev_pwr_class=1
-
 
 # Do not power down SIM card when modem is sent to Low Power Mode.
 PRODUCT_PROPERTY_OVERRIDES += \
