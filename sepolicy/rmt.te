@@ -1,28 +1,23 @@
-# remote storage process
+# remote storage process (runs as nobody)
 type rmt, domain;
 type rmt_exec, exec_type, file_type;
 
 # Started by init
 init_daemon_domain(rmt)
 
+# Drop (user, group) to (nobody, nobody)
+allow rmt self:capability { setuid setgid };
+
 # opens and reads the primary block device
-allow rmt block_device:blk_file { read write open };
-
-allow rmt block_device:dir search;
-
 allow rmt rmt_block_device:blk_file { read write open };
 allow rmt efs_block_device:blk_file { read write open };
 allow rmt rmt_block_device:dir search;
 
-# XXX should we allow sys_rawio on /dev/mem?
-allow rmt self:capability { sys_rawio };
 # dac_override on open /sys/power/wake_lock
 allow rmt self:capability { setuid setgid dac_override };
 allow rmt self:socket { create ioctl bind setopt read write };
 
 allow rmt cgroup:dir { create add_name };
-# XXX do we need write access?
-allow rmt kmem_device:chr_file rw_file_perms;
 
 # Allow shared memory logging access
 allow rmt shared_log_device:chr_file rw_file_perms;
@@ -31,4 +26,9 @@ allow rmt shared_log_device:chr_file rw_file_perms;
 allow rmt sysfs:file { open append read getattr write };
 allow rmt sysfs:dir rw_dir_perms;
 
+# Wake lock access
 allow rmt sysfs_wake_lock:file { append open };
+
+# Access property service to set ctl.rmt_storage
+unix_socket_connect(rmt, property, init)
+allow rmt ctl_rmt_prop:property_service set;

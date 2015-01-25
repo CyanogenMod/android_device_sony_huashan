@@ -42,6 +42,7 @@ TARGET_CPU_VARIANT := krait
 TARGET_GLOBAL_CFLAGS += -mfpu=neon-vfpv4 -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mfpu=neon-vfpv4 -mfloat-abi=softfp
 COMMON_GLOBAL_CFLAGS += -D__ARM_USE_PLD -D__ARM_CACHE_LINE_SIZE=64
+TARGET_RELEASE_CPPFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 
 # Krait optimizations
 TARGET_USE_KRAIT_BIONIC_OPTIMIZATION := true
@@ -111,17 +112,18 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_HAS_NO_SELECT_BUTTON := true
 TARGET_USERIMAGES_USE_EXT4 := true
 
-# QCOM/CAF hardware
+# QCOM Hardware
 BOARD_USES_QCOM_HARDWARE := true
-TARGET_QCOM_AUDIO_VARIANT := caf
-TARGET_QCOM_DISPLAY_VARIANT := caf
-TARGET_QCOM_MEDIA_VARIANT := caf
+
+# QCOM Display and Graphics
 TARGET_USES_QCOM_BSP := true
+TARGET_DISPLAY_USE_RETIRE_FENCE := true
 
 # Audio
 BOARD_USES_ALSA_AUDIO := true
 BOARD_USES_LEGACY_ALSA_AUDIO := true
-TARGET_USES_QCOM_MM_AUDIO := true
+QCOM_FLUENCE_ENABLED := false
+QCOM_ANC_HEADSET_ENABLED := false
 
 BOARD_HAVE_NEW_QCOM_CSDCLIENT := true
 BOARD_HAVE_CSD_FAST_CALL_SWITCH :=true
@@ -129,8 +131,6 @@ BOARD_USES_FLUENCE_INCALL := true
 BOARD_USES_SEPERATED_AUDIO_INPUT := true
 BOARD_USES_SEPERATED_VOICE_SPEAKER_MIC := true
 
-# QCOM enhanced A/V
-TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 
 # Legacy RIL
 BOARD_HAS_RIL_LEGACY_PAP := true
@@ -164,14 +164,15 @@ BOARD_SEPOLICY_UNION += \
     mediaserver.te \
     mpdecision.te \
     netmgrd.te \
+    property.te \
+    property_contexts \
     qmux.te \
     rild.te \
     rmt.te \
     surfaceflinger.te \
-    system.te \
+    system_server.te \
     tee.te \
     thermald.te \
     ueventd.te \
     vold.te \
     wpa_supplicant.te
-
