@@ -50,14 +50,16 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/init.qcom.rc:root/init.qcom.rc \
     $(LOCAL_PATH)/rootdir/init.target.rc:root/init.target.rc \
-    $(LOCAL_PATH)/rootdir/ueventd.qcom.rc:root/ueventd.qcom.rc \
+    $(LOCAL_PATH)/rootdir/fstab.qcom:root/fstab.qcom \
+    $(LOCAL_PATH)/rootdir/fstab.qcom:recovery/root/fstab.qcom \
     $(LOCAL_PATH)/rootdir/init.recovery.qcom.rc:root/init.recovery.qcom.rc \
-    $(LOCAL_PATH)/rootdir/system/etc/init.qcom.bt.sh:system/etc/init.qcom.bt.sh
+    $(LOCAL_PATH)/rootdir/system/etc/init.qcom.bt.sh:system/etc/init.qcom.bt.sh \
+    $(LOCAL_PATH)/rootdir/ueventd.qcom.rc:root/ueventd.qcom.rc
 
-
-# HW Settings
+# Additional sbin stuff
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/system/etc/hw_config.sh:system/etc/hw_config.sh
+    $(LOCAL_PATH)/rootdir/sbin/wait4tad_static:root/sbin/wait4tad_static \
+    $(LOCAL_PATH)/rootdir/sbin/tad_static:root/sbin/tad_static
 
 # Key layouts
 PRODUCT_COPY_FILES += \
@@ -86,13 +88,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
    $(LOCAL_PATH)/rootdir/system/etc/gps.conf:system/etc/gps.conf
 
-
-# Sensors
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/system/etc/sap.conf:system/etc/sap.conf \
-    $(LOCAL_PATH)/rootdir/system/etc/sensors.conf:system/etc/sensors.conf
-
-
 # WPA supplicant config
 PRODUCT_COPY_FILES += \
    $(LOCAL_PATH)/rootdir/system/etc/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
@@ -106,11 +101,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/init.sony.usb.rc:root/init.sony.usb.rc
 
-# Vold
+# Sensors
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/fstab.qcom:root/fstab.qcom \
-    $(LOCAL_PATH)/rootdir/fstab.qcom:recovery/root/fstab.qcom
-
+    $(LOCAL_PATH)/rootdir/system/etc/sensors.conf:system/etc/sensors.conf \
+    $(LOCAL_PATH)/rootdir/system/etc/sap.conf:system/etc/sap.conf
 
 # SEC Config
 PRODUCT_COPY_FILES += \
@@ -120,10 +114,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/recovery/bootrec-device:recovery/bootrec-device
 
-# Additional sbin stuff
+
+# HW Settings
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/sbin/wait4tad_static:root/sbin/wait4tad_static \
-    $(LOCAL_PATH)/rootdir/sbin/tad_static:root/sbin/tad_static
+    $(LOCAL_PATH)/rootdir/system/etc/hw_config.sh:system/etc/hw_config.sh
 
 # Sony system_monitor
 PRODUCT_COPY_FILES += \
@@ -193,14 +187,13 @@ PRODUCT_PACKAGES += \
 # We have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
-# Bluetooth
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qualcomm.bt.hci_transport=smd \
-    qcom.bt.le_dev_pwr_class=1
-
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
+
+# Radio and Telephony
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.radio.add_power_save=1
 
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -214,11 +207,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.gps.qc_nlp_in_use=0 \
     ro.gps.agps_provider=1 \
 
-
-
-# Radio and Telephony
+# Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.radio.add_power_save=1
+    ro.qualcomm.bt.hci_transport=smd \
+    qcom.bt.le_dev_pwr_class=1
+
 
 # Do not power down SIM card when modem is sent to Low Power Mode.
 PRODUCT_PROPERTY_OVERRIDES += \
