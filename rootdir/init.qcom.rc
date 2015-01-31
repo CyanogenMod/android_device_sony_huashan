@@ -218,7 +218,6 @@ on post-fs-data
     write /sys/devices/platform/wcnss_wlan.0/serial_number ${ro.serialno}
     write /dev/wcnss_wlan 1
 
-    mkdir /data/tombstones 0771 system system
     mkdir /tombstones/modem 0771 system system
     mkdir /tombstones/lpass 0771 system system
     mkdir /tombstones/wcnss 0771 system system
