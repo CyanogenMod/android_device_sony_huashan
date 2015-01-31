@@ -88,9 +88,6 @@ on boot
     mkdir /data/system/perfd 0770 root system
     chmod 2770 /data/system/perfd
 
-    # Remove SUID bit for iproute2 ip tool
-    chmod 0755 /system/bin/ip
-
     # port-bridge
     chmod 0660 /dev/smd0
     chown system system /dev/smd0
