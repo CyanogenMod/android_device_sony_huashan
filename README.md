@@ -16,6 +16,6 @@ Battery | 2370 mAh
 Display | 4.6" 1280 x 720 px
 Camera  | 8MPx, LED Flash
 
-![Sony Xperia SP](http://wiki.cyanogenmod.org/images/e/e5/Huashan2.png "Sony Xperia SP in white")
+![Sony Xperia SP](http://wiki.cyanogenmod.org/images/3/3e/Huashan.png "Sony Xperia SP in white")
 
 This branch is for building CyanogenMod 11 (or Android KitKat 4.4 AOSP based roms) ROMS.
