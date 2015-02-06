@@ -432,11 +432,6 @@ service gsiff_daemon /system/bin/gsiff_daemon
     user system
     group gps qcom_oncrpc net_raw
 
-service qrngd /system/bin/qrngd -f
-    class main
-    user root
-    group root
-
 service qseecomd /system/bin/qseecomd
     class late_start
     user system
