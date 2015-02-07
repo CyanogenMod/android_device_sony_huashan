@@ -25,39 +25,39 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
-key 512    0             WAKE
-key 513    1             WAKE
-key 514    2             WAKE
-key 515    3             WAKE
-key 516    4             WAKE
-key 517    5             WAKE
-key 518    6      	 WAKE
-key 519    7        	 WAKE
-key 520    8             WAKE
-key 521    9		 WAKE
-key 213   AVR_INPUT      WAKE	#Sound
-key 375   WINDOW         WAKE	#Picture
-key 115   VOLUME_UP      WAKE
-key 114   VOLUME_DOWN    WAKE
-key 113   VOLUME_MUTE    WAKE
-key 402   CHANNEL_UP     WAKE
-key 403   CHANNEL_DOWN   WAKE
-key 158   BACK           WAKE
-key 358   INFO           WAKE
-key 352   ENTER          WAKE	#OK
-key 103   DPAD_UP        WAKE
-key 108   DPAD_DOWN      WAKE
-key 105   DPAD_LEFT      WAKE
-key 106   DPAD_RIGHT     WAKE
-key 119   MEDIA_PAUSE    WAKE
-key 366   DVR            WAKE	#Demo
-key 174   BREAK          WAKE	#Exit
-key 148   PROG_RED       WAKE
-key 373   PROG_GREEN     WAKE
-key 142   PROG_YELLOW    WAKE
-key 386   PROG_BLUE      WAKE
-key 377   TV             WAKE
-key 181   TV_INPUT       WAKE	#USB
-key 127   FUNCTION       WAKE	#Source
-key 139   MENU           WAKE
-key 116   POWER          WAKE
+key 512    0
+key 513    1
+key 514    2
+key 515    3
+key 516    4
+key 517    5
+key 518    6
+key 519    7
+key 520    8
+key 521    9
+key 213   AVR_INPUT	#Sound
+key 375   WINDOW	#Picture
+key 115   VOLUME_UP
+key 114   VOLUME_DOWN
+key 113   VOLUME_MUTE
+key 402   CHANNEL_UP
+key 403   CHANNEL_DOWN
+key 158   BACK
+key 358   INFO
+key 352   ENTER	#OK
+key 103   DPAD_UP
+key 108   DPAD_DOWN
+key 105   DPAD_LEFT
+key 106   DPAD_RIGHT
+key 119   MEDIA_PAUSE
+key 366   DVR	#Demo
+key 174   BREAK	#Exit
+key 148   PROG_RED
+key 373   PROG_GREEN
+key 142   PROG_YELLOW
+key 386   PROG_BLUE
+key 377   TV
+key 181   TV_INPUT	#USB
+key 127   FUNCTION	#Source
+key 139   MENU
+key 116   POWER

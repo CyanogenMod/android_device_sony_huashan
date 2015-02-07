@@ -1,0 +1,9 @@
+type updatemiscta, domain;
+type updatemiscta_exec, exec_type, file_type;
+
+init_daemon_domain(updatemiscta)
+
+allow updatemiscta self:capability { dac_override };
+allow updatemiscta socket_device:sock_file { write };
+allow updatemiscta init:unix_stream_socket { connectto };
+allow updatemiscta tad_static:unix_stream_socket  { connectto };

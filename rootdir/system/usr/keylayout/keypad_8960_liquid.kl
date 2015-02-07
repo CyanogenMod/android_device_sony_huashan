@@ -13,6 +13,6 @@
 # limitations under the License.
 #
 
-key 115   VOLUME_UP         WAKE_DROPPED
-key 114   VOLUME_DOWN       WAKE_DROPPED
-key 102   HOME              WAKE
+key 115   VOLUME_UP
+key 114   VOLUME_DOWN
+key 102   HOME
