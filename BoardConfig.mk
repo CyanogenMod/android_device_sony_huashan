@@ -145,31 +145,23 @@ BOARD_SEPOLICY_DIRS += \
 BOARD_SEPOLICY_UNION += \
     file_contexts \
     property_contexts \
-    te_macros \
-    bluetooth_loader.te \
-    bridge.te \
-    camera.te \
-    device.te \
-    dhcp.te \
-    domain.te \
-    drmserver.te \
-    file.te \
-    kickstart.te \
+    bootanim.te \
+    illumination.te \
     init.te \
     mac_update.te \
     mediaserver.te \
-    mpdecision.te \
-    netmgrd.te \
-    qmux.te \
-    rild.te \
-    rmt.te \
+    platform_app.te \
+    property.te \
+    rmt_storage.te \
+    secchand.te \
+    setup_fs.te \
     surfaceflinger.te \
-    system.te \
-    tee.te \
-    thermald.te \
-    ueventd.te \
-    vold.te \
-    wpa_supplicant.te
+    system_app.te \
+    system_monitor.te \
+    system_server.te \
+    tad_static.te \
+    ta_qmi_service.te \
+    updatemiscta.te
 
 # inherit from the proprietary version
 -include vendor/sony/huashan/BoardConfigVendor.mk

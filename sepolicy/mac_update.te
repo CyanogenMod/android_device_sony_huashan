@@ -9,3 +9,6 @@ allow mac_update devpts:chr_file { read write };
 # allow /data/misc/wifi access for firmware files
 allow mac_update wifi_data_file:dir w_dir_perms;
 allow mac_update wifi_data_file:file create_file_perms;
+
+allow mac_update tmpfs:chr_file { read write };
+allow mac_update self:capability { dac_override dac_read_search };

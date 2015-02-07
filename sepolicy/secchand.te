@@ -1,0 +1,15 @@
+type secchand, domain;
+type secchand_exec, exec_type, file_type;
+
+init_daemon_domain(secchand)
+
+allow secchand smem_log_device:chr_file { read write open ioctl };
+allow secchand self:socket { create ioctl bind read write };
+allow secchand self:capability { dac_override };
+
+allow secchand tee_device:chr_file { open read write ioctl };
+
+allow secchand socket_device:sock_file { write };
+
+# /dev/socket/tad
+allow secchand tad_static:unix_stream_socket { connectto };

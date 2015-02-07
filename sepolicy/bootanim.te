@@ -1,0 +1,1 @@
+allow bootanim gpu_device:chr_file { open read write };

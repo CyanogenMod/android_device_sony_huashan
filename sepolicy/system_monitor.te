@@ -1,0 +1,34 @@
+type system_monitor, domain;
+type system_monitor_exec, exec_type, file_type;
+
+init_daemon_domain(system_monitor)
+
+allow system_monitor socket_device:dir { write add_name remove_name };
+
+allow system_monitor socket_device:sock_file { create write };
+
+allow system_monitor smem_log_device:chr_file { open read write ioctl };
+
+allow system_monitor self:socket { create ioctl read write };
+allow system_monitor self:capability { dac_override dac_read_search net_admin fsetid };
+allow system_monitor self:netlink_kobject_uevent_socket { create setopt bind read };
+
+allow system_monitor qmuxd_socket:dir { search add_name write };
+allow system_monitor qmuxd_socket:sock_file { create write setattr };
+allow system_monitor qmuxd:unix_stream_socket { connectto };
+
+allow system_monitor sysfs_thermal:dir { search read open };
+allow system_monitor sysfs_thermal:file { open read write };
+
+allow system_monitor system_data_file:file { open };
+
+# /data/etc/flashled_vf_factory
+allow system_monitor camera_data_file:file { open read getattr };
+
+allow system_monitor sysfs_wake_lock:file { open write };
+
+# thermal_mitigation
+allow system_monitor sysfs:file { write };
+
+# /dev/socket/illumination
+allow system_monitor illumination:unix_stream_socket { connectto };

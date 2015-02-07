@@ -1,2 +1,0 @@
-# Qualcomm Secure Execution Environment Communicator policy
-allow tee self:process execmem;
