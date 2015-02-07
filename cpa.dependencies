@@ -1,0 +1,52 @@
+[
+  {
+    "repository": "android_device_sony_msm8960-common",
+    "target_path": "device/sony/msm8960-common"
+  },
+  {
+    "repository": "android_kernel_sony_msm8x60",
+    "target_path": "kernel/sony/msm8x60"
+  },
+  {
+    "repository": "android_hardware_sony_DASH",
+    "target_path": "hardware/sony/DASH"
+  }
+]
+[
+  {
+    "remote": "cm",
+    "repository": "CyanogenMod/android_device_sony_msm8960-common",
+    "target_path": "device/sony/msm8960-common",
+    "revision": "cm-12.0"
+  },
+  {
+    "remote": "cm",
+    "repository": "CyanogenMod/android_device_sony_qcom-common",
+    "target_path": "device/sony/qcom-common",
+    "revision": "cm-12.0"
+  },
+  {
+    "remote": "cm",
+    "repository": "CyanogenMod/android_kernel_sony_msm8x60",
+    "target_path": "kernel/sony/msm8960t",
+    "revision": "cm-12.0"
+  },
+  {
+    "remote": "cm",
+    "repository": "CyanogenMod/android_device_sony_common",
+    "target_path": "device/sony/common",
+    "revision": "cm-12.0"
+  },
+  {
+    "remote": "cm",
+    "repository": "CyanogenMod/android_hardware_sony_DASH",
+    "target_path": "hardware/sony/DASH",
+    "revision": "cm-12.0"
+  },
+  {
+    "remote": "github",
+    "repository": "TheMuppets/proprietary_vendor_sony",
+    "target_path": "vendor/sony",
+    "revision": "cm-12.0"
+  }
+]
