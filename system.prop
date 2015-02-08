@@ -13,3 +13,5 @@ persist.timed.enable=true
 #system prop for switching gps driver to qmi
 persist.gps.qmienabled=true
 
+hw.fm.internal_antenna=true
+
