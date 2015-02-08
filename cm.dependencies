@@ -7,6 +7,12 @@
     "repository": "android_kernel_sony_msm8x60",
     "target_path": "kernel/sony/msm8x60"
   },
+  
+  {
+    "repository": "android_hardware_qcom_fm",
+    "target_path": "hardware/qcom/fm"
+   }
+  
   {
     "repository": "android_hardware_sony_DASH",
     "target_path": "hardware/sony/DASH"
