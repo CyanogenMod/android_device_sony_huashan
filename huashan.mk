@@ -12,8 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-
 TARGET_PROVIDES_ADRENO_DRIVER := true
 # inherit from msm8960-common
 $(call inherit-product, device/sony/msm8960-common/msm8960.mk)
