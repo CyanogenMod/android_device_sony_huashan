@@ -111,82 +111,48 @@
     <bool name="config_hotswapCapable">true</bool>
 
     <!-- Array of light sensor LUX values to define our levels for auto backlight brightness support.
-         The N entries of this array define N + 1 control points as follows:
-         (1-based arrays)
+        The N entries of this array define N + 1 zones as follows:
 
-         Point 1:            (0, value[1]):             lux <= 0
-         Point 2:     (level[1], value[2]):  0        < lux <= level[1]
-         Point 3:     (level[2], value[3]):  level[2] < lux <= level[3]
-         ...
-         Point N+1: (level[N], value[N+1]):  level[N] < lux
-
-         The control points must be strictly increasing.  Each control point
-         corresponds to an entry in the brightness backlight values arrays.
-         For example, if LUX == level[1] (first element of the levels array)
-         then the brightness will be determined by value[2] (second element
-         of the brightness values array).
-
-         Spline interpolation is used to determine the auto-brightness
-         backlight values for LUX levels between these control points.
-
+        Zone 0: 0 <= LUX < array[0]
+        Zone 1: array[0] <= LUX < array[1]
+        ...
+        Zone N: array[N - 1] <= LUX < array[N]
+        Zone N + 1: array[N] <= LUX < infinity
 
         Must be overridden in platform specific overlays
     -->
     <integer-array name="config_autoBrightnessLevels">
-        <item>5</item>
-        <item>10</item>
-        <item>15</item>
-        <item>20</item>
-        <item>30</item>
-        <item>50</item>
-        <item>75</item>
-        <item>100</item>
-        <item>150</item>
-        <item>200</item>
-        <item>300</item>
-        <item>500</item>
-        <item>750</item>
-        <item>1000</item>
-        <item>1022</item>
+        <item>24</item>
+        <item>72</item>
+        <item>156</item>
+        <item>192</item>
+        <item>240</item>
+        <item>420</item>
+        <item>756</item>
+        <item>1024</item>
     </integer-array>
 
     <!-- Array of output values for LCD backlight corresponding to the LUX values
-         in the config_autoBrightnessLevels array.  This array should have size one greater
-         than the size of the config_autoBrightnessLevels array.
-         The brightness values must be between 0 and 255 and be non-decreasing.
-         This must be overridden in platform specific overlays -->
+        in the config_autoBrightnessLevels array. This array should have size one greater
+        than the size of the config_autoBrightnessLevels array.
+    -->
     <integer-array name="config_autoBrightnessLcdBacklightValues">
-        <item>10</item>  <!--    0 -    5 -->
-        <item>30</item>  <!--    5 -   10 -->
-        <item>50</item>  <!--   10 -   15 -->
-        <item>65</item>  <!--   15 -   20 -->
-        <item>80</item>  <!--   20 -   30 -->
-        <item>105</item> <!--   30 -   50 -->
-        <item>120</item> <!--   50 -   75 -->
-        <item>135</item> <!--   75 -  100 -->
-        <item>155</item> <!--  100 -  150 -->
-        <item>165</item> <!--  150 -  200 -->
-        <item>185</item> <!--  200 -  300 -->
-        <item>210</item> <!--  300 -  500 -->
-        <item>230</item> <!--  500 -  750 -->
-        <item>240</item> <!--  750 - 1000 -->
-        <item>250</item> <!-- 1000 - 1022 -->
-        <item>255</item> <!-- 1022+ -->
+        <item>59</item>  <!--    0 -   24 -->
+        <item>110</item> <!--   24 -   72 -->
+        <item>142</item> <!--   72 -  156 -->
+        <item>159</item> <!--  156 -  192 -->
+        <item>174</item> <!--  192 -  240 -->
+        <item>200</item> <!--  240 -  420 -->
+        <item>228</item> <!--  420 -  756 -->
+        <item>250</item> <!--  756 - 1024 -->
+        <item>255</item> <!-- 1024+ -->
     </integer-array>
 
     <!-- Array of output values for button backlight corresponding to the LUX values
-         in the config_autoBrightnessLevels array.  This array should have size one greater
-         than the size of the config_autoBrightnessLevels array.
-         The brightness values must be between 0 and 255 and be non-decreasing.
-         This must be overridden in platform specific overlays -->
+        in the config_autoBrightnessLevels array. This array should have size one greater
+        than the size of the config_autoBrightnessLevels array.
+    -->
     <integer-array name="config_autoBrightnessButtonBacklightValues">
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
@@ -199,18 +165,11 @@
     </integer-array>
 
     <!-- Array of output values for keyboard backlight corresponding to the LUX values
-         in the config_autoBrightnessLevels array.  This array should have size one greater
-         than the size of the config_autoBrightnessLevels array.
-         The brightness values must be between 0 and 255 and be non-decreasing.
-         This must be overridden in platform specific overlays -->
+        in the config_autoBrightnessLevels array. This array should have size one greater
+        than the size of the config_autoBrightnessLevels array.
+        huashan has no keyboard so all values are zero.
+    -->
     <integer-array name="config_autoBrightnessKeyboardBacklightValues">
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
