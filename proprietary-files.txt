@@ -232,11 +232,6 @@ lib/hw/nfc.msm8960.so
 bin/chargemon
 
 #
-# Post Processing
-#
-bin/mm-pp-daemon
-
-#
 # Protocol Buffers
 #
 lib/libprotobuf-c.so
