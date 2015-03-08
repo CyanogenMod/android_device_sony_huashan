@@ -12,9 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# inherit from Sony common
-include device/sony/common/BoardConfigCommon.mk
-
 # inherit from msm8960-common
 include device/sony/msm8960-common/BoardConfigCommon.mk
 
@@ -26,7 +23,6 @@ TARGET_KERNEL_CONFIG := cm_viskan_huashan_defconfig
 
 # Platform
 TARGET_BOOTLOADER_BOARD_NAME := MSM8960
-TARGET_BOARD_PLATFORM := msm8960
 BOARD_VENDOR_PLATFORM := viskan
 
 # Architecture
