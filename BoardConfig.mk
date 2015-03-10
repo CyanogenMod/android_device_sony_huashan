@@ -141,3 +141,7 @@ BOARD_SEPOLICY_UNION += \
 
 # inherit from the proprietary version
 -include vendor/sony/huashan/BoardConfigVendor.mk
+
+#twrp
+DEVICE_RESOLUTION := 720x1280
+RECOVERY_SDCARD_ON_DATA := true 
