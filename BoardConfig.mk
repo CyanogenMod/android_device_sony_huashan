@@ -18,7 +18,7 @@ include device/sony/msm8960-common/BoardConfigCommon.mk
 TARGET_SPECIFIC_HEADER_PATH += device/sony/huashan/include
 
 # Kernel properties
-TARGET_KERNEL_SOURCE := kernel/sony/msm8x60
+TARGET_KERNEL_SOURCE := kernel/sony/msm8960t
 TARGET_KERNEL_CONFIG := cm_viskan_huashan_defconfig
 
 # Platform
@@ -89,7 +89,7 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 TARGET_USERIMAGES_USE_EXT4 := true
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := C5302,C5303,C5306,huashan
+TARGET_OTA_ASSERT_DEVICE := C5302,C5303,C5306,huashan,lbhuashan
 
 # Audio
 BOARD_USES_LEGACY_ALSA_AUDIO := true
@@ -141,7 +141,3 @@ BOARD_SEPOLICY_UNION += \
 
 # inherit from the proprietary version
 -include vendor/sony/huashan/BoardConfigVendor.mk
-
-#twrp
-DEVICE_RESOLUTION := 720x1280
-RECOVERY_SDCARD_ON_DATA := true 
