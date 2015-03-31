@@ -204,6 +204,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     rild.libpath=/system/lib/libril-qc-qmi-1.so
+    
+# Media
+PRODUCT_PROPERTY_OVERRIDES += \
+    media.stagefright.use-awesome=true
 
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
