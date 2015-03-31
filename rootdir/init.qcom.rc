@@ -23,41 +23,17 @@ on early-init
     symlink /data/tombstones /tombstones
 
 on init
-    mkdir /mnt/shell/emulated 0700 shell shell
-    mkdir /storage/emulated 0555 root root
-
-    mkdir /mnt/media_rw/sdcard0 0700 media_rw media_rw
-    mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
-    mkdir /storage/usbdisk 0000 system system
-    mkdir /mnt/media_rw/usbdisk 0700 media_rw media_rw
-
-    mkdir /storage/sdcard0 0700 root root
-    mkdir /storage/sdcard1 0700 root root
-    mkdir /storage/usbdisk 0700 root root
-
-    export EXTERNAL_STORAGE /storage/emulated/legacy
-    export SECONDARY_STORAGE /storage/sdcard1
-    export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
-    export EMULATED_STORAGE_TARGET /storage/emulated
-
-    # for backwards compatibility
-    symlink /storage/emulated/legacy /sdcard
-    symlink /storage/emulated/legacy /mnt/sdcard
-    symlink /storage/emulated/legacy /storage/sdcard0
-    symlink /mnt/shell/emulated/0 /storage/emulated/legacy
-    symlink /storage/sdcard1 /ext_card
-    symlink /storage/sdcard1 /mnt/ext_card
-    symlink /storage/usbdisk /usbdisk
-    symlink /storage/usbdisk /mnt/usbdisk
-
     symlink /dev/socket /tmp
 
     mkdir /dev/bus 0755 root root
     mkdir /dev/bus/usb 0755 root root
 
+    # Support legacy storage paths
+    symlink /sdcard /mnt/sdcard
+    symlink /sdcard /storage/sdcard0
+
 on fs
     mount_all ./fstab.qcom
-    setprop ro.crypto.fuse_sdcard true
 
     mkdir /lta-label 0555 system system
     wait /dev/block/platform/msm_sdcc.1/by-name/LTALabel
@@ -214,8 +190,6 @@ on boot
 on post-fs-data
     # Used by taimport for MAC addresses
     mkdir /data/etc 0775 root shell
-
-    mkdir /data/media 0770 media_rw media_rw
 
     # Create directory for TZ Apps
     mkdir /data/misc/qsee 0770 system system
@@ -432,18 +406,6 @@ service iprenew_bt-pan /system/bin/dhcpcd -n
 on property:ro.data.large_tcp_window_size=true
     # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
     write /proc/sys/net/ipv4/tcp_adv_win_scale  2
-
-# virtual sdcard daemon running as media_rw (1023)
-service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emulated
-    class late_start
-
-service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -w 1023 /mnt/media_rw/sdcard1 /storage/sdcard1
-    class late_start
-    disabled
-
-service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 -w 1023 /mnt/media_rw/usbdisk /storage/usbdisk
-    class late_start
-    disabled
 
 service mpdecision /system/bin/mpdecision --avg_comp
     class late_start
