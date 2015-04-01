@@ -173,38 +173,7 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 2147483648
 # Include common SE policies
 -include device/qcom/sepolicy/sepolicy.mk
 
-BOARD_SEPOLICY_DIRS += \
-    device/sony/huashan/sepolicy
-
-BOARD_SEPOLICY_UNION += \
-    file_contexts \
-    file.te \
-    healthd.te \
-    hostapd.te \
-    init.te \
-    init_shell.te \
-    kernel.te \
-    mac_update.te \
-    mediaserver.te \
-    mpdecision.te \
-    netd.te \
-    platform_app.te \
-    property.te \
-    property_contexts \
-    radio.te \
-    rild.te \
-    sdcardd.te \
-    secchand.te \
-    setup_fs.te \
-    shell.te \
-    surfaceflinger.te \
-    system_app.te \
-    system_server.te \
-    tad_static.te \
-    ta_qmi_service.te \
-    thermanager.te \
-    updatemiscta.te \
-    vold.te
+BOARD_SEPOLICY_DIRS += device/sony/huashan/sepolicy
 
 # inherit from the proprietary version
 -include vendor/sony/huashan/BoardConfigVendor.mk
