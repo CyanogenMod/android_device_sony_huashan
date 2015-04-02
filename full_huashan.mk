@@ -40,3 +40,7 @@ PRODUCT_DEVICE := huashan
 PRODUCT_BRAND := Sony
 PRODUCT_MANUFACTURER := Sony
 PRODUCT_MODEL := Xperia SP
+
+# Torch
+PRODUCT_PACKAGES := \
+    Torch
