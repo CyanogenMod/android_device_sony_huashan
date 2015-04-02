@@ -18,12 +18,12 @@ include device/sony/msm8960-common/BoardConfigCommon.mk
 TARGET_SPECIFIC_HEADER_PATH += device/sony/huashan/include
 
 # Kernel properties
-TARGET_KERNEL_SOURCE := kernel/sony/msm8x60
+TARGET_KERNEL_SOURCE := kernel/sony/msm8960t
 TARGET_KERNEL_CONFIG := cm_viskan_huashan_defconfig
 
 # Platform
 TARGET_BOOTLOADER_BOARD_NAME := MSM8960
-BOARD_VENDOR_PLATFORM := viskan
+BOARD_VENDOR_PLATFORM := msm8960
 
 # Kernel information
 BOARD_KERNEL_BASE  := 0x80200000
