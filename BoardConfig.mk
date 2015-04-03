@@ -82,8 +82,7 @@ BOARD_CUSTOM_BOOTIMG_MK := device/sony/huashan/custombootimg.mk
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 
 TARGET_RECOVERY_FSTAB := device/sony/huashan/rootdir/fstab.qcom
-#Not required as of now due to CWM:
-#RECOVERY_FSTAB_VERSION := 2
+RECOVERY_FSTAB_VERSION := 2
 
 BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_HAS_NO_SELECT_BUTTON := true
