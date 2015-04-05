@@ -129,6 +129,7 @@ BOARD_SEPOLICY_UNION += \
     platform_app.te \
     property.te \
     rmt_storage.te \
+    sdcardd.te \
     secchand.te \
     setup_fs.te \
     surfaceflinger.te \
