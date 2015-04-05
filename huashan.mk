@@ -103,8 +103,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/etc/sec_config:system/etc/sec_config
 
-
-
 # HW Settings
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/etc/hw_config.sh:system/etc/hw_config.sh
@@ -180,10 +178,6 @@ PRODUCT_PACKAGES += \
     librs_jni \
     com.android.future.usb.accessory
 
-# Filesystem management tools
-PRODUCT_PACKAGES += \
-    e2fsck
-
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
@@ -211,15 +205,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.handset.mic=digital \
     persist.audio.lowlatency.rec=false \
     af.resampler.quality=255 \
-    ro.qc.sdk.audio.fluencetype=fluence \
-    lpa.decode=true
+    ro.qc.sdk.audio.fluencetype=fluence
 
 # QCOM Location
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qc.sdk.izat.premium_enabled=0 \
     ro.qc.sdk.izat.service_mask=0x4 \
     persist.gps.qc_nlp_in_use=0 \
-    ro.gps.agps_provider=1 \
+    ro.gps.agps_provider=1
 
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
