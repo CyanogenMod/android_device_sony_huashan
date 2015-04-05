@@ -307,7 +307,6 @@ lib/libals.so
 #
 # System Checks
 #
-bin/e2fsck
 bin/efsks
 bin/ks
 bin/qcks
