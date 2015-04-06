@@ -18,8 +18,8 @@ Battery | 2370 mAh
 Display | 4.6" 1280 x 720 px
 Camera  | 8MPx, LED Flash
 
-This branch is for building any Cyanogenmod-Based ROMs ( CM12.0 and above [Android Lollipop]) ROMS.
+This branch is for building any Cyanogenmod-Based ROMs for CM12.0 and above [Android Lollipop in General]
 
-This Device Source is STABLE once fixes are patched by the user side from XDA
+This Device Source is STABLE once fixes are patched by the user side from fixes provided from XDA
 
-Local Manifests File can be found here: https://github.com/Furrydaus/local_manifests
+Local Manifests File can be found here if you want to build for this device: https://github.com/Furrydaus/local_manifests
