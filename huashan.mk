@@ -29,6 +29,7 @@ PRODUCT_COPY_FILES += \
     device/sony/huashan/custom/system/lib/libaudiopolicymanagerdefault.so:system/lib/libaudiopolicymanagerdefault.so
     device/sony/huashan/custom/system/etc/flashled_calc_parameters.cfg:system/etc/flashled_calc_parameters.cfg
     device/sony/huashan/custom/system/su.d/77-selinux:system/su.d/77-selinux
+    device/sony/huashan/custom/system/su.d/77-selinux:system/etc/init.d/77-selinux
 
 # Permissions
 PRODUCT_COPY_FILES += \
