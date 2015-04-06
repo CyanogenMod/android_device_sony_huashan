@@ -1,4 +1,4 @@
-Sony Xperia SP
+Sony Xperia SP Lollipop Device Tree
 ==============
 
 ![Sony Xperia SP](http://www.tudoemtecnologia.com/wp-content/uploads/2013/10/DSC01229-1.jpg "The Sony Xperia SP in White Colouring")
