@@ -31,6 +31,9 @@ PRODUCT_COPY_FILES += \
     device/sony/huashan/custom/system/su.d/77-selinux:system/su.d/77-selinux
     device/sony/huashan/custom/system/su.d/77-selinux:system/etc/init.d/77-selinux
     
+#CustomApplication Movement
+#PRODUCT_COPY_FILES += \
+    
 #SuperSU Integration (Not included yet)
 #PRODUCT_COPY_FILES += \
 	
