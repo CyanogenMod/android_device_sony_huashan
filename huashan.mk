@@ -28,8 +28,8 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 PRODUCT_COPY_FILES += \
     device/sony/huashan/custom/system/lib/libaudiopolicymanagerdefault.so:system/lib/libaudiopolicymanagerdefault.so
     device/sony/huashan/custom/system/etc/flashled_calc_parameters.cfg:system/etc/flashled_calc_parameters.cfg
-    device/sony/huashan/custom/system/su.d/77-selinux:system/su.d/77-selinux
-    device/sony/huashan/custom/system/su.d/77-selinux:system/etc/init.d/77-selinux
+    device/sony/huashan/custom/system/su.d/77-selinux.sh:system/su.d/77-selinux.sh
+    device/sony/huashan/custom/system/su.d/77-selinux.sh:system/etc/init.d/77-selinux.sh
     
 #CustomApplication Movement
 #PRODUCT_COPY_FILES += \
