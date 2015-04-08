@@ -78,7 +78,11 @@
         Zone N + 1: array[N] <= LUX < infinity
 
         Must be overridden in platform specific overlays
-    -->
+        
+        The following code is the unused code for The AutoBrightness Levels.
+        Broken as of now but when fixed, add this back:
+        
+        #Code Begin
     <integer-array name="config_autoBrightnessLevels">
         <item>24</item>
         <item>72</item>
@@ -89,6 +93,8 @@
         <item>756</item>
         <item>1024</item>
     </integer-array>
+    #Code End
+    -->
     
 	    <!-- Minimum screen brightness setting allowed by the power manager.
          The user is forbidden from setting the brightness below this level. -->
@@ -99,29 +105,30 @@
    
     <!-- Screen brightness used to dim the screen when the user activity
          timeout expires.  May be less than the minimum allowed brightness setting
-         that can be set by the user. -->
+         that can be set by the user.
     <integer name="config_screenBrightnessDim">1</integer>
 
     <!-- Array of output values for LCD backlight corresponding to the LUX values
         in the config_autoBrightnessLevels array. This array should have size one greater
         than the size of the config_autoBrightnessLevels array.
-    -->
+
     <integer-array name="config_autoBrightnessLcdBacklightValues">
         <item>59</item>  <!--    0 -   24 -->
-        <item>110</item> <!--   24 -   72 -->
-        <item>142</item> <!--   72 -  156 -->
-        <item>159</item> <!--  156 -  192 -->
-        <item>174</item> <!--  192 -  240 -->
-        <item>200</item> <!--  240 -  420 -->
-        <item>228</item> <!--  420 -  756 -->
-        <item>250</item> <!--  756 - 1024 -->
-        <item>255</item> <!-- 1024+ -->
-    </integer-array>
+        <!-- <item>110</item> <!--   24 -   72 -->
+        <!-- <item>142</item> <!--   72 -  156 -->
+        <!-- <item>159</item> <!--  156 -  192 -->
+        <!-- <item>174</item> <!--  192 -  240 -->
+        <!-- <item>200</item> <!--  240 -  420 -->
+        <!-- <item>228</item> <!--  420 -  756 -->
+        <!-- <item>250</item> <!--  756 - 1024 -->
+        <!-- <item>255</item> <!-- 1024+ -->
+    <!-- </integer-array>         -->
+    
 
     <!-- Array of output values for button backlight corresponding to the LUX values
         in the config_autoBrightnessLevels array. This array should have size one greater
         than the size of the config_autoBrightnessLevels array.
-    -->
+        
     <integer-array name="config_autoBrightnessButtonBacklightValues">
         <item>0</item>
         <item>0</item>
@@ -138,8 +145,8 @@
         in the config_autoBrightnessLevels array. This array should have size one greater
         than the size of the config_autoBrightnessLevels array.
         huashan has no keyboard so all values are zero.
-    -->
-    <integer-array name="config_autoBrightnessKeyboardBacklightValues">
+    
+ <integer-array name="config_autoBrightnessKeyboardBacklightValues">
         <item>0</item>
         <item>0</item>
         <item>0</item>
@@ -150,6 +157,8 @@
         <item>0</item>
         <item>0</item>
     </integer-array>
+    
+        -->
 
     <!-- Package name(s) containing location provider support.
          These packages can contain services implementing location providers,
@@ -171,7 +180,7 @@
 
     <!-- The duration (in milliseconds) that the radio will scan for a signal
                   when there's no network connection. If the scan doesn't timeout, use zero -->
-    <integer name="config_radioScanningTimeout">9000</integer>
+    <integer name="config_radioScanningTimeout">10000</integer>
 
     <!-- List of regexpressions describing the interface (if any) that represent tetherable
          USB interfaces.  If the device doesn't want to support tething over USB this should
@@ -248,7 +257,7 @@
 
     <!-- When true use the linux /dev/input/event subsystem to detect the switch changes
          on the headphone/microphone jack. When false use the older uevent framework. -->
-    <bool name="config_useDevInputEventForAudioJack">true</bool>
+    <bool name="config_useDevInputEventForAudioJack">false</bool>
 
     <!-- Hardware 'face' keys present on the device, stored as a bit field.
          This integer should equal the sum of the corresponding value for each
@@ -265,7 +274,7 @@
 
     <!-- Boolean indicating if restoring network selection should be skipped -->
     <!-- The restoring is handled by modem if it is true -->
-    <bool translatable="false" name="skip_restoring_network_selection">true</bool>
+    <bool translatable="false" name="skip_restoring_network_selection">false</bool>
 
     <!-- Set to true to add links to Cell Broadcast app from Settings and MMS app. -->
     <bool name="config_cellBroadcastAppLinks">true</bool>
@@ -293,7 +302,7 @@
     <bool name="config_enableLockScreenTranslucentDecor">true</bool>
 
     <!--  Maximum number of supported users -->
-    <integer name="config_multiuserMaximumUsers">4</integer>
+    <integer name="config_multiuserMaximumUsers">6</integer>
     <!--  Whether Multiuser UI should be shown -->
     <bool name="config_enableMultiUserUI">true</bool>
 
