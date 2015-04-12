@@ -86,64 +86,51 @@
         Must be overridden in platform specific overlays
     -->
     <integer-array name="config_autoBrightnessLevels">
-        <item>24</item>
-        <item>72</item>
-        <item>156</item>
-        <item>192</item>
-        <item>240</item>
-        <item>420</item>
-        <item>756</item>
-        <item>1024</item>
-    </integer-array>
-
-    <!-- Array of output values for LCD backlight corresponding to the LUX values
-        in the config_autoBrightnessLevels array. This array should have size one greater
-        than the size of the config_autoBrightnessLevels array.
-    -->
-    <integer-array name="config_autoBrightnessLcdBacklightValues">
-        <item>59</item>  <!--    0 -   24 -->
-        <item>110</item> <!--   24 -   72 -->
-        <item>142</item> <!--   72 -  156 -->
-        <item>159</item> <!--  156 -  192 -->
-        <item>174</item> <!--  192 -  240 -->
-        <item>200</item> <!--  240 -  420 -->
-        <item>228</item> <!--  420 -  756 -->
-        <item>250</item> <!--  756 - 1024 -->
-        <item>255</item> <!-- 1024+ -->
+        <item>3</item>
+        <item>6</item>
+        <item>12</item>
+        <item>19</item>
+        <item>25</item>
+        <item>50</item>
+        <item>100</item>
+        <item>150</item>
+        <item>200</item>
+        <item>300</item>
+        <item>400</item>
+        <item>600</item>
+        <item>900</item>
     </integer-array>
 
     <!-- Array of output values for button backlight corresponding to the LUX values
         in the config_autoBrightnessLevels array. This array should have size one greater
         than the size of the config_autoBrightnessLevels array.
     -->
-    <integer-array name="config_autoBrightnessButtonBacklightValues">
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
+    <integer-array name="config_autoBrightnessLcdBacklightValues">
+        <item>1</item>    <!-- 0-3 -->
+        <item>11</item>   <!-- 3-6 -->
+        <item>22</item>   <!-- 6-12 -->
+        <item>38</item>   <!-- 12-19 -->
+        <item>47</item>   <!-- 19-25 -->
+        <item>63</item>   <!-- 25-50 -->
+        <item>85</item>   <!-- 50-100 -->
+        <item>94</item>   <!-- 100-150 -->
+        <item>110</item>  <!-- 150-200 -->
+        <item>126</item>  <!-- 200-300 -->
+        <item>162</item>  <!-- 300-400 -->
+        <item>196</item>  <!-- 400-600 -->
+        <item>250</item>  <!-- 600-900 -->
+        <item>255</item>  <!-- 900+ -->
     </integer-array>
 
-    <!-- Array of output values for keyboard backlight corresponding to the LUX values
-        in the config_autoBrightnessLevels array. This array should have size one greater
-        than the size of the config_autoBrightnessLevels array.
-        huashan has no keyboard so all values are zero.
-    -->
-    <integer-array name="config_autoBrightnessKeyboardBacklightValues">
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-    </integer-array>
+    <!-- Minimum screen brightness allowed by the power manager. -->
+    <integer name="config_screenBrightnessDim">1</integer>
+
+    <!-- Minimum screen brightness setting allowed by the power manager.
+         The user is forbidden from setting the brightness below this level. -->
+    <integer name="config_screenBrightnessSettingMinimum">1</integer>
+
+    <!-- We don't have button backlight. -->
+    <integer name="config_buttonBrightnessSettingDefault">0</integer>
 
     <!-- Package name(s) containing location provider support.
          These packages can contain services implementing location providers,
