@@ -31,7 +31,7 @@ PRODUCT_COPY_FILES += \
     device/sony/huashan/custom/system/su.d/77-selinux.sh:system/su.d/77-selinux.sh
     device/sony/huashan/custom/system/su.d/77-selinux.sh:system/etc/init.d/77-selinux.sh
     
-#CustomApplication Movement
+#CustomApplication Movement (For Devs to include)
 #PRODUCT_COPY_FILES += \
     
 #SuperSU Integration (Not included yet)
@@ -159,6 +159,7 @@ PRODUCT_PACKAGES += \
     audio.usb.default \
     audio.r_submix.default \
     libaudio-resampler \
+    libqcomvisualizer \
     tinymix
 
 # Bluetooth
