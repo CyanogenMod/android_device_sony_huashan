@@ -200,11 +200,15 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
+    qcom.audio.init=complete \
     persist.audio.fluence.mode=endfire \
+    persist.audio.vr.enable=false \
     persist.audio.handset.mic=digital \
     persist.audio.lowlatency.rec=false \
-    af.resampler.quality=255 \
-    ro.qc.sdk.audio.fluencetype=fluence
+    media.aac_51_output_enabled=true \
+    ro.qc.sdk.audio.ssr=false \
+    ro.qc.sdk.audio.fluencetype=none \
+    lpa.decode=true
 
 # QCOM Location
 PRODUCT_PROPERTY_OVERRIDES += \
