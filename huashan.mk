@@ -206,6 +206,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     af.resampler.quality=255 \
     ro.qc.sdk.audio.fluencetype=fluence
 
+# Media
+	PRODUCT_PROPERTY_OVERRIDES += \
+	media.stagefright.use-awesome=true
+
 # QCOM Location
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qc.sdk.izat.premium_enabled=0 \
