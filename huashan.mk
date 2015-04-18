@@ -150,6 +150,7 @@ PRODUCT_PACKAGES += \
     audio.usb.default \
     audio.r_submix.default \
     libaudio-resampler \
+    libqcomvisualizer \
     tinymix
 
 # Bluetooth
