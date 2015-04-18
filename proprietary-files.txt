@@ -50,6 +50,7 @@ lib/libmmcamera_tintless_wrapper.so
 lib/libmmcamera_wavelet_lib.so
 lib/libmmjpeg.so
 lib/liboemcamera.so
+etc/flashled_calc_parameters.cfg
 
 #
 # Camera Extras
