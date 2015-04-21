@@ -67,7 +67,8 @@ TARGET_NO_RPC := true
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/sony/huashan/bluetooth
 
-# Legacy RIL
+# RIL
+BOARD_PROVIDES_LIBRIL := true
 BOARD_HAS_RIL_LEGACY_PAP := true
 
 # Needed for blobs
