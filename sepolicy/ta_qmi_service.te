@@ -9,4 +9,5 @@ allow ta_qmi_service self:socket { create ioctl bind read write };
 allow ta_qmi_service self:capability { dac_override };
 
 allow ta_qmi_service socket_device:sock_file { write };
-allow ta_qmi_service tad_static:unix_stream_socket { connectto };
+allow ta_qmi_service init:unix_stream_socket connectto;
+

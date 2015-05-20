@@ -1,0 +1,7 @@
+allow mpdecision socket_device:sock_file create_file_perms;
+
+allow mpdecision system_data_file:dir create_dir_perms;
+allow mpdecision system_data_file:file create_file_perms;
+
+allow mpdecision mediaserver:dir search;
+allow mpdecision mediaserver:file r_file_perms;
