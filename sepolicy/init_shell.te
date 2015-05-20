@@ -1,0 +1,5 @@
+# to set gsm.radio.kickstart
+allow init_shell radio_prop:property_service set;
+
+# block devices
+allow init_shell block_device:blk_file { getattr setattr };

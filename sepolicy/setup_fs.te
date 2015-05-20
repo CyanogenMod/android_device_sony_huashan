@@ -3,4 +3,4 @@ type setup_fs_exec, exec_type, file_type;
 
 init_daemon_domain(setup_fs)
 
-allow setup_fs block_device:dir { search };
+allow setup_fs block_device:dir search;

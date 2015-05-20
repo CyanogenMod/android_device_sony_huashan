@@ -1,0 +1,4 @@
+# Talk to qmuxd (qmux_radio)
+qmux_socket(netmgrd)
+
+allow netmgrd self:socket create_socket_perms;

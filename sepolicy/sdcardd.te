@@ -1,0 +1,2 @@
+allow sdcardd system_data_file:dir { search read write open add_name append remove_name };
+allow sdcardd system_data_file:file { append unlink };
