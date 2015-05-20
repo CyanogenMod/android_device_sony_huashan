@@ -7,3 +7,6 @@ allow illumination sysfs:file { write };
 allow illumination sysfs_wake_lock:file { open write };
 allow illumination self:capability { dac_override };
 allow illumination uhid_device:chr_file { open write ioctl };
+allow illumination system_data_file:dir write;
+
+

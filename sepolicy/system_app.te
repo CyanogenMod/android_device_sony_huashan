@@ -1,2 +1,6 @@
 # RenderThread
 allow system_app shell_data_file:dir { search };
+
+# init system_app
+allow system_app system_app_data_file:file execute;
+allow system_app system_app_data_file:file execute_no_trans;

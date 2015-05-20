@@ -12,6 +12,9 @@
 # Bluetooth
 /data/etc/bluetooth_bdaddr          u:object_r:bluetooth_data_file:s0
 
+# Vibrator
+/sys/devices/virtual/timed_output/vibrator/level      u:object_r:sysfs_vibrator:s0
+
 # System binaries
 /system/bin/setup_fs                u:object_r:setup_fs_exec:s0
 /system/bin/secchand                u:object_r:secchand_exec:s0
