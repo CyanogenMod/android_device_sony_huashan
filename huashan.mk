@@ -188,15 +188,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Radio and Telephony
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.ril.transmitpower=true \
-    persist.radio.add_power_save=1
+    persist.radio.add_power_save=1 \
+    rild.libpath=/system/lib/libril-qc-qmi-1.so
 
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=320 \
     debug.composition.type=c2d
-
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    rild.libpath=/system/lib/libril-qc-qmi-1.so
 
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
