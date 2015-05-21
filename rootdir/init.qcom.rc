@@ -129,6 +129,9 @@ on boot
     # Remove SUID bit for iproute2 ip tool
     chmod 0755 /system/bin/ip
 
+    # FM
+    chmod 0644 /dev/radio0
+    chown fm_radio fm_radio /dev/radio0
 
     chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
 

@@ -53,7 +53,6 @@
 /dev/smd4                 0660   system     system
 /dev/smd_cxm_qmi          0640   radio      radio
 /dev/smd7                 0660   bluetooth  bluetooth
-/dev/radio0               0640   system     system
 /dev/rfcomm0              0660   bluetooth  bluetooth
 /dev/gss                  0660   gps        gps
 /dev/smdcntl0             0640   radio      radio
