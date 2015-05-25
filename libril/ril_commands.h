@@ -1,7 +1,5 @@
 /* //device/libs/telephony/ril_commands.h
 **
-** Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
-** Not a Contribution
 ** Copyright 2006, The Android Open Source Project
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +22,7 @@
     {RIL_REQUEST_ENTER_SIM_PUK2, dispatchStrings, responseInts},
     {RIL_REQUEST_CHANGE_SIM_PIN, dispatchStrings, responseInts},
     {RIL_REQUEST_CHANGE_SIM_PIN2, dispatchStrings, responseInts},
-    {RIL_REQUEST_ENTER_DEPERSONALIZATION_CODE, dispatchStrings, responseInts},
+    {RIL_REQUEST_ENTER_NETWORK_DEPERSONALIZATION, dispatchStrings, responseInts},
     {RIL_REQUEST_GET_CURRENT_CALLS, dispatchVoid, responseCallList},
     {RIL_REQUEST_DIAL, dispatchDial, responseVoid},
     {RIL_REQUEST_GET_IMSI, dispatchStrings, responseString},
@@ -37,7 +35,7 @@
     {RIL_REQUEST_LAST_CALL_FAIL_CAUSE, dispatchVoid, responseInts},
     {RIL_REQUEST_SIGNAL_STRENGTH, dispatchVoid, responseRilSignalStrength},
     {RIL_REQUEST_VOICE_REGISTRATION_STATE, dispatchVoid, responseStrings},
-    {RIL_REQUEST_DATA_REGISTRATION_STATE, dispatchVoid, responseStringsDataRegistrationState},
+    {RIL_REQUEST_DATA_REGISTRATION_STATE, dispatchVoid, responseDataRegistrationState},
     {RIL_REQUEST_OPERATOR, dispatchVoid, responseStrings},
     {RIL_REQUEST_RADIO_POWER, dispatchInts, responseVoid},
     {RIL_REQUEST_DTMF, dispatchString, responseVoid},
@@ -64,7 +62,7 @@
     {RIL_REQUEST_QUERY_NETWORK_SELECTION_MODE, dispatchVoid, responseInts},
     {RIL_REQUEST_SET_NETWORK_SELECTION_AUTOMATIC, dispatchNetworkManual, responseVoid},
     {RIL_REQUEST_SET_NETWORK_SELECTION_MANUAL, dispatchNetworkManual, responseVoid},
-    {RIL_REQUEST_QUERY_AVAILABLE_NETWORKS , dispatchVoid, responseStringsNetworks},
+    {RIL_REQUEST_QUERY_AVAILABLE_NETWORKS , dispatchVoid, responseStrings},
     {RIL_REQUEST_DTMF_START, dispatchString, responseVoid},
     {RIL_REQUEST_DTMF_STOP, dispatchVoid, responseVoid},
     {RIL_REQUEST_BASEBAND_VERSION, dispatchVoid, responseString},
@@ -125,18 +123,26 @@
     {RIL_REQUEST_ACKNOWLEDGE_INCOMING_GSM_SMS_WITH_PDU, dispatchStrings, responseVoid},
     {RIL_REQUEST_STK_SEND_ENVELOPE_WITH_STATUS, dispatchString, responseSIM_IO},
     {RIL_REQUEST_VOICE_RADIO_TECH, dispatchVoiceRadioTech, responseInts},
-#ifndef RIL_NO_CELL_INFO_LIST
     {RIL_REQUEST_GET_CELL_INFO_LIST, dispatchVoid, responseCellInfoList},
     {RIL_REQUEST_SET_UNSOL_CELL_INFO_LIST_RATE, dispatchInts, responseVoid},
-#endif
     {RIL_REQUEST_SET_INITIAL_ATTACH_APN, dispatchSetInitialAttachApn, responseVoid},
     {RIL_REQUEST_IMS_REGISTRATION_STATE, dispatchVoid, responseInts},
     {RIL_REQUEST_IMS_SEND_SMS, dispatchImsSms, responseSMS},
-    {RIL_REQUEST_GET_DATA_CALL_PROFILE, dispatchInts, responseGetDataCallProfile},
-    {RIL_REQUEST_SET_UICC_SUBSCRIPTION, dispatchUiccSubscripton, responseVoid},
-    {RIL_REQUEST_SET_DATA_SUBSCRIPTION, dispatchVoid, responseVoid},
-    {RIL_REQUEST_SIM_TRANSMIT_BASIC, dispatchSIM_IO, responseSIM_IO},
+    {RIL_REQUEST_SIM_TRANSMIT_APDU_BASIC, dispatchSIM_APDU, responseSIM_IO},
     {RIL_REQUEST_SIM_OPEN_CHANNEL, dispatchString, responseInts},
     {RIL_REQUEST_SIM_CLOSE_CHANNEL, dispatchInts, responseVoid},
-    {RIL_REQUEST_SIM_TRANSMIT_CHANNEL, dispatchSIM_IO, responseSIM_IO},
-    {RIL_REQUEST_SIM_GET_ATR, dispatchInts, responseString},
+    {RIL_REQUEST_SIM_TRANSMIT_APDU_CHANNEL, dispatchSIM_APDU, responseSIM_IO},
+    {RIL_REQUEST_NV_READ_ITEM, dispatchNVReadItem, responseString},
+    {RIL_REQUEST_NV_WRITE_ITEM, dispatchNVWriteItem, responseVoid},
+    {RIL_REQUEST_NV_WRITE_CDMA_PRL, dispatchRaw, responseVoid},
+    {RIL_REQUEST_NV_RESET_CONFIG, dispatchInts, responseVoid},
+    {RIL_REQUEST_SET_UICC_SUBSCRIPTION, dispatchUiccSubscripton, responseVoid},
+    {RIL_REQUEST_ALLOW_DATA, dispatchInts, responseVoid},
+    {RIL_REQUEST_GET_HARDWARE_CONFIG, dispatchVoid, responseHardwareConfig},
+    {RIL_REQUEST_SIM_AUTHENTICATION, dispatchSimAuthentication, responseSIM_IO},
+    {RIL_REQUEST_GET_DC_RT_INFO, dispatchVoid, responseDcRtInfo},
+    {RIL_REQUEST_SET_DC_RT_INFO_RATE, dispatchInts, responseVoid},
+    {RIL_REQUEST_SET_DATA_PROFILE, dispatchDataProfile, responseVoid},
+    {RIL_REQUEST_SHUTDOWN, dispatchVoid, responseVoid},
+    {RIL_REQUEST_GET_RADIO_CAPABILITY, dispatchVoid, responseRadioCapability},
+    {RIL_REQUEST_SET_RADIO_CAPABILITY, dispatchRadioCapability, responseRadioCapability},
