@@ -20,4 +20,6 @@
 #define BTM_DEF_LOCAL_NAME   "Xperia SP"
 #define BTA_DISABLE_DELAY 1000 /* in milliseconds */
 
+#define SC_MODE_INCLUDED FALSE
+
 #endif
