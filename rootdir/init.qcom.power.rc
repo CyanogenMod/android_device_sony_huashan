@@ -41,6 +41,7 @@ on enable-low-power
 on property:sys.boot_completed=1
     # CPU Settings
     write /sys/devices/system/cpu/cpufreq/interactive/boost 0
+    rm /data/system/perfd/default_values
     start mpdecision
 
     # IO Schedulers
