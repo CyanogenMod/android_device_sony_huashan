@@ -591,7 +591,7 @@ on property:sys.perf.profile=1
     start mpdecision
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor "interactive"
-    write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor "ondemand"
+    write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor "interactive"
 
 on property:sys.perf.profile=2
     stop mpdecision
