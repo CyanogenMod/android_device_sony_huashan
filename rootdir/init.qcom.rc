@@ -281,7 +281,6 @@ on post-fs-data
     write /sys/module/pm_8x60/modes/cpu0/power_collapse/idle_enabled 1
     write /sys/module/msm_thermal/core_control/enabled 0
     write /sys/devices/system/cpu/cpu1/online 1
-    start mpdecision
 
     # ondemand
     #write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "ondemand"
@@ -382,7 +381,6 @@ on charger
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 384000
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq 384000
     write /sys/devices/system/cpu/cpu1/online 0
-    start mpdecision
 
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd
@@ -584,16 +582,21 @@ service setup_fs /system/bin/setup_fs /dev/block/platform/msm_sdcc.1/by-name/Use
     oneshot
 
 on property:sys.perf.profile=0
+    start mpdecision
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "ondemand"
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor "ondemand"
     write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor "ondemand"
 
 on property:sys.perf.profile=1
+    start mpdecision
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor "interactive"
     write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor "ondemand"
 
 on property:sys.perf.profile=2
+    stop mpdecision
+    write /sys/devices/system/cpu/cpu0/online 1
+    write /sys/devices/system/cpu/cpu1/online 1
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "performance"
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor "performance"
     write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor "performance"
