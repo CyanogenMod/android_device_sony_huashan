@@ -119,7 +119,6 @@ lib/hw/camera.vendor.qcom.so
 lib/hw/gps.default.so
 lib/hw/lights.vendor.default.so
 lib/hw/nfc.msm8960.so
-lib/hw/sensors.default.so
 lib/lib_asb_tee.so
 lib/lib_get_secure_mode.so
 lib/libacdbloader.so
@@ -190,6 +189,7 @@ lib/libqmi_csvt_srvc.so
 lib/libQSEEComAPI.so
 lib/libril-qc-qmi-1.so
 lib/libs1sl.so
+lib/libsensors_akm8963.so
 lib/libsys-utils.so
 lib/libsysmon.so
 lib/libsysmon_idd.so
