@@ -301,7 +301,6 @@ etc/firmware/tzsuntory.mdt
 #
 # Sensors
 #
-lib/hw/sensors.default.so
 lib/libals.so
 
 #
