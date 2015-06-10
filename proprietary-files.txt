@@ -299,12 +299,6 @@ etc/firmware/tzsuntory.b03
 etc/firmware/tzsuntory.mdt
 
 #
-# Sensors
-#
-lib/hw/sensors.default.so
-lib/libals.so
-
-#
 # System Checks
 #
 bin/efsks
