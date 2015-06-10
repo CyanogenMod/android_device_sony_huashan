@@ -18,15 +18,6 @@ on boot
     chown system system /sys/devices/i2c-12/12-0054/threshold
     chown system system /sys/devices/i2c-12/12-0054/nburst
 
-    # AS3677/Ambient Light Sensor
-    chown system system /sys/devices/i2c-10/10-0040/als_on
-
-    # Panel backlight
-    chown system system /sys/class/leds/lcd-backlight1/brightness
-    chmod 660 /sys/class/leds/lcd-backlight1/brightness
-    chown system system /sys/class/leds/lcd-backlight2/brightness
-    chmod 660 /sys/class/leds/lcd-backlight2/brightness
-
     # Vibrator
     chown system system /sys/class/timed_output/vibrator/level
 
