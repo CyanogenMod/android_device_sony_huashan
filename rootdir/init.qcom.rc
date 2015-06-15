@@ -27,6 +27,9 @@ on init
 
     symlink /dev/socket /tmp
 
+    # Support legacy libs
+    symlink /system/vendor/lib/egl /egl
+
     mkdir /dev/bus 0755 root root
     mkdir /dev/bus/usb 0755 root root
 
