@@ -33,6 +33,8 @@
     <item name="wifi.scan">0.1</item>
     <item name="dsp.audio">0.1</item>
     <item name="dsp.video">0.1</item>
+    <item name="camera.flashlight">0</item> <!-- Avg. power for camera flash, ~160mA -->
+    <item name="camera.avg">747.67</item> <!-- Avg. power use of camera in standard usecases, ~550mA -->
     <item name="radio.active">193</item>
     <item name="radio.scanning">20.8</item>
     <item name="gps.on">40</item>
