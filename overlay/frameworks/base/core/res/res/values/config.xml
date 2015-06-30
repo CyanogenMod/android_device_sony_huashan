@@ -284,4 +284,22 @@
     <!--  Whether Multiuser UI should be shown -->
     <bool name="config_enableMultiUserUI">true</bool>
 
+    <!-- Device configuration setting the minfree tunable in the lowmemorykiller in the kernel.
+         A high value will cause the lowmemorykiller to fire earlier, keeping more memory
+         in the file cache and preventing I/O thrashing, but allowing fewer processes to
+         stay in memory.  A low value will keep more processes in memory but may cause
+         thrashing if set too low.  Overrides the default value chosen by ActivityManager
+         based on screen size and total memory for the largest lowmemorykiller bucket, and
+         scaled proportionally to the smaller buckets.  -1 keeps the default. -->
+    <integer name="config_lowMemoryKillerMinFreeKbytesAbsolute">122880</integer>
+
+    <!-- Device configuration adjusting the /proc/sys/vm/extra_free_kbytes tunable in the kernel
+         (if it exists).  0 uses the default value chosen by ActivityManager.  A positive value
+         will increase the amount of memory that the kernel tries to keep free, reducing
+         allocation time and causing the lowmemorykiller to kill earlier.  A negative value
+         allows more memory to be used by processes but may cause more allocations to block
+         waiting on disk I/O or lowmemorykiller.  Directly added to the default value chosen by
+         ActivityManager based on screen size. -->
+    <integer name="config_extraFreeKbytesAdjust">4096</integer>
+
 </resources>
