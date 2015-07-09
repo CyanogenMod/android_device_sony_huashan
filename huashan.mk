@@ -278,7 +278,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.handset.mic=digital \
     persist.audio.lowlatency.rec=false \
     af.resampler.quality=255 \
-    ro.qc.sdk.audio.fluencetype=fluence
+    ro.qc.sdk.audio.fluencetype=fluence \
+    ro.config.vc_call_vol_steps=6
 
 # QCOM
 PRODUCT_PROPERTY_OVERRIDES += \
