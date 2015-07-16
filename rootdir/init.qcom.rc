@@ -361,6 +361,7 @@ on post-fs-data
     chmod 664 /sys/module/msm_mpdecision/slack_time_min_us
 
     write /sys/devices/platform/msm_sdcc.3/idle_timeout 10
+    write /sys/block/mmcblk0/queue/scheduler fiops
 
 on charger
     # Enable Power modes and set the CPU Freq Sampling rates
