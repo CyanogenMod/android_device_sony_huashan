@@ -4,9 +4,6 @@ allow system_server default_prop:property_service set;
 
 allow system_server gpu_device:chr_file { open read write };
 
-# /dev/socket/illumination
-allow system_server illumination:unix_stream_socket { connectto };
-
 # Hardware tunables
 allow system_server sysfs_vibrator:file rw_file_perms;
 
