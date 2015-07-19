@@ -15,3 +15,66 @@ persist.gps.qmienabled=true
 
 hw.fm.internal_antenna=true
 
+#
+#Customized Prop File
+#
+persist.radio.oem_socket=false
+ro.ril.telephony.mqanelements=4
+
+# MM modules
+media.stagefright.enable-player=true
+media.stagefright.enable-http=true
+media.stagefright.enable-aac=true
+media.stagefright.enable-qcp=true
+media.stagefright.enable-fma2dp=true
+media.stagefright.enable-scan=true
+media.aac_51_output_enabled=true
+
+# Hardware codecs
+qcom.hw.aac.encoder=true
+
+#snapdragon value add features
+ro.qc.sdk.camera.facialproc=true
+ro.qc.sdk.gestures.camera=false
+ro.qc.sdk.sensors.gestures=false
+
+# RIL
+rild.libargs=-d /dev/smd0
+persist.rild.nitz_plmn=
+persist.rild.nitz_long_ons_0=
+persist.rild.nitz_long_ons_1=
+persist.rild.nitz_long_ons_2=
+persist.rild.nitz_long_ons_3=
+persist.rild.nitz_short_ons_0=
+persist.rild.nitz_short_ons_1=
+persist.rild.nitz_short_ons_2=
+persist.rild.nitz_short_ons_3=
+rild.libpath=/system/lib/libril-qc-qmi-1.so
+ro.telephony.call_ring.multiple=0
+persist.radio.oem_socket=false
+ro.ril.telephony.mqanelements=4
+persist.radio.apm_sim_not_pwdn=1
+persist.radio.add_power_save=1
+ril.subscription.types=NV,RUIM
+DEVICE_PROVISIONED=1
+ro.ril.transmitpower=true
+telephony.lteOnCdmaDevice=0
+telephony.lteOnGsmDevice=1
+ro.telephony.default_network=9
+
+# Netmgrd
+ro.use_data_netmgrd=true
+persist.rmnet.mux=disabled
+
+# BT
+ro.qualcomm.bt.hci_transport=smd
+qcom.bt.le_dev_pwr_class=1
+
+# GPS
+persist.gps.qmienabled=true
+
+# QCOM Location
+ro.qc.sdk.izat.premium_enabled=0
+ro.qc.sdk.izat.service_mask=0x4
+persist.gps.qc_nlp_in_use=0
+ro.gps.agps_provider=1
