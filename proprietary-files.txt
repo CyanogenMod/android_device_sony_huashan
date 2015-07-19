@@ -1,5 +1,4 @@
 bin/btnvtool
-bin/chargemon
 bin/ds_fmc_appd
 bin/efsks
 bin/fm_qsoc_patches
