@@ -183,7 +183,6 @@ BOARD_SEPOLICY_UNION += \
     file.te \
     healthd.te \
     hostapd.te \
-    illumination.te \
     init.te \
     init_shell.te \
     kernel.te \
