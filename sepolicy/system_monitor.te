@@ -30,5 +30,3 @@ allow system_monitor sysfs_wake_lock:file { open write };
 # thermal_mitigation
 allow system_monitor sysfs:file { write };
 
-# /dev/socket/illumination
-allow system_monitor illumination:unix_stream_socket { connectto };
