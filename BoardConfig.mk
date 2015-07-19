@@ -61,6 +61,9 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
 TARGET_NO_RPC := true
 
+# Lights HAL
+TARGET_PROVIDES_LIBLIGHT := true
+
 # Sensors
 SOMC_CFG_SENSORS := true
 SOMC_CFG_SENSORS_ACCELEROMETER_LSM303DLHC_LT := yes
@@ -131,7 +134,6 @@ BOARD_SEPOLICY_UNION += \
     file_contexts \
     file.te \
     hostapd.te \
-    illumination.te \
     init.te \
     init_shell.te \
     kernel.te \
