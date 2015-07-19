@@ -67,7 +67,7 @@ TARGET_NO_RPC := true
 # Sensors
 SOMC_CFG_SENSORS := true
 SOMC_CFG_SENSORS_ACCELEROMETER_LSM303DLHC_LT := yes
-SOMC_CFG_SENSORS_COMPASS_AK8963 := yes
+SOMC_CFG_SENSORS_COMPASS_AKM8963 := yes
 SOMC_CFG_SENSORS_COMPASS_LSM303DLHC := yes
 SOMC_CFG_SENSORS_GYRO_L3GD20 := yes
 SOMC_CFG_SENSORS_LIGHT_AS3677 := yes
@@ -133,6 +133,7 @@ BOARD_SEPOLICY_DIRS += \
 
 BOARD_SEPOLICY_UNION += \
     file_contexts \
+    bootanim.te \
     file.te \
     hostapd.te \
     illumination.te \
@@ -154,12 +155,13 @@ BOARD_SEPOLICY_UNION += \
     shell.te \
     surfaceflinger.te \
     system_app.te \
-    system_monitor.te \
     system_server.te \
     tad_static.te \
     ta_qmi_service.te \
+    thermanager.te \
     updatemiscta.te \
-    vold.te
+    vold.te \
+    zygote.te
 
 # inherit from the proprietary version
 -include vendor/sony/huashan/BoardConfigVendor.mk
