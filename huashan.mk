@@ -171,6 +171,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     camera2.portability.force_api=1
 
+# Lights
+PRODUCT_PACKAGES += \
+    lights.msm8960
+
 # Sensors
 PRODUCT_PACKAGES += \
     sensors.msm8960

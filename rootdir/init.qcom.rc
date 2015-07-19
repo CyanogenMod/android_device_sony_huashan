@@ -562,11 +562,6 @@ service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
     disabled
     oneshot
 
-service illumination /system/bin/illumination_service
-    socket illumination stream 0666 root system
-    class main
-    user root
-
 # Start system_monitor
 service system_monitor /system/bin/system_monitor
     socket sysmon stream 0660 root system
