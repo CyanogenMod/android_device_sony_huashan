@@ -21,6 +21,5 @@
 /system/bin/system_monitor          u:object_r:system_monitor_exec:s0
 /system/bin/mac-update              u:object_r:mac_update_exec:s0
 /system/bin/updatemiscta            u:object_r:updatemiscta_exec:s0
-/system/bin/illumination_service    u:object_r:illumination_exec:s0
 /system/bin/ta_qmi_service          u:object_r:ta_qmi_service_exec:s0
 /system/bin/tad_static              u:object_r:tad_static_exec:s0
