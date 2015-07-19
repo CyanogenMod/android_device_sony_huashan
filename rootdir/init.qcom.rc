@@ -526,11 +526,6 @@ service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
     disabled
     oneshot
 
-service illumination /system/bin/illumination_service
-    socket illumination stream 0666 root system
-    class main
-    user root
-
 # Trim Area QMI service
 service ta_qmi_service /system/bin/ta_qmi_service
     user root
