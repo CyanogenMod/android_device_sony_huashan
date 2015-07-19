@@ -6,7 +6,6 @@ bin/fm_qsoc_patches
 bin/fmconfig
 bin/gsiff_daemon
 bin/hci_qcomm_init
-bin/illumination_service
 bin/irsc_util
 bin/ks
 bin/mm-pp-daemon
@@ -117,7 +116,6 @@ etc/flashled_calc_parameters.cfg
 framework/com.sonyericsson.sysmon.jar
 lib/hw/camera.vendor.qcom.so
 lib/hw/gps.default.so
-lib/hw/lights.vendor.default.so
 lib/hw/nfc.msm8960.so
 lib/lib_asb_tee.so
 lib/lib_get_secure_mode.so
@@ -151,7 +149,6 @@ lib/libimage-jpeg-dec-omx-comp.so
 lib/libimage-jpeg-enc-omx-comp.so
 lib/libimage-omx-common.so
 lib/libkeyctrl.so
-lib/liblights-core.so
 lib/libloc_api_v02.so
 lib/libloc_core.so
 lib/libloc_ds_api.so

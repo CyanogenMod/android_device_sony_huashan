@@ -179,6 +179,18 @@
 /sys/devices/i2c-10/10-0040/leds/lcd-* brightness            0660 system system
 /sys/devices/i2c-10/10-0040/leds/lcd-* max_brightness        0640 system system
 
+# LibLights AS3665
+/sys/devices/i2c-10/10-0047            sequencer1_mode       0660 system system
+/sys/devices/i2c-10/10-0047            sequencer2_mode       0660 system system
+/sys/devices/i2c-10/10-0047            sequencer3_mode       0660 system system
+/sys/devices/i2c-10/10-0047            sequencer1_run_mode   0660 system system
+/sys/devices/i2c-10/10-0047            sequencer2_run_mode   0660 system system
+/sys/devices/i2c-10/10-0047            sequencer3_run_mode   0660 system system
+/sys/devices/i2c-10/10-0047            sequencer_load        0660 system system
+/sys/devices/i2c-10/10-0047/leds/*     brightness            0660 system system
+/sys/devices/i2c-10/10-0047/leds/*     led_current           0660 system system
+/sys/devices/i2c-10/10-0047/leds/*     trigger               0660 system system
+
 # BT
 /dev/hidraw0                                     0666  system  system
 /dev/hidraw1                                     0666  system  system
