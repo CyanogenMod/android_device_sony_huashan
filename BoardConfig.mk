@@ -31,9 +31,6 @@ BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_CMDLINE  := androidboot.hardware=qcom user_debug=31 androidboot.baseband=msm msm_rtb.filter=0x3F ehci-hcd.park=3 vmalloc=400M
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
 
-# Use legacy MMAP for pre-lollipop blobs
-BOARD_USES_LEGACY_MMAP := true
-
 # Time
 BOARD_USES_QC_TIME_SERVICES := true
 
@@ -67,7 +64,7 @@ TARGET_NO_RPC := true
 # Sensors
 SOMC_CFG_SENSORS := true
 SOMC_CFG_SENSORS_ACCELEROMETER_LSM303DLHC_LT := yes
-SOMC_CFG_SENSORS_COMPASS_AK8963 := yes
+SOMC_CFG_SENSORS_COMPASS_AKM8963 := yes
 SOMC_CFG_SENSORS_COMPASS_LSM303DLHC := yes
 SOMC_CFG_SENSORS_GYRO_L3GD20 := yes
 SOMC_CFG_SENSORS_LIGHT_AS3677 := yes
@@ -77,6 +74,10 @@ SOMC_CFG_SENSORS_PROXIMITY_APDS9702 := yes
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/sony/huashan/bluetooth
+
+# Healthd
+BOARD_CHARGER_ENABLE_SUSPEND := true
+
 
 # RIL
 BOARD_PROVIDES_LIBRIL := true
@@ -132,6 +133,7 @@ BOARD_SEPOLICY_DIRS += \
 
 BOARD_SEPOLICY_UNION += \
     file_contexts \
+    bootanim.te \
     file.te \
     hostapd.te \
     illumination.te \
@@ -153,12 +155,13 @@ BOARD_SEPOLICY_UNION += \
     shell.te \
     surfaceflinger.te \
     system_app.te \
-    system_monitor.te \
     system_server.te \
     tad_static.te \
     ta_qmi_service.te \
+    thermanager.te \
     updatemiscta.te \
-    vold.te
+    vold.te \
+    zygote.te
 
 # inherit from the proprietary version
 -include vendor/sony/huashan/BoardConfigVendor.mk

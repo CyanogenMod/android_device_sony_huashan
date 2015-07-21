@@ -17,9 +17,13 @@ $(call inherit-product, device/sony/msm8960-common/msm8960.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/sony/huashan/overlay
 
+# This device is xhdpi.  However the platform doesn't
+# currently contain all of the bitmaps at xhdpi density so
+# we do this little trick to fall back to the hdpi version
+# if the xhdpi doesn't exist.
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
-
+	
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
@@ -47,7 +51,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/fstab.qcom:recovery/root/fstab.qcom \
     $(LOCAL_PATH)/rootdir/init.recovery.qcom.rc:root/init.recovery.qcom.rc \
     $(LOCAL_PATH)/rootdir/system/etc/init.qcom.bt.sh:system/etc/init.qcom.bt.sh \
-    $(LOCAL_PATH)/rootdir/system/etc/init.qcom.fm.sh:system/etc/init.qcom.fm.sh \
     $(LOCAL_PATH)/rootdir/ueventd.qcom.rc:root/ueventd.qcom.rc
 
 # Additional sbin stuff
@@ -106,7 +109,7 @@ PRODUCT_COPY_FILES += \
 
 # Sony system_monitor
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/system/etc/sysmon.cfg:system/etc/sysmon.cfg
+    $(LOCAL_PATH)/rootdir/system/etc/thermanager.xml:system/etc/thermanager.xml
 
 # NFC Support
 PRODUCT_PACKAGES += \
@@ -115,6 +118,12 @@ PRODUCT_PACKAGES += \
     Nfc \
     Tag \
     com.android.nfc_extras
+
+# F2FS
+PRODUCT_PACKAGES += \
+    mkfs.f2fs \
+    fsck.f2fs \
+    fibmap.f2fs
 
 # Recovery
 PRODUCT_PACKAGES += \
@@ -145,13 +154,6 @@ PRODUCT_PACKAGES += \
     libaudio-resampler \
     tinymix
 
-# FM radio
-PRODUCT_PACKAGES += \
-    FM2 \
-    FMRecord \
-    libqcomfm_jni \
-    qcom.fmradio
-
 # Bluetooth
 PRODUCT_PACKAGES += \
     hci_qcomm_init
@@ -170,11 +172,19 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Sensors
 PRODUCT_PACKAGES += \
     sensors.msm8960
+	
+# Thermal management
+PRODUCT_PACKAGES += \
+    thermanager
 
 # Wifi service
 PRODUCT_PACKAGES += \
     mac-update \
     wcnss_service
+
+# Healthd
+PRODUCT_PACKAGES += \
+    charger_res_images
 
 # Misc
 PRODUCT_PACKAGES += \
@@ -192,19 +202,26 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Radio and Telephony
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.ril.transmitpower=true \
-    persist.radio.add_power_save=1 \
-    rild.libpath=/system/lib/libril-qc-qmi-1.so
 
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=320 \
     debug.composition.type=c2d
 
-# Audio
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.radio.add_power_save=1
+    rild.libpath=/system/lib/libril-qc-qmi-1.so
+    
+# Media
+PRODUCT_PROPERTY_OVERRIDES += \
+    media.stagefright.use-awesome=true
+
+# Audio	
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.mode=endfire \
     persist.audio.handset.mic=digital \
     persist.audio.lowlatency.rec=false \
+    qcom.hw.aac.encoder=true \
     af.resampler.quality=255 \
     ro.qc.sdk.audio.fluencetype=fluence
 
@@ -233,7 +250,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196608
 
 # call dalvik heap config
-$(call inherit-product-if-exists, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
+$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
 # Include non-opensource parts
 $(call inherit-product, vendor/sony/huashan/huashan-vendor.mk)

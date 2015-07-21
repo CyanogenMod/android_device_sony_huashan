@@ -89,12 +89,6 @@ on early-boot
     # Permissions for AKM8963 sensor
     chown system system /data/misc/akm_set.txt
 
-    write /sys/devices/platform/msm_hsic_host/override_wakelock 0
-    write /sys/module/pm8921_charger/parameters/eoc_bat_fet_close 1
-    # Start the offline charging (This blocks booting further in some cases)
-    exec /system/bin/chargemon
-    write /sys/module/pm8921_charger/parameters/eoc_bat_fet_close 0
-    write /sys/devices/platform/msm_hsic_host/override_wakelock 1
     write /sys/module/pm8921_charger/parameters/enable_lowbatt_detect 1
 
 on boot
@@ -513,11 +507,15 @@ service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 -w 1023 /mnt/media_rw/us
     class late_start
     disabled
 
-service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
+service thermanager /system/bin/thermanager /system/etc/thermanager.xml
     class main
     user root
     group root
-    disabled
+	
+service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
+    class main
+    user root
+    group root system
 
 service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
     class late_start
@@ -535,12 +533,6 @@ service illumination /system/bin/illumination_service
 service ta_qmi_service /system/bin/ta_qmi_service
     user root
     disabled
-
-# Start system_monitor
-service system_monitor /system/bin/system_monitor
-    socket sysmon stream 0660 root system
-    class core
-    user root
 
 service rmt_storage /system/bin/rmt_storage
     class core
@@ -573,6 +565,11 @@ service setup_fs /system/bin/setup_fs /dev/block/platform/msm_sdcc.1/by-name/Use
     user root
     group root
     oneshot
+
+# healthd
+service charger /sbin/healthd -c
+    class charger
+    seclabel u:r:healthd:s0
 
 on property:sys.perf.profile=0
     start mpdecision
