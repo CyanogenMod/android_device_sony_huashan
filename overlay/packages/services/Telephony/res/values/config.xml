@@ -22,9 +22,6 @@
          the com.android.internal.telephony.Phone interface (false). -->
     <bool name="send_mic_mute_to_AudioManager">true</bool>
 
-    <!-- Flag indicating if the tty is enabled -->
-    <bool name="tty_enabled">true</bool>
-
     <!-- Flag indicating if dtmf tone type is enabled -->
     <bool name="dtmf_type_enabled">true</bool>
 
