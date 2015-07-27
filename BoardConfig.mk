@@ -144,6 +144,7 @@ BOARD_SEPOLICY_UNION += \
     property_contexts \
     radio.te \
     rild.te \
+    sdcardd.te \
     secchand.te \
     setup_fs.te \
     shell.te \
