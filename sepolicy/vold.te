@@ -1,3 +1,7 @@
+allow vold self:key setattr;
+allow vold system_data_file:dir setattr;
+allow vold kernel:system module_request;
+
 allow vold persist_file:dir search;
 allow vold persist_file:file rw_file_perms;
 allow vold mmc_block_device:blk_file rw_file_perms;
