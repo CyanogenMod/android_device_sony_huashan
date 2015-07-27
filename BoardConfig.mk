@@ -147,7 +147,6 @@ BOARD_SEPOLICY_UNION += \
     property_contexts \
     radio.te \
     rild.te \
-    rmt_storage.te \
     secchand.te \
     setup_fs.te \
     shell.te \

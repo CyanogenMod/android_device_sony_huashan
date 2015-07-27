@@ -545,6 +545,7 @@ service system_monitor /system/bin/system_monitor
 service rmt_storage /system/bin/rmt_storage
     class core
     user root
+    group system
 
 service irsc_util /system/bin/logwrapper /system/bin/irsc_util "/etc/sec_config"
     class main
