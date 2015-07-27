@@ -31,9 +31,6 @@ BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_CMDLINE  := androidboot.hardware=qcom user_debug=31 androidboot.baseband=msm msm_rtb.filter=0x3F ehci-hcd.park=3 vmalloc=400M
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
 
-# Use legacy MMAP for pre-lollipop blobs
-BOARD_USES_LEGACY_MMAP := true
-
 # Time
 BOARD_USES_QC_TIME_SERVICES := true
 
