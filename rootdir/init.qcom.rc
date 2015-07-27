@@ -124,6 +124,12 @@ on boot
     mkdir /dev/socket/qmux_gps 0770 gps gps
     chmod 2770 /dev/socket/qmux_gps
 
+    #Create PERFD deamon related dirs
+    mkdir /data/misc/perfd 0755 root system
+    chmod 2755 /data/misc/perfd
+    mkdir /data/system/perfd 0770 root system
+    chmod 2770 /data/system/perfd
+
     setprop ro.telephony.call_ring.multiple false
 
     # Remove SUID bit for iproute2 ip tool
@@ -516,7 +522,7 @@ service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 -w 1023 /mnt/media_rw/us
 service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
     class main
     user root
-    group root
+    group root system
     disabled
 
 service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
