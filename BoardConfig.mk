@@ -78,6 +78,15 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/sony/huashan/bluetooth
 # RIL
 BOARD_PROVIDES_LIBRIL := true
 
+# Healthd
+BOARD_CHARGER_ENABLE_SUSPEND := true
+BOARD_CHARGER_SHOW_PERCENTAGE := true
+BACKLIGHT_PATH := /sys/devices/i2c-10/10-0040/leds/lcd-backlight1/brightness
+SECONDARY_BACKLIGHT_PATH := /sys/devices/i2c-10/10-0040/leds/lcd-backlight2/brightness
+RED_LED_PATH := /sys/devices/i2c-10/10-0047/leds/LED1_R/brightness
+GREEN_LED_PATH := /sys/devices/i2c-10/10-0047/leds/LED1_G/brightness
+BLUE_LED_PATH := /sys/devices/i2c-10/10-0047/leds/LED1_B/brightness
+
 # Needed for blobs
 TARGET_RELEASE_CPPFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 

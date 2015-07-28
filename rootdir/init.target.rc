@@ -1,3 +1,8 @@
+on charger
+    write /sys/devices/i2c-10/10-0047/leds/LED1_R/led_current 30
+    write /sys/devices/i2c-10/10-0047/leds/LED1_G/led_current 30
+    write /sys/devices/i2c-10/10-0047/leds/LED1_B/led_current 30
+
 on boot
     # LM3560/cameralight
     chown system camera /sys/devices/i2c-10/10-0053/torch_enable
