@@ -90,12 +90,6 @@ on early-boot
     # Permissions for AKM8963 sensor
     chown system system /data/misc/akm_set.txt
 
-    write /sys/devices/platform/msm_hsic_host/override_wakelock 0
-    write /sys/module/pm8921_charger/parameters/eoc_bat_fet_close 1
-    # Start the offline charging (This blocks booting further in some cases)
-    exec /system/bin/chargemon
-    write /sys/module/pm8921_charger/parameters/eoc_bat_fet_close 0
-    write /sys/devices/platform/msm_hsic_host/override_wakelock 1
     write /sys/module/pm8921_charger/parameters/enable_lowbatt_detect 1
 
 on boot
@@ -505,6 +499,11 @@ service system_monitor /system/bin/system_monitor
     socket sysmon stream 0660 root system
     class core
     user root
+
+# Healthd
+service charger /sbin/healthd -c
+    class charger
+    seclabel u:r:healthd:s0
 
 service rmt_storage /system/bin/rmt_storage
     class core
