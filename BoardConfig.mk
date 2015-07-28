@@ -78,6 +78,13 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/sony/huashan/bluetooth
 # RIL
 BOARD_PROVIDES_LIBRIL := true
 
+# Healthd
+BOARD_CHARGER_ENABLE_SUSPEND := true
+BOARD_CHARGER_DISABLE_INIT_BLANK := true
+BOARD_CHARGER_SHOW_PERCENTAGE := true
+BACKLIGHT_PATH := "/sys/devices/i2c-10/10-0040/leds/lcd-backlight1/brightness"
+CHARGING_ENABLED_PATH := "/sys/class/power_supply/pm8921-dc/online"
+
 # Needed for blobs
 TARGET_RELEASE_CPPFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 
