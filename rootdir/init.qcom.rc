@@ -68,6 +68,7 @@ on fs
 
     # SONY: Start the TrimArea Daemon.
     class_start trimarea
+    start tad_static
     exec /sbin/wait4tad_static
 
     # SONY: Start early TA-users
@@ -135,6 +136,14 @@ on boot
     # Remove SUID bit for iproute2 ip tool
     chmod 0755 /system/bin/ip
 
+    # port-bridge
+    chmod 0660 /dev/smd0
+    chown system system /dev/smd0
+
+    # BT DUN port-bridge
+    chmod 0660 /dev/smd7
+    chown bluetooth bluetooth /dev/smd7
+
     # FM
     chmod 0644 /dev/radio0
     chown fm_radio fm_radio /dev/radio0
@@ -171,9 +180,6 @@ on boot
 
     chmod 660 /dev/rtc0
     chown system system /dev/rtc0
-
-    # WTF
-    chmod 444 /proc/cmdline
 
     #To allow interfaces to get v6 address when tethering is enabled
     write /proc/sys/net/ipv6/conf/rmnet0/accept_ra 2
@@ -214,6 +220,7 @@ on post-fs-data
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
     mkdir /data/misc/wifi/wpa_supplicant 0770 wifi wifi
     mkdir /data/misc/dhcp 0770 dhcp dhcp
+
     # to observe dnsmasq.leases file for dhcp information of soft ap.
     chown dhcp system /data/misc/dhcp
 
@@ -247,8 +254,18 @@ on post-fs-data
     chown system system /sys/devices/platform/msm_sdcc.3/polling
     chown system system /sys/devices/platform/msm_sdcc.4/polling
 
+    # QCOM Sensors
+    mkdir /data/system 0775 system system
+    mkdir /data/system/sensors 0775 system system
+    mkdir /data/misc/sensors 0775 system system
+    write /data/system/sensors/settings 1
+    chmod 664 /data/system/sensors/settings
+    chown system /data/system/sensors/settings
+
     # Create the symlink to qcn wpa_supplicant folder for ar6000 wpa_supplicant
     mkdir /data/system 0775 system system
+
+    chown system system /sys/devices/platform/kgsl-3d0.0/kgsl/kgsl-3d0/pwrscale/policy
 
     # Create directories for gpsone_daemon services
     mkdir /data/misc/gpsone_d 0770 system gps
@@ -270,6 +287,8 @@ on post-fs-data
     mkdir /data/time 0700 system system
 
     setprop vold.post_fs_data_done 1
+
+    rm /data/local/tmp/adreno_config.txt
 
     # Enable Power modes and set the CPU Freq Sampling rates
     write /sys/module/rpm_resources/enable_low_power/L2_cache 1
@@ -398,10 +417,11 @@ service mac-update /system/bin/mac-update
     user wifi
     oneshot
 
+# Bluetooth
 service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
     class late_start
     user bluetooth
-    group qcom_oncrpc bluetooth net_bt_admin system net_bt_stack
+    group bluetooth net_bt_admin system net_bt_stack
     seclabel u:r:bluetooth_loader:s0
     disabled
     oneshot
@@ -414,17 +434,18 @@ on property:bluetooth.hciattach=false
 
 # QMUX must be in multiple groups to support external process connections
 service qmuxd /system/bin/qmuxd
-    class main
+    class core
     user radio
     group radio audio bluetooth gps qcom_diag net_bt_stack
 
 # SONY: TrimArea Daemon
 # Last 2 args: start block(blk size 128k), number of blocks(partitionsize(kb)/128(kb))
 service tad_static /sbin/tad_static /dev/block/mmcblk0 1,16
+    class core
     user root
     group root
     socket tad stream 0660 system system
-    class trimarea
+    disabled
 
 service updatemiscta /system/bin/updatemiscta
     class main
@@ -433,6 +454,7 @@ service updatemiscta /system/bin/updatemiscta
 
 service netmgrd /system/bin/netmgrd
     class main
+    group radio
 
 # start GNSS/Sensor interface daemon
 service gsiff_daemon /system/bin/gsiff_daemon
@@ -441,9 +463,9 @@ service gsiff_daemon /system/bin/gsiff_daemon
     group gps qcom_oncrpc net_raw
 
 service qseecomd /system/bin/qseecomd
-    class late_start
-    user system
-    group system
+    class core
+    user root
+    group root
 
 service hw_config /system/bin/sh /system/etc/hw_config.sh
     class main
@@ -503,6 +525,14 @@ service dhcpcd_bnep0 /system/bin/dhcpcd -BKLG
     disabled
     oneshot
 
+service dhcpcd_bt-pan /system/bin/dhcpcd -BKLG
+    disabled
+    oneshot
+
+service iprenew_bt-pan /system/bin/dhcpcd -n
+    disabled
+    oneshot
+
 on property:ro.data.large_tcp_window_size=true
     # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
     write /proc/sys/net/ipv4/tcp_adv_win_scale  2
@@ -528,7 +558,7 @@ service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
 service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
     class late_start
     user root
-    group system qcom_oncrpc
+    group system
     disabled
     oneshot
 
@@ -536,11 +566,6 @@ service illumination /system/bin/illumination_service
     socket illumination stream 0666 root system
     class main
     user root
-
-# Trim Area QMI service
-service ta_qmi_service /system/bin/ta_qmi_service
-    user root
-    disabled
 
 # Start system_monitor
 service system_monitor /system/bin/system_monitor
@@ -553,10 +578,16 @@ service rmt_storage /system/bin/rmt_storage
     user root
     group system
 
-service irsc_util /system/bin/logwrapper /system/bin/irsc_util "/etc/sec_config"
+service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main
     user root
     oneshot
+
+# Trim Area QMI service
+service ta_qmi_service /system/bin/ta_qmi_service
+    class late_start
+    user root
+    disabled
 
 service wcnss-service /system/bin/wcnss_service
     class late_start
