@@ -185,8 +185,10 @@
 
 # NFC
 /dev/pn544                0600   nfc         nfc
-# wlan
+
+# Wlan
 /dev/wcnss_wlan           0660   system     system
+/dev/wcnss_ctrl           0660   system     system
 
 # MHL
 /sys/devices/i2c-10/10-0039/mhl/sii8334  adopter_id 0440  system  system
