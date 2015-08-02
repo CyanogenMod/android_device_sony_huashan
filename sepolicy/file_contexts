@@ -15,6 +15,9 @@
 # Vibrator
 /sys/devices/virtual/timed_output/vibrator/level      u:object_r:sysfs_vibrator:s0
 
+# Display calibration
+/sys/devices/virtual/graphics/fb0/rgb           u:object_r:display_sysfs:s0
+
 # System binaries
 /system/bin/setup_fs                u:object_r:setup_fs_exec:s0
 /system/bin/secchand                u:object_r:secchand_exec:s0
