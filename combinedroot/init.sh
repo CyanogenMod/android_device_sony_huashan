@@ -46,14 +46,6 @@ busybox mknod -m 666 /dev/null c 1 3
 busybox mount -t proc proc /proc
 busybox mount -t sysfs sysfs /sys
 
-# trigger amber LED
-busybox echo 255 > ${BOOTREC_LED_RED}
-busybox echo 255 > ${BOOTREC_LED_REDC}
-busybox echo 0 > ${BOOTREC_LED_GREEN}
-busybox echo 0 > ${BOOTREC_LED_GREENC}
-busybox echo 255 > ${BOOTREC_LED_BLUE}
-busybox echo 255 > ${BOOTREC_LED_BLUEC}
-
 # keycheck
 busybox echo '50' > /sys/class/timed_output/vibrator/enable
 busybox cat ${BOOTREC_EVENT} > /dev/keycheck&
