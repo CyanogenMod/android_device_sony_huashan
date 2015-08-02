@@ -1,9 +1,9 @@
 on boot
     # LM3560/cameralight
     chown system system /sys/devices/i2c-10/10-0053/torch_enable
-    chmod 660 /sys/devices/i2c-10/10-0053/torch_enable
+    chmod 666 /sys/devices/i2c-10/10-0053/torch_enable
     chown system system /sys/devices/i2c-10/10-0053/torch_current
-    chmod 660 /sys/devices/i2c-10/10-0053/torch_current
+    chmod 666 /sys/devices/i2c-10/10-0053/torch_current
     chown system camera /sys/devices/i2c-10/10-0053/privacy_enable
     chown system camera /sys/devices/i2c-10/10-0053/privacy_current
     chown system camera /sys/devices/i2c-10/10-0053/flash_enable
@@ -20,7 +20,7 @@ on boot
 
     # Vibrator
     chown root system /sys/class/timed_output/vibrator/level
-    chmod 0664 /sys/class/timed_output/vibrator/level
+    chmod 0666 /sys/class/timed_output/vibrator/level
     restorecon /sys/class/timed_output/vibrator/level
 
     # Permissions for LSM330D sensor
