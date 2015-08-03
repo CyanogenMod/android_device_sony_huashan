@@ -1,5 +1,7 @@
+# Own properties declarations.
 ctl.quipc_igsn                u:object_r:ctl_quipc_prop:s0
 camera.0.name                 u:object_r:camera_prop:s0
 camera.1.name                 u:object_r:camera_prop:s0
+persist.tareset.notfirstboot  u:object_r:updatemiscta_prop:s0
 sf.lcd_density                u:object_r:display_prop:s0
 user.language                 u:object_r:system_prop:s0

@@ -1,3 +1,5 @@
+# Own properties declarations.
 type camera_prop, property_type;
 type ctl_quipc_prop, property_type;
 type display_prop, property_type;
+type updatemiscta_prop, property_type;
