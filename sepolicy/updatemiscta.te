@@ -9,6 +9,7 @@ set_prop(updatemiscta, ctl_default_prop)
 allow updatemiscta property_socket:sock_file write;
 allow updatemiscta self:capability dac_override;
 allow updatemiscta socket_device:sock_file write;
+allow updatemiscta updatemiscta_prop:property_service set;
 
 # TAD sockets.
 allow updatemiscta init:unix_stream_socket connectto;

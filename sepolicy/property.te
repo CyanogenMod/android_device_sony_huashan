@@ -1,2 +1,3 @@
 # Own properties declarations.
 type ctl_quipc_prop, property_type;
+type updatemiscta_prop, property_type;
