@@ -35,7 +35,11 @@ on enable-low-power
     write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 85
     write /sys/devices/system/cpu/cpufreq/interactive/io_is_busy 1
     write /sys/devices/system/cpu/cpufreq/interactive/sampling_down_factor 100000
+    write /sys/devices/system/cpu/cpufreq/interactive/boost 1
     write /sys/module/msm_thermal/core_control/enabled 1
+
+on property:sys.boot_completed=1
+    write /sys/devices/system/cpu/cpufreq/interactive/boost 0
 
 on charger
     # Enable Power modes and set the CPU Freq Sampling rates
