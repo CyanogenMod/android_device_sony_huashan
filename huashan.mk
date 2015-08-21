@@ -12,13 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Perfd
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.extension_library=libqti-perfd-client.so
-
-# inherit from msm8960-common
-$(call inherit-product, device/sony/msm8960-common/msm8960.mk)
-
 DEVICE_PACKAGE_OVERLAYS += device/sony/huashan/overlay
 
 PRODUCT_AAPT_CONFIG := normal
@@ -78,6 +71,14 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/etc/media_profiles.xml:system/etc/media_profiles.xml
 
+# Media
+PRODUCT_COPY_FILES += \
+    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
+    $(LOCAL_PATH)/rootdir/system/etc/media_codecs.xml:system/etc/media_codecs.xml \
+    $(LOCAL_PATH)/rootdir/system/etc/media_profiles.xml:system/etc/media_profiles.xml
+
 # GPS
 PRODUCT_COPY_FILES += \
    $(LOCAL_PATH)/rootdir/system/etc/gps.conf:system/etc/gps.conf
@@ -112,6 +113,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/etc/sysmon.cfg:system/etc/sysmon.cfg
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/system/etc/hostapd/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf
+
 # NFC Support
 PRODUCT_PACKAGES += \
     libnfc \
@@ -132,6 +136,37 @@ else
 endif
 PRODUCT_COPY_FILES += \
     $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
+
+# Media
+PRODUCT_PACKAGES += \
+    qcmediaplayer
+
+PRODUCT_BOOT_JARS += \
+    qcmediaplayer
+
+# Omx
+PRODUCT_PACKAGES += \
+    libOmxAacEnc \
+    libOmxAmrEnc \
+    libOmxCore \
+    libOmxEvrcEnc \
+    libOmxQcelp13Enc \
+    libOmxVdec \
+    libOmxVenc \
+    libc2dcolorconvert \
+    libdashplayer \
+    libdivxdrmdecrypt \
+    libmm-omxcore \
+    libstagefrighthw
+
+# Display
+PRODUCT_PACKAGES += \
+    libgenlock \
+    libmemalloc \
+    liboverlay \
+    libqdutils \
+    libtilerenderer \
+    libI420colorconvert
 
 # QCOM Display
 PRODUCT_PACKAGES += \
@@ -164,6 +199,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     camera.sony \
     camera.msm8960 \
+    camera.qcom \
     libmmcamera_interface \
     libmmcamera_interface2
 
@@ -184,10 +220,27 @@ PRODUCT_PACKAGES += \
     mac-update \
     wcnss_service
 
+PRODUCT_PACKAGES += \
+    libQWiFiSoftApCfg \
+    libqsap_sdk \
+    libwpa_client \
+    hostapd \
+    dhcpcd.conf \
+    wpa_supplicant \
+    wpa_supplicant.conf
+
 # Misc
 PRODUCT_PACKAGES += \
     librs_jni \
     com.android.future.usb.accessory
+
+# Lights
+PRODUCT_PACKAGES += \
+    lights.msm8960
+
+# Power
+PRODUCT_PACKAGES += \
+    power.qcom
 
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
@@ -201,12 +254,18 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.ril.transmitpower=true \
     persist.radio.add_power_save=1 \
+    ro.telephony.ril_class=SonyRIL \
     rild.libpath=/system/lib/libril-qc-qmi-1.so
+
+# Perfd
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.extension_library=libqti-perfd-client.so
 
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=320 \
-    debug.composition.type=c2d
+    debug.composition.type=c2d \
+    persist.hwc.mdpcomp.enable=true
 
 # DRM
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -220,6 +279,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     af.resampler.quality=255 \
     ro.qc.sdk.audio.fluencetype=fluence
 
+# QCOM
+PRODUCT_PROPERTY_OVERRIDES += \
+    com.qc.hardware=true
+
 # QCOM Location
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qc.sdk.izat.premium_enabled=0 \
@@ -231,6 +294,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qualcomm.bt.hci_transport=smd \
     qcom.bt.le_dev_pwr_class=1
+
+# WiFi
+PRODUCT_PROPERTY_OVERRIDES += \
+    wlan.driver.ath=0 \
+    wifi.interface=wlan0 \
+    wifi.supplicant_scan_interval=15
 
 # Do not power down SIM card when modem is sent to Low Power Mode.
 PRODUCT_PROPERTY_OVERRIDES += \
