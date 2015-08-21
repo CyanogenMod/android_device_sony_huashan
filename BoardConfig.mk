@@ -12,10 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# inherit from msm8960-common
-include device/sony/msm8960-common/BoardConfigCommon.mk
+# Inherit from Sony common
+include device/sony/common/BoardConfigCommon.mk
 
 TARGET_SPECIFIC_HEADER_PATH += device/sony/huashan/include
+
+# Architecture
+TARGET_ARCH := arm
+TARGET_CPU_ABI := armeabi-v7a
+TARGET_CPU_ABI2 := armeabi
+TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_CPU_VARIANT := krait
 
 # Kernel properties
 TARGET_KERNEL_SOURCE := kernel/sony/msm8x60
@@ -23,6 +30,7 @@ TARGET_KERNEL_CONFIG := cm_viskan_huashan_defconfig
 
 # Platform
 TARGET_BOOTLOADER_BOARD_NAME := MSM8960
+TARGET_BOARD_PLATFORM := msm8960
 BOARD_VENDOR_PLATFORM := viskan
 
 # Kernel information
@@ -31,11 +39,17 @@ BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_CMDLINE  := androidboot.hardware=qcom user_debug=31 androidboot.baseband=msm msm_rtb.filter=0x3F ehci-hcd.park=3 vmalloc=400M
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
 
+TARGET_NO_BOOTLOADER := true
+TARGET_NO_RADIOIMAGE := true
+
 # Time
 BOARD_USES_QC_TIME_SERVICES := true
 
 # Dumpstate
 BOARD_LIB_DUMPSTATE := libdumpstate.sony
+
+# Bionic
+MALLOC_IMPL := dlmalloc
 
 # Wifi
 BOARD_HAS_QCOM_WLAN              := true
@@ -54,12 +68,18 @@ BOARD_USE_SONY_MACUPDATE := true
 
 BOARD_HARDWARE_CLASS := device/sony/huashan/cmhw
 
+BOARD_USES_QCOM_HARDWARE := true
+
 # Camera
+TARGET_PROVIDES_CAMERA_HAL := true
 USE_DEVICE_SPECIFIC_CAMERA := true
 
 # GPS
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
 TARGET_NO_RPC := true
+
+# Lights HAL
+TARGET_PROVIDES_LIBLIGHT := true
 
 # Sensors
 SOMC_CFG_SENSORS := true
@@ -73,10 +93,18 @@ SOMC_CFG_SENSORS_LIGHT_MAXRANGE := 12276
 SOMC_CFG_SENSORS_PROXIMITY_APDS9702 := yes
 
 # Bluetooth
+BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH_QCOM := true
+BLUETOOTH_HCI_USE_MCT := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/sony/huashan/bluetooth
+
+# Power HAL
+TARGET_POWERHAL_VARIANT := qcom
+CM_POWERHAL_EXTENSION := qcom
 
 # RIL
 BOARD_PROVIDES_LIBRIL := true
+BOARD_RIL_CLASS := ../../../device/sony/huashan/ril/
 
 # Healthd
 BOARD_CHARGER_ENABLE_SUSPEND := true
@@ -109,12 +137,18 @@ TARGET_USERIMAGES_USE_F2FS := true
 # Assert
 TARGET_OTA_ASSERT_DEVICE := C5302,C5303,C5306,huashan
 
+# Display HAL
+USE_OPENGL_RENDERER := true
+TARGET_USES_ION := true
+TARGET_USES_C2D_COMPOSITION := true
+
 TARGET_DISPLAY_USE_RETIRE_FENCE := true
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 HAVE_ADRENO_SOURCE := false
 
 # Audio
+BOARD_USES_ALSA_AUDIO := true
 BOARD_USES_LEGACY_ALSA_AUDIO := true
 TARGET_USES_QCOM_COMPRESSED_AUDIO := true
 BOARD_HAVE_NEW_QCOM_CSDCLIENT := true
@@ -126,6 +160,9 @@ BOARD_USES_SEPERATED_VOICE_SPEAKER_MIC := true
 # FM Radio
 QCOM_FM_ENABLED := true
 AUDIO_FEATURE_ENABLED_FM := true
+
+# Font expansion
+EXTENDED_FONT_FOOTPRINT := true
 
 # Partition information
 BOARD_VOLD_MAX_PARTITIONS := 26
