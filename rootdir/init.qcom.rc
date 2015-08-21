@@ -364,7 +364,7 @@ on property:bluetooth.hciattach=false
 
 # QMUX must be in multiple groups to support external process connections
 service qmuxd /system/bin/qmuxd
-    class core
+    class main
     user radio
     group radio audio bluetooth gps qcom_diag net_bt_stack
 
@@ -393,9 +393,9 @@ service gsiff_daemon /system/bin/gsiff_daemon
     group gps qcom_oncrpc net_raw
 
 service qseecomd /system/bin/qseecomd
-    class core
-    user root
-    group root
+    class late_start
+    user system
+    group system
 
 service hw_config /system/bin/sh /system/etc/hw_config.sh
     class main
@@ -509,7 +509,7 @@ service charger /sbin/healthd -c
     seclabel u:r:healthd:s0
 
 service rmt_storage /system/bin/rmt_storage
-    class core
+    class main
     user root
     group system
 
