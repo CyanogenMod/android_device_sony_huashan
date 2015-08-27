@@ -56,6 +56,10 @@ on init
     mkdir /dev/bus 0755 root root
     mkdir /dev/bus/usb 0755 root root
 
+    # Adaptive LMK
+    write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
+    write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 53059
+
 on fs
     mount_all ./fstab.qcom
     setprop ro.crypto.fuse_sdcard true
@@ -174,6 +178,26 @@ on boot
 
     chmod 660 /dev/rtc0
     chown system system /dev/rtc0
+
+    write /proc/sys/vm/swappiness 0
+
+    # Flash storage isn't a good entropy source, and only causes locking
+    # overhead in the kernel. Turn it off.
+    write /sys/block/mmcblk0/queue/add_random 0
+    write /sys/block/mmcblk1/queue/add_random 0
+
+    # Set up KSM
+    write /sys/kernel/mm/ksm/sleep_millisecs 500
+    write /sys/kernel/mm/ksm/run 1
+    write /sys/kernel/mm/ksm/deferred_timer 1
+
+# Assign TCP buffer thresholds to be ceiling value of technology maximums
+# Increased technology maximums should be reflected here.
+    write /proc/sys/net/core/rmem_max  2097152
+    write /proc/sys/net/core/wmem_max  2097152
+
+# Tune buffersize for higher Miracast throughput
+    setprop net.tcp.buffersize.wifi 524288,1048576,2560000,524288,1048576,2560000
 
     #To allow interfaces to get v6 address when tethering is enabled
     write /proc/sys/net/ipv6/conf/rmnet0/accept_ra 2
@@ -371,11 +395,10 @@ service qmuxd /system/bin/qmuxd
 # SONY: TrimArea Daemon
 # Last 2 args: start block(blk size 128k), number of blocks(partitionsize(kb)/128(kb))
 service tad_static /sbin/tad_static /dev/block/mmcblk0 1,16
-    class core
+    class trimarea
     user root
     group root
-    socket tad stream 0660 system system
-    disabled
+    socket tad stream 666 system system
 
 service updatemiscta /system/bin/updatemiscta
     class main
@@ -384,6 +407,7 @@ service updatemiscta /system/bin/updatemiscta
 
 service netmgrd /system/bin/netmgrd
     class main
+    user root
     group radio
 
 # start GNSS/Sensor interface daemon
@@ -393,9 +417,9 @@ service gsiff_daemon /system/bin/gsiff_daemon
     group gps qcom_oncrpc net_raw
 
 service qseecomd /system/bin/qseecomd
-    class late_start
-    user system
-    group system
+    class core
+    user root
+    group root
 
 service hw_config /system/bin/sh /system/etc/hw_config.sh
     class main
@@ -432,22 +456,22 @@ service wpa_supplicant /system/bin/wpa_supplicant \
     oneshot
 
 service dhcpcd_wlan0 /system/bin/dhcpcd -aABDKL
-    class main
+    class late_start
     disabled
     oneshot
 
 service dhcpcd_p2p /system/bin/dhcpcd -aABKL
-    class main
+    class late_start
     disabled
     oneshot
 
 service iprenew_wlan0 /system/bin/dhcpcd -n
-    class main
+    class late_start
     disabled
     oneshot
 
 service iprenew_p2p /system/bin/dhcpcd -n
-    class main
+    class late_start
     disabled
     oneshot
 
@@ -482,7 +506,7 @@ service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 -w 1023 /mnt/media_rw/us
 service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
     class main
     user root
-    group root system
+    group system
     disabled
 
 service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
@@ -509,7 +533,7 @@ service charger /sbin/healthd -c
     seclabel u:r:healthd:s0
 
 service rmt_storage /system/bin/rmt_storage
-    class main
+    class core
     user root
     group system
 
@@ -525,9 +549,9 @@ service ta_qmi_service /system/bin/ta_qmi_service
     disabled
 
 service wcnss-service /system/bin/wcnss_service
-    class late_start
+    class main
     user system
-    group system wifi
+    group system wifi qcom_diag radio
     oneshot
 
 service time_daemon /system/bin/time_daemon
