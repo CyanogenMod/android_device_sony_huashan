@@ -215,6 +215,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     sensors.msm8960
 
+# Doze
+PRODUCT_PACKAGES += \
+    SonyDoze
+
 # Wifi service
 PRODUCT_PACKAGES += \
     mac-update \
