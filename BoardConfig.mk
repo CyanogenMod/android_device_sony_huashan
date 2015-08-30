@@ -180,10 +180,10 @@ BOARD_SEPOLICY_DIRS += \
 
 BOARD_SEPOLICY_UNION += \
     file_contexts \
-    bootanim.te \
     file.te \
     healthd.te \
     hostapd.te \
+    illumination.te \
     init.te \
     init_shell.te \
     kernel.te \
@@ -196,18 +196,18 @@ BOARD_SEPOLICY_UNION += \
     property_contexts \
     radio.te \
     rild.te \
+    sdcardd.te \
     secchand.te \
     setup_fs.te \
     shell.te \
     surfaceflinger.te \
     system_app.te \
+    system_monitor.te \
     system_server.te \
     tad_static.te \
     ta_qmi_service.te \
-    thermanager.te \
     updatemiscta.te \
-    vold.te \
-    zygote.te
+    vold.te
 
 # inherit from the proprietary version
 -include vendor/sony/huashan/BoardConfigVendor.mk
