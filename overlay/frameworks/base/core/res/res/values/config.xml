@@ -300,4 +300,12 @@
          scaled proportionally to the smaller buckets.  -1 keeps the default. -->
     <integer name="config_lowMemoryKillerMinFreeKbytesAbsolute">81920</integer>
 
+    <!-- Enable the option to check proximity sensor when deciding whether to
+         turn the screen on
+         NOTE ! - Enable for devices that have a fast response proximity sensor
+    -->
+    <bool name="config_proximityCheckOnWake">true</bool>
+    <integer name="config_proximityCheckTimeout">100</integer>
+    <bool name="config_proximityCheckOnWakeEnabledByDefault">true</bool>
+
 </resources>
