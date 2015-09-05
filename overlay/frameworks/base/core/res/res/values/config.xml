@@ -289,6 +289,9 @@
     <!-- Does the notification LED support multiple colors? Used to decide if the user can change the colors -->
     <bool name="config_multiColorNotificationLed">true</bool>
 
+    <!-- Does the device have multiple LEDs ? Used to decide if the user can change the multiple LEDs settings -->
+    <bool name="config_multipleNotificationLeds">true</bool>
+
     <!-- Enable lockscreen translucent decor -->
     <bool name="config_enableLockScreenTranslucentDecor">true</bool>
 
