@@ -497,11 +497,10 @@ service illumination /system/bin/illumination_service
     class main
     user root
 
-# Start system_monitor
-service system_monitor /system/bin/system_monitor
-    socket sysmon stream 0660 root system
-    class core
+service thermanager /system/bin/thermanager /system/etc/thermanager.xml
+    class main
     user root
+    group root
 
 # Healthd
 service charger /sbin/healthd -c

@@ -202,10 +202,10 @@ BOARD_SEPOLICY_UNION += \
     shell.te \
     surfaceflinger.te \
     system_app.te \
-    system_monitor.te \
     system_server.te \
     tad_static.te \
     ta_qmi_service.te \
+    thermanager.te \
     updatemiscta.te \
     vold.te
 
