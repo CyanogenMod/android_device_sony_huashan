@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2012-2013, The Linux Foundation. All rights reserved
+<!-- Copyright (C) 2012-2014, The Linux Foundation. All rights reserved
      Not a contribution.
+
      Copyright (C) 2010 The Android Open Source Project
+
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
      You may obtain a copy of the License at
+
           http://www.apache.org/licenses/LICENSE-2.0
+
      Unless required by applicable law or agreed to in writing, software
      distributed under the License is distributed on an "AS IS" BASIS,
      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -54,6 +58,9 @@
 <!ATTLIST VideoEncoderCap maxFrameHeight CDATA #REQUIRED>
 <!ATTLIST VideoEncoderCap minFrameRate CDATA #REQUIRED>
 <!ATTLIST VideoEncoderCap maxFrameRate CDATA #REQUIRED>
+<!ATTLIST VideoEncoderCap maxHFRFrameWidth CDATA #REQUIRED>
+<!ATTLIST VideoEncoderCap maxHFRFrameHeight CDATA #REQUIRED>
+<!ATTLIST VideoEncoderCap maxHFRMode CDATA #REQUIRED>
 <!ELEMENT AudioEncoderCap EMPTY>
 <!ATTLIST AudioEncoderCap name (amrnb|amrwb|aac|wma|lpcm) #REQUIRED>
 <!ATTLIST AudioEncoderCap enabled (true|false) #REQUIRED>
@@ -114,7 +121,7 @@
 
         <EncoderProfile quality="480p" fileFormat="mp4" duration="30">
             <Video codec="h264"
-                   bitRate="5000000"
+                   bitRate="6000000"
                    width="720"
                    height="480"
                    frameRate="30" />
@@ -126,7 +133,7 @@
 
         <EncoderProfile quality="720p" fileFormat="mp4" duration="30">
             <Video codec="h264"
-                   bitRate="8000000"
+                   bitRate="14000000"
                    width="1280"
                    height="720"
                    frameRate="30" />
@@ -138,7 +145,7 @@
 
         <EncoderProfile quality="1080p" fileFormat="mp4" duration="30">
             <Video codec="h264"
-                   bitRate="12000000"
+                   bitRate="20000000"
                    width="1920"
                    height="1080"
                    frameRate="30" />
@@ -229,35 +236,35 @@
 
         <EncoderProfile quality="timelapsevga" fileFormat="mp4" duration="30">
             <Video codec="h264"
-                         bitRate="2000000"
-                         width="640"
-                         height="480"
-                         frameRate="30" />
+                   bitRate="2000000"
+                   width="640"
+                   height="480"
+                   frameRate="30" />
 
             <!-- audio setting is ignored -->
             <Audio codec="aac"
-                         bitRate="96000"
-                         sampleRate="16000"
-                         channels="1" />
+                   bitRate="96000"
+                   sampleRate="16000"
+                   channels="1" />
         </EncoderProfile>
 
         <EncoderProfile quality="timelapsewvga" fileFormat="mp4" duration="30">
             <Video codec="h264"
-                         bitRate="2000000"
-                         width="800"
-                         height="480"
-                         frameRate="30" />
+                   bitRate="2000000"
+                   width="800"
+                   height="480"
+                   frameRate="30" />
 
             <!-- audio setting is ignored -->
             <Audio codec="aac"
-                         bitRate="96000"
-                         sampleRate="16000"
-                         channels="1" />
+                   bitRate="96000"
+                   sampleRate="16000"
+                   channels="1" />
         </EncoderProfile>
 
         <EncoderProfile quality="timelapse480p" fileFormat="mp4" duration="30">
             <Video codec="h264"
-                   bitRate="5000000"
+                   bitRate="6000000"
                    width="720"
                    height="480"
                    frameRate="30" />
@@ -283,7 +290,7 @@
 
         <EncoderProfile quality="timelapse1080p" fileFormat="mp4" duration="30">
             <Video codec="h264"
-                   bitRate="12000000"
+                   bitRate="20000000"
                    width="1920"
                    height="1080"
                    frameRate="30" />
@@ -329,7 +336,6 @@
                    channels="1" />
         </EncoderProfile>
 
-
         <ImageEncoding quality="95" />
         <ImageEncoding quality="80" />
         <ImageEncoding quality="70" />
@@ -349,19 +355,25 @@
         minBitRate="64000" maxBitRate="12000000"
         minFrameWidth="176" maxFrameWidth="1920"
         minFrameHeight="144" maxFrameHeight="1080"
-        minFrameRate="15" maxFrameRate="30" />
+        minFrameRate="15" maxFrameRate="30"
+        maxHFRFrameWidth="720" maxHFRFrameHeight="480"
+        maxHFRMode="120"  />
 
     <VideoEncoderCap name="h263" enabled="true"
         minBitRate="64000" maxBitRate="2000000"
         minFrameWidth="176" maxFrameWidth="800"
         minFrameHeight="144" maxFrameHeight="480"
-        minFrameRate="15" maxFrameRate="30" />
+        minFrameRate="15" maxFrameRate="30"
+        maxHFRFrameWidth="0" maxHFRFrameHeight="0"
+        maxHFRMode="0"  />
 
     <VideoEncoderCap name="m4v" enabled="true"
         minBitRate="64000" maxBitRate="4000000"
         minFrameWidth="176" maxFrameWidth="1920"
         minFrameHeight="144" maxFrameHeight="1080"
-        minFrameRate="15" maxFrameRate="30" />
+        minFrameRate="15" maxFrameRate="30"
+        maxHFRFrameWidth="0" maxHFRFrameHeight="0"
+        maxHFRMode="0"  />
 
     <AudioEncoderCap name="aac" enabled="true"
         minBitRate="8000" maxBitRate="96000"
@@ -402,6 +414,7 @@
     -->
     <VideoDecoderCap name="wmv" enabled="true"/>
     <AudioDecoderCap name="wma" enabled="true"/>
+
     <!--
         The VideoEditor Capability configuration:
         - maxInputFrameWidth: maximum video width of imported video clip.
