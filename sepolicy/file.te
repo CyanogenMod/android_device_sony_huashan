@@ -4,5 +4,3 @@ type radio_efs_file, fs_type;
 # Vibrator
 type sysfs_vibrator, fs_type, sysfs_type;
 
-# Display calibration
-type display_sysfs, sysfs_type, file_type;
