@@ -290,10 +290,6 @@ on post-fs-data
     # Create /data/time folder for time-services
     mkdir /data/time 0700 system system
 
-    # Display calibration
-    chown system system /sys/devices/virtual/graphics/fb0/rgb
-    chmod 0660 /sys/devices/virtual/graphics/fb0/rgb
-
     setprop vold.post_fs_data_done 1
 
     rm /data/local/tmp/adreno_config.txt
