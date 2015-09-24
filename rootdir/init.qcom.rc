@@ -165,10 +165,20 @@ on boot
     chmod 660 /dev/rtc0
     chown system system /dev/rtc0
 
+    # Per-process reclaim
+    write /sys/module/process_reclaim/parameters/enable_process_reclaim 1
+    write /sys/module/process_reclaim/parameters/pressure_min 50
+    write /sys/module/process_reclaim/parameters/pressure_max 70
+    write /sys/module/process_reclaim/parameters/per_swap_size 512
+    write /sys/module/process_reclaim/parameters/swap_opt_eff 30
+
     # Flash storage isn't a good entropy source, and only causes locking
     # overhead in the kernel. Turn it off.
     write /sys/block/mmcblk0/queue/add_random 0
     write /sys/block/mmcblk1/queue/add_random 0
+
+    write /sys/block/mmcblk0/queue/iosched/slice_idle 0
+    write /sys/block/mmcblk1/queue/iosched/slice_idle 0
 
     write /proc/sys/vm/swappiness 0
 
