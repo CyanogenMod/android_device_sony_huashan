@@ -17,6 +17,7 @@ hw.fm.internal_antenna=true
 
 # ART
 dalvik.vm.dex2oat-flags=--no-watch-dog
+ro.sys.fw.dex2oat_thread_count=3
 
 #Trim properties
 ro.sys.fw.use_trim_settings=true
