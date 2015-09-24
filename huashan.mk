@@ -226,6 +226,12 @@ PRODUCT_PACKAGES += \
     wpa_supplicant \
     wpa_supplicant.conf
 
+# ART
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.dex2oat-flags=--no-watch-dog \
+    dalvik.vm.dex2oat-swap=false \
+    ro.sys.fw.dex2oat_thread_count=3
+
 # Misc
 PRODUCT_PACKAGES += \
     librs_jni \
@@ -246,10 +252,6 @@ PRODUCT_PACKAGES += \
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
-
-# Dalvik
-PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.dex2oat-swap=false
 
 # Radio and Telephony
 PRODUCT_PROPERTY_OVERRIDES += \
