@@ -15,9 +15,6 @@ persist.gps.qmienabled=true
 
 hw.fm.internal_antenna=true
 
-# ART
-dalvik.vm.dex2oat-flags=--no-watch-dog
-
 #Trim properties
 ro.sys.fw.use_trim_settings=true
 ro.sys.fw.empty_app_percent=50
