@@ -540,13 +540,6 @@ service secchan /system/bin/secchand
     group root
     class core
 
-# create filesystem if necessary
-service setup_fs /system/bin/setup_fs /dev/block/platform/msm_sdcc.1/by-name/Userdata
-    class core
-    user root
-    group root
-    oneshot
-
 # Powersave
 on property:sys.perf.profile=0
     start mpdecision
