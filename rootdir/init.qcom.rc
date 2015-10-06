@@ -65,15 +65,6 @@ on fs
     chown system system /lta-label
     chmod 0555 /lta-label
 
-    # SONY: Start the TrimArea Daemon.
-    class_start trimarea
-    start tad_static
-    exec /sbin/wait4tad_static
-
-    # SONY: Start early TA-users
-    exec /system/bin/taimport
-    start ta_qmi_service
-
     restorecon /data/etc/bluetooth_bdaddr
     restorecon /data/etc/wlan_macaddr0
     restorecon /data/etc/wlan_macaddr1
@@ -221,6 +212,9 @@ on boot
 
 # msm specific files that need to be created on /data
 on post-fs-data
+    # Used by taimport for MAC addresses
+    mkdir /data/etc 0755 root shell
+
     mkdir /data/media 0770 media_rw media_rw
 
     # Create directory for TZ Apps
@@ -237,7 +231,6 @@ on post-fs-data
 
     # Update WIFI MAC address
     mkdir /data/misc/wifi/prima 0775 wifi wifi
-    exec /system/bin/mac-update
 
     write /sys/module/wcnss_ssr_8960/parameters/enable_riva_ssr 1
     write /sys/devices/platform/wcnss_wlan.0/serial_number ${ro.serialno}
@@ -310,11 +303,28 @@ on post-fs-data
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd
 
+# SONY: TrimArea Daemon
+# Last 2 args: start block(blk size 128k), number of blocks(partitionsize(kb)/128(kb))
+service tad_static /sbin/tad_static /dev/block/mmcblk0 1,16
+    user root
+    group root
+    socket tad stream 0666 system system
+    class core
+
+service taimport /system/bin/taimport
+    class late_start
+    user root
+    group system
+    oneshot
+
 # Update WIFI MAC address
 service mac-update /system/bin/mac-update
     class main
     user wifi
     oneshot
+
+on service-exited-taimport
+    start mac-update
 
 # Bluetooth
 service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
@@ -335,15 +345,6 @@ service qmuxd /system/bin/qmuxd
     class main
     user radio
     group radio audio bluetooth gps qcom_diag net_bt_stack
-
-# SONY: TrimArea Daemon
-# Last 2 args: start block(blk size 128k), number of blocks(partitionsize(kb)/128(kb))
-service tad_static /sbin/tad_static /dev/block/mmcblk0 1,16
-    class core
-    user root
-    group root
-    socket tad stream 0660 system system
-    disabled
 
 service updatemiscta /system/bin/updatemiscta
     class main
@@ -483,9 +484,8 @@ service irsc_util /system/bin/irsc_util "/etc/sec_config"
 
 # Trim Area QMI service
 service ta_qmi_service /system/bin/ta_qmi_service
-    class late_start
     user root
-    disabled
+    class main
 
 service wcnss-service /system/bin/wcnss_service
     class late_start
