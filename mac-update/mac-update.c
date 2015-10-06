@@ -73,9 +73,6 @@ int main(int argc, char **argv)
 	fclose(f);
 
 	UPD_MAC(MAC0_FILE, MAC0_OFFSET);
-	UPD_MAC(MAC1_FILE, MAC1_OFFSET);
-	UPD_MAC(MAC2_FILE, MAC2_OFFSET);
-	UPD_MAC(MAC3_FILE, MAC3_OFFSET);
 
 	f = fopen(NV_OUT, "w+");
 	if (!f) {

@@ -13,5 +13,4 @@
 #define MAC2_OFFSET 24
 #define MAC3_OFFSET 32
 
-#define NV_SIZE 28456
-
+#define NV_SIZE 29776
