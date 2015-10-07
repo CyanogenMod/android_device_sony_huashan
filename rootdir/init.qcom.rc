@@ -449,11 +449,10 @@ service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 -w 1023 /mnt/media_rw/us
     class late_start
     disabled
 
-service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
-    class main
+service mpdecision /system/bin/mpdecision --avg_comp
+    class late_start
     user root
-    group root system
-    disabled
+    group system
 
 service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
     class late_start
