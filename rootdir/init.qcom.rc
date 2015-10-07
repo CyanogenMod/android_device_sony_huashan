@@ -352,6 +352,7 @@ service updatemiscta /system/bin/updatemiscta
 
 service netmgrd /system/bin/netmgrd
     class main
+    user root
     group radio
 
 # start GNSS/Sensor interface daemon
@@ -400,22 +401,22 @@ service wpa_supplicant /system/bin/wpa_supplicant \
     oneshot
 
 service dhcpcd_wlan0 /system/bin/dhcpcd -aABDKL
-    class main
+    class late_start
     disabled
     oneshot
 
 service dhcpcd_p2p /system/bin/dhcpcd -aABKL
-    class main
+    class late_start
     disabled
     oneshot
 
 service iprenew_wlan0 /system/bin/dhcpcd -n
-    class main
+    class late_start
     disabled
     oneshot
 
 service iprenew_p2p /system/bin/dhcpcd -n
-    class main
+    class late_start
     disabled
     oneshot
 
