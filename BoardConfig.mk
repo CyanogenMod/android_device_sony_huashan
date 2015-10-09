@@ -36,7 +36,7 @@ BOARD_VENDOR_PLATFORM := viskan
 # Kernel information
 BOARD_KERNEL_BASE  := 0x80200000
 BOARD_KERNEL_PAGESIZE := 2048
-BOARD_KERNEL_CMDLINE  := androidboot.hardware=qcom androidboot.baseband=msm user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 vmalloc=340M
+BOARD_KERNEL_CMDLINE  := androidboot.hardware=qcom androidboot.baseband=msm user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 vmalloc=340M androidboot.selinux=permissive
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
 
 TARGET_NO_BOOTLOADER := true
@@ -171,9 +171,9 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1056964608
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 2147483648
 
 # Include common SE policies
--include device/qcom/sepolicy/sepolicy.mk
+#-include device/qcom/sepolicy/sepolicy.mk
 
-BOARD_SEPOLICY_DIRS += device/sony/huashan/sepolicy
+#BOARD_SEPOLICY_DIRS += device/sony/huashan/sepolicy
 
 # inherit from the proprietary version
 -include vendor/sony/huashan/BoardConfigVendor.mk
