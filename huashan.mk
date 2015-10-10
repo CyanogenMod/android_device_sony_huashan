@@ -235,11 +235,6 @@ PRODUCT_PACKAGES += \
     wpa_supplicant \
     wpa_supplicant.conf
 
-# Misc
-PRODUCT_PACKAGES += \
-    librs_jni \
-    com.android.future.usb.accessory
-
 # Lights
 PRODUCT_PACKAGES += \
     lights.msm8960
