@@ -1,2 +1,2 @@
+allow healthd device:dir open;
 allow healthd device:dir read;
-

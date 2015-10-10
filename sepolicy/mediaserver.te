@@ -1,6 +1,7 @@
 # camera.0.name
 allow mediaserver camera_prop:property_service { set };
 
+allow mediaserver camera_socket:dir search;
 allow mediaserver camera_socket:dir write;
 allow mediaserver camera_socket:file { open read write getattr };
 
