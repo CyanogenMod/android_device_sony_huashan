@@ -23,6 +23,9 @@ on early-init
     symlink /data/tombstones /tombstones
 
 on init
+    # Preload the BoringSSL wrapper
+    export LD_PRELOAD "libboringssl-compat.so"
+
     symlink /dev/socket /tmp
 
     mkdir /dev/bus 0755 root root
