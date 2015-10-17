@@ -195,6 +195,7 @@ BOARD_SEPOLICY_UNION += \
     rild.te \
     sdcardd.te \
     secchand.te \
+    settings.device.te \
     setup_fs.te \
     shell.te \
     surfaceflinger.te \
