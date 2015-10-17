@@ -243,6 +243,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     thermanager
 
+# Glove mode
+PRODUCT_PACKAGES += \
+    DeviceSettings
+
 # Low-RAM optimizations
 ADDITIONAL_BUILD_PROPERTIES += \
     ro.config.low_ram=true \
