@@ -15,6 +15,9 @@
 # Vibrator
 /sys/devices/virtual/timed_output/vibrator/level      u:object_r:sysfs_vibrator:s0
 
+# Glove Mode
+/sys/devices/i2c-3/3-0024/main_ttsp_core.cyttsp4_i2c_adapter/signal_disparity   u:object_r:sysfs_glove_mode:s0
+
 # System binaries
 /system/bin/setup_fs                u:object_r:setup_fs_exec:s0
 /system/bin/secchand                u:object_r:secchand_exec:s0

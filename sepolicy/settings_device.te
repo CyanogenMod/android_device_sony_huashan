@@ -1,0 +1,2 @@
+# to set glove mode
+allow domain sysfs_glove_mode:file rw_file_perms;
