@@ -4,3 +4,5 @@ type radio_efs_file, fs_type;
 # Vibrator
 type sysfs_vibrator, fs_type, sysfs_type;
 
+# Glove Mode
+type sysfs_glove_mode, fs_type, sysfs_type;
