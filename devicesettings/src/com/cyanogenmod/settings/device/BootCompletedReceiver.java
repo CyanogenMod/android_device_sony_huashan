@@ -17,8 +17,10 @@
 package com.cyanogenmod.settings.device;
 
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.util.Log;
 
 public class BootCompletedReceiver extends BroadcastReceiver {
@@ -29,6 +31,19 @@ public class BootCompletedReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(final Context context, Intent intent) {
         if (DEBUG) Log.d(TAG, "Starting service");
+        enableComponent(context, TouchscreenGestureSettings.class.getName());
+        context.startService(new Intent(context, SensorsDozeService.class));
         context.startService(new Intent(context, GloveModeService.class));
+    }
+
+    private void enableComponent(Context context, String component) {
+        ComponentName name = new ComponentName(context, component);
+        PackageManager pm = context.getPackageManager();
+        if (pm.getComponentEnabledSetting(name)
+                == PackageManager.COMPONENT_ENABLED_STATE_DISABLED) {
+            pm.setComponentEnabledSetting(name,
+                    PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+                    PackageManager.DONT_KILL_APP);
+        }
     }
 }
