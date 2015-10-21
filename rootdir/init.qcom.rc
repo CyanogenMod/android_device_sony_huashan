@@ -223,7 +223,7 @@ on boot
 # msm specific files that need to be created on /data
 on post-fs-data
     # Used by taimport for MAC addresses
-    mkdir /data/etc 0755 root shell
+    mkdir /data/etc 0775 root shell
 
     mkdir /data/media 0770 media_rw media_rw
 
