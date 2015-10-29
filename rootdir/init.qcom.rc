@@ -417,6 +417,7 @@ service mpdecision /system/bin/mpdecision --avg_comp
     class late_start
     user root
     group system
+    socket mpdecision stream 0660 root system
     disabled
 
 service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
