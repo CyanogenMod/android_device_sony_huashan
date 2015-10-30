@@ -259,7 +259,7 @@ on post-fs-data
     mkdir /data/audio 0770 media audio
 
     # Camera
-    mkdir /data/camera 0771 root camera
+    mkdir /data/misc/camera 0771 root camera
 
     # Create /data/time folder for time-services
     mkdir /data/time 0700 system system
