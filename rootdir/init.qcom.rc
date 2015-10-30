@@ -327,10 +327,10 @@ service netmgrd /system/bin/netmgrd
     group radio
 
 # start GNSS/Sensor interface daemon
-service gsiff_daemon /system/bin/gsiff_daemon
-    class late_start
-    user system
-    group gps qcom_oncrpc net_raw
+#service gsiff_daemon /system/bin/gsiff_daemon
+#    class late_start
+#    user system
+#    group gps qcom_oncrpc net_raw
 
 service qseecomd /system/bin/qseecomd
     class late_start
