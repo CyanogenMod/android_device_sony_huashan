@@ -11,5 +11,5 @@
 /dev/block/platform/msm_sdcc.1/by-name/Cache          /cache              f2fs     noatime,nosuid,nodev,rw,discard,inline_xattr                               wait,check
 /dev/block/platform/msm_sdcc.1/by-name/Cache          /cache              ext4     noatime,nosuid,nodev,barrier=1,data=ordered,nomblk_io_submit,errors=panic  wait,check
 
-/devices/platform/msm_sdcc.3/mmc_host/mmc*            auto                auto     defaults                                                                   voldmanaged=sdcard1:auto,noemulatedsd
-/devices/platform/msm_hsusb_host/usb*                 auto                auto     defaults                                                                   voldmanaged=usbdisk:auto,noemulatedsd
+/devices/platform/msm_sdcc.3/mmc_host/mmc*            auto                auto     defaults                                                                   voldmanaged=sdcard1:auto,encryptable=userdata
+/devices/platform/msm_hsusb_host/usb*                 auto                auto     defaults                                                                   voldmanaged=usb:auto
