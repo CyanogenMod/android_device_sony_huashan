@@ -36,7 +36,7 @@ BOARD_VENDOR_PLATFORM := viskan
 # Kernel information
 BOARD_KERNEL_BASE  := 0x80200000
 BOARD_KERNEL_PAGESIZE := 2048
-BOARD_KERNEL_CMDLINE  := androidboot.hardware=qcom androidboot.baseband=msm user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 vmalloc=340M
+BOARD_KERNEL_CMDLINE  := androidboot.hardware=qcom androidboot.baseband=msm user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 vmalloc=340M androidboot.selinux=permissive
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
 
 TARGET_NO_BOOTLOADER := true
@@ -76,6 +76,7 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 
 # GPS
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
+BOARD_VENDOR_QCOM_LOC_PDK_FEATURE_SET := true
 TARGET_NO_RPC := true
 
 # Lights HAL
@@ -144,6 +145,8 @@ TARGET_USES_C2D_COMPOSITION := true
 
 TARGET_DISPLAY_USE_RETIRE_FENCE := true
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
+OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
+HAVE_ADRENO_SOURCE := false
 
 # Audio
 BOARD_USES_ALSA_AUDIO := true
@@ -156,8 +159,8 @@ BOARD_USES_SEPERATED_AUDIO_INPUT := true
 BOARD_USES_SEPERATED_VOICE_SPEAKER_MIC := true
 
 # FM Radio
-QCOM_FM_ENABLED := true
-AUDIO_FEATURE_ENABLED_FM := true
+#QCOM_FM_ENABLED := true
+#AUDIO_FEATURE_ENABLED_FM := true
 
 # Font expansion
 EXTENDED_FONT_FOOTPRINT := true
@@ -173,7 +176,7 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 2147483648
 # Include common SE policies
 -include device/qcom/sepolicy/sepolicy.mk
 
-BOARD_SEPOLICY_DIRS += device/sony/huashan/sepolicy
+#BOARD_SEPOLICY_DIRS += device/sony/huashan/sepolicy
 
 # inherit from the proprietary version
 -include vendor/sony/huashan/BoardConfigVendor.mk
