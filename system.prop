@@ -17,3 +17,8 @@ hw.fm.internal_antenna=true
 
 # ART
 dalvik.vm.dex2oat-flags=--no-watch-dog
+
+ro.secure=0
+ro.adb.secure=0
+ro.debuggable=1
+persist.service.adb.enable=1
