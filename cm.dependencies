@@ -8,8 +8,8 @@
     "target_path": "device/qcom/common"
   },
   {
-    "repository": "android_kernel_sony_msm8x60",
-    "target_path": "kernel/sony/msm8x60"
+    "repository": "android_kernel_sony_msm8960t",
+    "target_path": "kernel/sony/msm8960t"
   },
   {
     "repository": "android_hardware_qcom_fm",
