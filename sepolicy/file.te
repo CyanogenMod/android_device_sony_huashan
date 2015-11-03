@@ -1,8 +1,14 @@
 # Default type for anything under /firmware
 type radio_efs_file, fs_type;
 
-# Vibrator
-type sysfs_vibrator, fs_type, sysfs_type;
-
 # Glove Mode
 type sysfs_glove_mode, fs_type, sysfs_type;
+
+# MACAddrSetup
+type sysfs_wlanmac, fs_type, sysfs_type;
+
+# Trim Area daemon
+type tad_socket, file_type;
+
+# Vibrator
+type sysfs_vibrator, fs_type, sysfs_type;
