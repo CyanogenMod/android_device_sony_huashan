@@ -197,6 +197,7 @@ vendor/camera/SOI08BS3_IMX134.dat
 vendor/camera/STW00YP1.dat
 vendor/camera/flash.dat
 vendor/camera/product.dat
+vendor/lib/drm/libdrmwvmplugin.so
 vendor/lib/egl/eglsubAndroid.so
 vendor/lib/egl/libEGL_adreno.so
 vendor/lib/egl/libGLESv1_CM_adreno.so
@@ -226,6 +227,7 @@ vendor/lib/libquipc_ulp_adapter.so
 vendor/lib/libsc-a3xx.so
 -vendor/lib/libtime_genoff.so
 vendor/lib/libulp2.so
-vendor/lib/libwvdrm_L3.so
+vendor/lib/libwvdrm_L1.so
 vendor/lib/libwvm.so
-vendor/lib/libWVStreamControlAPI_L3.so
+vendor/lib/libWVphoneAPI.so
+vendor/lib/libWVStreamControlAPI_L1.so
