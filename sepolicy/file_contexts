@@ -6,23 +6,23 @@
 /dev/gemini.*                       u:object_r:camera_device:s0
 /data/etc/flashled_vf_factory       u:object_r:camera_data_file:s0
 
-# Wifi
-/data/etc/wlan_macaddr[0-3]         u:object_r:wifi_data_file:s0
-
-# Bluetooth
-/data/etc/bluetooth_bdaddr          u:object_r:bluetooth_data_file:s0
-
 # Vibrator
 /sys/devices/virtual/timed_output/vibrator/level      u:object_r:sysfs_vibrator:s0
 
 # Glove Mode
 /sys/devices/i2c-3/3-0024/main_ttsp_core.cyttsp4_i2c_adapter/signal_disparity   u:object_r:sysfs_glove_mode:s0
 
+# Trim Area daemon
+/dev/socket/tad                                                                   u:object_r:tad_socket:s0
+
 # System binaries
-/system/bin/setup_fs                u:object_r:setup_fs_exec:s0
+/system/bin/macaddrsetup            u:object_r:macaddrsetup_exec:s0
 /system/bin/secchand                u:object_r:secchand_exec:s0
-/system/bin/thermanager             u:object_r:thermanager_exec:s0
-/system/bin/mac-update              u:object_r:mac_update_exec:s0
-/system/bin/updatemiscta            u:object_r:updatemiscta_exec:s0
+/system/bin/setup_fs                u:object_r:setup_fs_exec:s0
 /system/bin/ta_qmi_service          u:object_r:ta_qmi_service_exec:s0
 /system/bin/tad_static              u:object_r:tad_static_exec:s0
+/system/bin/thermanager             u:object_r:thermanager_exec:s0
+/system/bin/updatemiscta            u:object_r:updatemiscta_exec:s0
+
+# WLAN MAC Address
+/sys/devices/platform/wcnss_wlan.0/wcnss_mac_addr                                 u:object_r:sysfs_wlanmac:s0
