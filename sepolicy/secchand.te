@@ -12,7 +12,6 @@ allow secchand tee_device:chr_file { open read write ioctl };
 allow secchand socket_device:sock_file { write };
 
 # /dev/socket/tad
-allow secchand tad_static:unix_stream_socket { connectto };
+allow secchand tad:unix_stream_socket { connectto };
 
 allow secchand init:unix_stream_socket connectto;
-
