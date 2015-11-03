@@ -20,9 +20,13 @@ import android.os.SystemProperties;
 import android.content.Context;
 
 public class SonyRIL extends RIL implements CommandsInterface {
-    public SonyRIL(Context context, int networkMode, int cdmaSubscription, Integer instanceId) {
-        super(context, networkMode, cdmaSubscription, instanceId);
+    public SonyRIL(Context context, int networkModes, int cdmaSubscription) {
+        this(context, networkModes, cdmaSubscription, null);
+    }
 
+    public SonyRIL(Context context, int preferredNetworkType,
+            int cdmaSubscription, Integer instanceId) {
+        super(context, preferredNetworkType, cdmaSubscription, instanceId);
         mQANElements = SystemProperties.getInt("ro.ril.telephony.mqanelements", 5);
     }
 }
