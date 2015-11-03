@@ -48,7 +48,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/etc/init.qcom.fm.sh:system/etc/init.qcom.fm.sh \
     $(LOCAL_PATH)/rootdir/ueventd.qcom.rc:root/ueventd.qcom.rc
 
-# Additional sbin stuff
+# Trim Area daemon
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/sbin/wait4tad_static:root/sbin/wait4tad_static \
     $(LOCAL_PATH)/rootdir/sbin/tad_static:root/sbin/tad_static
@@ -112,6 +112,14 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/etc/hostapd/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf
+
+# SONY TrimArea library
+PRODUCT_PACKAGES += \
+    libta
+
+# WiFi and Bluetooth MAC addresses
+PRODUCT_PACKAGES += \
+    macaddrsetup
 
 # NFC Support
 PRODUCT_PACKAGES += \
@@ -218,7 +226,6 @@ PRODUCT_PACKAGES += \
 
 # Wifi service
 PRODUCT_PACKAGES += \
-    mac-update \
     wcnss_service
 
 PRODUCT_PACKAGES += \
@@ -302,6 +309,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qualcomm.bt.hci_transport=smd \
+    ro.bt.bdaddr_path=/data/misc/bluetooth_bdaddr \
     qcom.bt.le_dev_pwr_class=1
 
 # WiFi
