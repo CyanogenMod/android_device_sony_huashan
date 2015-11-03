@@ -113,6 +113,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/etc/hostapd/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf
 
+# MAC address - BT and Wi-Fi
+PRODUCT_PACKAGES += \
+    macaddrsetup
+
 # NFC Support
 PRODUCT_PACKAGES += \
     libnfc \
@@ -214,7 +218,6 @@ PRODUCT_PACKAGES += \
 
 # Wifi service
 PRODUCT_PACKAGES += \
-    mac-update \
     wcnss_service
 
 PRODUCT_PACKAGES += \
@@ -307,6 +310,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qualcomm.bt.hci_transport=smd \
+    ro.bt.bdaddr_path=/data/misc/bluetooth/bdaddr \
     qcom.bt.le_dev_pwr_class=1
 
 # WiFi
