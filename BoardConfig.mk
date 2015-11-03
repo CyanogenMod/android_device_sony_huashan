@@ -184,7 +184,7 @@ BOARD_SEPOLICY_UNION += \
     init.te \
     init_shell.te \
     kernel.te \
-    mac_update.te \
+    macaddrsetup.te \
     mediaserver.te \
     mpdecision.te \
     netd.te \
