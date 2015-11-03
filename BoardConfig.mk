@@ -48,9 +48,6 @@ BOARD_USES_QC_TIME_SERVICES := true
 # Dumpstate
 BOARD_LIB_DUMPSTATE := libdumpstate.sony
 
-# Bionic
-MALLOC_IMPL := dlmalloc
-
 # Wifi
 BOARD_HAS_QCOM_WLAN              := true
 BOARD_WLAN_DEVICE                := qcwcn
