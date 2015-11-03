@@ -43,11 +43,6 @@ on fs
     chown system system /lta-label
     chmod 0555 /lta-label
 
-    restorecon /data/etc/bluetooth_bdaddr
-    restorecon /data/etc/wlan_macaddr0
-    restorecon /data/etc/wlan_macaddr1
-    restorecon /data/etc/wlan_macaddr2
-    restorecon /data/etc/wlan_macaddr3
     restorecon /data/misc/audio/mbhc.bin
     restorecon /data/misc/audio/wcd9310_anc.bin
 
@@ -196,9 +191,6 @@ on boot
 
 # msm specific files that need to be created on /data
 on post-fs-data
-    # Used by taimport for MAC addresses
-    mkdir /data/etc 0775 root shell
-
     # Create directory for TZ Apps
     mkdir /data/misc/qsee 0770 system system
 
@@ -210,9 +202,6 @@ on post-fs-data
 
     # to observe dnsmasq.leases file for dhcp information of soft ap.
     chown dhcp system /data/misc/dhcp
-
-    # Update WIFI MAC address
-    mkdir /data/misc/wifi/prima 0775 wifi wifi
 
     write /sys/module/wcnss_ssr_8960/parameters/enable_riva_ssr 1
     write /sys/devices/platform/wcnss_wlan.0/serial_number ${ro.serialno}
@@ -287,26 +276,17 @@ service tad_static /sbin/tad_static /dev/block/mmcblk0 1,16
     socket tad stream 0666 system system
     class core
 
-service taimport /system/bin/taimport
+# Wi-Fi and BT MAC addresses
+service macaddrsetup /system/bin/macaddrsetup /sys/devices/platform/wcnss_wlan.0/wcnss_mac_addr /data/misc/bluetooth/bdaddr
     class late_start
     user root
-    group system
     oneshot
-
-# Update WIFI MAC address
-service mac-update /system/bin/mac-update
-    class main
-    user wifi
-    oneshot
-
-on service-exited-taimport
-    start mac-update
 
 # Bluetooth
 service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
     class late_start
     user bluetooth
-    group bluetooth net_bt_admin system net_bt_stack
+    group qcom_oncrpc bluetooth net_bt_admin system
     disabled
     oneshot
 
@@ -455,6 +435,7 @@ service wcnss-service /system/bin/wcnss_service
     class late_start
     user system
     group system wifi
+    disabled
     oneshot
 
 service time_daemon /system/bin/time_daemon

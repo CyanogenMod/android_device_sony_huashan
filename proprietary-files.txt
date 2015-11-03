@@ -15,7 +15,6 @@ bin/qmuxd
 bin/qseecomd
 bin/rmt_storage
 bin/secchand
-bin/taimport
 bin/ta_param_loader
 bin/ta_qmi_service
 bin/time_daemon
@@ -184,7 +183,7 @@ lib/libril-qc-qmi-1.so
 lib/libs1sl.so
 lib/libsensors_akm8963.so
 lib/libsys-utils.so
-lib/libta.so
+-lib/libta.so
 lib/libthermalclient.so
 vendor/camera/APT00YP1.dat
 vendor/camera/SMC08BS2.dat
