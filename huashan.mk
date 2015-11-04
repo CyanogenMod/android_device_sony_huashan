@@ -126,9 +126,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     extract_elf_ramdisk
 
-# BoringSSL compatability wrapper
+# Sony symbols
 PRODUCT_PACKAGES += \
-    libboringssl-compat
+    libsony
 
 # Build libstlport for legacy blobs
 PRODUCT_PACKAGES += \

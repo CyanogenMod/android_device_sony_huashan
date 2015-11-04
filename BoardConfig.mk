@@ -115,9 +115,6 @@ RED_LED_PATH := /sys/devices/i2c-10/10-0047/leds/LED1_R/brightness
 GREEN_LED_PATH := /sys/devices/i2c-10/10-0047/leds/LED1_G/brightness
 BLUE_LED_PATH := /sys/devices/i2c-10/10-0047/leds/LED1_B/brightness
 
-# Needed for blobs
-TARGET_RELEASE_CPPFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
-
 # Vold
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
 
