@@ -23,6 +23,8 @@ on early-init
     symlink /data/tombstones /tombstones
 
 on init
+    export LD_PRELOAD "libsony.so"
+
     symlink /dev/socket /tmp
 
     mkdir /dev/bus 0755 root root
