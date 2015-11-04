@@ -51,6 +51,14 @@ BOARD_LIB_DUMPSTATE := libdumpstate.sony
 # Bionic
 MALLOC_IMPL := dlmalloc
 
+# Kernel
+BOARD_KERNEL_CMDLINE := panic=3 console=ttyHSL0,115200,n8 androidboot.hardware=qcom user_debug=23 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1 androidboot.selinux=permissive
+BOARD_KERNEL_BASE := 0x80200000
+BOARD_KERNEL_PAGESIZE := 4096
+BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
+TARGET_KERNEL_SOURCE := kernel/sony/msm8x27
+TARGET_KERNEL_CONFIG := cyanogenmod_nicki_defconfig
+
 # Wifi
 BOARD_HAS_QCOM_WLAN              := true
 BOARD_WLAN_DEVICE                := qcwcn
@@ -114,9 +122,6 @@ SECONDARY_BACKLIGHT_PATH := /sys/devices/i2c-10/10-0040/leds/lcd-backlight2/brig
 RED_LED_PATH := /sys/devices/i2c-10/10-0047/leds/LED1_R/brightness
 GREEN_LED_PATH := /sys/devices/i2c-10/10-0047/leds/LED1_G/brightness
 BLUE_LED_PATH := /sys/devices/i2c-10/10-0047/leds/LED1_B/brightness
-
-# Needed for blobs
-TARGET_RELEASE_CPPFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 
 # Vold
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
