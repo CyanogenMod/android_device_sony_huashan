@@ -126,6 +126,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     extract_elf_ramdisk
 
+# Sony symbols
+PRODUCT_PACKAGES += \
+    libsony
+
 # BoringSSL compatability wrapper
 PRODUCT_PACKAGES += \
     libboringssl-compat

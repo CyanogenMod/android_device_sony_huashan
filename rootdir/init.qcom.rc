@@ -25,6 +25,7 @@ on early-init
 on init
     # Preload the BoringSSL wrapper
     export LD_PRELOAD "libboringssl-compat.so"
+    export LD_PRELOAD "libsony.so"
 
     symlink /dev/socket /tmp
 
