@@ -7,7 +7,7 @@ init_daemon_domain(macaddrsetup)
 # Connect to /dev/socket/tad
 unix_socket_connect(macaddrsetup, tad, tad)
 
-allow macaddrsetup self:capability { dac_override fowner chown fsetid };
+allow macaddrsetup self:capability { chown dac_override fowner fsetid };
 
 # Write /data/misc/bluetooth/bdaddr
 allow macaddrsetup bluetooth_data_file:dir rw_dir_perms;
