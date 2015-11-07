@@ -1,1 +1,2 @@
+allow mpdecision mpctl_data_file:file { create open append };
 allow mpdecision socket_device:sock_file create_file_perms;

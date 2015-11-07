@@ -1,1 +1,1 @@
-allow platform_app gpu_device:chr_file { open };
+allow platform_app gpu_device:chr_file open;

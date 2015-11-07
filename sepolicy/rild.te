@@ -1,5 +1,5 @@
 # Grant access to Qualcomm MSM Interface (QMI) radio sockets to RILD
 qmux_socket(rild)
 
-allow rild sysfs:file write;
 allow rild persist_file:dir search;
+allow rild sysfs:file write;
