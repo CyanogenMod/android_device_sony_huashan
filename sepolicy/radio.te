@@ -1,4 +1,5 @@
 # Talk to qmuxd (/dev/socket/qmux_radio)
 qmux_socket(radio)
 
+# Radio persisting file.
 allow radio persist_file:dir search;

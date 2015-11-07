@@ -1,1 +1,2 @@
+# Surfaceflinger GPU access.
 allow surfaceflinger gpu_device:chr_file { open read write };
