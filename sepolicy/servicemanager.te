@@ -1,0 +1,14 @@
+# ServiceManager Init access.
+allow servicemanager init:dir { search read open getattr };
+allow servicemanager init:file rw_file_perms;
+allow servicemanager init:process { getattr };
+
+# ServiceManager RilD access.
+allow servicemanager rild:dir search;
+allow servicemanager rild:file r_file_perms;
+allow servicemanager rild:process { getattr };
+
+# ServiceManager Zygote access.
+allow servicemanager zygote:dir { search read open getattr };
+allow servicemanager zygote:file { read open };
+allow servicemanager zygote:process { getattr };

@@ -1,2 +1,3 @@
-allow netd self:capability fsetid;
+# Network Deamon accesses.
 allow netd kernel:system module_request;
+allow netd self:capability fsetid;

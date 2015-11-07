@@ -1,2 +1,4 @@
-allow healthd device:dir r_dir_perms;
+# Battery HealthD charger controls.
+allow healthd alarm_device:chr_file rw_file_perms;
+allow healthd device:dir rw_dir_perms;
 allow healthd rtc_device:chr_file rw_file_perms;
