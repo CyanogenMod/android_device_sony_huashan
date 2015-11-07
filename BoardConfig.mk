@@ -42,6 +42,9 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 
+# Build
+USE_CLANG_PLATFORM_BUILD := true
+
 # Dumpstate
 BOARD_LIB_DUMPSTATE := libdumpstate.sony
 
