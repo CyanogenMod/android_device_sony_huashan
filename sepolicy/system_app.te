@@ -2,6 +2,7 @@
 allow system_app shell_data_file:dir { search };
 
 # init system_app
-allow system_app system_app_data_file:file execute;
-allow system_app system_app_data_file:file execute_no_trans;
+allow system_app system_app_data_file:file { execute execute_no_trans };
 
+# SONY Timekeep
+allow system_app timekeep_prop:property_service set;

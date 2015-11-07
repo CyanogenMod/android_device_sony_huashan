@@ -6,15 +6,16 @@ allow mediaserver camera_socket:file { open read write getattr };
 
 # /dev/msm_camera
 allow mediaserver camera_device:dir { search };
+r_dir_file(mediaserver, camera_data_file)
 
-allow mediaserver camera_data_file:file { open };
+r_dir_file(mediaserver, media_rw_data_file)
 
 allow mediaserver system_server:unix_stream_socket { read write };
 
 # /dev/input
 allow mediaserver input_device:dir { search };
 
-allow mediaserver default_prop:property_service set;
+allow mediaserver ctl_default_prop:property_service set;
 allow mediaserver self:socket create_socket_perms;
 
 allow mediaserver shell_data_file:dir search;
