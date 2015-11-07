@@ -12,7 +12,8 @@ allow macaddrsetup self:capability { dac_override fowner chown fsetid };
 # Write /data/misc/bluetooth/bdaddr
 allow macaddrsetup bluetooth_data_file:dir rw_dir_perms;
 allow macaddrsetup bluetooth_data_file:file create_file_perms;
+allow macaddrsetup init:unix_stream_socket connectto;
+allow macaddrsetup socket_device:sock_file write;
 
 # Write the Wi-Fi MAC
 allow macaddrsetup sysfs_wlanmac:file rw_file_perms;
-
