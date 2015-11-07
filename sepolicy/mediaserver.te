@@ -1,20 +1,31 @@
-# camera.0.name
-allow mediaserver camera_prop:property_service { set };
-
-allow mediaserver camera_socket:dir write;
-allow mediaserver camera_socket:file { open read write getattr };
-
-# /dev/msm_camera
+# Access camera device
+set_prop(mediaserver, camera_prop)
+allow mediaserver camera_data_file:file rw_file_perms;
 allow mediaserver camera_device:dir { search };
+allow mediaserver camera_socket:dir { search };
+allow mediaserver camera_socket:file { getattr open read write };
 
-allow mediaserver camera_data_file:file { open };
-
-allow mediaserver system_server:unix_stream_socket { read write };
+# Camera data
+r_dir_file(mediaserver, camera_data_file)
+r_dir_file(mediaserver, media_rw_data_file)
+allow mediaserver mnt_user_file:lnk_file { read };
+allow mediaserver mnt_user_file:dir { search };
+allow mediaserver shell_data_file:dir search;
+allow mediaserver storage_file:lnk_file { read };
+allow mediaserver storage_file:dir { search };
 
 # /dev/input
 allow mediaserver input_device:dir { search };
 
-allow mediaserver default_prop:property_service set;
+# Connect to system_server service.
+allow mediaserver system_server:unix_stream_socket { read setopt write };
+
+# Allow sensors service.
+allow mediaserver sensorservice_service:service_manager { find };
+
+# Mediaserver property and socket.
+set_prop(mediaserver, ctl_default_prop)
 allow mediaserver self:socket create_socket_perms;
 
-allow mediaserver shell_data_file:dir search;
+# Camera libraries.
+allow mediaserver system_file:file { execmod };

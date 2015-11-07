@@ -1,1 +1,2 @@
+# Host AP Deamon access to Wi-Fi data.
 allow hostapd wifi_data_file:sock_file write;

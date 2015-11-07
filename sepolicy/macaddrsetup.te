@@ -1,18 +1,19 @@
+# MACAddrSetup
 type macaddrsetup, domain;
 type macaddrsetup_exec, exec_type, file_type;
 
-# Started by init
 init_daemon_domain(macaddrsetup)
 
-# Connect to /dev/socket/tad
+# Connect to /dev/socket/tad.
 unix_socket_connect(macaddrsetup, tad, tad)
 
-allow macaddrsetup self:capability { dac_override fowner chown fsetid };
+# MACAddrSetup capabilities.
+allow macaddrsetup self:capability { chown dac_override fowner fsetid };
 
-# Write /data/misc/bluetooth/bdaddr
+# Write the Bluetooth MAC address.
 allow macaddrsetup bluetooth_data_file:dir rw_dir_perms;
 allow macaddrsetup bluetooth_data_file:file create_file_perms;
 
-# Write the Wi-Fi MAC
+# Write the Wi-Fi MAC address.
 allow macaddrsetup sysfs_wlanmac:file rw_file_perms;
 allow macaddrsetup sysfs_wlanserial:file rw_file_perms;
