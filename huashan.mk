@@ -288,6 +288,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # QCOM
 PRODUCT_PROPERTY_OVERRIDES += \
+    persist.data.qmi.adb_logmask=0 \
     com.qc.hardware=true
 
 # QCOM Location
