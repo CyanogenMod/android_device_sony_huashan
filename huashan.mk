@@ -126,10 +126,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     extract_elf_ramdisk
 
-# BoringSSL compatability wrapper
-PRODUCT_PACKAGES += \
-    libboringssl-compat
-
 # Build libstlport for legacy blobs
 PRODUCT_PACKAGES += \
     libstlport
