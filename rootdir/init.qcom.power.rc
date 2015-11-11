@@ -39,6 +39,9 @@ on enable-low-power
 
     write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor "ondemand"
 
+on property:sys.boot_completed=1
+    start mpdecision
+
 on charger
     # Enable Power modes and set the CPU Freq Sampling rates
     write /sys/module/msm_fb/parameters/align_buffer 0
