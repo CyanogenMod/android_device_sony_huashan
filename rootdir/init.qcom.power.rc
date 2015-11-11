@@ -40,6 +40,7 @@ on enable-low-power
 
 on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpufreq/interactive/boost 0
+    start mpdecision
 
 on charger
     # Enable Power modes and set the CPU Freq Sampling rates

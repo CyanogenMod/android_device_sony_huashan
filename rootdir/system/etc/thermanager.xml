@@ -18,16 +18,19 @@
 		</resource>
 
 		<!-- device-specific -->
-		<resource name="backlight" type="sysfs">/sys/class/leds/lcd-backlight/max_brightness</resource>
+		<resource name="backlight1" type="sysfs">/sys/class/leds/lcd-backlight1/max_brightness</resource>
+		<resource name="backlight2" type="sysfs">/sys/class/leds/lcd-backlight2/max_brightness</resource>
 		<resource name="charger" type="sysfs">/sys/class/power_supply/battery/temp</resource>
 		<resource name="charge_en" type="sysfs">/sys/class/power_supply/battery/status</resource>
 		<resource name="temp-batt" type="msm-adc">/sys/bus/platform/devices/pm8xxx-adc/batt_therm</resource>
 		<resource name="gpu" type="sysfs">/sys/class/kgsl/kgsl-3d0/max_gpuclk</resource>
-		<resource name="temp-xo" type="msm-adc">/sys/bus/platform/devices/pm8xxx-adc/xo_therm</resource>
 		<resource name="temp-pa" type="msm-adc">/sys/bus/platform/devices/pm8xxx-adc/pa_therm0</resource>
-		<resource name="temp-pa1" type="msm-adc">/sys/bus/platform/devices/pm8xxx-adc/pa_therm1</resource>
-		<resource name="temp-pa1" type="msm-adc">/sys/bus/platform/devices/pm8xxx-adc/pmic_therm</resource>
 		<resource name="usb" type="sysfs">/sys/class/power_supply/usb/current_max</resource>
+
+		<resource name="backlight" type="union">
+			<resource name="backlight1" />
+			<resource name="backlight2" />
+		</resource>
 
 		<resource name="temp-gpu" type="union">
 			<resource name="zone3" />
@@ -115,12 +118,11 @@
 	</control>
 
 	<control name="gpu">
-		<mitigation level="off"><value resource="gpu">578000000</value></mitigation>
-		<mitigation level="1"><value resource="gpu">462400000</value></mitigation>
-		<mitigation level="2"><value resource="gpu">389000000</value></mitigation>
-		<mitigation level="3"><value resource="gpu">330000000</value></mitigation>
-		<mitigation level="4"><value resource="gpu">200000000</value></mitigation>
-		<mitigation level="5"><value resource="shutdown" /></mitigation>
+		<mitigation level="off"><value resource="gpu">400000000</value></mitigation>
+		<mitigation level="1"><value resource="gpu">320000000</value></mitigation>
+		<mitigation level="2"><value resource="gpu">200000000</value></mitigation>
+		<mitigation level="3"><value resource="gpu">128000000</value></mitigation>
+		<mitigation level="4"><value resource="shutdown" /></mitigation>
 	</control>
 
 	<!-- burn-out protection -->
@@ -200,14 +202,17 @@
 		<threshold>
 			<mitigation name="gpu" level="off" />
 		</threshold>
+		<threshold trigger="90" clear="80">
+			<mitigation name="gpu" level="1" />
+		</threshold>
 		<threshold trigger="95" clear="85">
-			<mitigation name="gpu" level="3" />
+			<mitigation name="gpu" level="2" />
 		</threshold>
 		<threshold trigger="100" clear="90">
-			<mitigation name="gpu" level="4" />
+			<mitigation name="gpu" level="3" />
 		</threshold>
 		<threshold trigger="120" clear="110">
-			<mitigation name="gpu" level="5" />
+			<mitigation name="gpu" level="4" />
 		</threshold>
 	</configuration>
 
