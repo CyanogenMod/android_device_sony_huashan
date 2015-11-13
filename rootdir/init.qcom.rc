@@ -144,6 +144,10 @@ on boot
     chmod 0664 /sys/class/graphics/fb1/video_mode
     chmod 0664 /sys/class/graphics/fb1/format_3d
 
+    # Display backlight
+    write /sys/class/leds/lcd-backlight1/brightness 63
+    write /sys/class/leds/lcd-backlight2/brightness 63
+
     # create symlink for fb1 as HDMI
     symlink /dev/graphics/fb1 /dev/graphics/hdmi
 
@@ -176,15 +180,15 @@ on boot
 
     write /proc/sys/vm/swappiness 0
 
-# Assign TCP buffer thresholds to be ceiling value of technology maximums
-# Increased technology maximums should be reflected here.
+    # Assign TCP buffer thresholds to be ceiling value of technology maximums
+    # Increased technology maximums should be reflected here.
     write /proc/sys/net/core/rmem_max  2097152
     write /proc/sys/net/core/wmem_max  2097152
 
-# Tune buffersize for higher Miracast throughput
+    # Tune buffersize for higher Miracast throughput
     setprop net.tcp.buffersize.wifi 524288,1048576,2560000,524288,1048576,2560000
 
-    #To allow interfaces to get v6 address when tethering is enabled
+    # To allow interfaces to get v6 address when tethering is enabled
     write /proc/sys/net/ipv6/conf/rmnet0/accept_ra 2
     write /proc/sys/net/ipv6/conf/rmnet1/accept_ra 2
     write /proc/sys/net/ipv6/conf/rmnet2/accept_ra 2
