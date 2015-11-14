@@ -18,7 +18,6 @@ bin/secchand
 bin/taimport
 bin/ta_param_loader
 bin/ta_qmi_service
-bin/time_daemon
 bin/updatemiscta
 bin/usbhub
 bin/usbhub_init

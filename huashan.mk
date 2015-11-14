@@ -221,6 +221,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     sensors.msm8960
 
+# Sony timekeep
+PRODUCT_PACKAGES += \
+    timekeep \
+    TimeKeep
+
 # Wifi service
 PRODUCT_PACKAGES += \
     mac-update \

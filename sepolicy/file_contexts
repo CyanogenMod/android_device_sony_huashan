@@ -23,6 +23,7 @@
 /system/bin/secchand                u:object_r:secchand_exec:s0
 /system/bin/thermanager             u:object_r:thermanager_exec:s0
 /system/bin/mac-update              u:object_r:mac_update_exec:s0
+/system/bin/timekeep                u:object_r:timekeep_exec:s0
 /system/bin/updatemiscta            u:object_r:updatemiscta_exec:s0
 /system/bin/ta_qmi_service          u:object_r:ta_qmi_service_exec:s0
 /system/bin/tad_static              u:object_r:tad_static_exec:s0
