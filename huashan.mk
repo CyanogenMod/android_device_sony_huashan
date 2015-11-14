@@ -212,6 +212,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     sensors.msm8960
 
+# Time for RIL
+PRODUCT_PACKAGES += \
+    libtime_genoff
+
 # Wifi service
 PRODUCT_PACKAGES += \
     mac-update \
