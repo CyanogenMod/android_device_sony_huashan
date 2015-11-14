@@ -267,9 +267,6 @@ on post-fs-data
     # Camera
     mkdir /data/camera 0771 root camera
 
-    # Create /data/time folder for time-services
-    mkdir /data/time 0700 system system
-
     setprop vold.post_fs_data_done 1
 
     rm /data/local/tmp/adreno_config.txt
@@ -455,10 +452,12 @@ service wcnss-service /system/bin/wcnss_service
     group system wifi
     oneshot
 
-service time_daemon /system/bin/time_daemon
+service timekeep /system/bin/timekeep restore
     class late_start
     user root
     group root
+    oneshot
+    seclabel u:r:timekeep:s0
 
 service secchan /system/bin/secchand
     user root

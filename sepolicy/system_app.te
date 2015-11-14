@@ -5,3 +5,5 @@ allow system_app shell_data_file:dir { search };
 allow system_app system_app_data_file:file execute;
 allow system_app system_app_data_file:file execute_no_trans;
 
+# SONY Timekeep
+allow system_app timekeep_prop:property_service set;

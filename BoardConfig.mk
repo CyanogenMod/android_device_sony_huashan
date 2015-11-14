@@ -42,9 +42,6 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 
-# Time
-BOARD_USES_QC_TIME_SERVICES := true
-
 # Dumpstate
 BOARD_LIB_DUMPSTATE := libdumpstate.sony
 
