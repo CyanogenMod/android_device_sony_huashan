@@ -268,4 +268,13 @@
     <!--  Whether Multiuser UI should be shown -->
     <bool name="config_enableMultiUserUI">true</bool>
 
+    <!-- Ultrasound support for Mic/speaker path -->
+    <!-- Whether the default microphone audio source supports near-ultrasound frequencies
+         (range of 18 - 21 kHz). -->
+    <bool name="config_supportMicNearUltrasound">false</bool>
+
+    <!-- Whether the default speaker audio output path supports near-ultrasound frequencies
+         (range of 18 - 21 kHz). -->
+    <bool name="config_supportSpeakerNearUltrasound">false</bool>
+
 </resources>
