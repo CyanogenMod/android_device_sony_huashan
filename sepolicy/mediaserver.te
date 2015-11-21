@@ -1,9 +1,8 @@
 # camera.0.name
 allow mediaserver camera_prop:property_service { set };
 
-allow mediaserver camera_socket:dir search;
-allow mediaserver camera_socket:dir write;
-allow mediaserver camera_socket:file { open read write getattr };
+allow mediaserver camera_socket:dir { add_name search write };
+allow mediaserver camera_socket:file { create open read write getattr };
 
 # /dev/msm_camera
 allow mediaserver camera_device:dir { search };

@@ -1,9 +1,8 @@
 # user.language
-allow system_server system_prop:property_service { set };
 allow system_server default_prop:property_service set;
+allow system_server system_prop:property_service { set };
 
 allow system_server gpu_device:chr_file { open read write };
 
 # Hardware tunables
 allow system_server sysfs_vibrator:file rw_file_perms;
-
