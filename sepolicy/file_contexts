@@ -25,4 +25,5 @@
 /sbin/tad_static                    u:object_r:tad_exec:s0
 
 # WLAN Interface
+/sys/devices/platform/wcnss_wlan.0/serial_number                                  u:object_r:sysfs_wlanserial:s0
 /sys/devices/platform/wcnss_wlan.0/wcnss_mac_addr                                 u:object_r:sysfs_wlanmac:s0
