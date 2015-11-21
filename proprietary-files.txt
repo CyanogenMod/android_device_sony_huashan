@@ -183,7 +183,6 @@ lib/libs1sl.so
 lib/libsensors_akm8963.so
 lib/libsys-utils.so
 -lib/libta.so
-lib/libthermalclient.so
 vendor/camera/APT00YP1.dat
 vendor/camera/SMC08BS2.dat
 vendor/camera/SMC08BS2_IMX134.dat
