@@ -12,3 +12,4 @@ type sysfs_vibrator, fs_type, sysfs_type;
 
 # WLAN Interface
 type sysfs_wlanmac, fs_type, sysfs_type;
+type sysfs_wlanserial, fs_type, sysfs_type;
