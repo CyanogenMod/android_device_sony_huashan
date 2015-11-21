@@ -1,28 +1,28 @@
 # Gpu
-/dev/kgsl-2d0                       u:object_r:gpu_device:s0
-/dev/kgsl-2d1                       u:object_r:gpu_device:s0
+/dev/kgsl-2d0                                                                     u:object_r:gpu_device:s0
+/dev/kgsl-2d1                                                                     u:object_r:gpu_device:s0
 
 # Camera
-/dev/gemini.*                       u:object_r:camera_device:s0
-/data/etc/flashled_vf_factory       u:object_r:camera_data_file:s0
+/dev/gemini.*                                                                     u:object_r:camera_device:s0
+/data/etc/flashled_vf_factory                                                     u:object_r:camera_data_file:s0
 
 # Vibrator
-/sys/devices/virtual/timed_output/vibrator/level      u:object_r:sysfs_vibrator:s0
+/sys/devices/virtual/timed_output/vibrator/level                                  u:object_r:sysfs_vibrator:s0
 
 # Glove Mode
-/sys/devices/i2c-3/3-0024/main_ttsp_core.cyttsp4_i2c_adapter/signal_disparity   u:object_r:sysfs_glove_mode:s0
+/sys/devices/i2c-3/3-0024/main_ttsp_core.cyttsp4_i2c_adapter/signal_disparity     u:object_r:sysfs_glove_mode:s0
 
 # Trim Area daemon
-/dev/socket/tad                     u:object_r:tad_socket:s0
+/dev/socket/tad                                                                   u:object_r:tad_socket:s0
 
 # System binaries
-/system/bin/macaddrsetup            u:object_r:macaddrsetup_exec:s0
-/system/bin/secchand                u:object_r:secchand_exec:s0
-/system/bin/setup_fs                u:object_r:setup_fs_exec:s0
-/system/bin/ta_qmi_service          u:object_r:ta_qmi_service_exec:s0
-/system/bin/thermanager             u:object_r:thermanager_exec:s0
-/system/bin/updatemiscta            u:object_r:updatemiscta_exec:s0
-/sbin/tad_static                    u:object_r:tad_exec:s0
+/system/bin/macaddrsetup                                                          u:object_r:macaddrsetup_exec:s0
+/system/bin/secchand                                                              u:object_r:secchand_exec:s0
+/system/bin/setup_fs                                                              u:object_r:setup_fs_exec:s0
+/system/bin/ta_qmi_service                                                        u:object_r:ta_qmi_service_exec:s0
+/system/bin/thermanager                                                           u:object_r:thermanager_exec:s0
+/system/bin/updatemiscta                                                          u:object_r:updatemiscta_exec:s0
+/sbin/tad_static                                                                  u:object_r:tad_exec:s0
 
 # WLAN Interface
 /sys/devices/platform/wcnss_wlan.0/serial_number                                  u:object_r:sysfs_wlanserial:s0
