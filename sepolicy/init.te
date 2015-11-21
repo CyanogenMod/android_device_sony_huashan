@@ -1,9 +1,12 @@
 allow init self:process execmem;
 
+allow init kernel:system syslog_read;
+
 # property=sf.lcd_density
 allow init_shell display_prop:property_service set;
 
 # property=ctl.quipc_igsn
 allow init_shell ctl_quipc_prop:property_service set;
 
-allow init kernel:system syslog_read;
+allow init tad_socket:sock_file write;
+allow init tad:unix_stream_socket connectto;

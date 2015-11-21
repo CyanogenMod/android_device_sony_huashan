@@ -4,5 +4,7 @@ type tad_exec, exec_type, file_type;
 # Started by init
 init_daemon_domain(tad)
 
-allow tad block_device:dir { search };
+# Allow tad to work it's magic
+allow tad block_device:dir search;
+allow tad rootfs:file entrypoint;
 allow tad mmc_block_device:blk_file { ioctl open read write };
