@@ -6,6 +6,7 @@ type sysfs_glove_mode, fs_type, sysfs_type;
 
 # WLAN Interface
 type sysfs_wlanmac, fs_type, sysfs_type;
+type sysfs_wlanserial, fs_type, sysfs_type;
 
 # Trim Area daemon
 type tad_socket, file_type;
