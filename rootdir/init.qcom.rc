@@ -55,6 +55,8 @@ on early-boot
 
     write /sys/module/pm8921_charger/parameters/enable_lowbatt_detect 1
 
+    write /dev/wcnss_wlan 1
+
 on boot
     exec /system/bin/btnvtool -O
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
@@ -204,8 +206,6 @@ on post-fs-data
     chown dhcp system /data/misc/dhcp
 
     write /sys/module/wcnss_ssr_8960/parameters/enable_riva_ssr 1
-    write /sys/devices/platform/wcnss_wlan.0/serial_number ${ro.serialno}
-    write /dev/wcnss_wlan 1
 
     mkdir /tombstones/modem 0771 system system
     mkdir /tombstones/lpass 0771 system system
@@ -276,7 +276,7 @@ service tad_static /sbin/tad_static /dev/block/mmcblk0 1,16
     seclabel u:r:tad:s0
 
 # Wi-Fi and BT MAC addresses
-service macaddrsetup /system/bin/macaddrsetup /sys/devices/platform/wcnss_wlan.0/wcnss_mac_addr
+service macaddrsetup /system/bin/macaddrsetup
     class late_start
     user root
     oneshot
