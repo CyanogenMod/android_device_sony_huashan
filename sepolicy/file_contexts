@@ -18,7 +18,6 @@
 # System binaries
 /system/bin/macaddrsetup                                                          u:object_r:macaddrsetup_exec:s0
 /system/bin/secchand                                                              u:object_r:secchand_exec:s0
-/system/bin/setup_fs                                                              u:object_r:setup_fs_exec:s0
 /system/bin/ta_qmi_service                                                        u:object_r:ta_qmi_service_exec:s0
 /system/bin/thermanager                                                           u:object_r:thermanager_exec:s0
 /system/bin/updatemiscta                                                          u:object_r:updatemiscta_exec:s0
