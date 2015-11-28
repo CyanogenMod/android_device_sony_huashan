@@ -80,7 +80,7 @@ on early-boot
     write /dev/wcnss_wlan 1
 
 on boot
-    exec /system/bin/btnvtool -O
+    start btnvtool
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
@@ -302,6 +302,10 @@ service tad_static /sbin/tad_static /dev/block/mmcblk0 1,16
 service macaddrsetup /system/bin/macaddrsetup
     class late_start
     user root
+    oneshot
+
+service btnvtool /system/bin/btnvtool -O
+    disabled
     oneshot
 
 # Bluetooth
