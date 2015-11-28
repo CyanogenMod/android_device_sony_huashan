@@ -1,1 +1,2 @@
+allow platform_app app_data_file:dir search;
 allow platform_app gpu_device:chr_file { open };
