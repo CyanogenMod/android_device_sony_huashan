@@ -148,13 +148,6 @@ endif
 PRODUCT_COPY_FILES += \
     $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
 
-# Media
-PRODUCT_PACKAGES += \
-    qcmediaplayer
-
-PRODUCT_BOOT_JARS += \
-    qcmediaplayer
-
 # Omx
 PRODUCT_PACKAGES += \
     libOmxAacEnc \
@@ -165,7 +158,6 @@ PRODUCT_PACKAGES += \
     libOmxVdec \
     libOmxVenc \
     libc2dcolorconvert \
-    libdashplayer \
     libdivxdrmdecrypt \
     libmm-omxcore \
     libstagefrighthw
