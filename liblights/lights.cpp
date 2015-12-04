@@ -177,6 +177,19 @@ set_light_lcd_backlight(struct light_device_t* dev,
         brightness = LCD_BRIGHTNESS_MAX;
     }
 
+    /* LCD backlight incremental override */
+    if (brightness != LCD_BRIGHTNESS_OFF) {
+        if (brightness < LCD_BACKLIGHT_SLOWED_SPAN)  {
+            brightness = LCD_BRIGHTNESS_MIN + brightness / 2;
+        }
+        else {
+            brightness = LCD_BRIGHTNESS_MIN + LCD_BACKLIGHT_SLOWED_MAX +
+                    ((brightness - LCD_BACKLIGHT_SLOWED_SPAN)
+                    * LCD_BACKLIGHT_ACCELERATED_REAL)
+                    / LCD_BACKLIGHT_ACCELERATED_SPAN;
+        }
+    }
+
     /* LCD brightness update */
     pthread_mutex_lock(&g_lock);
     err |= write_int(LCD_BACKLIGHT1_FILE, brightness);
