@@ -162,6 +162,7 @@ set_light_lcd_backlight(struct light_device_t* dev,
         struct light_state_t const* state) {
 
     int err = 0;
+    unsigned int brightness1, brightness2;
     unsigned int brightness = rgb_to_brightness(state);
     if (!dev) {
         return -1;
@@ -178,10 +179,29 @@ set_light_lcd_backlight(struct light_device_t* dev,
         brightness = LCD_BRIGHTNESS_MAX;
     }
 
+    /* LCD backlight incremental override */
+    if (brightness != LCD_BRIGHTNESS_OFF) {
+        if (brightness < LCD_BACKLIGHT_SLOWED_SPAN)  {
+            brightness1 = (brightness + 1) / 2;
+            brightness2 = brightness / 2;
+        }
+        else {
+            brightness1 = LCD_BACKLIGHT_SLOWED_MAX +
+                    ((brightness - LCD_BACKLIGHT_SLOWED_SPAN)
+                    * LCD_BACKLIGHT_ACCELERATED_REAL)
+                    / LCD_BACKLIGHT_ACCELERATED_SPAN;
+            brightness2 = brightness1;
+        }
+    }
+    else {
+        brightness1 = LCD_BRIGHTNESS_OFF;
+        brightness2 = LCD_BRIGHTNESS_OFF;
+    }
+
     /* LCD brightness update */
     pthread_mutex_lock(&g_lock);
-    err |= write_int(LCD_BACKLIGHT1_FILE, brightness);
-    err |= write_int(LCD_BACKLIGHT2_FILE, brightness);
+    err |= write_int(LCD_BACKLIGHT1_FILE, brightness1);
+    err |= write_int(LCD_BACKLIGHT2_FILE, brightness2);
     pthread_mutex_unlock(&g_lock);
     return err;
 }
