@@ -29,6 +29,12 @@
 #define LCD_BRIGHTNESS_MIN                 1
 #define LCD_BRIGHTNESS_OFF                 0
 
+/* === LibLights AS3677 LCD Regulations === */
+#define LCD_BACKLIGHT_SLOWED_SPAN          128
+#define LCD_BACKLIGHT_SLOWED_MAX           (LCD_BACKLIGHT_SLOWED_SPAN / 2)
+#define LCD_BACKLIGHT_ACCELERATED_REAL     (LCD_BRIGHTNESS_MAX - LCD_BACKLIGHT_SLOWED_MAX - LCD_BRIGHTNESS_MIN)
+#define LCD_BACKLIGHT_ACCELERATED_SPAN     (LCD_BRIGHTNESS_MAX - LCD_BACKLIGHT_SLOWED_SPAN)
+
 /* === LibLights AS3665 LEDs === */
 #define LEDS_COLORS_BRIGHTNESS_FILE        "/sys/class/leds/LED%d_%c/brightness"
 #define LEDS_COLORS_CURRENT_FILE           "/sys/class/leds/LED%d_%c/led_current"
