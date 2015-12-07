@@ -21,11 +21,11 @@
 *
 */
 
-//#define LOG_NDEBUG 0
+//#define LOG_NDEBUG 1
 
 #define LOG_TAG "CameraWrapper"
-#include <cutils/log.h>
 
+#include <cutils/log.h>
 #include <utils/threads.h>
 #include <utils/String8.h>
 #include <hardware/hardware.h>
@@ -33,32 +33,14 @@
 #include <camera/Camera.h>
 #include <camera/CameraParameters.h>
 
-static char KEY_SUPPORTED_ISO_MODES[] = "iso-values";
-static char KEY_ISO_MODE[] = "iso";
-
-// Sony parameter names
-static char KEY_SONY_IMAGE_STABILISER_VALUES[] = "sony-is-values";
-static char KEY_SONY_IMAGE_STABILISER[] = "sony-is";
-static char KEY_SONY_VIDEO_STABILISER[] = "sony-vs";
-static char KEY_SONY_VIDEO_STABILISER_VALUES[] = "sony-vs-values";
-static char KEY_SONY_VIDEO_HDR[] = "sony-video-hdr";
-static char KEY_SONY_VIDEO_HDR_VALUES[] = "sony-video-hdr-values";
-static char KEY_SONY_ISO_AVAIL_MODES[] = "sony-iso-values";
-static char KEY_SONY_ISO_MODE[] = "sony-iso";
-static char KEY_SONY_AE_MODE_VALUES[] = "sony-ae-mode-values";
-static char KEY_SONY_AE_MODE[] = "sony-ae-mode";
-
-// Sony parameter values
-static char VALUE_SONY_ON[] = "on";
-static char VALUE_SONY_OFF[] = "off";
-static char VALUE_SONY_STILL_HDR[] = "on-still-hdr";
-static char VALUE_SONY_INTELLIGENT_ACTIVE[] = "on-intelligent-active";
-
 static android::Mutex gCameraWrapperLock;
 static camera_module_t *gVendorModule = 0;
 
+static bool preview_running = false;
+
 static int camera_device_open(const hw_module_t *module, const char *name,
-        hw_device_t **device);
+					hw_device_t **device);
+static int camera_device_close(hw_device_t *device);
 static int camera_get_number_of_cameras(void);
 static int camera_get_camera_info(int camera_id, struct camera_info *info);
 
@@ -76,7 +58,7 @@ camera_module_t HAL_MODULE_INFO_SYM = {
          .author = "The CyanogenMod Project",
          .methods = &camera_module_methods,
          .dso = NULL, /* remove compilation warnings */
-         .reserved = {0}, /* remove compilation warnings */
+         .reserved = { 0 }, /* remove compilation warnings */
     },
     .get_number_of_cameras = camera_get_number_of_cameras,
     .get_camera_info = camera_get_camera_info,
@@ -106,13 +88,16 @@ static int check_vendor_module()
     int rv = 0;
     ALOGV("%s", __FUNCTION__);
 
-    if (gVendorModule)
+    if (gVendorModule) {
+        ALOGV("already got vendor camera module");
         return 0;
-
-    rv = hw_get_module_by_class("camera", "vendor",
-            (const hw_module_t**)&gVendorModule);
+	}
+	
+    rv = hw_get_module("vendor-camera", (const hw_module_t **) &gVendorModule);
+	
     if (rv)
-        ALOGE("failed to open vendor camera module");
+        ALOGE("%s: failed to open vendor camera module", __FUNCTION__);
+
     return rv;
 }
 
@@ -120,10 +105,10 @@ void camera_fixup_capability(android::CameraParameters *params)
 {
     ALOGV("%s", __FUNCTION__);
 
-    if (params->get(KEY_SONY_IMAGE_STABILISER_VALUES)) {
-        const char *supportedIsModes = params->get(KEY_SONY_IMAGE_STABILISER_VALUES);
+    if (params->get(android::CameraParameters::KEY_SONY_IMAGE_STABILISER_VALUES)) {
+        const char *supportedIsModes = params->get(android::CameraParameters::KEY_SONY_IMAGE_STABILISER_VALUES);
 
-        if (strstr(supportedIsModes, VALUE_SONY_STILL_HDR) != NULL) {
+        if (strstr(supportedIsModes, android::CameraParameters::VALUE_SONY_STILL_HDR) != NULL) {
             char buffer[512];
             const char *supportedSceneModes = params->get(android::CameraParameters::KEY_SUPPORTED_SCENE_MODES);
             sprintf(buffer, "%s,hdr", supportedSceneModes);
@@ -132,7 +117,8 @@ void camera_fixup_capability(android::CameraParameters *params)
     }
 }
 
-static char *camera_fixup_getparams(int id, const char *settings)
+static char *camera_fixup_getparams(int __attribute__((unused)) id,
+    const char *settings)
 {
     android::CameraParameters params;
     params.unflatten(android::String8(settings));
@@ -144,9 +130,9 @@ static char *camera_fixup_getparams(int id, const char *settings)
 
     camera_fixup_capability(&params);
 
-    if (params.get(KEY_SONY_ISO_AVAIL_MODES)) {
+    if (params.get(android::CameraParameters::KEY_SONY_ISO_AVAIL_MODES)) {
         // fixup the iso mode list with those that are in the sony list
-        const char *isoModeList = params.get(KEY_SONY_ISO_AVAIL_MODES);
+        const char *isoModeList = params.get(android::CameraParameters::KEY_SONY_ISO_AVAIL_MODES);
         char buffer[255] = "ISO";
         char bufferPos = 3;
         for (int pos = 0; pos < strlen(isoModeList); pos++) {
@@ -158,36 +144,36 @@ static char *camera_fixup_getparams(int id, const char *settings)
             }
         }
         sprintf(buffer, "%s,auto", buffer);
-        params.set(KEY_SUPPORTED_ISO_MODES, buffer);
+        params.set(android::CameraParameters::KEY_SUPPORTED_ISO_MODES, buffer);
     }
 
-    if (params.get(KEY_SONY_IMAGE_STABILISER)) {
-        const char *sony_is = params.get(KEY_SONY_IMAGE_STABILISER);
-        if (strcmp(sony_is, VALUE_SONY_STILL_HDR) == 0) {
+    if (params.get(android::CameraParameters::KEY_SONY_IMAGE_STABILISER)) {
+        const char *sony_is = params.get(android::CameraParameters::KEY_SONY_IMAGE_STABILISER);
+        if (strcmp(sony_is, android::CameraParameters::VALUE_SONY_STILL_HDR) == 0) {
             // Scene mode is HDR then (see fixup_setparams)
             params.set(android::CameraParameters::KEY_SCENE_MODE, "hdr");
         }
     }
 
-    if (params.get(KEY_SONY_VIDEO_HDR) && params.get(KEY_SONY_VIDEO_HDR_VALUES)) {
-        params.set("video-hdr-values", params.get(KEY_SONY_VIDEO_HDR_VALUES));
-        params.set("video-hdr", params.get(KEY_SONY_VIDEO_HDR));
+    if (params.get(android::CameraParameters::KEY_SONY_VIDEO_HDR) && params.get(android::CameraParameters::KEY_SONY_VIDEO_HDR_VALUES)) {
+        params.set("video-hdr-values", params.get(android::CameraParameters::KEY_SONY_VIDEO_HDR_VALUES));
+        params.set("video-hdr", params.get(android::CameraParameters::KEY_SONY_VIDEO_HDR));
     }
 
-    if (params.get(KEY_SONY_ISO_MODE)) {
-        if (params.get(KEY_SONY_AE_MODE_VALUES)) {
-            const char *aeMode = params.get(KEY_SONY_AE_MODE);
+    if (params.get(android::CameraParameters::KEY_SONY_ISO_MODE)) {
+        if (params.get(android::CameraParameters::KEY_SONY_AE_MODE_VALUES)) {
+            const char *aeMode = params.get(android::CameraParameters::KEY_SONY_AE_MODE);
             if (strcmp(aeMode, "auto") == 0 ) {
-                params.set(KEY_ISO_MODE, "auto");
+                params.set(android::CameraParameters::KEY_ISO_MODE, "auto");
                 params.set("shutter-speed","auto");
             } else if (strcmp(aeMode, "iso-prio") == 0) {
                 char *isoVal = (char*)malloc(sizeof(char)*
-                        (3 + strlen(params.get(KEY_SONY_ISO_MODE))));
-                sprintf(isoVal,"ISO%s",params.get(KEY_SONY_ISO_MODE));
-                params.set(KEY_ISO_MODE,isoVal);
+                        (3 + strlen(params.get(android::CameraParameters::KEY_SONY_ISO_MODE))));
+                sprintf(isoVal,"ISO%s",params.get(android::CameraParameters::KEY_SONY_ISO_MODE));
+                params.set(android::CameraParameters::KEY_ISO_MODE,isoVal);
                 params.set("shutter-speed","auto");
             } else if (strcmp(aeMode, "shutter-prio") == 0) {
-                params.set(KEY_ISO_MODE, "auto");
+                params.set(android::CameraParameters::KEY_ISO_MODE, "auto");
                 const char *shutterSpeed = params.get("sony-shutter-speed");
                 if (shutterSpeed) {
                     params.set("shutter-speed",shutterSpeed);
@@ -198,24 +184,20 @@ static char *camera_fixup_getparams(int id, const char *settings)
                     params.set("shutter-speed",shutterSpeed);
                 }
                 char *isoVal = (char*)malloc(sizeof(char)*
-                                        (3 + strlen(params.get(KEY_SONY_ISO_MODE))));
-                sprintf(isoVal,"ISO%s",params.get(KEY_SONY_ISO_MODE));
-                params.set(KEY_ISO_MODE,isoVal);
+                                        (3 + strlen(params.get(android::CameraParameters::KEY_SONY_ISO_MODE))));
+                sprintf(isoVal,"ISO%s",params.get(android::CameraParameters::KEY_SONY_ISO_MODE));
+                params.set(android::CameraParameters::KEY_ISO_MODE,isoVal);
             } else {
-                params.set(KEY_ISO_MODE, "auto");
+                params.set(android::CameraParameters::KEY_ISO_MODE, "auto");
                 params.set("shutter-speed","auto");
             }
         }
     }
 
-#if !LOG_NDEBUG
-    ALOGV("%s: fixed parameters:", __FUNCTION__);
-    params.dump();
-#endif
-
     android::String8 strParams = params.flatten();
     char *ret = strdup(strParams.string());
 
+    ALOGV("%s: get parameters fixed up", __FUNCTION__);	
     return ret;
 }
 
@@ -224,42 +206,37 @@ static char *camera_fixup_setparams(int id, const char *settings)
     android::CameraParameters params;
     params.unflatten(android::String8(settings));
 
-#if !LOG_NDEBUG
-    ALOGV("%s: original parameters:", __FUNCTION__);
-    params.dump();
-#endif
-
     const char *shutterSpeed = params.get("shutter-speed");
     if (shutterSpeed) {
         if (strcmp(shutterSpeed, "auto") != 0) {
             params.set("sony-shutter-speed", shutterSpeed);
-            params.set(KEY_SONY_AE_MODE, "shutter-prio");
+            params.set(android::CameraParameters::KEY_SONY_AE_MODE, "shutter-prio");
         } else {
-            const char *aeModes = params.get(KEY_SONY_AE_MODE_VALUES);
+            const char *aeModes = params.get(android::CameraParameters::KEY_SONY_AE_MODE_VALUES);
             if (strstr(aeModes, "auto") != NULL) {
-                params.set(KEY_SONY_AE_MODE, "auto");
+                params.set(android::CameraParameters::KEY_SONY_AE_MODE, "auto");
             }
         }
     }
 
-    if (params.get(KEY_ISO_MODE)) {
-        const char *isoMode = params.get(KEY_ISO_MODE);
+    if (params.get(android::CameraParameters::KEY_ISO_MODE)) {
+        const char *isoMode = params.get(android::CameraParameters::KEY_ISO_MODE);
         if (strcmp(isoMode, "auto") != 0) {
-            params.set(KEY_SONY_ISO_MODE, isoMode + 3);
+            params.set(android::CameraParameters::KEY_SONY_ISO_MODE, isoMode + 3);
         }
-        if (params.get(KEY_SONY_AE_MODE_VALUES)) {
-            const char *aeModes = params.get(KEY_SONY_AE_MODE_VALUES);
+        if (params.get(android::CameraParameters::KEY_SONY_AE_MODE_VALUES)) {
+            const char *aeModes = params.get(android::CameraParameters::KEY_SONY_AE_MODE_VALUES);
             if (strcmp(isoMode, "auto") == 0) {
                 if ((strstr(aeModes, "auto") != NULL) &&
-                    (strcmp(params.get(KEY_SONY_AE_MODE), "shutter-prio") != 0)) {
-                    params.set(KEY_SONY_AE_MODE, "auto");
+                    (strcmp(params.get(android::CameraParameters::KEY_SONY_AE_MODE), "shutter-prio") != 0)) {
+                    params.set(android::CameraParameters::KEY_SONY_AE_MODE, "auto");
                 }
             } else {
                 if (strstr(aeModes, "iso-prio") != NULL) {
-                    if (strcmp(params.get(KEY_SONY_AE_MODE), "shutter-prio") == 0) {
-                        params.set(KEY_SONY_AE_MODE, "manual");
+                    if (strcmp(params.get(android::CameraParameters::KEY_SONY_AE_MODE), "shutter-prio") == 0) {
+                        params.set(android::CameraParameters::KEY_SONY_AE_MODE, "manual");
                     } else {
-                        params.set(KEY_SONY_AE_MODE, "iso-prio");
+                        params.set(android::CameraParameters::KEY_SONY_AE_MODE, "iso-prio");
                     }
                 }
             }
@@ -269,37 +246,35 @@ static char *camera_fixup_setparams(int id, const char *settings)
     if (params.get(android::CameraParameters::KEY_SCENE_MODE)) {
         const char *sceneMode = params.get(android::CameraParameters::KEY_SCENE_MODE);
         if (strcmp(sceneMode, "hdr") == 0) {
-            params.set(KEY_SONY_IMAGE_STABILISER, VALUE_SONY_STILL_HDR);
+            params.set(android::CameraParameters::KEY_SONY_IMAGE_STABILISER, android::CameraParameters::VALUE_SONY_STILL_HDR);
             params.set(android::CameraParameters::KEY_SCENE_MODE, android::CameraParameters::SCENE_MODE_AUTO);
         } else {
-            params.set(KEY_SONY_IMAGE_STABILISER, VALUE_SONY_ON);
+            params.set(android::CameraParameters::KEY_SONY_IMAGE_STABILISER, android::CameraParameters::VALUE_SONY_ON);
         }
     }
 
-    if (params.get(KEY_SONY_VIDEO_HDR) && params.get("video-hdr")) {
+    if (params.get(android::CameraParameters::KEY_SONY_VIDEO_HDR) && params.get("video-hdr")) {
         //params.set("video-hdr-values", params.get(KEY_SONY_VIDEO_HDR_VALUES));
-        params.set(KEY_SONY_VIDEO_HDR, params.get("video-hdr"));
+        params.set(android::CameraParameters::KEY_SONY_VIDEO_HDR, params.get("video-hdr"));
     }
 
     if (params.get(android::CameraParameters::KEY_RECORDING_HINT)) {
         if (strcmp(params.get(android::CameraParameters::KEY_RECORDING_HINT), android::CameraParameters::TRUE) == 0) {
-            if (params.get(KEY_SONY_VIDEO_STABILISER_VALUES) && (strstr(params.get(KEY_SONY_VIDEO_STABILISER_VALUES), VALUE_SONY_INTELLIGENT_ACTIVE) != NULL) ) {
-                params.set(KEY_SONY_VIDEO_STABILISER, VALUE_SONY_INTELLIGENT_ACTIVE);
+            if (params.get(android::CameraParameters::KEY_SONY_VIDEO_STABILISER_VALUES) && (strstr(params.get(android::CameraParameters::KEY_SONY_VIDEO_STABILISER_VALUES), android::CameraParameters::VALUE_SONY_INTELLIGENT_ACTIVE) != NULL) ) {
+                params.set(android::CameraParameters::KEY_SONY_VIDEO_STABILISER, android::CameraParameters::VALUE_SONY_INTELLIGENT_ACTIVE);
             } else {
-                params.set(KEY_SONY_VIDEO_STABILISER, VALUE_SONY_ON);
+                params.set(android::CameraParameters::KEY_SONY_VIDEO_STABILISER, android::CameraParameters::VALUE_SONY_ON);
             }
-            params.set(KEY_SONY_IMAGE_STABILISER, VALUE_SONY_OFF);
+            params.set(android::CameraParameters::KEY_SONY_IMAGE_STABILISER, android::CameraParameters::VALUE_SONY_OFF);
         }
     }
 
-#if !LOG_NDEBUG
-    ALOGV("%s: fixed parameters:", __FUNCTION__);
     params.dump();
-#endif
 
     android::String8 strParams = params.flatten();
     char *ret = strdup(strParams.string());
 
+    ALOGV("%s: fixed parameters:", __FUNCTION__);
     return ret;
 }
 
@@ -308,10 +283,10 @@ static char *camera_fixup_setparams(int id, const char *settings)
  *******************************************************************/
 
 static int camera_set_preview_window(struct camera_device *device,
-        struct preview_stream_ops *window)
+					 struct preview_stream_ops *window)
 {
     ALOGV("%s->%08X->%08X", __FUNCTION__, (uintptr_t)device,
-            (uintptr_t)(((wrapper_camera_device_t*)device)->vendor));
+        (uintptr_t)(((wrapper_camera_device_t *)device)->vendor));
 
     if (!device)
         return -EINVAL;
@@ -319,7 +294,7 @@ static int camera_set_preview_window(struct camera_device *device,
     return VENDOR_CALL(device, set_preview_window, window);
 }
 
-static void camera_set_callbacks(struct camera_device *device,
+static void camera_set_callbacks(struct camera_device * device,
         camera_notify_callback notify_cb,
         camera_data_callback data_cb,
         camera_data_timestamp_callback data_cb_timestamp,
@@ -390,6 +365,9 @@ static void camera_stop_preview(struct camera_device *device)
 
     if (!device)
         return;
+		
+    // Workaround for camera freezes
+    VENDOR_CALL(device, send_command, 7, 0, 0);
 
     VENDOR_CALL(device, stop_preview);
 }
@@ -522,8 +500,18 @@ static int camera_set_parameters(struct camera_device *device,
     if (!device)
         return -EINVAL;
 
+#if LOG_PARAMETERS
+    ALOGV("Before fixup:");
+    __android_log_write(ANDROID_LOG_VERBOSE, LOG_TAG, params);
+#endif
+
     char *tmp = NULL;
     tmp = camera_fixup_setparams(CAMERA_ID(device), params);
+
+#if LOG_PARAMETERS
+    ALOGV("After fixup:");
+    __android_log_write(ANDROID_LOG_VERBOSE, LOG_TAG, tmp);
+#endif
 
     int ret = VENDOR_CALL(device, set_parameters, tmp);
     return ret;
@@ -539,9 +527,19 @@ static char *camera_get_parameters(struct camera_device *device)
 
     char *params = VENDOR_CALL(device, get_parameters);
 
+#if LOG_PARAMETERS
+    ALOGV("Before fixup:");
+    __android_log_write(ANDROID_LOG_VERBOSE, LOG_TAG, params);
+#endif
+
     char *tmp = camera_fixup_getparams(CAMERA_ID(device), params);
     VENDOR_CALL(device, put_parameters, params);
     params = tmp;
+
+#if LOG_PARAMETERS
+    ALOGV("After fixup:");
+    __android_log_write(ANDROID_LOG_VERBOSE, LOG_TAG, tmp);
+#endif
 
     return params;
 }
@@ -589,7 +587,9 @@ static int camera_dump(struct camera_device *device, int fd)
     return VENDOR_CALL(device, dump, fd);
 }
 
+#ifdef HEAPTRACKER
 extern "C" void heaptracker_free_leaked_memory(void);
+#endif
 
 static int camera_device_close(hw_device_t *device)
 {
@@ -605,16 +605,24 @@ static int camera_device_close(hw_device_t *device)
         goto done;
     }
 
-    wrapper_dev = (wrapper_camera_device_t*) device;
+    wrapper_dev = (wrapper_camera_device_t *) device;
+	
+    ALOGI("closing camera device with id %d", wrapper_dev->id);
 
-    wrapper_dev->vendor->common.close((hw_device_t*)wrapper_dev->vendor);
+    wrapper_dev->vendor->common.close((hw_device_t *)wrapper_dev->vendor);
+	
     if (wrapper_dev->base.ops)
         free(wrapper_dev->base.ops);
+		
     free(wrapper_dev);
+	
 done:
 #ifdef HEAPTRACKER
     heaptracker_free_leaked_memory();
 #endif
+
+    ALOGI("camera device closed");
+
     return ret;
 }
 
@@ -649,35 +657,37 @@ static int camera_device_open(const hw_module_t *module, const char *name,
         num_cameras = gVendorModule->get_number_of_cameras();
 
         if (cameraid > num_cameras) {
-            ALOGE("camera service provided cameraid out of bounds, "
-                    "cameraid = %d, num supported = %d",
-                    cameraid, num_cameras);
+            ALOGE("%s: camera service provided out of bounds camera id (id = %d, num supported = %d)",
+                    __FUNCTION__, cameraid, num_cameras);
+					
             rv = -EINVAL;
             goto fail;
         }
 
-        camera_device = (wrapper_camera_device_t*)malloc(sizeof(*camera_device));
+        camera_device = (wrapper_camera_device_t *)malloc(sizeof(*camera_device));
         if (!camera_device) {
-            ALOGE("camera_device allocation fail");
+            ALOGE("%s: camera_device allocation fail", __FUNCTION__);
             rv = -ENOMEM;
             goto fail;
         }
+		
         memset(camera_device, 0, sizeof(*camera_device));
         camera_device->id = cameraid;
 
         rv = gVendorModule->common.methods->open(
-                (const hw_module_t*)gVendorModule, name,
-                (hw_device_t**)&(camera_device->vendor));
+                (const hw_module_t *)gVendorModule, name,
+                (hw_device_t **)&(camera_device->vendor));
         if (rv) {
-            ALOGE("vendor camera open fail");
+            ALOGE("%s: vendor camera open fail", __FUNCTION__);
             goto fail;
         }
+		
         ALOGV("%s: got vendor camera device 0x%08X",
-                __FUNCTION__, (uintptr_t)(camera_device->vendor));
+                __FUNCTION__, (uintptr_t) (camera_device->vendor));
 
-        camera_ops = (camera_device_ops_t*)malloc(sizeof(*camera_ops));
+        camera_ops = (camera_device_ops_t *)malloc(sizeof(*camera_ops));
         if (!camera_ops) {
-            ALOGE("camera_ops allocation fail");
+            ALOGE("%s: camera_ops allocation fail", __FUNCTION__);
             rv = -ENOMEM;
             goto fail;
         }
@@ -685,8 +695,8 @@ static int camera_device_open(const hw_module_t *module, const char *name,
         memset(camera_ops, 0, sizeof(*camera_ops));
 
         camera_device->base.common.tag = HARDWARE_DEVICE_TAG;
-        camera_device->base.common.version = 0;
-        camera_device->base.common.module = (hw_module_t *)(module);
+        camera_device->base.common.version = CAMERA_DEVICE_API_VERSION_1_0;
+        camera_device->base.common.module = (hw_module_t *)module;
         camera_device->base.common.close = camera_device_close;
         camera_device->base.ops = camera_ops;
 
@@ -717,6 +727,8 @@ static int camera_device_open(const hw_module_t *module, const char *name,
         *device = &camera_device->base.common;
     }
 
+    ALOGI("camera device with id %d opened", camera_device->id);
+	
     return rv;
 
 fail:
@@ -728,22 +740,28 @@ fail:
         free(camera_ops);
         camera_ops = NULL;
     }
+	
     *device = NULL;
+	
     return rv;
 }
 
 static int camera_get_number_of_cameras(void)
 {
     ALOGV("%s", __FUNCTION__);
+	
     if (check_vendor_module())
         return 0;
+		
     return gVendorModule->get_number_of_cameras();
 }
 
 static int camera_get_camera_info(int camera_id, struct camera_info *info)
 {
     ALOGV("%s", __FUNCTION__);
+	
     if (check_vendor_module())
         return 0;
+		
     return gVendorModule->get_camera_info(camera_id, info);
 }
