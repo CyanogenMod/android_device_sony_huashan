@@ -3,4 +3,5 @@ allow system_server kernel:process setsched;
 allow system_server qemu_hw_mainkeys_prop:file { getattr open read };
 allow system_server storage_stub_file:dir getattr;
 allow system_server sysfs_glove_mode:file rw_file_perms;
+allow system_server sysfs_thermal:file r_file_perms;
 allow system_server sysfs_vibrator:file rw_file_perms;
