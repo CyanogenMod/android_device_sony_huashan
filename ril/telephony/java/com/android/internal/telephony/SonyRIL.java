@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 The CyanogenMod Project
+ * Copyright (C) 2014-2016 The CyanogenMod Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,10 @@
 
 package com.android.internal.telephony;
 
-import android.os.SystemProperties;
 import android.content.Context;
+import android.os.AsyncResult;
+import android.os.Message;
+import android.os.SystemProperties;
 
 public class SonyRIL extends RIL implements CommandsInterface {
     public SonyRIL(Context context, int networkModes, int cdmaSubscription) {
@@ -28,5 +30,15 @@ public class SonyRIL extends RIL implements CommandsInterface {
             int cdmaSubscription, Integer instanceId) {
         super(context, preferredNetworkType, cdmaSubscription, instanceId);
         mQANElements = SystemProperties.getInt("ro.ril.telephony.mqanelements", 5);
+    }
+
+    @Override
+    public void getRadioCapability(Message response) {
+        riljLog("getRadioCapability: returning static radio capability");
+        if (response != null) {
+            Object ret = makeStaticRadioCapability();
+            AsyncResult.forMessage(response, ret, null);
+            response.sendToTarget();
+        }
     }
 }
