@@ -191,6 +191,11 @@ on boot
 on charger
     stop bootlogo
 
+on property:sys.boot_from_charger_mode=1
+    # Display backlight
+    write /sys/class/leds/lcd-backlight1/brightness 63
+    write /sys/class/leds/lcd-backlight2/brightness 63
+
 # msm specific files that need to be created on /data
 on post-fs-data
     # Create directory for TZ Apps
