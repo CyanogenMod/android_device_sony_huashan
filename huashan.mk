@@ -196,6 +196,7 @@ PRODUCT_PACKAGES += \
 # Camera
 PRODUCT_PACKAGES += \
     camera.qcom \
+    libshim_camera \
     libshim_qcopt
 
 # Healthd
