@@ -205,6 +205,7 @@ PRODUCT_PACKAGES += \
     camera.qcom \
     libmmcamera_interface \
     libmmcamera_interface2 \
+    libshim_huashan \
     libshim_qcopt
 
 # Healthd
