@@ -36,7 +36,6 @@ INSTALLED_RECOVERYIMAGE_TARGET := $(PRODUCT_OUT)/recovery.img
 $(INSTALLED_RECOVERYIMAGE_TARGET): $(MKBOOTIMG) \
 	$(recovery_ramdisk) \
 	$(recovery_kernel)
-	$(call build-recoveryimage-target, $@)
 	@echo ----- Making recovery image ------
 	$(hide) python $(MKELF) -o $@ $(PRODUCT_OUT)/kernel@0x80208000 $(PRODUCT_OUT)/ramdisk-recovery.img@0x81900000,ramdisk vendor/sony/huashan/proprietary/boot/RPM.bin@0x00020000,rpm device/sony/huashan/rootdir/cmdline.txt@cmdline
 	@echo ----- Made recovery image -------- $@
