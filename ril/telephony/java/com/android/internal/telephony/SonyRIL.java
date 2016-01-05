@@ -22,6 +22,9 @@ import android.os.Message;
 import android.os.SystemProperties;
 
 public class SonyRIL extends RIL implements CommandsInterface {
+
+    private boolean setPreferredNetworkTypeSeen = false;
+
     public SonyRIL(Context context, int networkModes, int cdmaSubscription) {
         this(context, networkModes, cdmaSubscription, null);
     }
@@ -40,5 +43,18 @@ public class SonyRIL extends RIL implements CommandsInterface {
             AsyncResult.forMessage(response, ret, null);
             response.sendToTarget();
         }
+    }
+
+    @Override
+    public void setPreferredNetworkType(int networkType , Message response) {
+        riljLog("setPreferredNetworkType: " + networkType);
+
+        if (!setPreferredNetworkTypeSeen) {
+            riljLog("Need to reboot modem!");
+            setRadioPower(false, null);
+            setPreferredNetworkTypeSeen = true;
+        }
+
+        super.setPreferredNetworkType(networkType, response);
     }
 }
