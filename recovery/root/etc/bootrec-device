@@ -1,6 +1,0 @@
-#!/sbin/busybox sh
-
-export BOOTREC_EVENT_NODE="/dev/input/event11 c 13 75"
-export BOOTREC_EVENT="/dev/input/event11"
-export BOOTREC_FOTA_NODE="/dev/block/mmcblk0p11 b 179 11"
-export BOOTREC_FOTA="/dev/block/mmcblk0p11"
