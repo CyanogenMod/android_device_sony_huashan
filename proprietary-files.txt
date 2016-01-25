@@ -5,7 +5,6 @@ bin/fmconfig
 bin/hci_qcomm_init
 bin/irsc_util
 bin/ks
-bin/mm-pp-daemon
 bin/mpdecision
 bin/netmgrd
 bin/qcks
@@ -165,6 +164,7 @@ lib/libmmjpeg.so
 lib/libmmstillomx.so
 lib/libnetmgr.so
 lib/liboemcamera.so
+lib/liboemcrypto.so
 lib/libpin-cache.so
 lib/libprotobuf-c.so
 lib/libqcci_adc.so
