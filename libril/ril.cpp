@@ -272,7 +272,6 @@ static void dispatchCdmaSmsAck(Parcel &p, RequestInfo *pRI);
 static void dispatchGsmBrSmsCnf(Parcel &p, RequestInfo *pRI);
 static void dispatchCdmaBrSmsCnf(Parcel &p, RequestInfo *pRI);
 static void dispatchRilCdmaSmsWriteArgs(Parcel &p, RequestInfo *pRI);
-static void dispatchNetworkManual (Parcel& p, RequestInfo *pRI);
 static void dispatchNVReadItem(Parcel &p, RequestInfo *pRI);
 static void dispatchNVWriteItem(Parcel &p, RequestInfo *pRI);
 static void dispatchUiccSubscripton(Parcel &p, RequestInfo *pRI);
@@ -280,7 +279,6 @@ static void dispatchSimAuthentication(Parcel &p, RequestInfo *pRI);
 static void dispatchDataProfile(Parcel &p, RequestInfo *pRI);
 static void dispatchRadioCapability(Parcel &p, RequestInfo *pRI);
 static int responseInts(Parcel &p, void *response, size_t responselen);
-static int responseDataRegistrationState(Parcel &p, void *response, size_t responselen);
 static int responseStrings(Parcel &p, void *response, size_t responselen);
 static int responseString(Parcel &p, void *response, size_t responselen);
 static int responseVoid(Parcel &p, void *response, size_t responselen);
@@ -599,7 +597,6 @@ dispatchString (Parcel& p, RequestInfo *pRI) {
         }
     }
 
-
 #ifdef MEMSET_FREED
     memsetString(string8);
 #endif
@@ -660,58 +657,6 @@ dispatchStrings (Parcel &p, RequestInfo *pRI) {
 #ifdef MEMSET_FREED
         memset(pStrings, 0, datalen);
 #endif
-    }
-
-    return;
-invalid:
-    invalidCommandBlock(pRI);
-    return;
-}
-
-/** Callee expects const char * */
-static void
-dispatchNetworkManual (Parcel& p, RequestInfo *pRI) {
-    status_t status;
-    size_t datalen;
-    char **pStrings;
-
-    datalen = sizeof(char *) * 2;
-
-    startRequest;
-    pStrings = (char **)alloca(datalen);
-
-    pStrings[0] = strdupReadString(p);
-    appendPrintBuf("%s%s,", printBuf, pStrings[0]);
-    pStrings[1] = NULL;
-    closeRequest;
-    printRequest(pRI->token, pRI->pCI->requestNumber);
-
-    s_callbacks.onRequest(pRI->pCI->requestNumber, pStrings, datalen, pRI);
-
-    if (pStrings != NULL) {
-        for (int i = 0 ; i < 2 ; i++) {
-#ifdef MEMSET_FREED
-            memsetString (pStrings[i]);
-#endif
-            free(pStrings[i]);
-        }
-
-#ifdef MEMSET_FREED
-        memset(pStrings, 0, datalen);
-#endif
-    }
-
-    if (pRI->pCI->requestNumber == RIL_REQUEST_SET_NETWORK_SELECTION_MANUAL) {
-        /**
-         * Qualcomm's RIL doesn't seem to issue any callbacks for opcode 47
-         * This may be a bug on how we call rild or simply some proprietary 'feature'
-         * ..and we don't care: We simply send a SUCCESS message back to the caller to
-         * indicate that we received the command & unblock the UI.
-         * The user will still see if the registration was OK by using the
-         * normal signal meter
-        */
-        RLOGE("pabx: manual network selection: sending fake success event");
-        RIL_onRequestComplete(pRI, RIL_E_SUCCESS, NULL, 0);
     }
 
     return;
@@ -940,9 +885,6 @@ dispatchSIM_IO (Parcel &p, RequestInfo *pRI) {
     // note we only check status at the end
 
     status = p.readInt32(&t);
-
-    simIO.v6.cla = 0;
-
     simIO.v6.command = (int)t;
 
     status = p.readInt32(&t);
@@ -2238,31 +2180,6 @@ responseInts(Parcel &p, void *response, size_t responselen) {
     The parcel will begin with the version */
 static int responseStringsWithVersion(int version, Parcel &p, void *response, size_t responselen) {
     p.writeInt32(version);
-    return responseStrings(p, response, responselen);
-}
-
-static int responseDataRegistrationState(Parcel &p, void *response, size_t responselen) {
-    int numStrings = responselen / sizeof(char *);
-    int forcedTech = 0;
-
-    if (numStrings >= 4 && response != NULL) { /* we are going to modify index 3 */
-        char **p_cur = (char **) response;
-
-        if ( p_cur[3] != NULL && strlen(p_cur[3]) == 2 ) { // p_cur[3] is 3 bytes long
-
-            if (!memcmp("18", p_cur[3], 3)) {
-                forcedTech = RADIO_TECH_HSPAP; // actually RADIO_TECH_DC_HSDPA
-            } else if (!memcmp("19", p_cur[3], 3)) {
-                forcedTech = RADIO_TECH_UMTS; // some variant of 3g?!
-            }
-
-            if (forcedTech) {
-                RLOGI("pabx: forcefully setting radio tech to %d", forcedTech);
-                snprintf(p_cur[3], 3, "%d", forcedTech);
-            }
-        }
-    }
-
     return responseStrings(p, response, responselen);
 }
 
@@ -5039,13 +4956,14 @@ requestToString(int request) {
         case RIL_UNSOL_ON_USSD_REQUEST: return "UNSOL_ON_USSD_REQUEST(obsolete)";
         case RIL_UNSOL_NITZ_TIME_RECEIVED: return "UNSOL_NITZ_TIME_RECEIVED";
         case RIL_UNSOL_SIGNAL_STRENGTH: return "UNSOL_SIGNAL_STRENGTH";
+        case RIL_UNSOL_DATA_CALL_LIST_CHANGED: return "UNSOL_DATA_CALL_LIST_CHANGED";
+        case RIL_UNSOL_SUPP_SVC_NOTIFICATION: return "UNSOL_SUPP_SVC_NOTIFICATION";
         case RIL_UNSOL_STK_SESSION_END: return "UNSOL_STK_SESSION_END";
         case RIL_UNSOL_STK_PROACTIVE_COMMAND: return "UNSOL_STK_PROACTIVE_COMMAND";
         case RIL_UNSOL_STK_EVENT_NOTIFY: return "UNSOL_STK_EVENT_NOTIFY";
         case RIL_UNSOL_STK_CALL_SETUP: return "UNSOL_STK_CALL_SETUP";
         case RIL_UNSOL_SIM_SMS_STORAGE_FULL: return "UNSOL_SIM_SMS_STORAGE_FUL";
         case RIL_UNSOL_SIM_REFRESH: return "UNSOL_SIM_REFRESH";
-        case RIL_UNSOL_DATA_CALL_LIST_CHANGED: return "UNSOL_DATA_CALL_LIST_CHANGED";
         case RIL_UNSOL_CALL_RING: return "UNSOL_CALL_RING";
         case RIL_UNSOL_RESPONSE_SIM_STATUS_CHANGED: return "UNSOL_RESPONSE_SIM_STATUS_CHANGED";
         case RIL_UNSOL_RESPONSE_CDMA_NEW_SMS: return "UNSOL_NEW_CDMA_SMS";
@@ -5070,8 +4988,10 @@ requestToString(int request) {
         case RIL_UNSOL_SRVCC_STATE_NOTIFY: return "UNSOL_SRVCC_STATE_NOTIFY";
         case RIL_UNSOL_HARDWARE_CONFIG_CHANGED: return "HARDWARE_CONFIG_CHANGED";
         case RIL_UNSOL_DC_RT_INFO_CHANGED: return "UNSOL_DC_RT_INFO_CHANGED";
+        case RIL_UNSOL_RADIO_CAPABILITY: return "UNSOL_RADIO_CAPABILITY";
+        case RIL_UNSOL_ON_SS: return "UNSOL_ON_SS";
+        case RIL_UNSOL_STK_CC_ALPHA_NOTIFY: return "UNSOL_STK_CC_ALPHA_NOTIFY";
         case RIL_REQUEST_SHUTDOWN: return "SHUTDOWN";
-        case RIL_UNSOL_RADIO_CAPABILITY: return "RIL_UNSOL_RADIO_CAPABILITY";
         default: return "<unknown request>";
     }
 }
