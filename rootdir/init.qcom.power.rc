@@ -50,6 +50,12 @@ on property:sys.boot_completed=1
     write /sys/block/mmcblk1/queue/scheduler bfq
     write /sys/block/mmcblk1/queue/iosched/slice_idle 0
 
+    # KSM Settings
+    write /sys/kernel/mm/ksm/deferred_timer 1
+    write /sys/kernel/mm/ksm/pages_to_scan 100
+    write /sys/kernel/mm/ksm/sleep_millisecs 2000
+    write /sys/kernel/mm/ksm/run 1
+
 on charger
     write /sys/class/android_usb/android0/enable 0
     write /sys/class/android_usb/android0/idVendor 0FCE
