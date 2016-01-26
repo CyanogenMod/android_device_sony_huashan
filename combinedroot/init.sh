@@ -129,7 +129,7 @@ fi
 load_image=/sbin/ramdisk.cpio
 
 # boot decision
-if [ -s /dev/keycheck ] || [ ! -z "$RECOVERY_BOOT" ]; then
+if [ ! -z "$RECOVERY_BOOT" ] || [ -s /dev/keycheck ]; then
 	busybox echo 'RECOVERY BOOT' >>boot.txt
 	# LEDs for recovery
 	busybox echo '100' > /sys/class/timed_output/vibrator/enable
@@ -163,11 +163,13 @@ if [ -s /dev/keycheck ] || [ ! -z "$RECOVERY_BOOT" ]; then
 	echo '0' > $LED2_B_CURRENT_FILE
 	echo '0' > $LED3_B_CURRENT_FILE
 	# recovery ramdisk
-	busybox mknod -m 600 ${BOOTREC_FOTA_NODE}
-	busybox mount -o remount,rw /
-	busybox ln -sf /sbin/busybox /sbin/sh
-	extract_elf_ramdisk -i ${BOOTREC_FOTA} -o /sbin/ramdisk-recovery.cpio -t / -c
-	busybox rm /sbin/sh
+	if [ ! -z "$RECOVERY_BOOT" ] || [ -z $(busybox grep $'\x72' /dev/keycheck) ]; then
+		busybox mknod -m 600 ${BOOTREC_FOTA_NODE}
+		busybox mount -o remount,rw /
+		busybox ln -sf /sbin/busybox /sbin/sh
+		extract_elf_ramdisk -i ${BOOTREC_FOTA} -o /sbin/ramdisk-recovery.cpio -t / -c
+		busybox rm /sbin/sh
+	fi
 	load_image=/sbin/ramdisk-recovery.cpio
 else
 	busybox echo 'ANDROID BOOT' >>boot.txt
