@@ -39,10 +39,14 @@ on enable-low-power
     write /sys/module/msm_thermal/core_control/enabled 1
 
 on property:sys.boot_completed=1
+    # CPU Settings
     write /sys/devices/system/cpu/cpufreq/interactive/boost 0
     start mpdecision
+
+    # IO Schedulers
     setprop sys.io.scheduler bfq
     write /sys/block/mmcblk1/queue/scheduler bfq
+    write /sys/block/mmcblk1/queue/iosched/slice_idle 0
 
 on charger
     # Enable Power modes and set the CPU Freq Sampling rates
