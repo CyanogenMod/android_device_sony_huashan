@@ -202,11 +202,7 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    camera.sony \
-    camera.msm8960 \
-    camera.qcom \
-    libmmcamera_interface \
-    libmmcamera_interface2
+    camera.qcom
 
 # Healthd
 PRODUCT_PACKAGES += \
