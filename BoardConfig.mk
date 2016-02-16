@@ -16,7 +16,7 @@
 include device/sony/common/BoardConfigCommon.mk
 
 # Device Headers
-TARGET_SPECIFIC_HEADER_PATH += device/sony/huashan/include
+TARGET_SPECIFIC_HEADER_PATH := device/sony/huashan/include
 
 # Architecture
 TARGET_ARCH := arm
