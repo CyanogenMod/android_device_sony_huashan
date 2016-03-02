@@ -5,7 +5,6 @@ PRODUCT_COPY_FILES += \
 
 # WiFi packages
 PRODUCT_PACKAGES += \
-    dhcpcd.conf \
     hostapd \
     libqsap_sdk \
     libQWiFiSoftApCfg \
