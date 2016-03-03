@@ -1,4 +1,3 @@
-bin/ds_fmc_appd
 bin/efsks
 bin/fm_qsoc_patches
 bin/hci_qcomm_init
@@ -13,7 +12,6 @@ bin/rmt_storage
 bin/secchand
 bin/ta_param_loader
 bin/ta_qmi_service
-bin/time_daemon
 bin/updatemiscta
 bin/usbhub
 bin/usbhub_init
@@ -106,10 +104,8 @@ etc/flashled_calc_parameters.cfg
 lib/hw/camera.vendor.qcom.so
 lib/hw/gps.default.so
 lib/hw/nfc.msm8960.so
-lib/libMiscTaAccessor.so
 lib/libQSEEComAPI.so
 lib/lib_asb_tee.so
-lib/lib_get_secure_mode.so
 lib/libacdbloader.so
 lib/libadsprpc.so
 lib/libals.so
@@ -122,7 +118,6 @@ lib/libcald_server.so
 lib/libcald_util.so
 lib/libcamera_clientsemc.so
 lib/libcameralight.so
-lib/libcredential-manager-service.so
 lib/libcsd-client.so
 lib/libdrmdiag.so
 lib/libdrmfs.so
@@ -150,8 +145,6 @@ lib/libmmcamera_frameproc.so
 lib/libmmcamera_hdr_lib.so
 lib/libmmcamera_image_stab.so
 lib/libmmcamera_imx091.so
-lib/libmmcamera_interface.so
-lib/libmmcamera_interface2.so
 lib/libmmcamera_plugin.so
 lib/libmmcamera_statsproc31.so
 lib/libmmcamera_tintless_algo.so
@@ -165,7 +158,6 @@ lib/liboemcrypto.so
 lib/libpin-cache.so
 lib/libprotobuf-c.so
 lib/libqc-opt.so
-lib/libqcci_adc.so
 lib/libqcci_legacy.so
 lib/libqdi.so
 lib/libqdp.so
