@@ -35,9 +35,10 @@ TARGET_BOOTLOADER_BOARD_NAME := MSM8960
 # Kernel information
 BOARD_KERNEL_BASE  := 0x80200000
 BOARD_KERNEL_PAGESIZE := 2048
-BOARD_KERNEL_CMDLINE  := androidboot.hardware=qcom androidboot.baseband=msm user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 vmalloc=340M
+BOARD_KERNEL_CMDLINE := # Ignored, see cmdline.txt
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
 
+# Images
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 
@@ -50,7 +51,7 @@ BOARD_LIB_DUMPSTATE := libdumpstate.sony
 # Bionic
 MALLOC_IMPL := dlmalloc
 
-# Wifi
+# WiFi
 BOARD_HAS_QCOM_WLAN              := true
 BOARD_WLAN_DEVICE                := qcwcn
 WPA_SUPPLICANT_VERSION           := VER_0_8_X
@@ -63,10 +64,13 @@ WIFI_DRIVER_MODULE_NAME          := "wlan"
 WIFI_DRIVER_FW_PATH_STA          := "sta"
 WIFI_DRIVER_FW_PATH_AP           := "ap"
 
+# TrimArea MAC Addresses
 BOARD_USE_SONY_MACUPDATE := true
 
+# CM Hardware
 BOARD_HARDWARE_CLASS := device/sony/huashan/cmhw
 
+# QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
 
 # Camera
@@ -115,36 +119,29 @@ RED_LED_PATH := /sys/devices/i2c-10/10-0047/leds/LED1_R/brightness
 GREEN_LED_PATH := /sys/devices/i2c-10/10-0047/leds/LED1_G/brightness
 BLUE_LED_PATH := /sys/devices/i2c-10/10-0047/leds/LED1_B/brightness
 
-# Vold
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
-
 # Custom boot
 BOARD_CUSTOM_BOOTIMG := true
 BOARD_CUSTOM_BOOTIMG_MK := device/sony/huashan/custombootimg.mk
 
 # Recovery
-TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
-BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
+BOARD_HAS_NO_SELECT_BUTTON := true
 RECOVERY_FSTAB_VERSION := 2
 TARGET_RECOVERY_FSTAB := device/sony/huashan/rootdir/fstab.qcom
 
-BOARD_FLASH_BLOCK_SIZE := 131072
-BOARD_HAS_NO_SELECT_BUTTON := true
+# Partitions
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
-# Assert
+# OTA Assert
 TARGET_OTA_ASSERT_DEVICE := C5302,C5303,C5306,huashan
 
-# Display HAL
+# Graphics
 USE_OPENGL_RENDERER := true
 TARGET_USES_ION := true
 TARGET_USES_C2D_COMPOSITION := true
-
 TARGET_DISPLAY_USE_RETIRE_FENCE := true
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
-HAVE_ADRENO_SOURCE := false
 
 # Audio
 AUDIO_FEATURE_ENABLED_INCALL_MUSIC := false
@@ -167,21 +164,18 @@ BOARD_USES_SEPERATED_FM := true
 QCOM_FM_ENABLED := true
 TARGET_FM_LEGACY_PATCHLOADER := true
 
-# Font expansion
-EXTENDED_FONT_FOOTPRINT := true
-
-# Partition information
-BOARD_VOLD_MAX_PARTITIONS := 26
-
+# Partitions informations
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x01400000
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x01400000
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1056964608
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 2147483648
+BOARD_FLASH_BLOCK_SIZE := 131072
 
 # Include common SE policies
--include device/qcom/sepolicy/sepolicy.mk
+include device/qcom/sepolicy/sepolicy.mk
 
+# Include device SE policies
 BOARD_SEPOLICY_DIRS += device/sony/huashan/sepolicy
 
-# inherit from the proprietary version
+# Inherit from the proprietary version
 -include vendor/sony/huashan/BoardConfigVendor.mk

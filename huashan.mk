@@ -1,4 +1,4 @@
-# Copyright (C) 2015 The CyanogenMod Project
+# Copyright (C) 2015-2016 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,8 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Inherit from related products
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+$(call inherit-product, vendor/sony/huashan/huashan-vendor.mk)
+
+# Dalvik heap configs
+$(call inherit-product-if-exists, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
+
+# Device specific overlays
 DEVICE_PACKAGE_OVERLAYS += device/sony/huashan/overlay
 
+# Screen density
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
@@ -219,9 +228,7 @@ PRODUCT_PACKAGES += \
 
 # Wifi service
 PRODUCT_PACKAGES += \
-    wcnss_service
-
-PRODUCT_PACKAGES += \
+    wcnss_service \
     libQWiFiSoftApCfg \
     libqsap_sdk \
     libwpa_client \
@@ -316,10 +323,4 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # OpenGL ES 3.0
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196608
-
-# call dalvik heap config
-$(call inherit-product-if-exists, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
-
-# Include non-opensource parts
-$(call inherit-product, vendor/sony/huashan/huashan-vendor.mk)
 
