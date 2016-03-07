@@ -12,9 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Inherit from Sony common
-include device/sony/common/BoardConfigCommon.mk
-
 # Device Headers
 TARGET_SPECIFIC_HEADER_PATH += device/sony/huashan/include
 
@@ -30,9 +27,10 @@ TARGET_KERNEL_SOURCE := kernel/sony/msm8960t
 TARGET_KERNEL_CONFIG := cm_viskan_huashan_defconfig
 
 # Platform
-TARGET_BOOTLOADER_BOARD_NAME := MSM8960
-TARGET_BOARD_PLATFORM := msm8960
+BOARD_VENDOR := sony
 BOARD_VENDOR_PLATFORM := viskan
+TARGET_BOARD_PLATFORM := msm8960
+TARGET_BOOTLOADER_BOARD_NAME := MSM8960
 
 # Kernel information
 BOARD_KERNEL_BASE  := 0x80200000
@@ -121,12 +119,14 @@ BLUE_LED_PATH := /sys/devices/i2c-10/10-0047/leds/LED1_B/brightness
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
 
 # Custom boot
-TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+BOARD_CUSTOM_BOOTIMG := true
 BOARD_CUSTOM_BOOTIMG_MK := device/sony/huashan/custombootimg.mk
-BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 
-TARGET_RECOVERY_FSTAB := device/sony/huashan/rootdir/fstab.qcom
+# Recovery
+TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 RECOVERY_FSTAB_VERSION := 2
+TARGET_RECOVERY_FSTAB := device/sony/huashan/rootdir/fstab.qcom
 
 BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_HAS_NO_SELECT_BUTTON := true
