@@ -12,8 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Device specific overlays
 DEVICE_PACKAGE_OVERLAYS += device/sony/huashan/overlay
 
+# Screen density
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
@@ -226,9 +228,7 @@ PRODUCT_PACKAGES += \
 
 # Wifi service
 PRODUCT_PACKAGES += \
-    wcnss_service
-
-PRODUCT_PACKAGES += \
+    wcnss_service \
     libQWiFiSoftApCfg \
     libqsap_sdk \
     libwpa_client \
@@ -253,10 +253,6 @@ PRODUCT_PACKAGES += \
 # Thermal management
 PRODUCT_PACKAGES += \
     thermanager
-
-# Glove mode
-PRODUCT_PACKAGES += \
-    DeviceSettings
 
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
@@ -286,6 +282,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # DRM
 PRODUCT_PROPERTY_OVERRIDES += \
     drm.service.enabled=true
+
+# Glove mode
+PRODUCT_PACKAGES += \
+    DeviceSettings
 
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
