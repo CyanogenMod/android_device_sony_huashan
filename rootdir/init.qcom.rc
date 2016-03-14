@@ -19,7 +19,6 @@ import init.sony.usb.rc
 import init.qcom.power.rc
 
 on early-init
-    mount debugfs debugfs /sys/kernel/debug
     symlink /data/tombstones /tombstones
 
 on init
