@@ -209,6 +209,10 @@ PRODUCT_PACKAGES += \
     libshim_camera \
     libshim_qcopt
 
+# Gello
+PRODUCT_PACKAGES += \
+    Gello
+
 # Healthd
 PRODUCT_PACKAGES += \
     charger_res_images
