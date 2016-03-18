@@ -140,7 +140,7 @@ on boot
 
     # Adaptive LMK
     write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
-    write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 53059
+    write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 40042
 
     # Flash storage isn't a good entropy source, and only causes locking
     # overhead in the kernel. Turn it off.
