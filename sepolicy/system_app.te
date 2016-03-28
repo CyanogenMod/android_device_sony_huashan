@@ -2,4 +2,7 @@
 allow system_app shell_data_file:dir search;
 
 # init system_app data access.
+allow system_app app_data_file:dir { search open };
+allow system_app app_data_file:file open;
+allow system_app rootfs:file execute;
 allow system_app system_app_data_file:file { execute execute_no_trans };

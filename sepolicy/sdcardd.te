@@ -1,2 +1,3 @@
 # SDCardD access to data
+allow sdcardd app_data_file:file { getattr };
 allow sdcardd system_data_file:dir { add_name append open remove_name read search write };

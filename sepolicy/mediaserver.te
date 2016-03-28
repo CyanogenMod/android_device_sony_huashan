@@ -2,8 +2,8 @@
 set_prop(mediaserver, camera_prop)
 allow mediaserver camera_data_file:file rw_file_perms;
 allow mediaserver camera_device:dir { search };
-allow mediaserver camera_socket:dir { search };
-allow mediaserver camera_socket:file { getattr open read write };
+allow mediaserver camera_socket:dir { add_name search write };
+allow mediaserver camera_socket:file { create getattr open read write };
 
 # Camera data
 r_dir_file(mediaserver, camera_data_file)

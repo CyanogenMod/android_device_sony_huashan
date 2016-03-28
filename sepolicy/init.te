@@ -1,10 +1,11 @@
-allow init self:process execmem;
+allow init self:process { execmem setcurrent };
 
 # Init access to syslog and kernel.
 allow init kernel:file write;
 allow init kernel:system syslog_read;
 
 # Init access to files.
+allow init app_data_file:file { getattr open read relabelfrom };
 allow init fm_radio_device:chr_file write;
 allow init root_block_device:blk_file write;
 allow init rootfs:chr_file { execute execute_no_trans };
@@ -13,6 +14,12 @@ allow init sysfs_vibrator:file getattr;
 allow init tad:unix_stream_socket connectto;
 allow init tad_socket:sock_file write;
 allow init wcnss_device:chr_file write;
+
+# Init access to properties.
+allow init property_socket:sock_file write;
+
+# Init access to processes.
+allow init system_app:process signull;
 
 # Allow init to format userdata & cache partitions.
 allow init cache_block_device:blk_file rw_file_perms;

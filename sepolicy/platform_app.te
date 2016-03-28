@@ -1,2 +1,6 @@
 # Plateform GPU access.
 allow platform_app gpu_device:chr_file open;
+
+# Platform service manager.
+allow platform_app battery_service:service_manager find;
+allow platform_app healthd_service:service_manager find;
