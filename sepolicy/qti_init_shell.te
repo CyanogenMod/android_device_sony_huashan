@@ -6,3 +6,7 @@ allow qti_init_shell hci_attach_exec:file { execute execute_no_trans open read }
 allow qti_init_shell socket_device:sock_file write;
 allow qti_init_shell tad:unix_stream_socket connectto;
 allow qti_init_shell tad_socket:sock_file write;
+
+# Required for FM
+allow qti_init_shell apk_data_file:dir rw_dir_perms;
+allow qti_init_shell apk_data_file:file create_file_perms;
