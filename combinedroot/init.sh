@@ -46,14 +46,19 @@ busybox mknod -m 666 /dev/null c 1 3
 busybox mount -t proc proc /proc
 busybox mount -t sysfs sysfs /sys
 
-# keycheck
-busybox cat ${BOOTREC_EVENT} > /dev/keycheck&
-
-# recovery boot
+# cmdline warmboots
+MULTIROM_BOOT=$(busybox grep mrom_kexecd=1 /proc/cmdline)
 RECOVERY_BOOT=$(busybox grep warmboot=0x77665502 /proc/cmdline)
 
+# MultiROM booting
+if [ ! -z "$MULTIROM_BOOT" ]; then
+	RECOVERY_BOOT=
+fi
+
 # normal boot
-if [ -z "$RECOVERY_BOOT" ]; then
+if [ -z "$RECOVERY_BOOT" ] && [ -z "$MULTIROM_BOOT" ]; then
+	# keycheck
+	busybox cat ${BOOTREC_EVENT} > /dev/keycheck&
 	busybox echo '50' > /sys/class/timed_output/vibrator/enable
 	# LEDs activated
 	echo '255' > $LED1_G_BRIGHTNESS_FILE
