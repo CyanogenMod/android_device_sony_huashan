@@ -16,10 +16,9 @@
 
 package com.cyanogenmod.settings.device;
 
-import android.app.ActionBar;
 import android.os.Bundle;
 import android.preference.Preference;
-import android.preference.PreferenceActivity;
+import android.preference.PreferenceFragment;
 import android.preference.SwitchPreference;
 import android.provider.Settings;
 import android.view.Menu;
@@ -27,7 +26,7 @@ import android.view.MenuItem;
 
 import cyanogenmod.providers.CMSettings;
 
-public class TouchscreenGestureSettings extends PreferenceActivity {
+public class TouchscreenGesturePreferenceFragment extends PreferenceFragment {
 
     private static final String KEY_AMBIENT_DISPLAY_ENABLE = "ambient_display_enable";
     private static final String KEY_GESTURE_HAND_WAVE = "gesture_hand_wave";
@@ -62,35 +61,23 @@ public class TouchscreenGestureSettings extends PreferenceActivity {
         mProximityWakePreference.setOnPreferenceChangeListener(mGesturePrefListener);
         mHapticFeedback = (SwitchPreference) findPreference(KEY_HAPTIC_FEEDBACK);
         mHapticFeedback.setOnPreferenceChangeListener(mHapticPrefListener);
-
-        final ActionBar actionBar = getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
-        mHapticFeedback.setChecked(CMSettings.System.getInt(getContentResolver(),
+        mHapticFeedback.setChecked(CMSettings.System.getInt(getActivity().getContentResolver(),
                 CMSettings.System.TOUCHSCREEN_GESTURE_HAPTIC_FEEDBACK, 1) != 0);
         getListView().setPadding(0, 0, 0, 0);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            onBackPressed();
-            return true;
-        }
-        return false;
-    }
-
     private boolean enableDoze(boolean enable) {
-        return Settings.Secure.putInt(getContentResolver(),
+        return Settings.Secure.putInt(getActivity().getContentResolver(),
                 Settings.Secure.DOZE_ENABLED, enable ? 1 : 0);
     }
 
     private boolean isDozeEnabled() {
-        return Settings.Secure.getInt(getContentResolver(),
+        return Settings.Secure.getInt(getActivity().getContentResolver(),
                 Settings.Secure.DOZE_ENABLED, 1) != 0;
     }
 
@@ -132,7 +119,7 @@ public class TouchscreenGestureSettings extends PreferenceActivity {
             final String key = preference.getKey();
             if (KEY_HAPTIC_FEEDBACK.equals(key)) {
                 final boolean value = (Boolean) newValue;
-                CMSettings.System.putInt(getContentResolver(),
+                CMSettings.System.putInt(getActivity().getContentResolver(),
                         CMSettings.System.TOUCHSCREEN_GESTURE_HAPTIC_FEEDBACK, value ? 1 : 0);
                 return true;
             }
