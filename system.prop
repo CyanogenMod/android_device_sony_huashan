@@ -14,6 +14,7 @@ persist.timed.enable=true
 persist.gps.qmienabled=true
 
 hw.fm.internal_antenna=true
+ro.fm.transmitter=true
 
 # ART
 dalvik.vm.dex2oat-flags=--no-watch-dog
