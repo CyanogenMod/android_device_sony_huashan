@@ -250,9 +250,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Radio and Telephony
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.ril.transmitpower=true \
     persist.radio.add_power_save=1 \
     ro.telephony.ril_class=SonyRIL \
+    ro.ril.telephony.mqanelements=5 \
+    ro.ril.transmitpower=true \
     rild.libpath=/system/lib/libril-qc-qmi-1.so
 
 # Perfd
