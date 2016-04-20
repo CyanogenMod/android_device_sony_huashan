@@ -89,8 +89,10 @@ on boot
     chown bluetooth bluetooth /proc/bluetooth/sleep/proto
     chown system system /sys/module/sco/parameters/disable_esco
     chown bluetooth bluetooth /sys/module/hci_smd/parameters/hcismd_set
+    chown system system /sys/module/radio_iris_transport/parameters/fmsmd_set
     chmod 0660 /sys/module/bluetooth_power/parameters/power
     chmod 0660 /sys/module/hci_smd/parameters/hcismd_set
+    chmod 0660 /sys/module/radio_iris_transport/parameters/fmsmd_set
     chmod 0660 /sys/class/rfkill/rfkill0/state
     chmod 0660 /proc/bluetooth/sleep/proto
     chown bluetooth bluetooth /dev/ttyHS0
@@ -254,6 +256,10 @@ on post-fs-data
     mkdir /tombstones/dsps 0771 system system
     mkdir /tombstones/mdm 0771 system system
     mkdir /tombstones/mdm2 0771 system system
+
+    # Create FM dir for patchdownloader
+    mkdir /data/misc/fm 0770 system system
+    chmod 0770 /data/misc/fm
 
     # Create directory used by audio subsystem
     mkdir /data/misc/audio 0770 audio audio
@@ -445,7 +451,7 @@ service mpdecision /system/bin/mpdecision --avg_comp
 
 service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
     class late_start
-    user root
+    user system
     group system
     disabled
     oneshot
