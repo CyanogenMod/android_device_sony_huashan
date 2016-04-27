@@ -275,9 +275,6 @@ on post-fs-data
 
     rm /data/local/tmp/adreno_config.txt
 
-    # disable diag port
-    rm /dev/diag
-
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd
 

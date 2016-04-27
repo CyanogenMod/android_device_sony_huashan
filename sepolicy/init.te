@@ -5,7 +5,6 @@ allow init kernel:file write;
 allow init kernel:system syslog_read;
 
 # Init access to files.
-allow init diag_device:chr_file unlink;
 allow init fm_radio_device:chr_file write;
 allow init root_block_device:blk_file write;
 allow init rootfs:chr_file { execute execute_no_trans };
