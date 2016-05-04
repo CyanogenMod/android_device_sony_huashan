@@ -30,4 +30,7 @@
     <!-- Does the device have multiple LEDs ? Used to decide if the user can change the multiple LEDs settings -->
     <bool name="config_multipleNotificationLeds">true</bool>
 
+    <!-- Should we send the battery level to the HAL as the lower 8 bits of the color? -->
+    <bool name="config_useSegmentedBatteryLed">true</bool>
+
 </resources>
