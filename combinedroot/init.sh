@@ -47,16 +47,17 @@ busybox mount -t proc proc /proc
 busybox mount -t sysfs sysfs /sys
 
 # cmdline warmboots
+CHARGER_BOOT=$(busybox grep androidboot.mode=charger /proc/cmdline)
 MULTIROM_BOOT=$(busybox grep mrom_kexecd=1 /proc/cmdline)
 RECOVERY_BOOT=$(busybox grep warmboot=0x77665502 /proc/cmdline)
 
-# MultiROM booting
-if [ ! -z "$MULTIROM_BOOT" ]; then
+# Charger or MultiROM booting
+if [ ! -z "$CHARGER_BOOT" ] || [ ! -z "$MULTIROM_BOOT" ]; then
 	RECOVERY_BOOT=
 fi
 
 # normal boot
-if [ -z "$RECOVERY_BOOT" ] && [ -z "$MULTIROM_BOOT" ]; then
+if [ -z "$RECOVERY_BOOT" ] && [ -z "$CHARGER_BOOT" ] && [ -z "$MULTIROM_BOOT" ]; then
 	# keycheck
 	busybox cat ${BOOTREC_EVENT} > /dev/keycheck&
 	busybox echo '50' > /sys/class/timed_output/vibrator/enable
