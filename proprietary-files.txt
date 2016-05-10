@@ -157,7 +157,6 @@ lib/liboemcamera.so
 lib/liboemcrypto.so
 lib/libpin-cache.so
 lib/libprotobuf-c.so
-lib/libqc-opt.so
 lib/libqcci_legacy.so
 lib/libqdi.so
 lib/libqdp.so

@@ -67,23 +67,3 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_CLASS := SHARED_LIBRARIES
 
 include $(BUILD_SHARED_LIBRARY)
-
-# libshim_qcopt
-include $(CLEAR_VARS)
-
-LOCAL_SRC_FILES := \
-    symbols/icu50.c
-
-LOCAL_SHARED_LIBRARIES := \
-    libicuuc \
-    libicui18n
-
-LOCAL_CFLAGS += \
-    -Wall
-
-LOCAL_MODULE := libshim_qcopt
-
-LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE_CLASS := SHARED_LIBRARIES
-
-include $(BUILD_SHARED_LIBRARY)

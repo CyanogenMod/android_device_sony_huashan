@@ -23,7 +23,7 @@ on early-init
 
 on init
     # Symbols required for SONY blobs
-    export LD_SHIM_LIBS "/system/lib/libcald_pal.so|libshim_cald.so:/system/lib/hw/camera.vendor.qcom.so|libshim_camera.so:/system/lib/libqc-opt.so|libshim_qcopt.so"
+    export LD_SHIM_LIBS "/system/lib/libcald_pal.so|libshim_cald.so:/system/lib/hw/camera.vendor.qcom.so|libshim_camera.so"
 
     symlink /dev/socket /tmp
 

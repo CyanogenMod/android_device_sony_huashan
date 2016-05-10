@@ -206,8 +206,7 @@ PRODUCT_PACKAGES += \
     Snap \
     camera.qcom \
     libshim_cald \
-    libshim_camera \
-    libshim_qcopt
+    libshim_camera
 
 # Gello
 PRODUCT_PACKAGES += \
