@@ -111,6 +111,6 @@ on property:sys.boot_completed=1
 service mpdecision /system/bin/mpdecision --avg_comp
     class late_start
     user root
-    group system
+    group root readproc
     socket mpdecision stream 0660 root system
     disabled
