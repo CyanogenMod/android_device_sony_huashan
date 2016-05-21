@@ -260,8 +260,7 @@ PRODUCT_PACKAGES += \
 
 # ART
 PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.dex2oat-swap=false \
-    ro.sys.fw.dex2oat_thread_count=3
+    dalvik.vm.dex2oat-swap=false
 
 # Radio and Telephony
 PRODUCT_PROPERTY_OVERRIDES += \
