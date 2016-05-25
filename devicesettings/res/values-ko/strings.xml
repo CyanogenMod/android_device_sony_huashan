@@ -13,6 +13,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="screen_gestures_panel_title">제스처</string>
   <string name="ambient_display_title">절전 모드 자동 해제</string>
   <string name="ambient_display_enable_title">절전 모드 자동 해제</string>
   <string name="ambient_display_enable_summary">알림을 수신 시 절전 모드를 해제합니다.</string>
@@ -20,6 +21,7 @@
   <string name="hand_wave_gesture_summary">손을 좌우로 흔들면 알림 표시</string>
   <string name="pocket_gesture_title">주머니</string>
   <string name="pocket_gesture_summary">주머니에서 꺼내면 알림 표시</string>
+  <string name="proximity_wake_title">근접 깨우기</string>
   <string name="proximity_wake_enable_title">근접 깨우기</string>
   <string name="proximity_wake_enable_summary">손을 흔들어 기기 깨우기</string>
 </resources>

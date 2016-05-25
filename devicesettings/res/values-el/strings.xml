@@ -13,6 +13,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="screen_gestures_panel_title">Χειρονομίες</string>
   <string name="ambient_display_title">Οθόνη ambient</string>
   <string name="ambient_display_enable_title">Οθόνη ambient</string>
   <string name="ambient_display_enable_summary">Ενεργοποίηση της οθόνης όταν λαμβάνετε ειδοποιήσεις</string>
@@ -22,6 +23,7 @@
   <string name="pick_up_gesture_summary">Παλμός ειδοποιήσεων κατά το σήκωμα της συσκευής</string>
   <string name="pocket_gesture_title">Τσέπη</string>
   <string name="pocket_gesture_summary">Παλμός ειδοποιήσεων κατά την έξοδο από την τσέπη</string>
+  <string name="proximity_wake_title">Αφύπνιση εγγύτητας</string>
   <string name="proximity_wake_enable_title">Αφύπνιση εγγύτητας</string>
   <string name="proximity_wake_enable_summary">Αφύπνιση της συσκευής κατά την αιώρηση του χεριού</string>
 </resources>

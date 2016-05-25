@@ -13,6 +13,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="screen_gestures_panel_title">Hareketler</string>
   <string name="ambient_display_title">Bildirim ekranı</string>
   <string name="ambient_display_enable_title">Bildirim ekranı</string>
   <string name="ambient_display_enable_summary">Bildirim geldiğinde ekranı uyandırır</string>
@@ -20,6 +21,7 @@
   <string name="hand_wave_gesture_summary">El sallayınca bildirimleri at</string>
   <string name="pocket_gesture_title">Cep</string>
   <string name="pocket_gesture_summary">Cepten çıkarınca bildirimleri at</string>
+  <string name="proximity_wake_title">Harekette uyandır</string>
   <string name="proximity_wake_enable_title">Harekette uyandır</string>
   <string name="proximity_wake_enable_summary">El sallamasında cihazı uyandır</string>
 </resources>

@@ -13,6 +13,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="screen_gestures_panel_title">Gesture</string>
   <string name="ambient_display_title">Ambient display</string>
   <string name="ambient_display_enable_title">Ambient display</string>
   <string name="ambient_display_enable_summary">Attiva lo schermo quando ricevi notifiche</string>
@@ -22,6 +23,7 @@
   <string name="pick_up_gesture_summary">Mostra notifiche al sollavamento</string>
   <string name="pocket_gesture_title">Tasca</string>
   <string name="pocket_gesture_summary">Mostra notifiche quando togli dalla tasca</string>
+  <string name="proximity_wake_title">Risveglio prossimità</string>
   <string name="proximity_wake_enable_title">Risveglio prossimità</string>
   <string name="proximity_wake_enable_summary">Risveglia il dispositivo al passaggio della mano</string>
 </resources>

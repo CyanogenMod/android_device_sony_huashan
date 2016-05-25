@@ -13,6 +13,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="screen_gestures_panel_title">ジェスチャー</string>
   <string name="ambient_display_title">常時オンディスプレイ</string>
   <string name="ambient_display_enable_title">常時オンディスプレイ</string>
   <string name="ambient_display_enable_summary">通知を受信したときに画面を点灯させる</string>
@@ -20,6 +21,7 @@
   <string name="hand_wave_gesture_summary">手を振ったときに通知を表示する</string>
   <string name="pocket_gesture_title">ポケット</string>
   <string name="pocket_gesture_summary">ポケットから取り出したときに通知を表示する</string>
+  <string name="proximity_wake_title">接近で起動</string>
   <string name="proximity_wake_enable_title">接近で起動</string>
   <string name="proximity_wake_enable_summary">手を振ったときに通知を表示する</string>
 </resources>

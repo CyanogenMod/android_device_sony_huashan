@@ -13,6 +13,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="screen_gestures_panel_title">Gesten</string>
   <string name="ambient_display_title">Ambiente Schierm</string>
   <string name="ambient_display_enable_title">Ambiente Schierm</string>
   <string name="ambient_display_enable_summary">Schierm waakreg maachen, wann s du Notifikatiounen empfänks</string>
@@ -20,6 +21,7 @@
   <string name="hand_wave_gesture_summary">Puls-Notifikatioune beim Wénken</string>
   <string name="pocket_gesture_title">Täsch</string>
   <string name="pocket_gesture_summary">Puls-Notifikatioune beim Eraushuelen aus der Täsch</string>
+  <string name="proximity_wake_title">Waakreg ginn wéinst d\'Proximitéit</string>
   <string name="proximity_wake_enable_title">Waakreg ginn wéinst d\'Proximitéit</string>
   <string name="proximity_wake_enable_summary">Apparat duerch Wénke waakreg maachen</string>
 </resources>

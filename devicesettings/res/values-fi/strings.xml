@@ -13,6 +13,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="screen_gestures_panel_title">Eleet</string>
   <string name="ambient_display_title">Ambient-näyttö</string>
   <string name="ambient_display_enable_title">Ambient-näyttö</string>
   <string name="ambient_display_enable_summary">Herätä näyttö kun saat ilmoituksia</string>
@@ -20,6 +21,7 @@
   <string name="hand_wave_gesture_summary">Näytä ilmoitukset heilautettaessa kättä</string>
   <string name="pocket_gesture_title">Tasku</string>
   <string name="pocket_gesture_summary">Näytä ilmoitukset kun laite otetaan taskusta</string>
+  <string name="proximity_wake_title">Läheisyysanturin herätys</string>
   <string name="proximity_wake_enable_title">Läheisyysanturin herätys</string>
   <string name="proximity_wake_enable_summary">Herätä laite heilauttamalla kättä</string>
 </resources>

@@ -48,19 +48,13 @@
 
     <PreferenceCategory
         android:key="category_extras"
-        android:title="@*cyanogenmod.platform:string/touchscreen_gesture_extras">
+        android:title="@string/proximity_wake_title">
 
         <SwitchPreference
             android:key="proximity_wake_enable"
             android:defaultValue="false"
             android:title="@string/proximity_wake_enable_title"
             android:summary="@string/proximity_wake_enable_summary" />
-
-        <SwitchPreference
-            android:key="touchscreen_gesture_haptic_feedback"
-            android:persistent="false"
-            android:title="@*cyanogenmod.platform:string/touchscreen_gesture_haptic_feedback"
-            android:summary="@*cyanogenmod.platform:string/touchscreen_gesture_haptic_feedback_summary" />
 
     </PreferenceCategory>
 

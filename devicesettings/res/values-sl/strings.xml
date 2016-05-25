@@ -13,6 +13,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="screen_gestures_panel_title">Poteze</string>
   <string name="ambient_display_title">Okoliški zaslon</string>
   <string name="ambient_display_enable_title">Okoliški zaslon</string>
   <string name="ambient_display_enable_summary">Zbudi zaslon, ko prejmem obvestila</string>
@@ -20,6 +21,7 @@
   <string name="hand_wave_gesture_summary">Utripaj obvestila ob mahanju z roko</string>
   <string name="pocket_gesture_title">Žep</string>
   <string name="pocket_gesture_summary">Utripaj obvestila ob izvlečenju iz žepa</string>
+  <string name="proximity_wake_title">Bujenje ob bližini</string>
   <string name="proximity_wake_enable_title">Bujenje ob bližini</string>
   <string name="proximity_wake_enable_summary">Zbudi napravo ob mahanju z roko</string>
 </resources>

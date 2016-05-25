@@ -13,6 +13,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="screen_gestures_panel_title">Bevegelser</string>
   <string name="ambient_display_title">Ambient skjerm</string>
   <string name="ambient_display_enable_title">Ambient skjerm</string>
   <string name="ambient_display_enable_summary">Skru på skjermen når du mottar varsler</string>
@@ -20,6 +21,7 @@
   <string name="hand_wave_gesture_summary">Vibrer varsler med håndvink</string>
   <string name="pocket_gesture_title">Lomme</string>
   <string name="pocket_gesture_summary">Vibrer varsler når du tar telefonen opp av lommen</string>
+  <string name="proximity_wake_title">Berøringsfri vekking</string>
   <string name="proximity_wake_enable_title">Berøringsfri vekking</string>
   <string name="proximity_wake_enable_summary">Vekk enheten med håndvink</string>
 </resources>

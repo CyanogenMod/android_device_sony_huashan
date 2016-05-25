@@ -13,6 +13,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="screen_gestures_panel_title">Žestid</string>
   <string name="ambient_display_title">Ambient kuva</string>
   <string name="ambient_display_enable_title">Ambient kuva</string>
   <string name="ambient_display_enable_summary">Ärata ekraan teavituste saabumisel</string>
@@ -20,6 +21,7 @@
   <string name="hand_wave_gesture_summary">Näita teavitust käe viibutusele</string>
   <string name="pocket_gesture_title">Tasku</string>
   <string name="pocket_gesture_summary">Näita teavitusi taskust välja võtmisel</string>
+  <string name="proximity_wake_title">Läheduse äratus</string>
   <string name="proximity_wake_enable_title">Läheduse äratus</string>
   <string name="proximity_wake_enable_summary">Ärata seade käe viibutusele</string>
 </resources>

@@ -13,6 +13,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="screen_gestures_panel_title">ಸನ್ನೆಗಳು</string>
   <string name="ambient_display_title">ಆವರಿಸಿದ ಪರದೆ</string>
   <string name="ambient_display_enable_title">ಆವರಿಸಿದ ಪರದೆ</string>
   <string name="ambient_display_enable_summary">ನೀವು ಅಧಿಸೂಚನೆಗಳನ್ನು ಸ್ವೀಕರಿಸಿದಾಗ ಪರದೆಯನ್ನು ಎಚ್ಚರಗೊಳಿಸಿ</string>
@@ -20,6 +21,7 @@
   <string name="hand_wave_gesture_summary">ಹ್ಯಾಂಡ್ ವೇವ್ ಮಾಡಿದಾಗ ಅಧಿಸೂಚನೆಗಳನ್ನು ಪಲ್ಸ್ ಮಾಡು</string>
   <string name="pocket_gesture_title">ಜೇಬು</string>
   <string name="pocket_gesture_summary">ಜೇಬಿನಿಂದ ತೆಗೆದಾಗ ಅಧಿಸೂಚನೆಗಳನ್ನು ಪಲ್ಸ್ ಮಾಡು</string>
+  <string name="proximity_wake_title">ಸಾಮೀಪ್ಯ ಎಚ್ಚರ</string>
   <string name="proximity_wake_enable_title">ಸಾಮೀಪ್ಯ ಎಚ್ಚರ</string>
   <string name="proximity_wake_enable_summary">ಹ್ಯಾಂಡ್ ವೇವ್ ಮಾಡಿದಾಗ ಸಾಧನವನ್ನು ಎಚ್ಚರಗೊಳಿಸಿ</string>
 </resources>

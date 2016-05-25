@@ -35,8 +35,6 @@ import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.util.Log;
 
-import cyanogenmod.providers.CMSettings;
-
 public class SensorsDozeService extends Service {
 
     public static final boolean DEBUG = false;
@@ -353,18 +351,13 @@ public class SensorsDozeService extends Service {
         Vibrator vibrator = (Vibrator) mContext.getSystemService(
                 Context.VIBRATOR_SERVICE);
 
-        boolean enabled = CMSettings.System.getInt(mContext.getContentResolver(),
-                CMSettings.System.TOUCHSCREEN_GESTURE_HAPTIC_FEEDBACK, 1) != 0;
-
         switch (audioManager.getRingerMode()) {
             case AudioManager.RINGER_MODE_SILENT:
                 break;
             case AudioManager.RINGER_MODE_VIBRATE:
             case AudioManager.RINGER_MODE_NORMAL:
             default:
-                if (enabled) {
-                    vibrator.vibrate(VIBRATOR_ACKNOWLEDGE);
-                }
+                vibrator.vibrate(VIBRATOR_ACKNOWLEDGE);
                 break;
         }
     }

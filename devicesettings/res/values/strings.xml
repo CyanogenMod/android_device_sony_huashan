@@ -13,6 +13,9 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <!-- Gesture shortcuts -->
+    <string name="screen_gestures_panel_title">Gestures</string>
+
     <string name="ambient_display_title">Ambient display</string>
 
     <string name="ambient_display_enable_title">Ambient display</string>
@@ -26,6 +29,8 @@
 
     <string name="pocket_gesture_title">Pocket</string>
     <string name="pocket_gesture_summary">Pulse notifications on removal from pocket</string>
+
+    <string name="proximity_wake_title">Proximity wake</string>
 
     <string name="proximity_wake_enable_title">Proximity wake</string>
     <string name="proximity_wake_enable_summary">Wake device on hand wave</string>

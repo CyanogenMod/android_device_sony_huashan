@@ -13,6 +13,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="screen_gestures_panel_title">Жести</string>
   <string name="ambient_display_title">Ambient display</string>
   <string name="ambient_display_enable_title">Ambient display</string>
   <string name="ambient_display_enable_summary">Вмикати екран, коли ви отримали сповіщення</string>
@@ -20,6 +21,7 @@
   <string name="hand_wave_gesture_summary">Пульсуючі сповіщення на при жестах руками</string>
   <string name="pocket_gesture_title">Кишеня</string>
   <string name="pocket_gesture_summary">Пульсуючі сповіщення при вийманні з кишені</string>
+  <string name="proximity_wake_title">Прокидання при наближенні</string>
   <string name="proximity_wake_enable_title">Прокидання при наближенні</string>
   <string name="proximity_wake_enable_summary">Прокидати пристрій на жест рукою</string>
 </resources>
