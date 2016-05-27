@@ -21,6 +21,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.IBinder;
 import android.util.Log;
 
@@ -33,6 +35,7 @@ import java.io.IOException;
 public class GloveModeService extends Service {
 
     public static final boolean DEBUG = false;
+    public static final String PREFERENCES = "GloveModePreferences";
     public static final String TAG = "GloveModeService";
 
     private static final String GLOVE_PATH = "/sys/devices/i2c-3/3-0024/main_ttsp_core.cyttsp4_i2c_adapter/signal_disparity";
@@ -55,6 +58,8 @@ public class GloveModeService extends Service {
         IntentFilter intentScreen = new IntentFilter(Intent.ACTION_SCREEN_ON);
         intentScreen.addAction(Intent.ACTION_SCREEN_OFF);
         mContext.registerReceiver(mScreenStateReceiver, intentScreen);
+
+        initializeGloveMode();
 
         mGloveModeEnabled = isGloveModeEnabled();
         if (DEBUG) Log.d(TAG, "Glove Mode state: " + mGloveModeEnabled);
@@ -109,11 +114,20 @@ public class GloveModeService extends Service {
 
     private boolean isGloveModeEnabled() {
         int HighTouchSensitivity = CMSettings.System.getInt(mContext.getContentResolver(),
-                CMSettings.System.HIGH_TOUCH_SENSITIVITY_ENABLE, -1);
-        if (HighTouchSensitivity == -1 && CMSettings.System.putInt(mContext.getContentResolver(),
-                CMSettings.System.HIGH_TOUCH_SENSITIVITY_ENABLE, 1)) {
-            HighTouchSensitivity = 1;
-        }
+                CMSettings.System.HIGH_TOUCH_SENSITIVITY_ENABLE, 0);
         return HighTouchSensitivity == 1;
+    }
+
+    private void initializeGloveMode() {
+        SharedPreferences settings = getSharedPreferences(PREFERENCES, 0);
+        boolean initiated = settings.getBoolean("glovemode-initiated", false);
+
+        if (!initiated && CMSettings.System.putInt(mContext.getContentResolver(),
+                CMSettings.System.HIGH_TOUCH_SENSITIVITY_ENABLE, 1)) {
+            Log.d(TAG, "GloveMode has been enabled by default");
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putBoolean("glovemode-initiated", true);
+            editor.commit();
+        }
     }
 }
