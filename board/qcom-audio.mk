@@ -1,0 +1,4 @@
+# Audio configurations
+BOARD_USES_ALSA_AUDIO := true
+AUDIO_USE_LL_AS_PRIMARY_OUTPUT := true
+USE_CUSTOM_AUDIO_POLICY := 1

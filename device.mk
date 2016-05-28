@@ -14,14 +14,21 @@
 # limitations under the License.
 #
 
-# Device path
-DEVICE_PATH := device/sony/huashan
+# Screen density
+PRODUCT_AAPT_CONFIG := normal
+PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
-# Device headers
-TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
+# Device specific overlays
+DEVICE_PACKAGE_OVERLAYS += device/sony/huashan/overlay
 
-# Device board elements
-include $(DEVICE_PATH)/board/*.mk
+# Device product elements
+include $(LOCAL_PATH)/product/*.mk
 
-# Device vendor board
--include vendor/sony/huashan/BoardConfigVendor.mk
+# Dalvik heap configurations
+$(call inherit-product-if-exists, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
+
+# Product common configurations
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+
+# Vendor product configurations
+$(call inherit-product, vendor/sony/huashan/huashan-vendor.mk)

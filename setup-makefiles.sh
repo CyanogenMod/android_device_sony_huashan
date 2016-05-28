@@ -1,3 +1,5 @@
+#!/bin/bash
+
 VENDOR=sony
 OUTDIR=vendor/$VENDOR/$DEVICE
 

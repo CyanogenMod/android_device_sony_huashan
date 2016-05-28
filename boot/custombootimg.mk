@@ -2,7 +2,7 @@ LOCAL_PATH := $(call my-dir)
 
 DEVICE_ROOTDIR := device/sony/huashan/rootdir
 INITSONY := $(PRODUCT_OUT)/utilities/init_sony
-MKELF := device/sony/huashan/tools/mkelf.py
+MKELF := device/sony/huashan/boot/mkelf.py
 
 uncompressed_ramdisk := $(PRODUCT_OUT)/ramdisk.cpio
 $(uncompressed_ramdisk): $(INSTALLED_RAMDISK_TARGET)

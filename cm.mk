@@ -1,3 +1,4 @@
+#
 # Copyright (C) 2015-2016 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -11,15 +12,16 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+#
 
 # Enhanced NFC
 $(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
 
-# Inherit CM common Phone stuff
+# Inherit common CM stuff
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
 # Inherit device configurations
-$(call inherit-product, device/sony/huashan/huashan.mk)
+$(call inherit-product, device/sony/huashan/device.mk)
 
 # Device display
 TARGET_SCREEN_HEIGHT := 1280
