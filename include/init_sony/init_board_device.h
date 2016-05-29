@@ -17,6 +17,8 @@
 #ifndef __INIT_BOARD_DEVICE_H__
 #define __INIT_BOARD_DEVICE_H__
 
+#include <unistd.h>
+
 #include "init_board_common.h"
 #include "init_prototypes.h"
 
@@ -24,7 +26,10 @@
 #define DEV_BLOCK_FOTA_NUM 11
 
 // Constants: init configurations
-#define KEYCHECK_TIMEOUT 0
+#define KEYCHECK_TIMEOUT 3
+
+// Variables: init device specific
+pid_t pid_introduce_keycheck;
 
 // Class: init_board_device
 class init_board_device : public init_board_common
@@ -33,38 +38,57 @@ public:
     // Board: introduction for keycheck
     virtual void introduce_keycheck()
     {
-        // Short vibration
-        vibrate(50);
+        // Launch the animation in a second thread
+        pid_introduce_keycheck = fork();
+        if (pid_introduce_keycheck == 0)
+        {
+            // Short vibration
+            vibrate(50);
 
-        // LEDs boot selection animation
-        led_brightness(0, 255, 0);
-        led_color(0, 16, 0);
-        msleep(50);
-        led_color(0, 32, 0);
-        msleep(50);
-        led_color(0, 64, 0);
-        msleep(50);
-        led_color(0, 92, 0);
-        msleep(1500);
-        led_color(0, 64, 0);
-        msleep(50);
-        led_color(0, 32, 0);
-        msleep(50);
-        led_brightness(255, 0, 0);
-        led_color(16, 0, 0);
-        msleep(50);
-        led_color(32, 0, 0);
-        msleep(50);
-        led_color(64, 0, 0);
-        msleep(50);
-        led_color(92, 0, 0);
-        msleep(1000);
-        led_color(64, 0, 0);
-        msleep(50);
-        led_color(32, 0, 0);
-        msleep(50);
-        led_color(0, 0, 0);
-        led_brightness(0, 0, 0);
+            // LEDs boot selection animation
+            led_brightness(0, 255, 0);
+            led_color(0, 16, 0);
+            msleep(50);
+            led_color(0, 32, 0);
+            msleep(50);
+            led_color(0, 64, 0);
+            msleep(50);
+            led_color(0, 92, 0);
+            msleep(1500);
+            led_color(0, 64, 0);
+            msleep(50);
+            led_color(0, 32, 0);
+            msleep(50);
+            led_brightness(255, 0, 0);
+            led_color(16, 0, 0);
+            msleep(50);
+            led_color(32, 0, 0);
+            msleep(50);
+            led_color(64, 0, 0);
+            msleep(50);
+            led_color(92, 0, 0);
+            msleep(1000);
+            led_color(64, 0, 0);
+            msleep(50);
+            led_color(32, 0, 0);
+            msleep(50);
+            led_color(0, 0, 0);
+            led_brightness(0, 0, 0);
+            _exit(1);
+        }
+    }
+
+    // Board: finalization of keycheck
+    virtual void finish_keycheck(bool recoveryBoot)
+    {
+        // Short vibration
+        if (recoveryBoot)
+        {
+            vibrate(100);
+        }
+
+        // Wait for the animated keycheck to end or kill it
+        system_exec_kill(pid_introduce_keycheck, KEYCHECK_TIMEOUT);
     }
 
     // Board: introduction for Android
@@ -89,9 +113,6 @@ public:
     // Board: introduction for Recovery
     virtual void introduce_recovery()
     {
-        // Short vibration
-        vibrate(100);
-
         // LEDs Recovery animation
         led_brightness(0, 0, 255);
         led_color(0, 0, 32);
