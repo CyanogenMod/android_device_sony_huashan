@@ -2,6 +2,7 @@ LOCAL_PATH := $(call my-dir)
 
 DEVICE_ROOTDIR := device/sony/huashan/rootdir
 INITSONY := $(PRODUCT_OUT)/utilities/init_sony
+INITKEYCHECK := $(PRODUCT_OUT)/utilities/init_keycheck
 MKELF := device/sony/huashan/boot/mkelf.py
 
 uncompressed_ramdisk := $(PRODUCT_OUT)/ramdisk.cpio
@@ -35,7 +36,7 @@ $(INSTALLED_BOOTIMAGE_TARGET): $(PRODUCT_OUT)/kernel \
 		$(uncompressed_ramdisk) \
 		$(recovery_uncompressed_device_ramdisk) \
 		$(INSTALLED_RAMDISK_TARGET) \
-		$(INITSONY) \
+		$(INITSONY) $(INITKEYCHECK) \
 		$(PRODUCT_OUT)/utilities/toybox \
 		$(PRODUCT_OUT)/utilities/keycheck \
 		$(MKBOOTIMG) $(MINIGZIP) \
@@ -52,6 +53,7 @@ $(INSTALLED_BOOTIMAGE_TARGET): $(PRODUCT_OUT)/kernel \
 	$(hide) cp $(PRODUCT_OUT)/utilities/toybox $(PRODUCT_OUT)/combinedroot/sbin/
 
 	$(hide) cp $(INITSONY) $(PRODUCT_OUT)/combinedroot/sbin/init_sony
+	$(hide) cp $(INITKEYCHECK) $(PRODUCT_OUT)/combinedroot/sbin/init_keycheck
 	$(hide) chmod 755 $(PRODUCT_OUT)/combinedroot/sbin/init_sony
 	$(hide) ln -s sbin/init_sony $(PRODUCT_OUT)/combinedroot/init
 

@@ -24,7 +24,7 @@
 #define DEV_BLOCK_FOTA_NUM 11
 
 // Constants: init configurations
-#define KEYCHECK_TIMEOUT 0
+#define KEYCHECK_ANIMATED 1
 
 // Class: init_board_device
 class init_board_device : public init_board_common
