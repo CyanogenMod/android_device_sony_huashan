@@ -1,3 +1,4 @@
 # MP Decision controls.
 allow mpdecision mpctl_data_file:file { create open append };
+allow mpdecision mpdecision_socket:sock_file unlink;
 allow mpdecision socket_device:sock_file create_file_perms;
