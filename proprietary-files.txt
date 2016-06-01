@@ -97,9 +97,6 @@ etc/firmware/wcnss.b02
 etc/firmware/wcnss.b04
 etc/firmware/wcnss.b05
 etc/firmware/wcnss.mdt
-etc/firmware/wlan/prima/WCNSS_cfg.dat
-etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
-etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
 etc/flashled_calc_parameters.cfg
 lib/hw/camera.vendor.qcom.so
 lib/hw/gps.default.so
