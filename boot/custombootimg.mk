@@ -18,6 +18,7 @@ $(recovery_uncompressed_device_ramdisk): $(MKBOOTFS) \
 		$(recovery_fstab) \
 		$(RECOVERY_INSTALL_OTA_KEYS) \
 		$(INTERNAL_BOOTIMAGE_FILES)
+	$(call build-recoveryramdisk)
 	@echo -e ${CL_CYN}"----- Making uncompressed recovery ramdisk ------"${CL_RST}
 	$(hide) cp $(DEVICE_ROOTDIR)/logo.rle $(TARGET_RECOVERY_ROOT_OUT)/
 	$(hide) $(MKBOOTFS) $(TARGET_RECOVERY_ROOT_OUT) > $@
