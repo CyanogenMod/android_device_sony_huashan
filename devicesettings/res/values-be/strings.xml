@@ -18,4 +18,5 @@
   <string name="ambient_display_enable_summary">Улучаць экран падчас атрымання паведамленняў</string>
   <string name="hand_wave_gesture_title">Узмах рукою</string>
   <string name="pick_up_gesture_title">Падняць</string>
+  <string name="pocket_gesture_title">Кішэня</string>
 </resources>
