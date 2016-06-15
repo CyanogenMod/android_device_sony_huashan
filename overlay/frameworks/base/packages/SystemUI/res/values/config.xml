@@ -18,7 +18,7 @@
 -->
 
 <!-- These resources are around just to allow their values to be customized
-     for different hardware and product builds.  Do not translate. -->
+     for different hardware and product builds. -->
 <resources>
 
     <!-- Doze: when to pulse after a buzzworthy notification arrives -->

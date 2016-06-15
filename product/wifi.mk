@@ -11,8 +11,8 @@ PRODUCT_COPY_FILES += \
 
 # WPA supplicant configurations
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
-    $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
+    $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
+    $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
 
 # Hostapd configurations
 PRODUCT_COPY_FILES += \
@@ -20,12 +20,12 @@ PRODUCT_COPY_FILES += \
 
 # WiFi packages
 PRODUCT_PACKAGES += \
-    wcnss_service \
-    libQWiFiSoftApCfg \
-    libqsap_sdk \
-    libwpa_client \
-    hostapd \
     dhcpcd.conf \
+    hostapd \
+    libqsap_sdk \
+    libQWiFiSoftApCfg \
+    libwpa_client \
+    wcnss_service \
     wpa_supplicant \
     wpa_supplicant.conf
 

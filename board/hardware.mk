@@ -1,7 +1,7 @@
-# CM hardware
+# CM Hardware
 BOARD_HARDWARE_CLASS := $(DEVICE_PATH)/cmhw
 
-# Lights HAL
+# Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
 # TrimArea MAC addresses

@@ -1,11 +1,11 @@
 LOCAL_PATH := $(call my-dir)
 
-DEVICE_ROOTDIR := device/sony/huashan/rootdir
-DEVICE_CMDLINE := $(DEVICE_ROOTDIR)/cmdline.txt
-DEVICE_LOGORLE := $(DEVICE_ROOTDIR)/logo.rle
+DEVICE_BOOTDIR := device/sony/huashan/boot
+DEVICE_CMDLINE := $(DEVICE_BOOTDIR)/cmdline.txt
+DEVICE_LOGORLE := $(DEVICE_BOOTDIR)/logo.rle
 DEVICE_RPMBIN := vendor/sony/huashan/proprietary/boot/RPM.bin
 INITSONY := $(PRODUCT_OUT)/utilities/init_sony
-MKELF := device/sony/huashan/boot/mkelf.py
+MKELF := $(DEVICE_BOOTDIR)/mkelf.py
 
 uncompressed_ramdisk := $(PRODUCT_OUT)/ramdisk.cpio
 $(uncompressed_ramdisk): $(INSTALLED_RAMDISK_TARGET)

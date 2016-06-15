@@ -20,7 +20,6 @@
 ** Modifications are licensed under the License.
 */
 -->
-
 <device name="Android">
     <item name="none">0</item>
     <item name="screen.on">50</item>
