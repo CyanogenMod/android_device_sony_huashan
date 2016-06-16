@@ -7,10 +7,3 @@ TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := krait
-
-# QCOM hardware
-BOARD_USES_QCOM_HARDWARE := true
-
-# Power HAL
-CM_POWERHAL_EXTENSION := qcom
-TARGET_POWERHAL_VARIANT := qcom
