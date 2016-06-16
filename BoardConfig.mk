@@ -21,6 +21,7 @@ DEVICE_PATH := device/sony/huashan
 TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
 
 # Device board elements
+include $(DEVICE_PATH)/PlatformConfig.mk
 include $(DEVICE_PATH)/board/*.mk
 
 # Device vendor board
