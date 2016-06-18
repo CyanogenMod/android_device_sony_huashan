@@ -2,11 +2,11 @@
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
 
-# Platform configuration
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/fstab.qcom:root/fstab.qcom \
-    $(LOCAL_PATH)/rootdir/fstab.qcom:recovery/root/fstab.qcom \
-    $(LOCAL_PATH)/rootdir/ueventd.qcom.rc:root/ueventd.qcom.rc
+# Ramdisk packages
+PRODUCT_PACKAGES += \
+    fstab.qcom \
+    init.qcom.rc \
+    ueventd.qcom.rc
 
 # TrimAreaDaemon package
 PRODUCT_COPY_FILES += \

@@ -14,14 +14,19 @@
 # limitations under the License.
 
 on init
-    write /sys/class/android_usb/android0/iSerial ${ro.serialno}
+    write /sys/class/android_usb/android0/f_rndis/manufacturer ${ro.product.manufacturer}
     write /sys/class/android_usb/android0/f_rndis/vendorID 0FCE
     write /sys/class/android_usb/android0/f_rndis/wceis 1
 
 on boot
+    write /sys/class/android_usb/android0/iSerial ${ro.serialno}
     write /sys/class/android_usb/android0/iManufacturer ${ro.product.manufacturer}
-    write /sys/class/android_usb/android0/f_rndis/manufacturer ${ro.product.manufacturer}
     write /sys/class/android_usb/android0/iProduct ${ro.product.model}
+
+    chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
+
+    # For bridgemgr daemon to inform the USB driver of the correct transport
+    chown radio radio /sys/class/android_usb/f_rmnet_smd_sdio/transport
 
 # MTP
 on property:sys.usb.config=mtp

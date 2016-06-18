@@ -1,45 +1,124 @@
-on charger
-    write /sys/devices/i2c-10/10-0047/leds/LED1_R/led_current 30
-    write /sys/devices/i2c-10/10-0047/leds/LED1_G/led_current 30
-    write /sys/devices/i2c-10/10-0047/leds/LED1_B/led_current 30
+# Copyright (c) 2011-2014, The Linux Foundation. All rights reserved.
+# Copyright (C) 2015-2016 The CyanogenMod Project
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are
+# met:
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above
+#       copyright notice, this list of conditions and the following
+#       disclaimer in the documentation and/or other materials provided
+#       with the distribution.
+#     * Neither the name of The Linux Foundation nor the names of its
+#       contributors may be used to endorse or promote products derived
+#       from this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+# WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+# ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+# BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+# BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+# IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#
 
-on boot
-    # LM3560/cameralight
-    chown system camera /sys/devices/i2c-10/10-0053/torch_enable
-    chmod 660 /sys/devices/i2c-10/10-0053/torch_enable
-    chown system camera /sys/devices/i2c-10/10-0053/torch_current
-    chmod 660 /sys/devices/i2c-10/10-0053/torch_current
-    chown system camera /sys/devices/i2c-10/10-0053/flash_enable
-    chown system camera /sys/devices/i2c-10/10-0053/flash_duration
-    chown system camera /sys/devices/i2c-10/10-0053/flash_synchronization
-    chmod 664 /sys/devices/i2c-10/10-0053/flash_synchronization
-    chown system camera /sys/devices/i2c-10/10-0053/flash_current
-    chmod 664 /sys/devices/i2c-10/10-0053/flash_current
-    chown system camera /sys/devices/i2c-10/10-0053/status
+on early-init
+    symlink /data/tombstones /tombstones
 
-    # Owner for the proximity sensor
-    chown system system /sys/devices/i2c-12/12-0054/threshold
-    chown system system /sys/devices/i2c-12/12-0054/nburst
+on fs
+    mount_all fstab.qcom
+    swapon_all fstab.qcom
 
-    # Vibrator
-    chown root system /sys/class/timed_output/vibrator/level
-    chmod 0664 /sys/class/timed_output/vibrator/level
-    restorecon /sys/class/timed_output/vibrator/level
+    setprop ro.crypto.fuse_sdcard true
 
-    # Permissions for LSM330D sensor
-    chown system system /sys/devices/i2c-12/12-0019/pollrate_ms
-    chmod 0664 /sys/devices/i2c-12/12-0019/pollrate_ms
-    chown system system /sys/devices/i2c-12/12-0019/power/autosuspend_delay_ms
-    chmod 0664 /sys/devices/i2c-12/12-0019/power/autosuspend_delay_ms
-    chown system system /sys/devices/i2c-12/12-006b/pollrate_ms
-    chmod 0664 /sys/devices/i2c-12/12-006b/pollrate_ms
-    chown system system /sys/devices/i2c-12/12-006b/range
-    chmod 0664 /sys/devices/i2c-12/12-006b/range
+    mkdir /lta-label 0555 system system
+    wait /dev/block/platform/msm_sdcc.1/by-name/LTALabel
+    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/LTALabel /lta-label nosuid nodev noatime noexec ro barrier=0
+    chown system system /lta-label
+    chmod 0555 /lta-label
 
-    # Glove input
-    chown system system /sys/devices/i2c-3/3-0024/main_ttsp_core.cyttsp4_i2c_adapter/finger_threshold
-    chmod 0664 /sys/devices/i2c-3/3-0024/main_ttsp_core.cyttsp4_i2c_adapter/finger_threshold
-    write /sys/devices/i2c-3/3-0024/main_ttsp_core.cyttsp4_i2c_adapter/finger_threshold 280
-    chown system system /sys/devices/i2c-3/3-0024/main_ttsp_core.cyttsp4_i2c_adapter/signal_disparity
-    chmod 0664 /sys/devices/i2c-3/3-0024/main_ttsp_core.cyttsp4_i2c_adapter/signal_disparity
+    restorecon /data/misc/audio/mbhc.bin
+    restorecon /data/misc/audio/wcd9310_anc.bin
 
+# msm specific files that need to be created on /data
+on post-fs-data
+    # Create directory for TZ Apps
+    mkdir /data/misc/qsee 0770 system system
+
+    # Create the directories used by the Wireless subsystem
+    mkdir /data/misc/wifi 0770 wifi wifi
+    mkdir /data/misc/wifi/sockets 0770 wifi wifi
+    mkdir /data/misc/wifi/wpa_supplicant 0770 wifi wifi
+    mkdir /data/misc/dhcp 0770 dhcp dhcp
+
+    # to observe dnsmasq.leases file for dhcp information of soft ap.
+    chown dhcp system /data/misc/dhcp
+
+    write /sys/module/wcnss_ssr_8960/parameters/enable_riva_ssr 1
+
+    mkdir /tombstones/modem 0771 system system
+    mkdir /tombstones/lpass 0771 system system
+    mkdir /tombstones/wcnss 0771 system system
+    mkdir /tombstones/dsps 0771 system system
+    mkdir /tombstones/mdm 0771 system system
+    mkdir /tombstones/mdm2 0771 system system
+
+    # Create directory used by audio subsystem
+    mkdir /data/misc/audio 0770 audio audio
+
+    chmod 0664 /sys/devices/platform/msm_sdcc.1/polling
+    chmod 0664 /sys/devices/platform/msm_sdcc.2/polling
+    chmod 0664 /sys/devices/platform/msm_sdcc.3/polling
+    chmod 0664 /sys/devices/platform/msm_sdcc.4/polling
+
+    # Chown polling nodes as needed from UI running on system server
+    chown system system /sys/devices/platform/msm_sdcc.1/polling
+    chown system system /sys/devices/platform/msm_sdcc.2/polling
+    chown system system /sys/devices/platform/msm_sdcc.3/polling
+    chown system system /sys/devices/platform/msm_sdcc.4/polling
+
+    # QCOM Sensors
+    mkdir /data/system 0775 system system
+    mkdir /data/system/sensors 0775 system system
+    mkdir /data/misc/sensors 0775 system system
+    write /data/system/sensors/settings 1
+    chmod 664 /data/system/sensors/settings
+    chown system /data/system/sensors/settings
+
+    # Create the symlink to qcn wpa_supplicant folder for ar6000 wpa_supplicant
+    mkdir /data/system 0775 system system
+
+    chown system system /sys/devices/platform/kgsl-3d0.0/kgsl/kgsl-3d0/pwrscale/policy
+
+    # Create directories for gpsone_daemon services
+    mkdir /data/misc/gpsone_d 0770 system gps
+
+    # Create directories for QuIPS
+    mkdir /data/misc/quipc 0770 gps system
+
+    # Create directories for Location services
+    mkdir /data/misc/location 0770 gps gps
+    mkdir /data/misc/location/mq 0770 gps gps
+    mkdir /data/misc/location/xtwifi 0770 gps gps
+
+    mkdir /data/audio 0770 media audio
+
+    # Camera
+    mkdir /data/camera 0771 root camera
+
+    chown system /dev/block/platform/msm_sdcc.1/by-name
+
+    setprop vold.post_fs_data_done 1
+
+    rm /data/local/tmp/adreno_config.txt
+
+service qseecomd /system/bin/qseecomd
+    class late_start
+    user system
+    group system
