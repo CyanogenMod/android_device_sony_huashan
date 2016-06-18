@@ -1,0 +1,127 @@
+on early-boot
+    # AKM8963 sensor
+    chown system system /data/misc/akm_set.txt
+
+    write /sys/module/pm8921_charger/parameters/enable_lowbatt_detect 1
+
+on boot
+    # Clock
+    chmod 660 /dev/rtc0
+    chown system system /dev/rtc0
+
+    # Graphics permissions
+    chown system graphics /sys/class/graphics/fb1/hpd
+    chown system graphics /sys/class/graphics/fb1/vendor_name
+    chown system graphics /sys/class/graphics/fb1/product_description
+    chmod 0664 /sys/class/graphics/fb1/hpd
+    chmod 0664 /sys/class/graphics/fb1/vendor_name
+    chmod 0664 /sys/class/graphics/fb1/product_description
+    chmod 0664 /sys/class/graphics/fb1/video_mode
+    chmod 0664 /sys/class/graphics/fb1/format_3d
+
+    # Graphics fps_level nodes
+    chown system graphics /sys/class/graphics/fb0/msm_fb_fps_level
+    chown system graphics /sys/class/graphics/fb1/msm_fb_fps_level
+    chown system graphics /sys/class/graphics/fb2/msm_fb_fps_level
+    chmod 644 /sys/class/graphics/fb0/msm_fb_fps_level
+    chmod 400 /sys/class/graphics/fb1/msm_fb_fps_level
+    chmod 400 /sys/class/graphics/fb2/msm_fb_fps_level
+
+    # GPS
+    mkdir /dev/socket/qmux_gps 0770 gps gps
+    chmod 2770 /dev/socket/qmux_gps
+
+    # LM3560 camera light
+    chown system camera /sys/devices/i2c-10/10-0053/torch_enable
+    chmod 660 /sys/devices/i2c-10/10-0053/torch_enable
+    chown system camera /sys/devices/i2c-10/10-0053/torch_current
+    chmod 660 /sys/devices/i2c-10/10-0053/torch_current
+    chown system camera /sys/devices/i2c-10/10-0053/flash_enable
+    chown system camera /sys/devices/i2c-10/10-0053/flash_duration
+    chown system camera /sys/devices/i2c-10/10-0053/flash_synchronization
+    chmod 664 /sys/devices/i2c-10/10-0053/flash_synchronization
+    chown system camera /sys/devices/i2c-10/10-0053/flash_current
+    chmod 664 /sys/devices/i2c-10/10-0053/flash_current
+    chown system camera /sys/devices/i2c-10/10-0053/status
+
+    # Port-bridge
+    chmod 0660 /dev/smd0
+    chown system system /dev/smd0
+
+    # Proximity sensor
+    chown system system /sys/devices/i2c-12/12-0054/threshold
+    chown system system /sys/devices/i2c-12/12-0054/nburst
+
+    # Vibrator
+    chown root system /sys/class/timed_output/vibrator/level
+    chmod 0664 /sys/class/timed_output/vibrator/level
+    restorecon /sys/class/timed_output/vibrator/level
+
+    # LSM330D sensor
+    chown system system /sys/devices/i2c-12/12-0019/pollrate_ms
+    chmod 0664 /sys/devices/i2c-12/12-0019/pollrate_ms
+    chown system system /sys/devices/i2c-12/12-0019/power/autosuspend_delay_ms
+    chmod 0664 /sys/devices/i2c-12/12-0019/power/autosuspend_delay_ms
+    chown system system /sys/devices/i2c-12/12-006b/pollrate_ms
+    chmod 0664 /sys/devices/i2c-12/12-006b/pollrate_ms
+    chown system system /sys/devices/i2c-12/12-006b/range
+    chmod 0664 /sys/devices/i2c-12/12-006b/range
+
+    # MHL HDMI output
+    chown system system /sys/class/mhl/sii8334/adopter_id
+    chown system system /sys/class/mhl/sii8334/device_id
+    symlink /dev/graphics/fb1 /dev/graphics/hdmi
+
+    # Glove input
+    chown system system /sys/devices/i2c-3/3-0024/main_ttsp_core.cyttsp4_i2c_adapter/finger_threshold
+    chmod 0664 /sys/devices/i2c-3/3-0024/main_ttsp_core.cyttsp4_i2c_adapter/finger_threshold
+    write /sys/devices/i2c-3/3-0024/main_ttsp_core.cyttsp4_i2c_adapter/finger_threshold 280
+    chown system system /sys/devices/i2c-3/3-0024/main_ttsp_core.cyttsp4_i2c_adapter/signal_disparity
+    chmod 0664 /sys/devices/i2c-3/3-0024/main_ttsp_core.cyttsp4_i2c_adapter/signal_disparity
+
+service thermanager /system/bin/thermanager /system/etc/thermanager.xml
+    class main
+    user root
+    group root
+
+service updatemiscta /system/bin/updatemiscta
+    class main
+    user root
+    oneshot
+
+# SONY: TrimArea Daemon
+# Last 2 args: start block(blk size 128k), number of blocks(partitionsize(kb)/128(kb))
+service tad_static /sbin/tad_static /dev/block/platform/msm_sdcc.1/by-name/TA 0,16
+    user root
+    group root
+    socket tad stream 0660 system system
+    class core
+    seclabel u:r:tad:s0
+
+# Trim Area QMI service
+service ta_qmi_service /system/bin/ta_qmi_service
+    user root
+    class main
+
+# Wi-Fi and BT MAC addresses
+service macaddrsetup /system/bin/macaddrsetup
+    class late_start
+    user root
+    oneshot
+    seclabel u:r:macaddrsetup:s0
+
+service hw_config /system/bin/sh /system/etc/hw_config.sh
+    class main
+    user root
+    oneshot
+
+service irsc_util /system/bin/irsc_util "/etc/sec_config"
+    class main
+    user root
+    oneshot
+
+service secchan /system/bin/secchand
+    user root
+    group root
+    class core
+

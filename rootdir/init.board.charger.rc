@@ -1,0 +1,35 @@
+on charger
+    stop bootlogo
+
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idVendor 0FCE
+    write /sys/class/android_usb/android0/idProduct E195
+    write /sys/class/android_usb/android0/functions mass_storage
+    write /sys/class/android_usb/android0/enable 1
+
+    # Enable Power modes and set the CPU Freq Sampling rates
+    write /sys/devices/system/cpu/cpu1/online 1
+    write /sys/module/rpm_resources/enable_low_power/L2_cache 1
+    write /sys/module/rpm_resources/enable_low_power/pxo 1
+    write /sys/module/rpm_resources/enable_low_power/vdd_dig 1
+    write /sys/module/rpm_resources/enable_low_power/vdd_mem 1
+    write /sys/module/pm_8x60/modes/cpu0/power_collapse/suspend_enabled 1
+    write /sys/module/pm_8x60/modes/cpu1/power_collapse/suspend_enabled 1
+    write /sys/module/pm_8x60/modes/cpu0/standalone_power_collapse/suspend_enabled 1
+    write /sys/module/pm_8x60/modes/cpu1/standalone_power_collapse/suspend_enabled 1
+    write /sys/module/pm_8x60/modes/cpu0/standalone_power_collapse/idle_enabled 1
+    write /sys/module/pm_8x60/modes/cpu1/standalone_power_collapse/idle_enabled 1
+    write /sys/module/pm_8x60/modes/cpu0/power_collapse/idle_enabled 1
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor powersave
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor powersave
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 384000
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq 384000
+    write /sys/devices/system/cpu/cpu1/online 0
+
+on property:sys.boot_from_charger_mode=1
+    # Enable the normal CPU configurations
+    trigger enable-low-power
+
+service charger /sbin/healthd -c
+    class charger
+    seclabel u:r:healthd:s0
