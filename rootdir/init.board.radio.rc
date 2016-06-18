@@ -1,0 +1,16 @@
+on boot
+    # Create QMUX deamon socket area
+    mkdir /dev/socket/qmux_radio 0770 radio radio
+    chmod 2770 /dev/socket/qmux_radio
+    mkdir /dev/socket/qmux_audio 0770 media audio
+    chmod 2770 /dev/socket/qmux_audio
+
+service netmgrd /system/bin/netmgrd
+    class main
+    user root
+    group radio
+
+service rmt_storage /system/bin/rmt_storage
+    class main
+    user root
+    group system

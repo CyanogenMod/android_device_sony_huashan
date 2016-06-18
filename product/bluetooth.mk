@@ -1,6 +1,6 @@
-# Bluetooth configurations
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/init.qcom.bt.sh:system/etc/init.qcom.bt.sh
+# Bluetooth packages
+PRODUCT_PACKAGES += \
+    init.qcom.bt.sh
 
 # Bluetooth properties
 PRODUCT_PROPERTY_OVERRIDES += \

@@ -1,0 +1,19 @@
+on boot
+    write /sys/class/leds/lcd-backlight1/brightness 63
+    write /sys/class/leds/lcd-backlight2/brightness 63
+
+on charger
+    write /sys/class/leds/LED1_R/led_current 30
+    write /sys/class/leds/LED1_G/led_current 30
+    write /sys/class/leds/LED1_B/led_current 30
+
+on property:sys.boot_from_charger_mode=1
+    write /sys/class/leds/lcd-backlight1/brightness 63
+    write /sys/class/leds/lcd-backlight2/brightness 63
+
+    write /sys/class/leds/LED1_R/brightness 0
+    write /sys/class/leds/LED1_R/led_current 0
+    write /sys/class/leds/LED1_G/brightness 0
+    write /sys/class/leds/LED1_G/led_current 0
+    write /sys/class/leds/LED1_B/brightness 0
+    write /sys/class/leds/LED1_B/led_current 0

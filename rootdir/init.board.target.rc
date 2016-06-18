@@ -1,4 +1,4 @@
-# Copyright (c) 2009-2012, 2014-2015, The Linux Foundation. All rights reserved.
+# Copyright (c) 2009-2012, The Linux Foundation. All rights reserved.
 # Copyright (C) 2015-2016 The CyanogenMod Project
 #
 # Redistribution and use in source and binary forms, with or without
@@ -25,23 +25,13 @@
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
+import /init.board.bluetooth.rc
+import /init.board.charger.rc
+import /init.board.fm.rc
+import /init.board.hardware.rc
+import /init.board.led.rc
+import /init.board.perf.rc
+import /init.board.radio.rc
+import /init.board.usb.rc
+import /init.board.wifi.rc
 
-import init.board.target.rc
-import init.target.rc
-
-on init
-    # Symbols required for SONY blobs
-    export LD_SHIM_LIBS "/system/lib/libcald_pal.so|libshim_cald.so:/system/lib/hw/camera.vendor.qcom.so|libshim_camera.so"
-
-    symlink /dev/socket /tmp
-
-    mkdir /dev/bus 0755 root root
-    mkdir /dev/bus/usb 0755 root root
-
-    # Support legacy paths
-    symlink /sdcard /mnt/sdcard
-    symlink /sdcard /storage/sdcard0
-
-on early-boot
-    # set RLIMIT_MEMLOCK to 64MB
-    setrlimit 8 67108864 67108864
