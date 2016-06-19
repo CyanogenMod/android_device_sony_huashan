@@ -209,7 +209,6 @@ bin/netmgrd
 bin/qcks
 bin/qmuxd
 bin/rmt_storage
-lib/libcsd-client.so
 lib/libdsi_netctrl.so
 lib/libdsutils.so
 lib/libidl.so
