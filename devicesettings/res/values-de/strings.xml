@@ -21,7 +21,7 @@
   <string name="pick_up_gesture_title">Aufheben</string>
   <string name="pick_up_gesture_summary">Beim Aufheben Benachrichtigungen kurzzeitig einblenden</string>
   <string name="pocket_gesture_title">Tasche</string>
-  <string name="pocket_gesture_summary">Beim Entfernen aus der Tasche Benachrichtigungen kurzzeitig einblenden</string>
+  <string name="pocket_gesture_summary">Benachrichtigungen kurz einblenden, wenn das Gerät aus der Tasche genommen wird</string>
   <string name="proximity_wake_enable_title">Aufwecken bei Annäherung</string>
   <string name="proximity_wake_enable_summary">Gerät durch Winken aufwecken</string>
 </resources>
