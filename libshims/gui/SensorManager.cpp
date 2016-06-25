@@ -157,8 +157,8 @@ sp<SensorEventQueue> SensorManager::createEventQueue() {
                 mSensorServer->createSensorEventConnection(String8(""), 0, gPackageName);
         if (connection == NULL) {
             // SensorService just died or the app doesn't have required permissions.
-            ALOGE("createEventQueue: connection is NULL.");
-            return NULL;
+            ALOGE("createEventQueue: connection is NULL. SensorService died.");
+            continue;
         }
         queue = new SensorEventQueue(connection);
         break;
