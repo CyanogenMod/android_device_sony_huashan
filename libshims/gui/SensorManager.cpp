@@ -63,14 +63,14 @@ void SensorManager::sensorManagerDied()
 
 status_t SensorManager::assertStateLocked() const {
     if (mSensorServer == NULL) {
-        // try for 300 seconds (60*5(getService() tries for 5 seconds)) before giving up ...
+        // try for one second
         const String16 name("sensorservice");
         status_t err = NO_ERROR;
 
-        for (int i = 0; i < 60; i++) {
+        for (int i = 0; i < 4; i++) {
             if (i > 0) {
                 // Don't sleep on the first try or after the last failed try
-                sleep(1);
+                usleep(250000);
             }
             err = getService(name, &mSensorServer);
             if (err != NAME_NOT_FOUND) {
@@ -148,7 +148,8 @@ Sensor const* SensorManager::getDefaultSensor(int type)
     return NULL;
 }
 
-sp<SensorEventQueue> SensorManager::createEventQueue() {
+sp<SensorEventQueue> SensorManager::createEventQueue()
+{
     sp<SensorEventQueue> queue;
 
     Mutex::Autolock _l(mLock);
@@ -156,9 +157,9 @@ sp<SensorEventQueue> SensorManager::createEventQueue() {
         sp<ISensorEventConnection> connection =
                 mSensorServer->createSensorEventConnection(String8(""), 0, gPackageName);
         if (connection == NULL) {
-            // SensorService just died or the app doesn't have required permissions.
-            ALOGE("createEventQueue: connection is NULL.");
-            return NULL;
+            // SensorService just died.
+            ALOGE("createEventQueue: connection is NULL. SensorService died.");
+            continue;
         }
         queue = new SensorEventQueue(connection);
         break;
