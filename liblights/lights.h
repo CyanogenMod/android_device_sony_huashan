@@ -38,15 +38,14 @@
 /* === LibLights AS3665 LEDs === */
 #define LEDS_COLORS_BRIGHTNESS_FILE        "/sys/class/leds/LED%d_%c/brightness"
 #define LEDS_COLORS_CURRENT_FILE           "/sys/class/leds/LED%d_%c/led_current"
-#define LEDS_COLORS_BRIGHTNESS_CHARGING    127
 #define LEDS_COLORS_BRIGHTNESS_MAXIMUM     255
+#define LEDS_COLORS_CURRENT_CHARGING       127
 #define LEDS_COLORS_CURRENT_NOTIFICATIONS  255
 #define LEDS_COLORS_CURRENT_MAXIMUM        255
 #define LEDS_COLORS_CURRENT_RATIO          255
 #define LEDS_CHARGED_DELAY_OFF             5000
 #define LEDS_CHARGED_DELAY_ON              5000
 #define LEDS_CHARGED_LEVEL                 100
-#define LEDS_CHARGED_RATIO                 5
 
 /* === LibLights AS3665 Presets === */
 const char leds_colors[3]                = { 'R', 'G', 'B' };
