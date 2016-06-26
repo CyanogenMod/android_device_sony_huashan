@@ -24,9 +24,6 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 # Product common configurations
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Dalvik heap configurations
-$(call inherit-product-if-exists, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
-
 # Device product elements
 include $(LOCAL_PATH)/product/*.mk
 
