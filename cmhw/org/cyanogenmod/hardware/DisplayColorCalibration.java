@@ -22,7 +22,7 @@ public class DisplayColorCalibration {
     private static final String COLOR_FILE = "/sys/class/graphics/fb0/rgb";
 
     public static boolean isSupported() {
-        FileUtils.isFileWritable(COLOR_FILE);
+        return FileUtils.isFileWritable(COLOR_FILE);
     }
 
     public static int getMaxValue()  {
