@@ -1,2 +1,2 @@
-# Include common SE policies
+# Qualcomm sepolicies
 include device/qcom/sepolicy/sepolicy.mk
