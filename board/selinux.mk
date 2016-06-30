@@ -1,3 +1,3 @@
-# Include device SE policies
+# Device sepolicies
 BOARD_SEPOLICY_DIRS += \
     $(DEVICE_PATH)/sepolicy
