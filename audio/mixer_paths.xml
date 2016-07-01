@@ -389,6 +389,13 @@
         <path name="voice-handset" />
     </path>
 
+    <path name="voice-handset-mic">
+        <path name="adc1" />
+        <ctl name="RX1 Digital Volume" value="91" />
+        <ctl name="RX2 Digital Volume" value="91" />
+        <ctl name="MICBIAS1 CAPLESS Switch" value="1" />
+    </path>
+
     <path name="voice-speaker">
         <path name="spk" />
     </path>
