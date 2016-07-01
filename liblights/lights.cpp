@@ -391,19 +391,17 @@ set_light_leds_locked(struct light_device_t* dev,
                 /* LEDs finished notification reset */
                 if (! is_lit(&g_notification)) {
 
-                    /* Device charging or unsupported framework */
-                    if (leds_brightness != LEDS_CHARGED_LEVEL) {
-                        unsigned int led_rgb_off[3] = {0,0,0};
-
-                        for (i = 2; i <= LEDS_UNIT_COUNT; ++i) {
-                            set_light_led_rgb(i, led_rgb_off, 0,
-                                    LEDS_RGB_WRITE);
-                        }
-                        set_light_leds_program(LEDS_PROGRAM_KEEP,
-                                LEDS_SEQ_BLINK_NONE, flashMode, 0, 0);
+                    /* Side LEDs are disabled */
+                    unsigned int led_rgb_off[3] = {0,0,0};
+                    for (i = 2; i <= LEDS_UNIT_COUNT; ++i) {
+                        set_light_led_rgb(i, led_rgb_off, 0,
+                                LEDS_RGB_WRITE);
                     }
+                    set_light_leds_program(LEDS_PROGRAM_KEEP,
+                            LEDS_SEQ_BLINK_NONE, flashMode, 0, 0);
+
                     /* Framework supported, notify 100% charged device */
-                    else {
+                    if (leds_brightness == LEDS_CHARGED_LEVEL) {
                         delayOff = LEDS_CHARGED_DELAY_OFF;
                         delayOn = LEDS_CHARGED_DELAY_ON;
                         flashMode = LIGHT_FLASH_TIMED;
