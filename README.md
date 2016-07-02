@@ -12,6 +12,7 @@ Basic   | Spec Sheet
 CPU     | 1.7GHz Dual-Core MSM8960T
 GPU     | Adreno 320
 Memory  | 1GB RAM
+Board   | Sony Viskan
 Shipped Android Version | 4.1.2
 Storage | 8GB
 Battery | 2370 mAh
