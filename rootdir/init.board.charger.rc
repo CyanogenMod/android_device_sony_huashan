@@ -1,9 +1,12 @@
 on charger
     stop bootlogo
 
+    # Offline USB charger
     write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/iSerial ${ro.serialno}
+    write /sys/class/android_usb/android0/iManufacturer ${ro.product.manufacturer}
     write /sys/class/android_usb/android0/idVendor 0FCE
-    write /sys/class/android_usb/android0/idProduct E195
+    write /sys/class/android_usb/android0/idProduct E${ro.usb.pid_suffix}
     write /sys/class/android_usb/android0/functions mass_storage
     write /sys/class/android_usb/android0/enable 1
 
