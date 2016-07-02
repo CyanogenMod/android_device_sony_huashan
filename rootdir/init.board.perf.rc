@@ -2,7 +2,13 @@ on early-init
     write /sys/block/zram0/comp_algorithm lz4
 
 on enable-low-power
-    # Enable Power modes and set the CPU Freq Sampling rates
+    # Second CPU online permissions
+    chown root system /sys/devices/system/cpu/cpu1/online
+    chmod 664 /sys/devices/system/cpu/cpu1/online
+
+    # Enable Power modes
+    write /sys/module/msm_thermal/core_control/enabled 0
+    write /sys/devices/system/cpu/cpu1/online 1
     write /sys/module/rpm_resources/enable_low_power/L2_cache 1
     write /sys/module/rpm_resources/enable_low_power/pxo 1
     write /sys/module/rpm_resources/enable_low_power/vdd_dig 1
@@ -17,9 +23,8 @@ on enable-low-power
     write /sys/module/pm_8x60/modes/cpu1/standalone_power_collapse/idle_enabled 1
     write /sys/module/pm_8x60/modes/cpu0/power_collapse/idle_enabled 1
     write /sys/module/msm_show_resume_irq/parameters/debug_mask 1
-    write /sys/module/msm_thermal/core_control/enabled 0
-    write /sys/devices/system/cpu/cpu1/online 1
 
+    # Set CPU governors and parameters
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
     write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay 20000
@@ -31,7 +36,9 @@ on enable-low-power
     write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 40000
     write /sys/devices/system/cpu/cpufreq/interactive/target_loads 90
     write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 30000
+    write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor ondemand
 
+    # Set CPU boost parameters
     write /sys/module/cpu_boost/parameters/boost_ms 20
     write /sys/module/cpu_boost/parameters/sync_threshold 1566000
     write /sys/module/cpu_boost/parameters/input_boost_freq 1458000
@@ -39,11 +46,8 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 384000
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq 384000
 
-    write /sys/module/msm_thermal/core_control/enabled 1
-    chown root system /sys/devices/system/cpu/cpu1/online
-    chmod 664 /sys/devices/system/cpu/cpu1/online
-
-    write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor ondemand
+    # Bring CPU online
+    write /sys/devices/system/cpu/cpu1/online 1
 
 on boot
     trigger enable-low-power
@@ -80,6 +84,13 @@ on property:init.svc.recovery=running
 on property:sys.boot_completed=1
     # CPU Settings
     write /sys/devices/system/cpu/cpufreq/interactive/boost 0
+
+    # Board Thermal
+    write /sys/module/msm_thermal/parameters/enabled N
+    write /sys/module/msm_thermal/core_control/enabled 1
+    write /sys/module/msm_thermal/core_control/cpus_offlined 0
+
+    # MPDecision
     rm /data/system/perfd/default_values
     start mpdecision
 
