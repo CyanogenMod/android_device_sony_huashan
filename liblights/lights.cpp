@@ -538,7 +538,7 @@ set_light_leds_notifications(struct light_device_t* dev,
 /* === Module set_light_leds_battery === */
 static int
 set_light_leds_battery(struct light_device_t* dev,
-                       struct light_state_t const* state) {
+        struct light_state_t const* state) {
 
     /* LEDs battery event */
     pthread_mutex_lock(&g_lock);
@@ -562,7 +562,7 @@ close_lights(struct light_device_t *dev) {
 /* === Module open_lights === */
 static int
 open_lights(const struct hw_module_t* module, char const* name,
-            struct hw_device_t** device) {
+        struct hw_device_t** device) {
 
     /* Adaptive set_light function */
     int (*set_light)(struct light_device_t* dev,
@@ -613,4 +613,3 @@ struct hw_module_t HAL_MODULE_INFO_SYM = {
     .dso = NULL,
     .reserved = {0},
 };
-
