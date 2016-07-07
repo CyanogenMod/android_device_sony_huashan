@@ -1,12 +1,3 @@
-# Display packages
-PRODUCT_PACKAGES += \
-    libgenlock \
-    libmemalloc \
-    liboverlay \
-    libqdutils \
-    libtilerenderer \
-    libI420colorconvert
-
 # Display QCOM packages
 PRODUCT_PACKAGES += \
     hwcomposer.msm8960 \
