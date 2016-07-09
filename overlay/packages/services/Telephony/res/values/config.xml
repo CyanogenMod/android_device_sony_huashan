@@ -17,20 +17,20 @@
 <!-- Phone app resources that may need to be customized
      for different hardware or product builds. -->
 <resources>
+    <!-- Determine whether we should show the "listen for instructions" screen after
+         successfully placing the OTA call -->
+    <integer name="OtaShowListeningScreen">1</integer>
+
+    <!-- Flag indicating if dtmf tone type is enabled -->
+    <bool name="dtmf_type_enabled">true</bool>
+
     <!-- Determine whether calls to mute the microphone in PhoneUtils
          are routed through the android.media.AudioManager class (true) or through
          the com.android.internal.telephony.Phone interface (false). -->
     <bool name="send_mic_mute_to_AudioManager">true</bool>
 
-    <!-- Flag indicating if dtmf tone type is enabled -->
-    <bool name="dtmf_type_enabled">true</bool>
-
-    <!-- This device implements a noise suppression device for in call audio-->
+    <!-- Determines if device implements a noise suppression device for in call audio-->
     <bool name="has_in_call_noise_suppression">true</bool>
-
-    <!-- Determine whether we should show the "listen for instructions" screen after
-         successfully placing the OTA call -->
-    <integer name="OtaShowListeningScreen">1</integer>
 
     <!-- Show enabled lte option for lte device -->
     <bool name="config_enabled_lte" translatable="false">true</bool>
