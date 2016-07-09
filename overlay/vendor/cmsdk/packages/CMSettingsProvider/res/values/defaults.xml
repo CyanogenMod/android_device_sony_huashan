@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2015 The CyanogenMod Project
+     Copyright (C) 2014-2015 The CyanogenMod Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,5 +15,7 @@
      limitations under the License.
 -->
 <resources>
+    <!-- Default value for whether or not to use multiple notification LEDs
+         on devices equiped with more than one LED -->
     <bool name="def_notification_multiple_leds">true</bool>
 </resources>

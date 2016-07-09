@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 /*
-** Copyright 2015, The CyanogenMod Project
+** Copyright 2009, The Android Open Source Project
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -24,16 +24,13 @@
     <!-- Doze: when to pulse after a buzzworthy notification arrives -->
     <string name="doze_pulse_schedule" translatable="false">1s,5s,10s,30s,60s</string>
 
+    <!-- Doze: pulse parameter - how long does it take to fade in? -->
+    <integer name="doze_pulse_duration_in">100</integer>
+
     <!-- Doze: pulse parameter - how long does it take to fade in after an intent? -->
     <integer name="doze_pulse_duration_in_intent">0</integer>
 
     <!-- Doze: pulse parameter - delay to wait for the screen to wake up after an intent -->
     <integer name="doze_pulse_delay_in_intent">0</integer>
-
-    <!-- Doze: pulse parameter - delay to wait for the screen to wake up -->
-    <integer name="doze_pulse_delay_in">100</integer>
-
-    <!-- Doze: pulse parameter - how long does it take to fade in? -->
-    <integer name="doze_pulse_duration_in">100</integer>
 
 </resources>
