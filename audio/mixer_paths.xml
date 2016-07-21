@@ -367,10 +367,6 @@
         <ctl name="RX2 Digital Volume" value="91" />
     </path>
 
-    <path name="line">
-        <path name="headphones" />
-    </path>
-
     <path name="headset-mic">
         <path name="adc2" />
         <ctl name="RX1 Digital Volume" value="91" />
@@ -401,10 +397,6 @@
         <path name="headphones" />
     </path>
 
-    <path name="voice-line">
-        <path name="voice-headphones" />
-    </path>
-
     <path name="voice-headset-mic">
         <path name="headset-mic" />
     </path>
@@ -417,10 +409,6 @@
         <ctl name="LINEOUT1 Volume" value="12" />
         <ctl name="RX1 Digital Volume" value="91" />
         <ctl name="RX2 Digital Volume" value="91" />
-    </path>
-
-    <path name="speaker-and-line">
-        <path name="speaker-and-headphones" />
     </path>
 
     <path name="hdmi">
