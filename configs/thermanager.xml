@@ -236,7 +236,7 @@
 
 	<!-- CPU -->
 	<configuration sensor="temp-cpu">
-		<threshold trigger="62" clear="65">
+		<threshold>
 			<mitigation name="cpu" level="off" />
 		</threshold>
 		<threshold trigger="87" clear="84">
