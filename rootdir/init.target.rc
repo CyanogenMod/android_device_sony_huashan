@@ -35,8 +35,6 @@ on fs
     mount_all fstab.qcom
     swapon_all fstab.qcom
 
-    setprop ro.crypto.fuse_sdcard true
-
     mkdir /lta-label 0555 system system
     wait /dev/block/platform/msm_sdcc.1/by-name/LTALabel
     mount ext4 /dev/block/platform/msm_sdcc.1/by-name/LTALabel /lta-label nosuid nodev noatime noexec ro barrier=0
