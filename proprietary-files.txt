@@ -261,6 +261,9 @@ etc/firmware/cyttsp_8064_mtp.hex
 etc/firmware/cyttsp_8960_cdp.hex
 etc/firmware/cyttsp4_fw.bin
 
+# UI
+vendor/lib/libuiblur.so
+
 # USB
 bin/usbhub
 bin/usbhub_init
