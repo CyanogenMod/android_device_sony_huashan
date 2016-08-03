@@ -158,7 +158,7 @@ static char *camera_fixup_getparams(int __attribute__((unused)) id,
                 bufferPos += 4;
             }
         }
-        sprintf(buffer, "%s,auto", buffer);
+        strcat(buffer,",auto");
         params.set(CameraParameters::KEY_SUPPORTED_ISO_MODES, buffer);
     }
 
