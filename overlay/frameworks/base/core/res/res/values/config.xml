@@ -333,8 +333,4 @@
     <!-- Whether the default speaker audio output path supports near-ultrasound frequencies
          (range of 18 - 21 kHz). -->
     <bool name="config_supportSpeakerNearUltrasound">false</bool>
-
-    <!-- Support in Surfaceflinger for blur layers.
-         NOTE: This requires additional hardware-specific code. -->
-    <bool name="config_ui_blur_enabled">true</bool>
 </resources>
