@@ -15,3 +15,7 @@ PRODUCT_PACKAGES += \
 # Sony MACAddrSetup package
 PRODUCT_PACKAGES += \
     macaddrsetup
+
+# Updater properties
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.disable.recovery.updater=1
