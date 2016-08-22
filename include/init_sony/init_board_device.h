@@ -28,12 +28,13 @@
 // Constants: init configurations
 #define KEYCHECK_TIMEOUT 3
 
-// Variables: init device specific
-pid_t pid_introduce_keycheck;
-
 // Class: init_board_device
 class init_board_device : public init_board_common
 {
+private:
+    // Variables: init device specific
+    pid_t pid_introduce_keycheck;
+
 public:
     // Board: introduction for keycheck
     virtual void introduce_keycheck()
