@@ -23,6 +23,7 @@
 #include "init_prototypes.h"
 
 // Constants: devices controls
+#define DEV_BLOCK_CACHE_NUM 14
 #define DEV_BLOCK_FOTA_NUM 11
 
 // Constants: init configurations
