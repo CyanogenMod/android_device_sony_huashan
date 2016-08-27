@@ -1,4 +1,8 @@
-# MP Decision controls.
-allow mpdecision mpctl_data_file:file { create open append };
+#============= mpdecision ==============
+allow mpdecision cameraserver:dir search;
+allow mpdecision cameraserver:file { read open };
 allow mpdecision mpdecision_socket:sock_file unlink;
-allow mpdecision socket_device:sock_file create_file_perms;
+allow mpdecision proc:file { read open };
+allow mpdecision socket_device:sock_file setattr;
+allow mpdecision sysfs:file read;
+allow mpdecision system_data_file:dir { add_name write };

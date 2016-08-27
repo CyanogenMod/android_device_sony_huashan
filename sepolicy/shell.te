@@ -1,3 +1,0 @@
-# Shell su and debug access.
-allow shell su:process signal;
-allow shell tombstone_data_file:dir getattr;
