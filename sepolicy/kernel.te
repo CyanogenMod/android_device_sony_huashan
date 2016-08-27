@@ -1,3 +1,0 @@
-# Kernel access to block devices
-allow kernel block_device:blk_file rw_file_perms;
-allow kernel self:capability fowner;

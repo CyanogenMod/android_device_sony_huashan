@@ -1,18 +1,12 @@
-# TA QMI Service
 type ta_qmi_service, domain;
 type ta_qmi_service_exec, exec_type, file_type;
 
 init_daemon_domain(ta_qmi_service)
 
-# Service control accesses.
-allow ta_qmi_service smem_log_device:chr_file { ioctl open read write };
-allow ta_qmi_service sysfs_wake_lock:file { append open };
+#============= ta_qmi_service ==============
 allow ta_qmi_service self:capability dac_override;
-allow ta_qmi_service self:socket create_socket_perms;
-
-# Connect to TAD socket.
-unix_socket_connect(ta_qmi_service, tad, tad)
-
-# Service sockets.
-allow ta_qmi_service init:unix_stream_socket connectto;
-allow ta_qmi_service socket_device:sock_file { write };
+allow ta_qmi_service self:socket { write ioctl setopt read bind create };
+allow ta_qmi_service smem_log_device:chr_file { read write ioctl open };
+allow ta_qmi_service sysfs_wake_lock:file { open append };
+allow ta_qmi_service tad:unix_stream_socket connectto;
+allow ta_qmi_service tad_socket:sock_file write;

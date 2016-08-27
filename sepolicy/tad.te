@@ -1,11 +1,10 @@
-# SONY TAD Library
 type tad, domain;
 type tad_exec, exec_type, file_type;
 
 init_daemon_domain(tad)
 
-# Allow TAD to access TA contents.
+#============= tad ==============
 allow tad block_device:dir search;
-allow tad root_block_device:blk_file { ioctl open read write };
-allow tad rootfs:file entrypoint;
-allow tad trim_area_partition_device:blk_file rw_file_perms;
+allow tad proc:file { read open };
+allow tad rootfs:file { entrypoint read };
+allow tad trim_area_partition_device:blk_file { read write ioctl open };

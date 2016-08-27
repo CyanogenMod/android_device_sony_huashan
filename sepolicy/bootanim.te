@@ -1,0 +1,2 @@
+#============= bootanim ==============
+allow bootanim boot_animation_prop:file { getattr open read };
