@@ -1,0 +1,3 @@
+#============= netmgrd ==============
+allow netmgrd self:capability dac_override;
+allow netmgrd self:packet_socket { write bind create read };
