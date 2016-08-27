@@ -1,2 +1,0 @@
-# DebuggerD for GPU
-allow debuggerd gpu_device:chr_file { getattr open read };
