@@ -1,0 +1,21 @@
+#============= cameraserver ==============
+allow cameraserver activity_service:service_manager find;
+allow cameraserver audio_device:chr_file { read write ioctl open };
+allow cameraserver camera_device:dir { search };
+allow cameraserver camera_device:chr_file { read write ioctl open };
+allow cameraserver camera_prop:file { read getattr open };
+allow cameraserver camera_prop:property_service set;
+allow cameraserver camera_socket:dir { add_name search };
+allow cameraserver camera_socket:file { create getattr open read write };
+allow cameraserver gpu_device:chr_file { read write ioctl open };
+allow cameraserver init:unix_stream_socket connectto;
+allow cameraserver mpctl_socket:dir search;
+allow cameraserver mpctl_socket:sock_file write;
+allow cameraserver mpdecision:unix_stream_socket connectto;
+allow cameraserver property_socket:sock_file write;
+allow cameraserver sensorservice_service:service_manager find;
+allow cameraserver sysfs:dir { read open };
+allow cameraserver sysfs:file { read write getattr open };
+allow cameraserver system_file:file execmod;
+allow cameraserver system_server:unix_stream_socket { read write };
+allow cameraserver tmpfs:dir search;
