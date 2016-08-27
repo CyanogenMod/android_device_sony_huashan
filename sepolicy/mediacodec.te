@@ -1,0 +1,2 @@
+#============= mediacodec ==============
+allow mediacodec audio_device:chr_file { read write ioctl open };

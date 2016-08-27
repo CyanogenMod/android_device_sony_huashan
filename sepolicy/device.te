@@ -1,2 +1,2 @@
-# TA Partition device.
+#============= device ==============
 type trim_area_partition_device, dev_type;

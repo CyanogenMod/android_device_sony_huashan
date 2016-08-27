@@ -1,0 +1,3 @@
+#============= rmt_storage ==============
+allow rmt_storage sysfs:dir { read open };
+allow rmt_storage sysfs:file { read getattr open };
