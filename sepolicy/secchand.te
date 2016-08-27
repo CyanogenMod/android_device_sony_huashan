@@ -1,19 +1,13 @@
-# Secchand
 type secchand, domain;
 type secchand_exec, exec_type, file_type;
 
 init_daemon_domain(secchand)
 
-# Secchand socket and log access.
-allow secchand self:socket { bind create ioctl read write };
+#============= secchand ==============
+allow secchand ion_device:chr_file { read ioctl open };
 allow secchand self:capability dac_override;
-allow secchand smem_log_device:chr_file { ioctl open read write };
-allow secchand socket_device:sock_file write;
-allow secchand tee_device:chr_file { ioctl open read write };
-
-# Access /dev/socket/tad socket.
+allow secchand self:socket { write ioctl setopt read bind create };
+allow secchand smem_log_device:chr_file { read write ioctl open };
 allow secchand tad:unix_stream_socket connectto;
 allow secchand tad_socket:sock_file write;
-
-# Secchand init stream socket.
-allow secchand init:unix_stream_socket connectto;
+allow secchand tee_device:chr_file { read write ioctl open };

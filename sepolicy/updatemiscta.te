@@ -1,18 +1,11 @@
-# UpdateMiscTA
 type updatemiscta, domain;
 type updatemiscta_exec, exec_type, file_type;
 
 init_daemon_domain(updatemiscta)
 
-# UpdateMiscTA properties and socket.
-set_prop(updatemiscta, ctl_default_prop)
+#============= updatemiscta ==============
+allow updatemiscta init:unix_stream_socket connectto;
 allow updatemiscta property_socket:sock_file write;
 allow updatemiscta self:capability dac_override;
-allow updatemiscta socket_device:sock_file write;
-allow updatemiscta updatemiscta_prop:property_service set;
-
-# TAD sockets.
-allow updatemiscta init:unix_stream_socket connectto;
 allow updatemiscta tad:unix_stream_socket connectto;
 allow updatemiscta tad_socket:sock_file write;
-allow updatemiscta tad_socket:unix_stream_socket connectto;
