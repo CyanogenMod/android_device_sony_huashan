@@ -22,7 +22,7 @@ $(recovery_uncompressed_device_ramdisk): $(MKBOOTFS) \
 		$(RECOVERY_INSTALL_OTA_KEYS) \
 		$(INTERNAL_BOOTIMAGE_FILES)
 	$(call build-recoveryramdisk)
-	@echo -e ${CL_CYN}"----- Making uncompressed recovery ramdisk ------"${CL_RST}
+	@echo "----- Making uncompressed recovery ramdisk ------"
 	$(hide) cp $(DEVICE_LOGORLE) $(TARGET_RECOVERY_ROOT_OUT)/
 	$(hide) $(MKBOOTFS) $(TARGET_RECOVERY_ROOT_OUT) > $@
 	$(hide) rm -f $(recovery_uncompressed_ramdisk)
@@ -31,7 +31,7 @@ $(recovery_uncompressed_device_ramdisk): $(MKBOOTFS) \
 recovery_ramdisk := $(PRODUCT_OUT)/ramdisk-recovery.img
 $(recovery_ramdisk): $(MINIGZIP) \
 		$(recovery_uncompressed_device_ramdisk)
-	@echo -e ${CL_CYN}"----- Making compressed recovery ramdisk ------"${CL_RST}
+	@echo "----- Making compressed recovery ramdisk ------"
 	$(hide) $(MINIGZIP) < $(recovery_uncompressed_ramdisk) > $@
 
 INSTALLED_BOOTIMAGE_TARGET := $(PRODUCT_OUT)/boot.img
@@ -44,8 +44,7 @@ $(INSTALLED_BOOTIMAGE_TARGET): $(PRODUCT_OUT)/kernel \
 		$(PRODUCT_OUT)/utilities/keycheck \
 		$(MKBOOTIMG) $(MINIGZIP) \
 		$(INTERNAL_BOOTIMAGE_FILES)
-
-	@echo -e ${CL_CYN}"----- Making boot image ------"${CL_RST}
+	@echo "----- Making boot image ------"
 	$(hide) rm -fr $(PRODUCT_OUT)/combinedroot
 	$(hide) cp -a $(PRODUCT_OUT)/root $(PRODUCT_OUT)/combinedroot
 	$(hide) mkdir -p $(PRODUCT_OUT)/combinedroot/sbin
@@ -72,7 +71,7 @@ INSTALLED_RECOVERYIMAGE_TARGET := $(PRODUCT_OUT)/recovery.img
 $(INSTALLED_RECOVERYIMAGE_TARGET): $(MKBOOTIMG) \
 		$(recovery_ramdisk) \
 		$(recovery_kernel)
-	@echo -e ${CL_CYN}"----- Making recovery image ------"${CL_RST}
+	@echo "----- Making recovery image ------"
 	$(hide) python $(MKELF) -o $@ $(PRODUCT_OUT)/kernel@0x80208000 $(PRODUCT_OUT)/ramdisk-recovery.img@0x81900000,ramdisk $(DEVICE_RPMBIN)@0x00020000,rpm $(DEVICE_CMDLINE)@cmdline
 	$(hide) $(call assert-max-image-size,$@,$(BOARD_RECOVERYIMAGE_PARTITION_SIZE))
 	$(call pretty,"Made recovery image: $@")
