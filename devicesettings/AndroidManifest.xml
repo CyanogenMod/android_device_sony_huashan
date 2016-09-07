@@ -17,8 +17,7 @@
     <application
         android:allowBackup="true"
         android:label="@string/device_settings_app_name"
-        android:persistent="true"
-        android:theme="@android:style/Theme.Material.Settings">
+        android:persistent="true">
 
         <receiver android:name="com.cyanogenmod.settings.device.BootCompletedReceiver">
             <intent-filter>
@@ -37,7 +36,8 @@
 
         <activity
             android:name=".TouchscreenGesturePreferenceActivity"
-            android:label="@string/screen_gestures_panel_title">
+            android:label="@string/screen_gestures_panel_title"
+            android:theme="@style/DeviceSettings">
             <intent-filter>
                 <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
             </intent-filter>

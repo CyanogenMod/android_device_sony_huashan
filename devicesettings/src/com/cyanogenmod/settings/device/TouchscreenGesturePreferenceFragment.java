@@ -17,9 +17,9 @@
 package com.cyanogenmod.settings.device;
 
 import android.os.Bundle;
-import android.preference.Preference;
-import android.preference.PreferenceFragment;
-import android.preference.SwitchPreference;
+import android.support.v14.preference.PreferenceFragment;
+import android.support.v7.preference.Preference;
+import android.support.v14.preference.SwitchPreference;
 import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -43,8 +43,7 @@ public class TouchscreenGesturePreferenceFragment extends PreferenceFragment {
     private SwitchPreference mProximityWakePreference;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.gesture_panel);
         boolean dozeEnabled = isDozeEnabled();
         mAmbientDisplayPreference = (SwitchPreference) findPreference(KEY_AMBIENT_DISPLAY_ENABLE);
