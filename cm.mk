@@ -18,7 +18,7 @@
 $(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
 
 # Inherit common CM stuff
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+$(call inherit-product, vendor/cm/config/common_mini_phone.mk)
 
 # Inherit device configurations
 $(call inherit-product, device/sony/huashan/device.mk)
