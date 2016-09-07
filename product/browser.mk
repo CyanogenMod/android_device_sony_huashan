@@ -1,3 +1,3 @@
-# Gello package
+# Web browser package
 PRODUCT_PACKAGES += \
-    Gello
+    Browser
