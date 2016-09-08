@@ -15,7 +15,7 @@
  */
 
 /* === Module Debug === */
-#define LOG_NDEBUG 0
+/*#define LOG_NDEBUG 0*/
 #define LOG_TAG "lights.huashan"
 
 /* === Module Libraries === */
