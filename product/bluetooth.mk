@@ -4,6 +4,7 @@ PRODUCT_PACKAGES += \
 
 # Bluetooth properties
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qualcomm.bt.hci_transport=smd \
+    qcom.bluetooth.soc=smd \
+    qcom.bt.le_dev_pwr_class=1 \
     ro.bt.bdaddr_path=/data/misc/bluetooth_bdaddr \
-    qcom.bt.le_dev_pwr_class=1
+    ro.qualcomm.bt.hci_transport=smd
