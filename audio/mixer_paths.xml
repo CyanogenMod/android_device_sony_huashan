@@ -48,7 +48,7 @@
     <ctl name="SLIM_0_RX Channels" value="One" />
     <ctl name="SLIM_0_RX_Voice Mixer Voip" value="0" />
     <ctl name="SLIM_0_RX_Voice Mixer CSVoice" value="0" />
-    <ctl name="SLIM_0_TX Channels" value="One" />>
+    <ctl name="SLIM_0_TX Channels" value="One" />
     <ctl name="SLIM TX10 MUX" value="ZERO" />
     <ctl name="SLIM TX9 MUX" value="ZERO" />
     <ctl name="SLIM TX8 MUX" value="ZERO" />
