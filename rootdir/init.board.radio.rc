@@ -4,6 +4,7 @@ on boot
     chmod 2770 /dev/socket/qmux_radio
     mkdir /dev/socket/qmux_audio 0770 media audio
     chmod 2770 /dev/socket/qmux_audio
+    chmod 0644 /proc/cmdline
 
 service netmgrd /system/bin/netmgrd
     class main
