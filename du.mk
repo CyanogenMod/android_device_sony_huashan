@@ -15,10 +15,10 @@
 #
 
 # Enhanced NFC
-$(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
+$(call inherit-product, vendor/du/config/nfc_enhanced.mk)
 
 # Inherit common CM stuff
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+$(call inherit-product, vendor/du/config/common_full_phone.mk)
 
 # Inherit device configurations
 $(call inherit-product, device/sony/huashan/device.mk)
@@ -29,7 +29,7 @@ TARGET_SCREEN_WIDTH := 720
 
 # Device identifications
 PRODUCT_DEVICE := huashan
-PRODUCT_NAME := cm_huashan
+PRODUCT_NAME := du_huashan
 PRODUCT_BRAND := Sony
 PRODUCT_MANUFACTURER := Sony
 PRODUCT_MODEL := Xperia SP
