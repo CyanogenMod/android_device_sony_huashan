@@ -109,7 +109,7 @@ on property:sys.boot_completed=1
     write /sys/kernel/mm/ksm/run 1
 
 service mpdecision /system/bin/mpdecision --avg_comp
-    class late_start
+    class main
     user root
     group root readproc
     socket mpdecision stream 0660 root system

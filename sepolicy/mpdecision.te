@@ -2,7 +2,6 @@
 allow mpdecision cameraserver:dir search;
 allow mpdecision cameraserver:file { open read };
 allow mpdecision mpdecision_socket:sock_file unlink;
-allow mpdecision proc:file { read open };
 allow mpdecision socket_device:sock_file setattr;
 allow mpdecision sysfs:file read;
 allow mpdecision system_data_file:dir { add_name remove_name write };
