@@ -14,9 +14,6 @@
 # limitations under the License.
 #
 
-# Enhanced NFC
-$(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
-
 # Inherit common CM stuff
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
