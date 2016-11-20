@@ -333,4 +333,11 @@
     <!-- Whether the default speaker audio output path supports near-ultrasound frequencies
          (range of 18 - 21 kHz). -->
     <bool name="config_supportSpeakerNearUltrasound">false</bool>
+
+    <!-- The device supports freeform window management. Windows have title bars and can be moved
+         and resized. If you set this to true, you also need to add
+         PackageManager.FEATURE_FREEFORM_WINDOW_MANAGEMENT feature to your device specification.
+         The duplication is necessary, because this information is used before the features are
+         available to the system.-->
+    <bool name="config_freeformWindowManagement">true</bool>
 </resources>
