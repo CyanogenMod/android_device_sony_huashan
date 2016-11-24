@@ -1,4 +1,4 @@
-LOCAL_PATH:= $(call my-dir)
+LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_MODULE_TAGS := optional
@@ -13,6 +13,10 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
     org.cyanogenmod.platform.sdk
 
 LOCAL_PROGUARD_FLAG_FILES := proguard.flags
+
+LOCAL_RESOURCE_DIR := \
+    $(LOCAL_PATH)/res \
+    $(LOCAL_PATH)/../../../../packages/resources/devicesettings/res
 
 include $(BUILD_PACKAGE)
 
