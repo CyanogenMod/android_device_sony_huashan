@@ -121,6 +121,7 @@ def write_elf_phdr(elf, seg):
 
 def main(args):
     parser = OptionParser("usage: %prog options")
+    parser.add_option("-n", dest="boardname", help="optional board name")
     parser.add_option("-o", dest="outputfile", help="path to the output file")
     (opts, args) = parser.parse_args()
 
@@ -130,6 +131,7 @@ def main(args):
         fatal("Missing input files")
 
     offset = 4096
+    pagesize = offset
     segments = []
     for seg in parse_inputs(args):
         size = os.path.getsize(seg['file'])
@@ -143,6 +145,10 @@ def main(args):
     write_elf_header(elf, segments[0]['addr'], len(segments))
     for seg in segments:
         write_elf_phdr(elf, seg)
+
+    if opts.boardname is not None:
+        elf.seek(pagesize - 16)
+        elf.write(struct.pack('<16s', opts.boardname))
 
     for seg in segments:
         elf.seek(seg['offset'])
