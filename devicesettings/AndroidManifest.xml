@@ -36,7 +36,7 @@
 
         <activity
             android:name=".TouchscreenGesturePreferenceActivity"
-            android:label="@string/screen_gestures_panel_title"
+            android:label="@string/ambient_display_title"
             android:theme="@style/DeviceSettings">
             <intent-filter>
                 <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
