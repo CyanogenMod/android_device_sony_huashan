@@ -6,7 +6,7 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
 
 # Kernel properties
 TARGET_KERNEL_SOURCE := kernel/sony/msm8960t
-TARGET_KERNEL_CONFIG := cm_viskan_huashan_defconfig
+TARGET_KERNEL_CONFIG := viskan_huashan_defconfig
 
 # Custom boot
 BOARD_CUSTOM_BOOTIMG := true
