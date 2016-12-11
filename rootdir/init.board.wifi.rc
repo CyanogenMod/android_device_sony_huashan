@@ -1,5 +1,5 @@
 on early-boot
-    write /dev/wcnss_wlan 1
+    write /dev/wcnss_wlan ""
 
 on boot
     # Tune buffersize for higher Miracast throughput
