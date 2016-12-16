@@ -15,7 +15,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="ambient_display_title">Okoliški zaslon</string>
   <string name="ambient_display_enable_title">Okoliški zaslon</string>
-  <string name="ambient_display_enable_summary">Zbudi zaslon, ko prejmem obvestila</string>
+  <string name="ambient_display_enable_summary">Vklopi zaslon, ko prejmem obvestila</string>
   <string name="hand_wave_gesture_title">Mahanje z roko</string>
   <string name="hand_wave_gesture_summary">Utripaj obvestila ob mahanju z roko</string>
   <string name="pick_up_gesture_title">Dvig</string>
